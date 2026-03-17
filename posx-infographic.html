@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POSX - 项目介绍与奖励机制</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   POSX INFOGRAPHIC — Trilingual, Mobile-First
+   Design: Goldman Sachs / UBS Institutional Research
+   Mode: Light Only | Languages: EN / 简体 / 繁體
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --navy:       #00205B;
+  --navy-90:    #1A3670;
+  --navy-70:    #4D6490;
+  --navy-50:    #8092AD;
+  --navy-30:    #B3BFCE;
+  --navy-15:    #D9DFE7;
+  --navy-08:    #ECF0F5;
+  --navy-04:    #F5F7FA;
+  --gold:       #B4975A;
+  --gold-dark:  #96793E;
+  --gold-light: #C8AB72;
+  --gold-bg:    #F8F4ED;
+  --white:      #FFFFFF;
+  --black:      #0D0D1A;
+  --text-1:     #1A1D2B;
+  --text-2:     #3D4158;
+  --text-3:     #6B7084;
+  --text-4:     #9398AB;
+  --green:      #0A7B46;
+  --green-bg:   #E8F5EE;
+  --red:        #B82E3A;
+  --red-bg:     #FAEAEC;
+  --rule:       #D6DAE3;
+  --rule-light: #ECEEF2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+img, svg, table {
+  max-width: 100%;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #E8EBF0;
+  color: var(--text-1);
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+html[lang="zh-TW"] body {
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+html[lang="en"] body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+html[lang="ko"] body {
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+/* ── Canvas ── */
+.canvas {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.en { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; }
+
+/* ── Section spacing — mobile base ── */
+.ig-section    { padding: 36px 20px; position: relative; }
+.ig-section-alt{ padding: 36px 20px; background: var(--navy-04); position: relative; }
+.ig-hr         { height: 1px; background: var(--rule); margin: 0 20px; }
+.ig-hr-full    { height: 1px; background: var(--rule); }
+
+/* ── Section headings ── */
+.sec-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px; display: block;
+}
+.sec-title { font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 10px; }
+.sec-subtitle { font-size: 0.8125rem; color: var(--text-3); line-height: 1.75; }
+.sec-subtitle { overflow-wrap: anywhere; }
+.sec-rule { width: 40px; height: 2px; background: var(--navy); margin: 16px 0 0; }
+
+/* ═══════ HEADER ═══════ */
+.header-bar { height: 4px; background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 70%, var(--gold) 70%, var(--gold) 100%); }
+.header {
+  padding: 20px 20px 16px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  border-bottom: 1px solid var(--rule);
+  gap: 12px; flex-wrap: wrap;
+}
+.header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.header-logo-img { height: 28px; width: auto; display: block; }
+.header-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; min-width: 0; }
+.header-doc-type { display: none; font-family: 'Inter', sans-serif; font-size: 0.5rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+.header-date { font-family: 'Inter', sans-serif; font-size: 0.625rem; color: var(--text-4); }
+
+/* ═══════ LANGUAGE SWITCHER ═══════ */
+.lang-sw {
+  display: inline-flex; align-items: center; gap: 0;
+  background: var(--navy-04); border: 1px solid var(--rule);
+  border-radius: 6px; overflow: hidden; font-family: 'Inter', sans-serif;
+}
+.lang-btn {
+  padding: 5px 10px; font-size: 0.625rem; font-weight: 600;
+  border: none; background: none; cursor: pointer;
+  color: var(--text-3); transition: all 0.15s; white-space: nowrap;
+  letter-spacing: 0.3px;
+  min-width: 44px;
+}
+.lang-btn:not(:last-child) { border-right: 1px solid var(--rule); }
+.lang-btn.active { background: var(--navy); color: #fff; }
+.lang-btn:hover:not(.active) { background: var(--navy-08); }
+
+/* ═══════ HERO ═══════ */
+.hero-banner { padding: 40px 20px 36px; background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+.hero-pattern {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content { position: relative; z-index: 2; min-width: 0; }
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif; font-size: 0.5625rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); }
+.hero-h1 { font-size: 1.625rem; font-weight: 800; line-height: 1.25; color: #fff; margin-bottom: 14px; }
+.hero-h1 { word-break: break-word; overflow-wrap: anywhere; }
+.hero-h1 .gold { color: var(--gold-light); }
+.hero-desc { font-size: 0.8125rem; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 28px; }
+.hero-desc { overflow-wrap: anywhere; }
+.hero-kpis { display: flex; flex-direction: column; gap: 0; }
+.hero-kpi {
+  padding: 16px 20px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08); text-align: center;
+}
+.hero-kpi:first-child { border-radius: 8px 8px 0 0; }
+.hero-kpi:last-child  { border-radius: 0 0 8px 8px; }
+.hero-kpi:not(:last-child) { border-bottom: none; }
+.hero-kpi-val {
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+  font-size: 1.25rem; font-weight: 800; color: #fff; line-height: 1.15;
+  margin-bottom: 4px; white-space: nowrap; overflow-wrap: anywhere;
+}
+.hero-kpi-label { font-size: 0.6875rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+.hero-kpi-label { overflow-wrap: anywhere; }
+
+/* ═══════ MOBILE ENTRY SHORTCUTS ═══════ */
+.entry-shortcuts {
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+}
+.entry-shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--white);
+  text-decoration: none;
+  min-width: 0;
+}
+.entry-shortcut-label { min-width: 0; }
+.entry-shortcut-kicker {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.entry-shortcut-title {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.35;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.entry-shortcut-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-04);
+  color: var(--navy);
+  flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+/* ═══════ 01 WHAT IS POSX ═══════ */
+.what-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 24px; }
+.what-card {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 16px; background: var(--white);
+  border: 1px solid var(--rule); border-radius: 6px; transition: border-color 0.2s;
+  min-width: 0;
+}
+.ig-section-alt .what-card { background: var(--white); }
+.what-icon {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 6px;
+  background: var(--navy); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.8rem; font-weight: 700;
+}
+.what-icon.gold-icon { background: var(--gold); }
+.what-text h4 { font-size: 0.8125rem; font-weight: 700; color: var(--text-1); margin-bottom: 2px; }
+.what-text p  { font-size: 0.75rem; color: var(--text-3); line-height: 1.65; }
+.what-text h4, .what-text p { overflow-wrap: anywhere; }
+
+.what-data {
+  background: var(--navy); border-radius: 8px; padding: 24px 20px; color: #fff;
+}
+.what-data-header {
+  font-family: 'Inter', sans-serif; font-size: 0.5625rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-light); font-weight: 600;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px;
+}
+.wd-row { margin-bottom: 16px; }
+.wd-row:last-child { margin-bottom: 0; }
+.wd-label { font-family: 'Inter', sans-serif; font-size: 0.625rem; color: rgba(255,255,255,0.45); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+.wd-value { font-family: 'Noto Sans SC', 'Inter', sans-serif; font-size: 1.125rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.wd-value { overflow-wrap: anywhere; }
+.wd-bar { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+.wd-bar-fill { height: 100%; border-radius: 2px; background: var(--gold-light); }
+.wd-note { font-size: 0.625rem; color: rgba(255,255,255,0.35); margin-top: 4px; font-style: italic; }
+
+/* ═══════ 02 ECOSYSTEM ═══════ */
+.eco-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.eco-card {
+  background: var(--white); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 20px 14px; text-align: center; position: relative; transition: all 0.2s;
+}
+.eco-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--navy); border-radius: 6px 6px 0 0; }
+.eco-badge {
+  width: 40px; height: 40px; margin: 0 auto 10px; border-radius: 50%;
+  background: var(--navy-08); border: 1px solid var(--navy-15);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.eco-card h4 { font-size: 0.75rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.eco-card p  { font-size: 0.6875rem; color: var(--text-3); line-height: 1.65; }
+.eco-card h4, .eco-card p { overflow-wrap: anywhere; }
+
+/* ═══════ 03 TOKEN GENERATION ═══════ */
+.steps-wrap { margin-top: 28px; position: relative; }
+.steps-connector { display: none; }
+.steps-row { display: flex; flex-direction: column; gap: 16px; position: relative; }
+.step-item { display: flex; align-items: flex-start; gap: 14px; }
+.step-circle {
+  width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 800;
+  color: var(--navy-50); transition: all 0.4s ease;
+}
+.step-item.active .step-circle { border-color: var(--navy); color: var(--navy); background: var(--navy-08); box-shadow: 0 0 0 3px var(--navy-08); }
+.step-name { font-size: 0.8125rem; font-weight: 700; color: var(--text-1); margin-bottom: 2px; }
+.step-detail { font-size: 0.6875rem; color: var(--text-3); line-height: 1.6; }
+.step-text-wrap { padding-top: 4px; }
+
+/* ═══════ 04 FLYWHEEL ═══════ */
+.flywheel-layout { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 24px; align-items: center; }
+.fw-diagram-wrap { width: 100%; max-width: 360px; margin: 0 auto; }
+.fw-diagram-wrap svg { width: 100%; height: auto; }
+.fw-explain { display: flex; flex-direction: column; gap: 14px; }
+.fw-explain-item { display: flex; gap: 10px; align-items: flex-start; }
+.fw-explain-num {
+  width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%;
+  background: var(--navy-08); border: 1px solid var(--navy-15);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 0.625rem; font-weight: 700; color: var(--navy);
+}
+.fw-explain-text h5 { font-size: 0.8125rem; font-weight: 700; color: var(--navy); margin-bottom: 1px; }
+.fw-explain-text p  { font-size: 0.6875rem; color: var(--text-3); line-height: 1.65; }
+.fw-explain-text h5, .fw-explain-text p { overflow-wrap: anywhere; }
+
+/* ═══════ 05 COMPARISON TABLE ═══════ */
+.comp-table-wrap {
+  width: 100%;
+  margin-top: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.comp-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.75rem;
+}
+.comp-table thead { background: var(--navy); color: #fff; }
+.comp-table th { padding: 10px 12px; font-weight: 600; text-align: left; font-size: 0.6875rem; letter-spacing: 0.5px; }
+.comp-table th:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
+.comp-table td { padding: 10px 12px; border-bottom: 1px solid var(--rule-light); vertical-align: middle; line-height: 1.5; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table td:not(:last-child) { border-right: 1px solid var(--rule-light); }
+.td-dim { font-weight: 600; color: var(--text-1); background: var(--navy-04); width: 96px; }
+.td-good { color: var(--green); }
+.td-bad  { color: var(--text-4); }
+.indicator {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; border-radius: 50%; font-size: 0.55rem;
+  font-weight: 700; margin-right: 6px; flex-shrink: 0; vertical-align: middle;
+}
+.ind-yes { background: var(--green-bg); color: var(--green); }
+.ind-no  { background: var(--red-bg); color: var(--red); }
+
+/* ═══════ 06 MARKET SIZE ═══════ */
+.market-layout { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+.market-block {
+  background: var(--white); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 20px 16px; text-align: center; transition: all 0.2s;
+}
+.market-block-num {
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+  font-size: 1.5rem; font-weight: 800; color: var(--navy);
+  line-height: 1.15; margin-bottom: 4px; white-space: nowrap; overflow-wrap: anywhere;
+}
+.market-block-num.gold-num { color: var(--gold); }
+.market-block-label { font-size: 0.75rem; color: var(--text-3); line-height: 1.6; }
+.market-block-label { overflow-wrap: anywhere; }
+.market-block-tag { font-family: 'Inter', sans-serif; font-size: 0.5625rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-4); margin-bottom: 10px; }
+.market-callout { margin-top: 20px; padding: 16px 20px; background: var(--navy-04); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; }
+.market-callout p { font-size: 0.8125rem; color: var(--text-2); line-height: 1.8; font-style: italic; }
+.market-callout p { overflow-wrap: anywhere; }
+
+/* ═══════ 07 THESIS ═══════ */
+.thesis-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+.thesis-card {
+  background: var(--white); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 20px 16px; transition: all 0.2s; position: relative;
+}
+.thesis-ord { font-family: 'Inter', sans-serif; font-size: 1.75rem; font-weight: 900; color: var(--navy-15); line-height: 1; margin-bottom: 8px; }
+.thesis-card h4 { font-size: 0.8125rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.thesis-card p  { font-size: 0.6875rem; color: var(--text-3); line-height: 1.8; }
+.thesis-card h4, .thesis-card p { overflow-wrap: anywhere; }
+
+/* ═══════ HIGHLIGHT BANNER ═══════ */
+.highlight-banner { padding: 36px 20px; background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+.highlight-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(180,151,90,0.08), transparent); pointer-events: none; }
+.hl-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr; gap: 28px; min-width: 0; }
+.hl-main h2 { font-size: 1.375rem; font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 10px; }
+.hl-main h2 .hl-gold { color: var(--gold-light); }
+.hl-main p { font-size: 0.8125rem; color: rgba(255,255,255,0.6); line-height: 1.8; }
+.hl-main p { overflow-wrap: anywhere; }
+.hl-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.hl-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 100px;
+  font-size: 0.625rem; font-weight: 600; color: rgba(255,255,255,0.85); white-space: nowrap; max-width: 100%;
+}
+.hl-badge-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.hl-badge-dot.green { background: #34D399; }
+.hl-badge-dot.gold  { background: var(--gold-light); }
+.hl-badge-dot.blue  { background: #60A5FA; }
+.hl-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hl-stat { padding: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; text-align: center; }
+.hl-stat-val { font-family: 'Noto Sans SC', 'Inter', sans-serif; font-size: 1.125rem; font-weight: 800; color: var(--gold-light); margin-bottom: 2px; }
+.hl-stat-label { font-size: 0.5625rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+.hl-stat-label { overflow-wrap: anywhere; }
+
+/* ═══════ 08 REWARD MECHANISM ═══════ */
+.reward-shell { scroll-margin-top: 18px; }
+.reward-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-top: 20px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.reward-nav::-webkit-scrollbar { display: none; }
+.reward-chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  text-decoration: none;
+  color: var(--text-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reward-chip-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--navy-04);
+  color: var(--navy);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+.reward-accordion {
+  margin-top: 16px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  scroll-margin-top: 64px;
+}
+.reward-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 18px 16px;
+}
+.reward-accordion summary::-webkit-details-marker { display: none; }
+.reward-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+}
+.reward-summary-copy { min-width: 0; }
+.reward-summary-kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 5px;
+}
+.reward-summary-title {
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.reward-summary-sub {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.reward-summary-toggle {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  background: var(--navy-04);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+.reward-accordion[open] .reward-summary-toggle { transform: rotate(45deg); }
+.reward-content {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--rule-light);
+}
+.reward-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.reward-mini-card {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+}
+.reward-mini-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 6px;
+}
+.reward-mini-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.reward-mini-desc {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.reward-note {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--navy-04);
+  border-left: 3px solid var(--navy);
+}
+.reward-note h5 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+.reward-note p, .reward-note li {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  line-height: 1.7;
+}
+.reward-note ul {
+  margin-top: 8px;
+  padding-left: 16px;
+}
+.tier-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.tier-stack-card {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+}
+.tier-stack-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  min-width: 0;
+}
+.tier-stack-title { font-size: 0.875rem; font-weight: 700; color: var(--navy); }
+.tier-stack-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  background: var(--gold-bg);
+  border-radius: 999px;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+.tier-stack-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.tier-stack-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  padding-top: 8px;
+  border-top: 1px dashed var(--rule-light);
+}
+.tier-stack-row:first-child { border-top: none; padding-top: 0; }
+.tier-stack-row strong { color: var(--navy); font-weight: 700; }
+.diff-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.diff-card {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px;
+  background: var(--white);
+}
+.diff-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+  min-width: 0;
+}
+.diff-card-title { font-size: 0.8125rem; font-weight: 700; color: var(--navy); }
+.diff-card-pct { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 800; color: var(--gold-dark); }
+.diff-card p { font-size: 0.75rem; color: var(--text-3); line-height: 1.7; }
+.diff-card p, .diff-card-title { overflow-wrap: anywhere; }
+.reward-cap {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-bg), #FFFDF8);
+  border: 1px solid var(--gold-light);
+}
+.reward-cap strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.375rem;
+  line-height: 1;
+  color: var(--gold-dark);
+  margin-bottom: 6px;
+}
+.reward-cap span,
+.reward-cap p {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--text-3);
+}
+.equal-layers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.equal-layer {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px;
+  background: var(--white);
+}
+.equal-layer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  min-width: 0;
+}
+.equal-layer-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.equal-layer-rate {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+}
+.equal-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--navy-08);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.equal-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+.equal-layer p {
+  font-size: 0.75rem;
+  line-height: 1.65;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.burn-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.burn-rule-card {
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+}
+.burn-rule-card h5 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.burn-rule-card p {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.burn-flow-mobile {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+.burn-step-mobile {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--navy-04);
+}
+.burn-step-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+.burn-step-label {
+  font-size: 0.75rem;
+  line-height: 1.65;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.burn-split {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--white);
+}
+.burn-split-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  margin-bottom: 10px;
+  min-width: 0;
+}
+.burn-split-head span { overflow-wrap: anywhere; }
+.burn-split-bar {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 14px;
+  margin-bottom: 10px;
+}
+.burn-split-bar span:first-child { background: var(--gold); }
+.burn-split-bar span:last-child { background: rgba(184,46,58,0.18); }
+.burn-split-legend {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-3);
+}
+.burn-split-legend strong { color: var(--navy); }
+.burn-split-legend div, .burn-split-legend span { overflow-wrap: anywhere; }
+.burn-no-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.burn-no-card {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+}
+.burn-no-card strong {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.burn-no-card span {
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.reward-notice {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid rgba(184,46,58,0.15);
+  background: #FFF7F7;
+  border-radius: 10px;
+}
+.reward-notice h5 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+.reward-notice p {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 599px) {
+  .header {
+    display: block;
+  }
+  .header-left,
+  .header-right {
+    width: 100%;
+  }
+  .header-left {
+    margin-bottom: 12px;
+  }
+  .header-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .lang-sw {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+  }
+  .lang-btn {
+    min-width: 0;
+    padding: 6px 4px;
+    text-align: center;
+  }
+  .entry-shortcuts {
+    grid-template-columns: 1fr;
+  }
+  .burn-split-head {
+    flex-direction: column;
+  }
+  .tier-stack-head,
+  .diff-card-head,
+  .equal-layer-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 399px) {
+  .entry-shortcuts { grid-template-columns: 1fr; }
+  .hero-kpi-val,
+  .market-block-num {
+    white-space: normal;
+  }
+  .hl-badges {
+    gap: 8px;
+  }
+  .hl-badge {
+    width: 100%;
+    justify-content: flex-start;
+    white-space: normal;
+  }
+}
+
+html[lang="en"] .hero-h1 {
+  font-size: 1.5rem;
+  line-height: 1.28;
+}
+
+html[lang="en"] .reward-summary-sub,
+html[lang="en"] .reward-mini-desc,
+html[lang="en"] .reward-note p,
+html[lang="en"] .burn-rule-card p,
+html[lang="en"] .reward-notice p {
+  font-size: 0.71875rem;
+}
+
+/* ═══════ FOOTER / DISCLAIMER ═══════ */
+.disclaimer { padding: 16px 20px; border-top: 1px solid var(--rule-light); background: var(--white); }
+.disclaimer p { font-size: 0.5625rem; color: var(--text-4); line-height: 1.65; }
+.footer-bar {
+  padding: 20px; border-top: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;
+  background: var(--navy-04);
+}
+.footer-left { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
+.footer-left a { font-family: 'Inter', sans-serif; font-size: 0.625rem; color: var(--navy); text-decoration: none; font-weight: 500; }
+.footer-left a:hover { color: var(--gold); }
+.footer-right { font-family: 'Inter', sans-serif; font-size: 0.5625rem; color: var(--text-4); }
+.footer-accent { height: 4px; background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 70%, var(--gold) 70%, var(--gold) 100%); }
+
+/* ═══════ SCROLL ANIMATIONS ═══════ */
+.anim { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.anim.vis { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.05s; }
+.d2 { transition-delay: 0.1s; }
+.d3 { transition-delay: 0.15s; }
+.d4 { transition-delay: 0.2s; }
+.d5 { transition-delay: 0.25s; }
+.d6 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════
+   TABLET — min 600px
+   ═══════════════════════════════════ */
+@media (min-width: 600px) {
+  .ig-section, .ig-section-alt { padding: 44px 40px; }
+  .ig-hr { margin: 0 40px; }
+  .header { padding: 24px 40px 20px; }
+  .header-doc-type { display: block; }
+  .hero-banner { padding: 52px 40px 44px; }
+  .entry-shortcuts { padding: 16px 40px; }
+  .hero-h1 { font-size: 2rem; }
+  .hero-kpis { flex-direction: row; }
+  .hero-kpi:first-child { border-radius: 8px 0 0 8px; }
+  .hero-kpi:last-child  { border-radius: 0 8px 8px 0; }
+  .hero-kpi:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.08); border-right: none; }
+  .what-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .eco-row { grid-template-columns: repeat(4, 1fr); }
+  .market-layout { grid-template-columns: 1fr 1fr 1fr; }
+  .thesis-grid { grid-template-columns: 1fr 1fr; }
+  .hl-inner { grid-template-columns: 1fr 1fr; align-items: center; }
+  .highlight-banner { padding: 44px 40px; }
+  .reward-card-grid,
+  .burn-grid { grid-template-columns: 1fr 1fr; }
+  .tier-stack,
+  .diff-cards { grid-template-columns: 1fr 1fr; }
+  .disclaimer { padding: 18px 40px; }
+  .footer-bar { padding: 24px 40px; flex-direction: row; justify-content: space-between; text-align: left; }
+}
+
+/* ═══════════════════════════════════
+   DESKTOP — min 1020px (960px canvas)
+   ═══════════════════════════════════ */
+@media (min-width: 1020px) {
+  .canvas { width: 960px; margin: 40px auto; box-shadow: 0 2px 40px rgba(0,32,91,0.08); }
+  .ig-section, .ig-section-alt { padding: 56px 72px; }
+  .ig-hr { margin: 0 72px; }
+  .header { padding: 32px 72px 28px; }
+  .header-logo-img { height: 34px; }
+  .entry-shortcuts { padding: 18px 72px; }
+  .hero-banner { padding: 64px 72px 56px; }
+  .hero-h1 { font-size: 2.5rem; max-width: 680px; }
+  .hero-desc { max-width: 620px; font-size: 0.9375rem; }
+  .sec-title { font-size: 1.5rem; }
+  .sec-subtitle { max-width: 620px; }
+  .what-grid { gap: 48px; margin-top: 32px; }
+  .what-icon { width: 36px; height: 36px; }
+  .eco-row { gap: 16px; margin-top: 32px; }
+  .flywheel-layout { grid-template-columns: 400px 1fr; gap: 48px; }
+  .fw-diagram-wrap { max-width: 400px; }
+  .steps-wrap { margin-top: 36px; }
+  .steps-connector { display: block; position: absolute; top: 28px; left: 48px; right: 48px; height: 2px; background: var(--rule); }
+  .steps-connector-fill { height: 100%; background: var(--navy); width: 0%; transition: width 1.5s ease; }
+  .steps-row { flex-direction: row; justify-content: space-between; gap: 0; }
+  .step-item { flex-direction: column; flex: 1; text-align: center; }
+  .step-circle { width: 56px; height: 56px; font-size: 1.1rem; margin: 0 auto 14px; position: relative; z-index: 2; }
+  .step-text-wrap { text-align: center; }
+  .step-detail { max-width: 130px; margin: 0 auto; }
+  .comp-table { font-size: 0.8125rem; }
+  .comp-table th { padding: 14px 20px; }
+  .comp-table td { padding: 12px 20px; }
+  .td-dim { width: 140px; }
+  .market-layout { gap: 16px; margin-top: 32px; }
+  .market-block { padding: 24px 20px; }
+  .market-block-num { font-size: 1.875rem; }
+  .thesis-grid { grid-template-columns: repeat(3, 1fr); margin-top: 32px; }
+  .thesis-card { padding: 24px 20px; }
+  .thesis-ord { font-size: 2rem; }
+  .highlight-banner { padding: 48px 72px; }
+  .reward-content { padding: 0 22px 22px; }
+  .reward-summary { align-items: center; }
+  .reward-card-grid { grid-template-columns: repeat(3, 1fr); }
+  .equal-layers { grid-template-columns: 1fr 1fr; }
+  .hl-main h2 { font-size: 1.75rem; }
+  .hl-stat-val { font-size: 1.25rem; }
+  .disclaimer { padding: 20px 72px; }
+  .footer-bar { padding: 28px 72px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- ═══════ TOP BRAND BAR ═══════ -->
+  <div class="header-bar"></div>
+  <div class="header">
+    <div class="header-left">
+      <img class="header-logo-img" src="./assets/img/logo/POSX-Logo-Black.svg" alt="POSX">
+    </div>
+    <div class="header-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang="zh-CN">简体</button>
+        <button class="lang-btn" data-lang="zh-TW">繁體</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ko">KO</button>
+      </div>
+      <div class="header-doc-type en">Institutional Research — Infographic</div>
+      <div class="header-date en">March 2026</div>
+    </div>
+  </div>
+
+  <!-- ═══════ HERO ═══════ -->
+  <div class="hero-banner">
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow en">
+        <span class="hero-dot"></span>
+        Tokenized Consumer Rewards Infrastructure
+      </div>
+      <h1 class="hero-h1" data-i18n="hero_title">重新定义<span class="gold">消费奖励</span>的价值基础设施</h1>
+      <p class="hero-desc" data-i18n="hero_desc">POSX 是全球首个将消费奖励代币化的区块链支付网络——将传统积分的封闭生态转化为可审计、可交易、可组合的链上数字资产，释放年均 40 万亿美元消费市场中沉睡的价值。</p>
+      <div class="hero-kpis">
+        <div class="hero-kpi">
+          <div class="hero-kpi-val" data-i18n="hero_kpi1_val">40 万亿美元</div>
+          <div class="hero-kpi-label" data-i18n="hero_kpi1_label">全球年消费市场（TAM）</div>
+        </div>
+        <div class="hero-kpi">
+          <div class="hero-kpi-val" data-i18n="hero_kpi2_val">4,000 亿美元</div>
+          <div class="hero-kpi-label" data-i18n="hero_kpi2_label">1% 可服务市场（SOM）</div>
+        </div>
+        <div class="hero-kpi">
+          <div class="hero-kpi-val en" data-i18n="hero_kpi3_val">100%</div>
+          <div class="hero-kpi-label" data-i18n="hero_kpi3_label">真实消费驱动铸造</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry-shortcuts">
+    <a class="entry-shortcut anim d1" href="#s01">
+      <span class="entry-shortcut-label">
+        <span class="entry-shortcut-kicker en" data-i18n="entry_story_kicker">Project Story</span>
+        <span class="entry-shortcut-title" data-i18n="entry_story_title">先看项目介绍</span>
+      </span>
+      <span class="entry-shortcut-arrow en">→</span>
+    </a>
+    <a class="entry-shortcut anim d2" href="#rewardHub">
+      <span class="entry-shortcut-label">
+        <span class="entry-shortcut-kicker en" data-i18n="entry_reward_kicker">Reward Rules</span>
+        <span class="entry-shortcut-title" data-i18n="entry_reward_title">直达奖励机制</span>
+      </span>
+      <span class="entry-shortcut-arrow en">→</span>
+    </a>
+  </div>
+
+  <!-- ═══════ 01 WHAT IS POSX ═══════ -->
+  <div class="ig-section" id="s01">
+    <span class="sec-num en anim">01 — Protocol Overview</span>
+    <h2 class="sec-title anim d1" data-i18n="s01_title">什么是 POSX？</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s01_sub">POSX（Tokenized Rewards）是一种创新型消费奖励代币，构建于去中心化支付网络之上。它追踪真实消费行为，以链上可验证方式发放奖励，将传统积分体系升级为具备金融属性的数字资产。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="what-grid">
+      <div>
+        <div class="what-card anim d2">
+          <div class="what-icon en">⚓</div>
+          <div class="what-text">
+            <h4 data-i18n="s01_c1_h">链上可验证 On-Chain Verifiable</h4>
+            <p data-i18n="s01_c1_p">每一笔奖励的产生均记录于区块链，确保数据透明且不可篡改，建立机构级审计标准</p>
+          </div>
+        </div>
+        <div class="what-card anim d3" style="margin-top:10px;">
+          <div class="what-icon gold-icon en">⇄</div>
+          <div class="what-text">
+            <h4 data-i18n="s01_c2_h">可交易 · 可转让 Transferable</h4>
+            <p data-i18n="s01_c2_p">打破传统积分锁仓限制，用户可在公开市场自由交易，或进行点对点转账与转让</p>
+          </div>
+        </div>
+        <div class="what-card anim d4" style="margin-top:10px;">
+          <div class="what-icon en">▲</div>
+          <div class="what-text">
+            <h4 data-i18n="s01_c3_h">市场化定价 Market-Priced</h4>
+            <p data-i18n="s01_c3_p">基于公开市场供需机制定价，具备真实市场价值与流动性深度</p>
+          </div>
+        </div>
+        <div class="what-card anim d5" style="margin-top:10px;">
+          <div class="what-icon gold-icon en">◎</div>
+          <div class="what-text">
+            <h4 data-i18n="s01_c4_h">可审计 · 可组合 Composable</h4>
+            <p data-i18n="s01_c4_p">完全透明的链上数据支持第三方审计，可接入 DeFi 生态实现组合创新</p>
+          </div>
+        </div>
+      </div>
+      <div class="what-data anim d3">
+        <div class="what-data-header" data-i18n="s01_data_header">核心指标</div>
+        <div class="wd-row">
+          <div class="wd-label" data-i18n="s01_d1_label">全球可触达市场（TAM）</div>
+          <div class="wd-value" data-i18n="s01_d1_val">40 万亿美元 <span style="font-size:0.75rem;opacity:0.5">/ 年</span></div>
+          <div class="wd-bar"><div class="wd-bar-fill" style="width:100%"></div></div>
+          <div class="wd-note" data-i18n="s01_d1_note">全球信用卡年消费总额</div>
+        </div>
+        <div class="wd-row">
+          <div class="wd-label" data-i18n="s01_d2_label">可服务市场（SOM）</div>
+          <div class="wd-value" data-i18n="s01_d2_val">4,000 亿美元 <span style="font-size:0.75rem;opacity:0.5">/ 年</span></div>
+          <div class="wd-bar"><div class="wd-bar-fill" style="width:42%"></div></div>
+          <div class="wd-note" data-i18n="s01_d2_note">1% 渗透率对应的年化市场</div>
+        </div>
+        <div class="wd-row">
+          <div class="wd-label" data-i18n="s01_d3_label">价值锚定</div>
+          <div class="wd-value" data-i18n="s01_d3_val">100% 真实消费驱动</div>
+          <div class="wd-bar"><div class="wd-bar-fill" style="width:80%"></div></div>
+          <div class="wd-note" data-i18n="s01_d3_note">零投机性铸造 · 零虚拟杠杆</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ig-hr"></div>
+
+  <!-- ═══════ 02 ECOSYSTEM ═══════ -->
+  <div class="ig-section" id="s02">
+    <span class="sec-num en anim">02 — Ecosystem Architecture</span>
+    <h2 class="sec-title anim d1" data-i18n="s02_title">POSX 生态参与者</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s02_sub">四类核心参与者构成自我强化的正向飞轮。每一方在价值创造中扮演不可或缺的角色。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="eco-row">
+      <div class="eco-card anim d2">
+        <div class="eco-badge">🏪</div>
+        <h4 data-i18n="s02_e1_h">合作商户</h4>
+        <p data-i18n="s02_e1_p">接入 POSX 支付网络的线上线下商户，通过代币化奖励提升客户粘性与复购率</p>
+      </div>
+      <div class="eco-card anim d3">
+        <div class="eco-badge">👤</div>
+        <h4 data-i18n="s02_e2_h">消费者</h4>
+        <p data-i18n="s02_e2_p">在合作商户消费并获取 POSX 奖励的终端用户，积累跨平台数字资产</p>
+      </div>
+      <div class="eco-card anim d4">
+        <div class="eco-badge">⚖</div>
+        <h4 data-i18n="s02_e3_h">网络验证者</h4>
+        <p data-i18n="s02_e3_p">记录消费交易、计算奖励并上链的网络节点，维护网络安全</p>
+      </div>
+      <div class="eco-card anim d5">
+        <div class="eco-badge">📡</div>
+        <h4 data-i18n="s02_e4_h">网络传播者</h4>
+        <p data-i18n="s02_e4_p">分享与推广 POSX 生态的参与者，形成去中心化增长引擎</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ig-hr"></div>
+
+  <!-- ═══════ 03 TOKEN GENERATION ═══════ -->
+  <div class="ig-section" id="s03">
+    <span class="sec-num en anim">03 — Token Generation Mechanism</span>
+    <h2 class="sec-title anim d1" data-i18n="s03_title">POSX 奖励如何产生？</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s03_sub">代币铸造严格锚定真实消费行为。每一枚 POSX 的发行背后都有可验证的经济活动作为价值支撑。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="steps-wrap anim d3" id="stepsWrap">
+      <div class="steps-connector"><div class="steps-connector-fill" id="stepsConnFill"></div></div>
+      <div class="steps-row">
+        <div class="step-item" data-s="1">
+          <div class="step-circle en">1</div>
+          <div class="step-text-wrap">
+            <div class="step-name" data-i18n="s03_s1_name">消费触发</div>
+            <div class="step-detail" data-i18n="s03_s1_detail">消费者在合作商户完成支付，交易数据被实时捕获</div>
+          </div>
+        </div>
+        <div class="step-item" data-s="2">
+          <div class="step-circle en">2</div>
+          <div class="step-text-wrap">
+            <div class="step-name" data-i18n="s03_s2_name">数据验证</div>
+            <div class="step-detail" data-i18n="s03_s2_detail">网络验证节点对交易真实性进行多方共识校验</div>
+          </div>
+        </div>
+        <div class="step-item" data-s="3">
+          <div class="step-circle en">3</div>
+          <div class="step-text-wrap">
+            <div class="step-name" data-i18n="s03_s3_name">奖励计算</div>
+            <div class="step-detail" data-i18n="s03_s3_detail">智能合约根据预设规则自动计算应发放数量</div>
+          </div>
+        </div>
+        <div class="step-item" data-s="4">
+          <div class="step-circle en">4</div>
+          <div class="step-text-wrap">
+            <div class="step-name" data-i18n="s03_s4_name">链上铸造</div>
+            <div class="step-detail" data-i18n="s03_s4_detail">POSX 代币被铸造并写入区块链，不可篡改</div>
+          </div>
+        </div>
+        <div class="step-item" data-s="5">
+          <div class="step-circle en">5</div>
+          <div class="step-text-wrap">
+            <div class="step-name" data-i18n="s03_s5_name">资产到账</div>
+            <div class="step-detail" data-i18n="s03_s5_detail">消费者钱包即时收到 POSX，可持有、交易或使用</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ig-hr"></div>
+
+  <!-- ═══════ 04 VALUE CYCLE ═══════ -->
+  <div class="ig-section-alt" id="s04">
+    <span class="sec-num en anim">04 — Flywheel Economics</span>
+    <h2 class="sec-title anim d1" data-i18n="s04_title">POSX 价值循环</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s04_sub">网络效应飞轮——消费驱动铸造，铸造扩大持有，持有深化需求，需求反哺网络增长。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="flywheel-layout">
+      <div class="fw-diagram-wrap anim d3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="display:block;">
+          <defs>
+            <marker id="ah" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L12,4.5 L0,9 L2,4.5 Z" fill="#B4975A"/>
+            </marker>
+            <style>
+              .fw-label-zh { font-family: 'Noto Sans SC','PingFang SC',sans-serif; font-size: 11px; font-weight: 600; fill: #1A1D2B; }
+              .fw-label-en { font-family: 'Inter',sans-serif; font-size: 8px; fill: #9398AB; letter-spacing: 0.5px; }
+              .fw-center-t { font-family: 'Inter',sans-serif; font-size: 16px; font-weight: 800; fill: #fff; letter-spacing: 2px; }
+              .fw-center-s { font-family: 'Inter',sans-serif; font-size: 7px; fill: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
+            </style>
+          </defs>
+          <circle cx="240" cy="240" r="200" stroke="#E8EAF0" stroke-width="1" fill="none"/>
+          <circle cx="240" cy="240" r="160" stroke="#D6DAE3" stroke-width="1.5" fill="none"/>
+          <circle cx="240" cy="240" r="118" stroke="#D6DAE3" stroke-width="0.8" stroke-dasharray="4 4" fill="none"/>
+          <path d="M 271,95 A 148,148 0 0,1 353,145" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+          <path d="M 381,194 A 148,148 0 0,1 379,291" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+          <path d="M 350,339 A 148,148 0 0,1 266,386" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+          <path d="M 209,385 A 148,148 0 0,1 127,335" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+          <path d="M 99,286 A 148,148 0 0,1 101,189" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+          <path d="M 130,141 A 148,148 0 0,1 214,94" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+          <circle cx="240" cy="240" r="52" fill="#00205B"/>
+          <text x="240" y="237" text-anchor="middle" class="fw-center-t">POSX</text>
+          <text x="240" y="252" text-anchor="middle" class="fw-center-s">VALUE LOOP</text>
+          <!-- N1 top -->
+          <circle cx="240" cy="80" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="240" y="85" text-anchor="middle" font-size="16">💳</text>
+          <text x="240" y="42" text-anchor="middle" class="fw-label-zh" data-i18n-svg="fw_n1">消费者消费</text>
+          <text x="240" y="54" text-anchor="middle" class="fw-label-en">Spending</text>
+          <!-- N2 top-right -->
+          <circle cx="378" cy="160" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="378" y="165" text-anchor="middle" font-size="16">🎁</text>
+          <text x="378" y="126" text-anchor="middle" class="fw-label-zh" data-i18n-svg="fw_n2">奖励发放</text>
+          <text x="378" y="138" text-anchor="middle" class="fw-label-en">Minting</text>
+          <!-- N3 bottom-right -->
+          <circle cx="378" cy="320" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="378" y="325" text-anchor="middle" font-size="16">🏦</text>
+          <text x="378" y="358" text-anchor="middle" class="fw-label-zh" data-i18n-svg="fw_n3">用户持有</text>
+          <text x="378" y="370" text-anchor="middle" class="fw-label-en">Holding</text>
+          <!-- N4 bottom -->
+          <circle cx="240" cy="400" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="240" y="405" text-anchor="middle" font-size="16">📈</text>
+          <text x="240" y="438" text-anchor="middle" class="fw-label-zh" data-i18n-svg="fw_n4">需求提升</text>
+          <text x="240" y="450" text-anchor="middle" class="fw-label-en">Demand</text>
+          <!-- N5 bottom-left -->
+          <circle cx="102" cy="320" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="102" y="325" text-anchor="middle" font-size="16">🧲</text>
+          <text x="102" y="358" text-anchor="middle" class="fw-label-zh" data-i18n-svg="fw_n5">用户增长</text>
+          <text x="102" y="370" text-anchor="middle" class="fw-label-en">Acquisition</text>
+          <!-- N6 top-left -->
+          <circle cx="102" cy="160" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="102" y="165" text-anchor="middle" font-size="16">🌎</text>
+          <text x="102" y="126" text-anchor="middle" class="fw-label-zh" data-i18n-svg="fw_n6">网络扩大</text>
+          <text x="102" y="138" text-anchor="middle" class="fw-label-en">Growth</text>
+        </svg>
+      </div>
+      <div class="fw-explain anim d4">
+        <div class="fw-explain-item">
+          <div class="fw-explain-num en">1</div>
+          <div class="fw-explain-text">
+            <h5 data-i18n="s04_f1_h">消费触发铸造</h5>
+            <p data-i18n="s04_f1_p">真实消费行为触发 POSX 代币的链上铸造，确保每一枚代币均有实体经济活动支撑</p>
+          </div>
+        </div>
+        <div class="fw-explain-item">
+          <div class="fw-explain-num en">2</div>
+          <div class="fw-explain-text">
+            <h5 data-i18n="s04_f2_h">持有扩大网络</h5>
+            <p data-i18n="s04_f2_p">用户积累 POSX 资产，吸引更多商户接入网络，形成供需双向正反馈</p>
+          </div>
+        </div>
+        <div class="fw-explain-item">
+          <div class="fw-explain-num en">3</div>
+          <div class="fw-explain-text">
+            <h5 data-i18n="s04_f3_h">需求驱动价值</h5>
+            <p data-i18n="s04_f3_p">网络规模扩大推动市场需求增长，POSX 的市场化定价机制使价值与需求正相关</p>
+          </div>
+        </div>
+        <div class="fw-explain-item">
+          <div class="fw-explain-num en">4</div>
+          <div class="fw-explain-text">
+            <h5 data-i18n="s04_f4_h">飞轮自我加速</h5>
+            <p data-i18n="s04_f4_p">梅特卡夫定律在消费场景中的经典投射——每新增一个节点都在为全体参与者创造增量价值</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ig-hr-full"></div>
+
+  <!-- ═══════ 05 COMPARISON ═══════ -->
+  <div class="ig-section" id="s05">
+    <span class="sec-num en anim">05 — Competitive Positioning</span>
+    <h2 class="sec-title anim d1" data-i18n="s05_title">POSX vs 传统信用卡积分</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s05_sub">传统积分是企业负债表上的记账单位。POSX 将这一范式重构为用户拥有的链上资产。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="comp-table-wrap anim d3">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th data-i18n="s05_th1">评估维度</th>
+            <th>POSX</th>
+            <th data-i18n="s05_th3">信用卡积分</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-dim" data-i18n="s05_r1d">资产属性</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r1g">链上数字资产，用户完全拥有</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r1b">平台记账积分，平台可单方修改</span></td></tr>
+          <tr><td class="td-dim" data-i18n="s05_r2d">是否可交易</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r2g">公开市场自由交易</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r2b">不可交易，仅限兑换</span></td></tr>
+          <tr><td class="td-dim" data-i18n="s05_r3d">是否可转让</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r3g">支持点对点即时转账</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r3b">不可转让，绑定个人账户</span></td></tr>
+          <tr><td class="td-dim" data-i18n="s05_r4d">市场定价</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r4g">公开市场供需定价</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r4b">平台单方面设定兑换比例</span></td></tr>
+          <tr><td class="td-dim" data-i18n="s05_r5d">透明度</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r5g">区块链公开可审计</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r5b">中心化数据库，不可审计</span></td></tr>
+          <tr><td class="td-dim" data-i18n="s05_r6d">跨平台互操作</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r6g">全网通用，可接入 DeFi</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r6b">仅限单一品牌体系内</span></td></tr>
+          <tr><td class="td-dim" data-i18n="s05_r7d">贬值风险</td><td class="td-good"><span class="indicator ind-yes">✓</span><span data-i18n="s05_r7g">市场定价，需求驱动</span></td><td class="td-bad"><span class="indicator ind-no">✕</span><span data-i18n="s05_r7b">平台可随时调整积分价值</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ig-hr"></div>
+
+  <!-- ═══════ 06 MARKET ═══════ -->
+  <div class="ig-section" id="s06">
+    <span class="sec-num en anim">06 — Addressable Market</span>
+    <h2 class="sec-title anim d1" data-i18n="s06_title">全球消费市场规模</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s06_sub">POSX 瞄准将全球消费奖励价值从封闭积分体系中解放，通过代币化实现链上流动。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="market-layout">
+      <div class="market-block anim d2">
+        <div class="market-block-tag en">TAM</div>
+        <div class="market-block-num" data-i18n="s06_m1_val">40 万亿<span style="font-size:1rem;color:var(--text-3)"> 美元</span></div>
+        <div class="market-block-label" data-i18n="s06_m1_label">全球年信用卡消费额</div>
+      </div>
+      <div class="market-block anim d3">
+        <div class="market-block-tag en">SOM</div>
+        <div class="market-block-num gold-num" data-i18n="s06_m2_val">4,000 亿<span style="font-size:1rem;color:var(--text-3)"> 美元</span></div>
+        <div class="market-block-label" data-i18n="s06_m2_label">1% 市场渗透率</div>
+      </div>
+      <div class="market-block anim d4">
+        <div class="market-block-tag en">BACKING</div>
+        <div class="market-block-num en" data-i18n="s06_m3_val">100%</div>
+        <div class="market-block-label" data-i18n="s06_m3_label">真实消费驱动铸造</div>
+      </div>
+    </div>
+    <div class="market-callout anim d5">
+      <p data-i18n="s06_callout">即便仅覆盖全球消费体量的 1%，POSX 面对的也是一个年均 4,000 亿美元的可服务市场。这不是投机性叙事，而是由真实消费行为驱动的基础设施级机会。</p>
+    </div>
+  </div>
+
+  <div class="ig-hr"></div>
+
+  <!-- ═══════ 07 THESIS ═══════ -->
+  <div class="ig-section-alt" id="s07">
+    <span class="sec-num en anim">07 — Investment Thesis</span>
+    <h2 class="sec-title anim d1" data-i18n="s07_title">为什么 POSX 会改变消费奖励？</h2>
+    <p class="sec-subtitle anim d2" data-i18n="s07_sub">核心命题：将消费奖励从"企业负债"重新定义为"用户资产"——消费金融基础设施层面的范式迁移。</p>
+    <div class="sec-rule anim d2"></div>
+    <div class="thesis-grid">
+      <div class="thesis-card anim d2"><div class="thesis-ord en">01</div><h4 data-i18n="s07_t1_h">真实消费驱动</h4><p data-i18n="s07_t1_p">每一枚 POSX 的铸造由可验证的消费行为触发。代币价值锚定于实体经济，具备传统加密资产罕见的基本面支撑。</p></div>
+      <div class="thesis-card anim d3"><div class="thesis-ord en">02</div><h4 data-i18n="s07_t2_h">资产化升级</h4><p data-i18n="s07_t2_p">将消费奖励从不可流动的记账单位转化为链上可确权、可交易的数字资产。消费者首次真正"拥有"自己的奖励。</p></div>
+      <div class="thesis-card anim d4"><div class="thesis-ord en">03</div><h4 data-i18n="s07_t3_h">全球网络效应</h4><p data-i18n="s07_t3_p">不受地域限制的消费者-商户网络。每新增一个节点，都为全体参与者创造增量价值。</p></div>
+      <div class="thesis-card anim d5"><div class="thesis-ord en">04</div><h4 data-i18n="s07_t4_h">DeFi 可组合性</h4><p data-i18n="s07_t4_p">标准链上资产，天然可接入质押、借贷、流动性挖矿等 DeFi 协议，为消费奖励打开前所未有的金融应用空间。</p></div>
+      <div class="thesis-card anim d5"><div class="thesis-ord en">05</div><h4 data-i18n="s07_t5_h">透明度与信任</h4><p data-i18n="s07_t5_p">区块链公开账本使发行、流通与销毁全过程可审计，从而降低传统积分体系中的信任成本。</p></div>
+      <div class="thesis-card anim d6"><div class="thesis-ord en">06</div><h4 data-i18n="s07_t6_h">万亿级 TAM</h4><p data-i18n="s07_t6_p">全球年消费支出 40 万亿美元，1% 渗透率即 4,000 亿美元年化市场。由真实经济活动支撑的超大规模赛道。</p></div>
+    </div>
+  </div>
+
+  <div class="ig-hr-full"></div>
+
+  <!-- ═══════ 08 REWARD MECHANISM ═══════ -->
+  <div class="ig-section reward-shell" id="rewardHub">
+    <span class="sec-num en anim">08 — Reward Mechanism</span>
+    <h2 class="sec-title anim d1" data-i18n="reward_title">推广奖励机制</h2>
+    <p class="sec-subtitle anim d2" data-i18n="reward_sub">以手机端优先方式整理直推奖励、团队奖励、平级奖与烧伤机制，帮助用户快速理解奖励来源、计算逻辑与风控边界。</p>
+    <div class="sec-rule anim d2"></div>
+
+    <div class="reward-nav anim d3">
+      <a class="reward-chip" href="#rewardDirect"><span class="reward-chip-num en">01</span><span data-i18n="reward_nav_direct">直推奖励</span></a>
+      <a class="reward-chip" href="#rewardTeam"><span class="reward-chip-num en">02</span><span data-i18n="reward_nav_team">团队奖励</span></a>
+      <a class="reward-chip" href="#rewardEqual"><span class="reward-chip-num en">03</span><span data-i18n="reward_nav_equal">平级奖</span></a>
+      <a class="reward-chip" href="#rewardBurn"><span class="reward-chip-num en">04</span><span data-i18n="reward_nav_burn">烧伤机制</span></a>
+    </div>
+
+    <details class="reward-accordion anim d3" id="rewardDirect" open>
+      <summary>
+        <div class="reward-summary">
+          <div class="reward-summary-copy">
+            <div class="reward-summary-kicker en">01 — Direct Referral</div>
+            <div class="reward-summary-title" data-i18n="direct_title">直推奖励</div>
+            <div class="reward-summary-sub" data-i18n="direct_sub">直属下级入金后，按自身档位获得一次性比例奖励，奖励单位统一为 U。</div>
+          </div>
+          <span class="reward-summary-toggle">+</span>
+        </div>
+      </summary>
+      <div class="reward-content">
+        <div class="reward-card-grid">
+          <div class="reward-mini-card">
+            <div class="reward-mini-label en" data-i18n="direct_tier1_label">Tier 1</div>
+            <div class="reward-mini-value" data-i18n="direct_tier1_value">5%</div>
+            <div class="reward-mini-desc" data-i18n="direct_tier1_desc">入金 ≥ 1,000U 且 < 10,000U，可参与基础档直推奖励。</div>
+          </div>
+          <div class="reward-mini-card">
+            <div class="reward-mini-label en" data-i18n="direct_tier2_label">Tier 2</div>
+            <div class="reward-mini-value" data-i18n="direct_tier2_value">10%</div>
+            <div class="reward-mini-desc" data-i18n="direct_tier2_desc">入金 ≥ 10,000U，可获得进阶档直推奖励比例。</div>
+          </div>
+          <div class="reward-mini-card">
+            <div class="reward-mini-label en" data-i18n="direct_tier3_label">Tier 3</div>
+            <div class="reward-mini-value" data-i18n="direct_tier3_value">15%</div>
+            <div class="reward-mini-desc" data-i18n="direct_tier3_desc">入金 ≥ 50,000U，可获得最高档直推奖励比例。</div>
+          </div>
+        </div>
+        <div class="reward-note">
+          <h5 data-i18n="direct_example_title">计算示例</h5>
+          <p data-i18n="direct_example_body">你是 5万U 档（15%），直属下级入金 20,000U，则直推奖励 = 20,000 × 15% = 3,000U。若超过持仓匹配额度，超出部分按烧伤规则处理。</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="reward-accordion anim d4" id="rewardTeam">
+      <summary>
+        <div class="reward-summary">
+          <div class="reward-summary-copy">
+            <div class="reward-summary-kicker en">02 — Team Differential</div>
+            <div class="reward-summary-title" data-i18n="team_title">团队奖励</div>
+            <div class="reward-summary-sub" data-i18n="team_sub">按档位和团队累计业绩阶梯计算极差收益，下级达到平级后，该线极差收益归零。</div>
+          </div>
+          <span class="reward-summary-toggle">+</span>
+        </div>
+      </summary>
+      <div class="reward-content">
+        <div class="tier-stack">
+          <div class="tier-stack-card">
+            <div class="tier-stack-head">
+              <div class="tier-stack-title" data-i18n="team_panel1_title">1万U 档阶梯</div>
+              <span class="tier-stack-badge">≥ 10,000U</span>
+            </div>
+            <div class="tier-stack-list">
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row1_range">1 - 10万U</span><strong>1%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row5_range">500万U+</span><strong>15%</strong></div>
+            </div>
+          </div>
+          <div class="tier-stack-card">
+            <div class="tier-stack-head">
+              <div class="tier-stack-title" data-i18n="team_panel2_title">5万U 档阶梯</div>
+              <span class="tier-stack-badge">≥ 50,000U</span>
+            </div>
+            <div class="tier-stack-list">
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>2%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row4_range">100万U+</span><strong>10%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row5_range">更高层级</span><strong>15%</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="diff-cards">
+          <div class="diff-card">
+            <div class="diff-card-head">
+              <div class="diff-card-title" data-i18n="team_diff1_title">A 线示例</div>
+              <div class="diff-card-pct">10% - 5% = 5%</div>
+            </div>
+            <p data-i18n="team_diff1_body">如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线可获得 5% 极差收益；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-card-head">
+              <div class="diff-card-title" data-i18n="team_diff2_title">B 线示例</div>
+              <div class="diff-card-pct">10% - 3% = 7%</div>
+            </div>
+            <p data-i18n="team_diff2_body">如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线可获得 7% 极差收益；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。</p>
+          </div>
+        </div>
+
+        <div class="reward-cap">
+          <strong>15%</strong>
+          <p data-i18n="team_cap_body">无论团队业绩和架构如何增长，单个账户的团队奖励比例最高不超过 15%。该上限用于控制奖励支出并保持制度可持续性。</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="reward-accordion anim d5" id="rewardEqual">
+      <summary>
+        <div class="reward-summary">
+          <div class="reward-summary-copy">
+            <div class="reward-summary-kicker en">03 — Equal Level Bonus</div>
+            <div class="reward-summary-title" data-i18n="equal_title">平级奖</div>
+            <div class="reward-summary-sub" data-i18n="equal_sub">当某条线下属与你达到同一团队奖励级别时，该线极差收益归零，并从第 6 层起启动递减平级奖。</div>
+          </div>
+          <span class="reward-summary-toggle">+</span>
+        </div>
+      </summary>
+      <div class="reward-content">
+        <div class="reward-card-grid">
+          <div class="reward-mini-card">
+            <div class="reward-mini-label en" data-i18n="equal_scope1_label">Performance Scope</div>
+            <div class="reward-mini-value" data-i18n="equal_scope1_value">全体业绩</div>
+            <div class="reward-mini-desc" data-i18n="equal_scope1_desc">团队业绩统计为你伞下全体成员的总业绩，不分层级、不分线别。</div>
+          </div>
+          <div class="reward-mini-card">
+            <div class="reward-mini-label en" data-i18n="equal_scope2_label">Reward Scope</div>
+            <div class="reward-mini-value" data-i18n="equal_scope2_value">第2层至第7层</div>
+            <div class="reward-mini-desc" data-i18n="equal_scope2_desc">团队奖励极差仅按第2层至第7层计算；平级奖从第6层开始，共 6 层递减。</div>
+          </div>
+        </div>
+
+        <div class="equal-layers">
+          <div class="equal-layer">
+            <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l1_title">平级第 1 层</span><span class="equal-layer-rate">3.00%</span></div>
+            <div class="equal-bar"><span style="width:100%"></span></div>
+            <p data-i18n="equal_l1_desc">对应全表最高平级奖励比例，从平级下属的第 6 层开始计算。</p>
+          </div>
+          <div class="equal-layer">
+            <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l2_title">平级第 2 层</span><span class="equal-layer-rate">1.00%</span></div>
+            <div class="equal-bar"><span style="width:33%"></span></div>
+            <p data-i18n="equal_l2_desc">第 7 层对应比例，延续深度培育激励，但开始明显递减。</p>
+          </div>
+          <div class="equal-layer">
+            <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l3_title">平级第 3 层</span><span class="equal-layer-rate">0.50%</span></div>
+            <div class="equal-bar"><span style="width:17%"></span></div>
+            <p data-i18n="equal_l3_desc">第 8 层对应比例，继续保留深层结构收益。</p>
+          </div>
+          <div class="equal-layer">
+            <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l4_title">平级第 4 层</span><span class="equal-layer-rate">0.30%</span></div>
+            <div class="equal-bar"><span style="width:10%"></span></div>
+            <p data-i18n="equal_l4_desc">第 9 层对应比例，递减速度进一步放缓。</p>
+          </div>
+          <div class="equal-layer">
+            <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l5_title">平级第 5 层</span><span class="equal-layer-rate">0.15%</span></div>
+            <div class="equal-bar"><span style="width:5%"></span></div>
+            <p data-i18n="equal_l5_desc">第 10 层对应比例，用于补偿长期培育带来的延展价值。</p>
+          </div>
+          <div class="equal-layer">
+            <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l6_title">平级第 6 层</span><span class="equal-layer-rate">0.05%</span></div>
+            <div class="equal-bar"><span style="width:2%"></span></div>
+            <p data-i18n="equal_l6_desc">第 11 层对应比例，平级奖最后一层，总计 5%。</p>
+          </div>
+        </div>
+
+        <div class="reward-note">
+          <h5 data-i18n="equal_trigger_title">触发逻辑</h5>
+          <p data-i18n="equal_trigger_body">当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。从该平级下属的第 6 层起，按 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 递减发放，总计 5%。</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="reward-accordion anim d6" id="rewardBurn">
+      <summary>
+        <div class="reward-summary">
+          <div class="reward-summary-copy">
+            <div class="reward-summary-kicker en">04 — Burn Control</div>
+            <div class="reward-summary-title" data-i18n="burn_title">烧伤机制</div>
+            <div class="reward-summary-sub" data-i18n="burn_sub">奖励资格和提成上限与持仓等值额度挂钩，超过匹配额度的部分即时烧伤且不追溯。</div>
+          </div>
+          <span class="reward-summary-toggle">+</span>
+        </div>
+      </summary>
+      <div class="reward-content">
+        <div class="burn-grid">
+          <div class="burn-rule-card">
+            <h5 data-i18n="burn_rule1_title">参与门槛</h5>
+            <p data-i18n="burn_rule1_body">最低持有 ≥ 1,000U 等值 POSX，方可参与推广及提成计算；低于此额度不享受任何奖励。</p>
+          </div>
+          <div class="burn-rule-card">
+            <h5 data-i18n="burn_rule2_title">提成上限</h5>
+            <p data-i18n="burn_rule2_body">当持有额度 ≤ 1万U 时，直推提成上限等于自身持有的 POSX 等值额度，超出部分直接烧伤。</p>
+          </div>
+          <div class="burn-rule-card">
+            <h5 data-i18n="burn_rule3_title">补仓规则</h5>
+            <p data-i18n="burn_rule3_body">可随时补充持仓额度，但仅对未来新增业绩生效；已烧伤的历史业绩不追溯、不补发。</p>
+          </div>
+          <div class="burn-rule-card">
+            <h5 data-i18n="burn_rule4_title">时效性</h5>
+            <p data-i18n="burn_rule4_body">烧伤即时生效，不累计、不顺延、不补发；未匹配部分一经烧伤即永久失效。</p>
+          </div>
+        </div>
+
+        <div class="burn-flow-mobile">
+          <div class="burn-step-mobile"><div class="burn-step-num">1,000U</div><div class="burn-step-label" data-i18n="burn_flow1">上级持仓额度</div></div>
+          <div class="burn-step-mobile"><div class="burn-step-num">10,000U</div><div class="burn-step-label" data-i18n="burn_flow2">下级入金额度</div></div>
+          <div class="burn-step-mobile"><div class="burn-step-num">1,000U</div><div class="burn-step-label" data-i18n="burn_flow3">可匹配额度</div></div>
+          <div class="burn-step-mobile"><div class="burn-step-num">9,000U</div><div class="burn-step-label" data-i18n="burn_flow4">烧伤额度（永久失效）</div></div>
+        </div>
+
+        <div class="burn-split">
+          <div class="burn-split-head">
+            <span data-i18n="burn_split_left">下级入金 10,000U 对应的提成分配</span>
+            <span data-i18n="burn_split_right">匹配额度 1,000U / 10,000U</span>
+          </div>
+          <div class="burn-split-bar"><span></span><span></span></div>
+          <div class="burn-split-legend">
+            <div><strong data-i18n="burn_split_legend1_title">有效提成额度</strong> <span data-i18n="burn_split_legend1_body">占比 10%，按规则正常结算。</span></div>
+            <div><strong data-i18n="burn_split_legend2_title">烧伤部分</strong> <span data-i18n="burn_split_legend2_body">占比 90%，后续补仓亦不追溯。</span></div>
+          </div>
+        </div>
+
+        <div class="burn-no-grid">
+          <div class="burn-no-card"><strong data-i18n="burn_no1_title">不累计</strong><span data-i18n="burn_no1_body">已烧伤部分不再累计。</span></div>
+          <div class="burn-no-card"><strong data-i18n="burn_no2_title">不顺延</strong><span data-i18n="burn_no2_body">不计入后续结算周期。</span></div>
+          <div class="burn-no-card"><strong data-i18n="burn_no3_title">不补发</strong><span data-i18n="burn_no3_body">后续补仓也不追溯。</span></div>
+          <div class="burn-no-card"><strong data-i18n="burn_no4_title">即时生效</strong><span data-i18n="burn_no4_body">超出部分即时烧伤。</span></div>
+        </div>
+
+        <div class="reward-notice">
+          <h5 data-i18n="burn_notice_title">重要公告</h5>
+          <p data-i18n="burn_notice_body">自 2026年3月15日 至 2026年3月20日 期间，团队奖励结算系统处于技术测试与校准阶段。期间奖励计算与发放可能存在延迟，实际到账时间以系统结算完成为准；测试期结束后将按既定规则恢复正常结算周期。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ig-hr-full"></div>
+
+  <!-- ═══════ HIGHLIGHT BANNER ═══════ -->
+  <div class="highlight-banner anim">
+    <div class="hl-inner">
+      <div class="hl-main">
+        <h2 data-i18n="hl_title">2026 年<span class="hl-gold">首个可消费代币</span><br/>开创消费奖励链上新范式</h2>
+        <p data-i18n="hl_desc">POSX 由美国机构资本领投孵化，已完成合规架构搭建与核心技术验证。项目当前正处于主网上线前的战略窗口期，对早期参与者而言，现阶段具备较为突出的风险调整后回报潜力。</p>
+        <div class="hl-badges">
+          <span class="hl-badge"><span class="hl-badge-dot gold"></span><span data-i18n="hl_b1">美国资本背书</span></span>
+          <span class="hl-badge"><span class="hl-badge-dot green"></span><span data-i18n="hl_b2">战略入场窗口</span></span>
+          <span class="hl-badge"><span class="hl-badge-dot blue"></span><span data-i18n="hl_b3">全球商户合作招募中</span></span>
+        </div>
+      </div>
+      <div class="hl-stats">
+        <div class="hl-stat"><div class="hl-stat-val" data-i18n="hl_s1_val">40 万亿</div><div class="hl-stat-label" data-i18n="hl_s1_label">全球年消费支出（美元）</div></div>
+        <div class="hl-stat"><div class="hl-stat-val" data-i18n="hl_s2_val">4,000 亿</div><div class="hl-stat-label" data-i18n="hl_s2_label">1% 渗透率年化 TAM（美元）</div></div>
+        <div class="hl-stat"><div class="hl-stat-val en">2026 H1</div><div class="hl-stat-label" data-i18n="hl_s3_label">多交易所同步上线</div></div>
+        <div class="hl-stat"><div class="hl-stat-val" data-i18n="hl_s4_val">实体锚定</div><div class="hl-stat-label" data-i18n="hl_s4_label">真实消费行为驱动铸造</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ DISCLAIMER ═══════ -->
+  <div class="disclaimer">
+    <p data-i18n="disclaimer">本文件仅供信息参考，不构成对任何证券、金融工具或数字资产的要约、招揽或投资建议。文中信息基于被认为可靠的来源整理，但不对其准确性或完整性作出任何明示或暗示保证。过往表现不代表未来结果，数字资产投资存在较高风险，可能导致本金部分或全部损失。&copy; 2026 POSX Network.</p>
+  </div>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <div class="footer-bar">
+    <div class="footer-left">
+      <a href="https://www.posx.network" target="_blank" class="en">posx.network</a>
+      <a href="https://posx.io" target="_blank" class="en">posx.io</a>
+      <a href="mailto:partnership@posx.io" class="en">partnership@posx.io</a>
+      <a href="https://x.com/POSX_Official" target="_blank" class="en">@POSX_Official</a>
+      <a href="https://t.me/POSX_Official" target="_blank" class="en">Telegram</a>
+    </div>
+    <div class="footer-right en">&copy; 2026 POSX Network. All Rights Reserved.</div>
+  </div>
+  <div class="footer-accent"></div>
+
+</div>
+
+<!-- ═══════ SCRIPTS ═══════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ════════════════════════════════════════════════
+     TRANSLATIONS
+     ════════════════════════════════════════════════ */
+  var T = {
+    'zh-CN': {
+      hero_title: '重新定义<span class="gold">消费奖励</span>的价值基础设施',
+      hero_desc: 'POSX 是全球首个将消费奖励代币化的区块链支付网络——将传统积分的封闭生态转化为可审计、可交易、可组合的链上数字资产，释放年均 40 万亿美元消费市场中沉睡的价值。',
+      hero_kpi1_val: '40 万亿美元', hero_kpi1_label: '全球年消费市场（TAM）',
+      hero_kpi2_val: '4,000 亿美元', hero_kpi2_label: '1% 可服务市场（SOM）',
+      hero_kpi3_val: '100%', hero_kpi3_label: '真实消费驱动铸造',
+      s01_title: '什么是 POSX？',
+      s01_sub: 'POSX（Tokenized Rewards）是一种创新型消费奖励代币，构建于去中心化支付网络之上。它追踪真实消费行为，以链上可验证方式发放奖励，将传统积分体系升级为具备金融属性的数字资产。',
+      s01_c1_h: '链上可验证 On-Chain Verifiable', s01_c1_p: '每一笔奖励的产生均记录于区块链，确保数据透明且不可篡改，建立机构级审计标准',
+      s01_c2_h: '可交易 · 可转让 Transferable', s01_c2_p: '打破传统积分锁仓限制，用户可在公开市场自由交易，或进行点对点转账与转让',
+      s01_c3_h: '市场化定价 Market-Priced', s01_c3_p: '基于公开市场供需机制定价，具备真实市场价值与流动性深度',
+      s01_c4_h: '可审计 · 可组合 Composable', s01_c4_p: '完全透明的链上数据支持第三方审计，可接入 DeFi 生态实现组合创新',
+      s01_data_header: '核心指标',
+      s01_d1_label: '全球可触达市场（TAM）', s01_d1_val: '40 万亿美元 <span style="font-size:0.75rem;opacity:0.5">/ 年</span>', s01_d1_note: '全球信用卡年消费总额',
+      s01_d2_label: '可服务市场（SOM）', s01_d2_val: '4,000 亿美元 <span style="font-size:0.75rem;opacity:0.5">/ 年</span>', s01_d2_note: '1% 渗透率对应的年化市场',
+      s01_d3_label: '价值锚定', s01_d3_val: '100% 真实消费驱动', s01_d3_note: '零投机性铸造 · 零虚拟杠杆',
+      s02_title: 'POSX 生态参与者', s02_sub: '四类核心参与者构成自我强化的正向飞轮。每一方在价值创造中扮演不可或缺的角色。',
+      s02_e1_h: '合作商户', s02_e1_p: '接入 POSX 支付网络的线上线下商户，通过代币化奖励提升客户粘性与复购率',
+      s02_e2_h: '消费者', s02_e2_p: '在合作商户消费并获取 POSX 奖励的终端用户，积累跨平台数字资产',
+      s02_e3_h: '网络验证者', s02_e3_p: '记录消费交易、计算奖励并上链的网络节点，维护网络安全',
+      s02_e4_h: '网络传播者', s02_e4_p: '分享与推广 POSX 生态的参与者，形成去中心化增长引擎',
+      s03_title: 'POSX 奖励如何产生？', s03_sub: '代币铸造严格锚定真实消费行为。每一枚 POSX 的发行背后都有可验证的经济活动作为价值支撑。',
+      s03_s1_name: '消费触发', s03_s1_detail: '消费者在合作商户完成支付，交易数据被实时捕获',
+      s03_s2_name: '数据验证', s03_s2_detail: '网络验证节点对交易真实性进行多方共识校验',
+      s03_s3_name: '奖励计算', s03_s3_detail: '智能合约根据预设规则自动计算应发放数量',
+      s03_s4_name: '链上铸造', s03_s4_detail: 'POSX 代币被铸造并写入区块链，不可篡改',
+      s03_s5_name: '资产到账', s03_s5_detail: '消费者钱包即时收到 POSX，可持有、交易或使用',
+      s04_title: 'POSX 价值循环', s04_sub: '网络效应飞轮——消费驱动铸造，铸造扩大持有，持有深化需求，需求反哺网络增长。',
+      s04_f1_h: '消费触发铸造', s04_f1_p: '真实消费行为触发 POSX 代币的链上铸造，确保每一枚代币均有实体经济活动支撑',
+      s04_f2_h: '持有扩大网络', s04_f2_p: '用户积累 POSX 资产，吸引更多商户接入网络，形成供需双向正反馈',
+      s04_f3_h: '需求驱动价值', s04_f3_p: '网络规模扩大推动市场需求增长，POSX 的市场化定价机制使价值与需求正相关',
+      s04_f4_h: '飞轮自我加速', s04_f4_p: '梅特卡夫定律在消费场景中的经典投射——每新增一个节点都在为全体参与者创造增量价值',
+      fw_n1: '消费者消费', fw_n2: '奖励发放', fw_n3: '用户持有', fw_n4: '需求提升', fw_n5: '用户增长', fw_n6: '网络扩大',
+      s05_title: 'POSX vs 传统信用卡积分', s05_sub: '传统积分是企业负债表上的记账单位。POSX 将这一范式重构为用户拥有的链上资产。',
+      s05_th1: '评估维度', s05_th3: '信用卡积分',
+      s05_r1d: '资产属性', s05_r1g: '链上数字资产，用户完全拥有', s05_r1b: '平台记账积分，平台可单方修改',
+      s05_r2d: '是否可交易', s05_r2g: '公开市场自由交易', s05_r2b: '不可交易，仅限兑换',
+      s05_r3d: '是否可转让', s05_r3g: '支持点对点即时转账', s05_r3b: '不可转让，绑定个人账户',
+      s05_r4d: '市场定价', s05_r4g: '公开市场供需定价', s05_r4b: '平台单方面设定兑换比例',
+      s05_r5d: '透明度', s05_r5g: '区块链公开可审计', s05_r5b: '中心化数据库，不可审计',
+      s05_r6d: '跨平台互操作', s05_r6g: '全网通用，可接入 DeFi', s05_r6b: '仅限单一品牌体系内',
+      s05_r7d: '贬值风险', s05_r7g: '市场定价，需求驱动', s05_r7b: '平台可随时调整积分价值',
+      s06_title: '全球消费市场规模', s06_sub: 'POSX 瞄准将全球消费奖励价值从封闭积分体系中解放，通过代币化实现链上流动。',
+      s06_m1_val: '40 万亿<span style="font-size:1rem;color:var(--text-3)"> 美元</span>', s06_m1_label: '全球年信用卡消费额',
+      s06_m2_val: '4,000 亿<span style="font-size:1rem;color:var(--text-3)"> 美元</span>', s06_m2_label: '1% 市场渗透率',
+      s06_m3_val: '100%', s06_m3_label: '真实消费驱动铸造',
+      s06_callout: '即便仅覆盖全球消费体量的 1%，POSX 面对的也是一个年均 4,000 亿美元的可服务市场。这不是投机性叙事，而是由真实消费行为驱动的基础设施级机会。',
+      s07_title: '为什么 POSX 会改变消费奖励？', s07_sub: '核心命题是将消费奖励从“企业负债”重新定义为“用户资产”，这意味着消费金融基础设施层面的范式迁移。',
+      s07_t1_h: '真实消费驱动', s07_t1_p: '每一枚 POSX 的铸造由可验证的消费行为触发。代币价值锚定于实体经济，具备传统加密资产罕见的基本面支撑。',
+      s07_t2_h: '资产化升级', s07_t2_p: '将消费奖励从不可流动的记账单位转化为链上可确权、可交易的数字资产。消费者首次真正"拥有"自己的奖励。',
+      s07_t3_h: '全球网络效应', s07_t3_p: '不受地域限制的消费者-商户网络。每新增一个节点，都为全体参与者创造增量价值。',
+      s07_t4_h: 'DeFi 可组合性', s07_t4_p: '标准链上资产，天然可接入质押、借贷、流动性挖矿等 DeFi 协议，为消费奖励打开前所未有的金融应用空间。',
+      s07_t5_h: '透明度与信任', s07_t5_p: '区块链公开账本使发行、流通与销毁全过程可审计，从而降低传统积分体系中的信任成本。',
+      s07_t6_h: '万亿级 TAM', s07_t6_p: '全球年消费支出 40 万亿美元，1% 渗透率即 4,000 亿美元年化市场。由真实经济活动支撑的超大规模赛道。',
+      hl_title: '2026 年<span class="hl-gold">首个可消费代币</span><br/>开创消费奖励链上新范式',
+      hl_desc: 'POSX 由美国机构资本领投孵化，已完成合规架构搭建与核心技术验证。项目当前正处于主网上线前的战略窗口期，对早期参与者而言，现阶段具备较为突出的风险调整后回报潜力。',
+      hl_b1: '美国资本背书', hl_b2: '战略入场窗口', hl_b3: '全球商户合作招募中',
+      hl_s1_val: '40 万亿', hl_s1_label: '全球年消费支出（美元）',
+      hl_s2_val: '4,000 亿', hl_s2_label: '1% 渗透率年化 TAM（美元）',
+      hl_s3_label: '多交易所同步上线',
+      hl_s4_val: '实体锚定', hl_s4_label: '真实消费行为驱动铸造',
+      entry_story_kicker: 'Project Story', entry_story_title: '先看项目介绍',
+      entry_reward_kicker: 'Reward Rules', entry_reward_title: '直达奖励机制',
+      reward_title: '推广奖励机制',
+      reward_sub: '以手机端优先方式整理直推奖励、团队奖励、平级奖与烧伤机制，帮助用户快速理解奖励来源、计算逻辑与风控边界。',
+      reward_nav_direct: '直推奖励', reward_nav_team: '团队奖励', reward_nav_equal: '平级奖', reward_nav_burn: '烧伤机制',
+      direct_title: '直推奖励',
+      direct_sub: '直属下级入金后，按自身档位获得一次性比例奖励，奖励单位统一为 U。',
+      direct_tier1_label: '基础档', direct_tier1_value: '5%', direct_tier1_desc: '入金 ≥ 1,000U 且 < 10,000U，可参与基础档直推奖励。',
+      direct_tier2_label: '进阶档', direct_tier2_value: '10%', direct_tier2_desc: '入金 ≥ 10,000U，可获得进阶档直推奖励比例。',
+      direct_tier3_label: '精英档', direct_tier3_value: '15%', direct_tier3_desc: '入金 ≥ 50,000U，可获得最高档直推奖励比例。',
+      direct_example_title: '计算示例',
+      direct_example_body: '你是 5万U 档（15%），直属下级入金 20,000U，则直推奖励 = 20,000 × 15% = 3,000U。若超过持仓匹配额度，超出部分按烧伤规则处理。',
+      team_title: '团队奖励',
+      team_sub: '按档位和团队累计业绩阶梯计算极差收益，下级达到平级后，该线极差收益归零。',
+      team_panel1_title: '1万U 档阶梯',
+      team_panel1_row1_range: '1 - 10万U', team_panel1_row2_range: '10.1 - 50万U', team_panel1_row3_range: '50.1 - 100万U', team_panel1_row4_range: '100.1 - 500万U', team_panel1_row5_range: '500万U+',
+      team_panel2_title: '5万U 档阶梯',
+      team_panel2_row1_range: '1 - 10万U', team_panel2_row2_range: '10.1 - 50万U', team_panel2_row3_range: '50.1 - 100万U', team_panel2_row4_range: '100万U+', team_panel2_row5_range: '更高层级',
+      team_diff1_title: 'A 线示例',
+      team_diff1_body: '如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线可获得 5% 极差收益；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。',
+      team_diff2_title: 'B 线示例',
+      team_diff2_body: '如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线可获得 7% 极差收益；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。',
+      team_cap_body: '无论团队业绩和架构如何增长，单个账户的团队奖励比例最高不超过 15%。该上限用于控制奖励支出并保持制度可持续性。',
+      equal_title: '平级奖',
+      equal_sub: '当某条线下属与你达到同一团队奖励级别时，该线极差收益归零，并从第 6 层起启动递减平级奖。',
+      equal_scope1_label: 'Performance Scope', equal_scope1_value: '全体业绩', equal_scope1_desc: '团队业绩统计为你伞下全体成员的总业绩，不分层级、不分线别。',
+      equal_scope2_label: 'Reward Scope', equal_scope2_value: '第2层至第7层', equal_scope2_desc: '团队奖励极差仅按第2层至第7层计算；平级奖从第6层开始，共 6 层递减。',
+      equal_l1_title: '平级第 1 层', equal_l1_desc: '对应全表最高平级奖励比例，从平级下属的第 6 层开始计算。',
+      equal_l2_title: '平级第 2 层', equal_l2_desc: '第 7 层对应比例，延续深度培育激励，但开始明显递减。',
+      equal_l3_title: '平级第 3 层', equal_l3_desc: '第 8 层对应比例，继续保留深层结构收益。',
+      equal_l4_title: '平级第 4 层', equal_l4_desc: '第 9 层对应比例，递减速度进一步放缓。',
+      equal_l5_title: '平级第 5 层', equal_l5_desc: '第 10 层对应比例，用于补偿长期培育带来的延展价值。',
+      equal_l6_title: '平级第 6 层', equal_l6_desc: '第 11 层对应比例，平级奖最后一层，总计 5%。',
+      equal_trigger_title: '触发逻辑',
+      equal_trigger_body: '当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。从该平级下属的第 6 层起，按 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 递减发放，总计 5%。',
+      burn_title: '烧伤机制',
+      burn_sub: '奖励资格和提成上限与持仓等值额度挂钩，超过匹配额度的部分即时烧伤且不追溯。',
+      burn_rule1_title: '参与门槛', burn_rule1_body: '最低持有 ≥ 1,000U 等值 POSX，方可参与推广及提成计算；低于此额度不享受任何奖励。',
+      burn_rule2_title: '提成上限', burn_rule2_body: '当持有额度 ≤ 1万U 时，直推提成上限等于自身持有的 POSX 等值额度，超出部分直接烧伤。',
+      burn_rule3_title: '补仓规则', burn_rule3_body: '可随时补充持仓额度，但仅对未来新增业绩生效；已烧伤的历史业绩不追溯、不补发。',
+      burn_rule4_title: '时效性', burn_rule4_body: '烧伤即时生效，不累计、不顺延、不补发；未匹配部分一经烧伤即永久失效。',
+      burn_flow1: '上级持仓额度', burn_flow2: '下级入金额度', burn_flow3: '可匹配额度', burn_flow4: '烧伤额度（永久失效）',
+      burn_split_left: '下级入金 10,000U 对应的提成分配', burn_split_right: '匹配额度 1,000U / 10,000U',
+      burn_split_legend1_title: '有效提成额度', burn_split_legend1_body: '占比 10%，按规则正常结算。',
+      burn_split_legend2_title: '烧伤部分', burn_split_legend2_body: '占比 90%，后续补仓亦不追溯。',
+      burn_no1_title: '不累计', burn_no1_body: '已烧伤部分不再累计。',
+      burn_no2_title: '不顺延', burn_no2_body: '不计入后续结算周期。',
+      burn_no3_title: '不补发', burn_no3_body: '后续补仓也不追溯。',
+      burn_no4_title: '即时生效', burn_no4_body: '超出部分即时烧伤。',
+      burn_notice_title: '重要公告',
+      burn_notice_body: '自 2026年3月15日 至 2026年3月20日 期间，团队奖励结算系统处于技术测试与校准阶段。期间奖励计算与发放可能存在延迟，实际到账时间以系统结算完成为准；测试期结束后将按既定规则恢复正常结算周期。',
+      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。 \u00a9 2026 POSX Network.'
+    },
+
+    'zh-TW': {
+      hero_title: '重新定義<span class="gold">消費獎勵</span>的價值基礎設施',
+      hero_desc: 'POSX 是全球首個將消費獎勵代幣化的區塊鏈支付網路——將傳統點數的封閉生態轉化為可稽核、可交易、可組合的鏈上數位資產，釋放年均 40 兆美元消費市場中沉睡的價值。',
+      hero_kpi1_val: '40 兆美元', hero_kpi1_label: '全球年消費市場（TAM）',
+      hero_kpi2_val: '4,000 億美元', hero_kpi2_label: '1% 可服務市場（SOM）',
+      hero_kpi3_val: '100%', hero_kpi3_label: '真實消費驅動鑄造',
+      s01_title: '什麼是 POSX？',
+      s01_sub: 'POSX（Tokenized Rewards）是一種創新型消費獎勵代幣，建構於去中心化支付網路之上。它追蹤真實消費行為，以鏈上可驗證方式發放獎勵，將傳統點數體系升級為具備金融屬性的數位資產。',
+      s01_c1_h: '鏈上可驗證 On-Chain Verifiable', s01_c1_p: '每一筆獎勵的產生均記錄於區塊鏈，確保資料透明且不可篡改，建立機構級稽核標準',
+      s01_c2_h: '可交易 · 可轉讓 Transferable', s01_c2_p: '打破傳統點數鎖倉限制，使用者可在公開市場自由交易，或進行點對點轉帳與轉讓',
+      s01_c3_h: '市場化定價 Market-Priced', s01_c3_p: '基於公開市場供需機制定價，具備真實市場價值與流動性深度',
+      s01_c4_h: '可稽核 · 可組合 Composable', s01_c4_p: '完全透明的鏈上資料支持第三方稽核，可接入 DeFi 生態實現組合創新',
+      s01_data_header: '核心指標',
+      s01_d1_label: '全球可觸達市場（TAM）', s01_d1_val: '40 兆美元 <span style="font-size:0.75rem;opacity:0.5">/ 年</span>', s01_d1_note: '全球信用卡年消費總額',
+      s01_d2_label: '可服務市場（SOM）', s01_d2_val: '4,000 億美元 <span style="font-size:0.75rem;opacity:0.5">/ 年</span>', s01_d2_note: '1% 滲透率對應的年化市場',
+      s01_d3_label: '價值錨定', s01_d3_val: '100% 真實消費驅動', s01_d3_note: '零投機性鑄造 · 零虛擬槓桿',
+      s02_title: 'POSX 生態參與者', s02_sub: '四類核心參與者構成自我強化的正向飛輪。每一方在價值創造中扮演不可或缺的角色。',
+      s02_e1_h: '合作商戶', s02_e1_p: '接入 POSX 支付網路的線上線下商戶，透過代幣化獎勵提升顧客黏著度與回購率',
+      s02_e2_h: '消費者', s02_e2_p: '在合作商戶消費並取得 POSX 獎勵的終端使用者，累積跨平台數位資產',
+      s02_e3_h: '網路驗證者', s02_e3_p: '記錄消費交易、計算獎勵並上鏈的網路節點，維護網路安全',
+      s02_e4_h: '網路傳播者', s02_e4_p: '分享與推廣 POSX 生態的參與者，形成去中心化成長引擎',
+      s03_title: 'POSX 獎勵如何產生？', s03_sub: '代幣鑄造嚴格錨定真實消費行為。每一枚 POSX 的發行背後都有可驗證的經濟活動作為價值支撐。',
+      s03_s1_name: '消費觸發', s03_s1_detail: '消費者在合作商戶完成付款，交易資料被即時擷取',
+      s03_s2_name: '資料驗證', s03_s2_detail: '網路驗證節點對交易真實性進行多方共識校驗',
+      s03_s3_name: '獎勵計算', s03_s3_detail: '智慧合約根據預設規則自動計算應發放數量',
+      s03_s4_name: '鏈上鑄造', s03_s4_detail: 'POSX 代幣被鑄造並寫入區塊鏈，不可篡改',
+      s03_s5_name: '資產到帳', s03_s5_detail: '消費者錢包即時收到 POSX，可持有、交易或使用',
+      s04_title: 'POSX 價值循環', s04_sub: '網路效應飛輪——消費驅動鑄造，鑄造擴大持有，持有深化需求，需求反哺網路成長。',
+      s04_f1_h: '消費觸發鑄造', s04_f1_p: '真實消費行為觸發 POSX 代幣的鏈上鑄造，確保每一枚代幣均有實體經濟活動支撐',
+      s04_f2_h: '持有擴大網路', s04_f2_p: '使用者累積 POSX 資產，吸引更多商戶接入網路，形成供需雙向正回饋',
+      s04_f3_h: '需求驅動價值', s04_f3_p: '網路規模擴大推動市場需求成長，POSX 的市場化定價機制使價值與需求正相關',
+      s04_f4_h: '飛輪自我加速', s04_f4_p: '梅特卡夫定律在消費場景中的經典投射——每新增一個節點都在為全體參與者創造增量價值',
+      fw_n1: '消費者消費', fw_n2: '獎勵發放', fw_n3: '使用者持有', fw_n4: '需求提升', fw_n5: '使用者成長', fw_n6: '網路擴大',
+      s05_title: 'POSX vs 傳統信用卡點數', s05_sub: '傳統點數是企業負債表上的記帳單位。POSX 將這一範式重構為使用者擁有的鏈上資產。',
+      s05_th1: '評估面向', s05_th3: '信用卡點數',
+      s05_r1d: '資產屬性', s05_r1g: '鏈上數位資產，使用者完全擁有', s05_r1b: '平台記帳點數，平台可單方修改',
+      s05_r2d: '是否可交易', s05_r2g: '公開市場自由交易', s05_r2b: '不可交易，僅限兌換',
+      s05_r3d: '是否可轉讓', s05_r3g: '支援點對點即時轉帳', s05_r3b: '不可轉讓，綁定個人帳戶',
+      s05_r4d: '市場定價', s05_r4g: '公開市場供需定價', s05_r4b: '平台單方面設定兌換比例',
+      s05_r5d: '透明度', s05_r5g: '區塊鏈公開可稽核', s05_r5b: '中心化資料庫，不可稽核',
+      s05_r6d: '跨平台互操作', s05_r6g: '全網通用，可接入 DeFi', s05_r6b: '僅限單一品牌體系內',
+      s05_r7d: '貶值風險', s05_r7g: '市場定價，需求驅動', s05_r7b: '平台可隨時調整點數價值',
+      s06_title: '全球消費市場規模', s06_sub: 'POSX 瞄準將全球消費獎勵價值從封閉點數體系中釋放，透過代幣化實現鏈上流動。',
+      s06_m1_val: '40 兆<span style="font-size:1rem;color:var(--text-3)"> 美元</span>', s06_m1_label: '全球年信用卡消費額',
+      s06_m2_val: '4,000 億<span style="font-size:1rem;color:var(--text-3)"> 美元</span>', s06_m2_label: '1% 市場滲透率',
+      s06_m3_val: '100%', s06_m3_label: '真實消費驅動鑄造',
+      s06_callout: '即便僅覆蓋全球消費體量的 1%，POSX 面對的也是一個年均 4,000 億美元的可服務市場。這不是投機性敘事，而是由真實消費行為驅動的基礎設施級機會。',
+      s07_title: '為什麼 POSX 會改變消費獎勵？', s07_sub: '核心命題是將消費獎勵從「企業負債」重新定義為「使用者資產」，這代表消費金融基礎設施層面的範式遷移。',
+      s07_t1_h: '真實消費驅動', s07_t1_p: '每一枚 POSX 的鑄造由可驗證的消費行為觸發。代幣價值錨定於實體經濟，具備傳統加密資產罕見的基本面支撐。',
+      s07_t2_h: '資產化升級', s07_t2_p: '將消費獎勵從不可流動的記帳單位轉化為鏈上可確權、可交易的數位資產。消費者首次真正「擁有」自己的獎勵。',
+      s07_t3_h: '全球網路效應', s07_t3_p: '不受地域限制的消費者-商戶網路。每新增一個節點，都為全體參與者創造增量價值。',
+      s07_t4_h: 'DeFi 可組合性', s07_t4_p: '標準鏈上資產，天然可接入質押、借貸、流動性挖礦等 DeFi 協議，為消費獎勵開啟前所未有的金融應用空間。',
+      s07_t5_h: '透明度與信任', s07_t5_p: '區塊鏈公開帳本使發行、流通與銷毀全流程皆可稽核，進而降低傳統點數體系中的信任成本。',
+      s07_t6_h: '兆級 TAM', s07_t6_p: '全球年消費支出 40 兆美元，1% 滲透率即 4,000 億美元年化市場。由真實經濟活動支撐的超大規模賽道。',
+      hl_title: '2026 年<span class="hl-gold">首個可消費代幣</span><br/>開創消費獎勵鏈上新範式',
+      hl_desc: 'POSX 由美國機構資本領投孵化，已完成合規架構建置與核心技術驗證。專案目前正處於主網上線前的策略窗口期，對早期參與者而言，現階段具備較為突出的風險調整後報酬潛力。',
+      hl_b1: '美國資本背書', hl_b2: '策略入場窗口', hl_b3: '全球商戶合作招募中',
+      hl_s1_val: '40 兆', hl_s1_label: '全球年消費支出（美元）',
+      hl_s2_val: '4,000 億', hl_s2_label: '1% 滲透率年化 TAM（美元）',
+      hl_s3_label: '多交易所同步上線',
+      hl_s4_val: '實體錨定', hl_s4_label: '真實消費行為驅動鑄造',
+      entry_story_kicker: 'Project Story', entry_story_title: '先看專案介紹',
+      entry_reward_kicker: 'Reward Rules', entry_reward_title: '直達獎勵機制',
+      reward_title: '推廣獎勵機制',
+      reward_sub: '以手機端優先方式整理直推獎勵、團隊獎勵、平級獎與燒傷機制，協助使用者快速理解獎勵來源、計算邏輯與風控邊界。',
+      reward_nav_direct: '直推獎勵', reward_nav_team: '團隊獎勵', reward_nav_equal: '平級獎', reward_nav_burn: '燒傷機制',
+      direct_title: '直推獎勵',
+      direct_sub: '直屬下級入金後，按自身檔位獲得一次性比例獎勵，獎勵單位統一為 U。',
+      direct_tier1_label: '基礎檔', direct_tier1_value: '5%', direct_tier1_desc: '入金 ≥ 1,000U 且 < 10,000U，可參與基礎檔直推獎勵。',
+      direct_tier2_label: '進階檔', direct_tier2_value: '10%', direct_tier2_desc: '入金 ≥ 10,000U，可獲得進階檔直推獎勵比例。',
+      direct_tier3_label: '精英檔', direct_tier3_value: '15%', direct_tier3_desc: '入金 ≥ 50,000U，可獲得最高檔直推獎勵比例。',
+      direct_example_title: '計算示例',
+      direct_example_body: '你是 5萬U 檔（15%），直屬下級入金 20,000U，則直推獎勵 = 20,000 × 15% = 3,000U。若超過持倉匹配額度，超出部分按燒傷規則處理。',
+      team_title: '團隊獎勵',
+      team_sub: '按檔位和團隊累計業績階梯計算極差收益，下級達到平級後，該線極差收益歸零。',
+      team_panel1_title: '1萬U 檔階梯',
+      team_panel1_row1_range: '1 - 10萬U', team_panel1_row2_range: '10.1 - 50萬U', team_panel1_row3_range: '50.1 - 100萬U', team_panel1_row4_range: '100.1 - 500萬U', team_panel1_row5_range: '500萬U+',
+      team_panel2_title: '5萬U 檔階梯',
+      team_panel2_row1_range: '1 - 10萬U', team_panel2_row2_range: '10.1 - 50萬U', team_panel2_row3_range: '50.1 - 100萬U', team_panel2_row4_range: '100萬U+', team_panel2_row5_range: '更高層級',
+      team_diff1_title: 'A 線示例',
+      team_diff1_body: '若你目前團隊獎勵級別為 10%，A 線下級級別為 5%，則該線可獲得 5% 極差收益；若 A 線業績為 80萬U，則對應收益按 80萬U × 5% 計算。',
+      team_diff2_title: 'B 線示例',
+      team_diff2_body: '若你目前團隊獎勵級別為 10%，B 線下級級別為 3%，則該線可獲得 7% 極差收益；若 B 線業績為 30萬U，則對應收益按 30萬U × 7% 計算。',
+      team_cap_body: '無論團隊業績與架構如何成長，單一帳戶的團隊獎勵比例最高不超過 15%。該上限用於控制獎勵支出並維持制度可持續性。',
+      equal_title: '平級獎',
+      equal_sub: '當某條線下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，並從第 6 層起啟動遞減平級獎。',
+      equal_scope1_label: 'Performance Scope', equal_scope1_value: '全體業績', equal_scope1_desc: '團隊業績統計為你傘下全體成員的總業績，不分層級、不分線別。',
+      equal_scope2_label: 'Reward Scope', equal_scope2_value: '第2層至第7層', equal_scope2_desc: '團隊獎勵極差僅按第2層至第7層計算；平級獎從第6層開始，共 6 層遞減。',
+      equal_l1_title: '平級第 1 層', equal_l1_desc: '對應全表最高平級獎勵比例，自平級下屬的第 6 層開始計算。',
+      equal_l2_title: '平級第 2 層', equal_l2_desc: '第 7 層對應比例，延續深度培育激勵，但開始明顯遞減。',
+      equal_l3_title: '平級第 3 層', equal_l3_desc: '第 8 層對應比例，持續保留深層結構收益。',
+      equal_l4_title: '平級第 4 層', equal_l4_desc: '第 9 層對應比例，遞減速度進一步放緩。',
+      equal_l5_title: '平級第 5 層', equal_l5_desc: '第 10 層對應比例，用於補償長期培育帶來的延展價值。',
+      equal_l6_title: '平級第 6 層', equal_l6_desc: '第 11 層對應比例，平級獎最後一層，總計 5%。',
+      equal_trigger_title: '觸發邏輯',
+      equal_trigger_body: '當你某條線的下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，平級獎自動啟動。自該平級下屬的第 6 層起，按 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 遞減發放，總計 5%。',
+      burn_title: '燒傷機制',
+      burn_sub: '獎勵資格與提成上限與持倉等值額度掛鉤，超過匹配額度的部分即時燒傷且不追溯。',
+      burn_rule1_title: '參與門檻', burn_rule1_body: '最低持有 ≥ 1,000U 等值 POSX，方可參與推廣及提成計算；低於此額度不享受任何獎勵。',
+      burn_rule2_title: '提成上限', burn_rule2_body: '當持有額度 ≤ 1萬U 時，直推提成上限等於自身持有的 POSX 等值額度，超出部分直接燒傷。',
+      burn_rule3_title: '補倉規則', burn_rule3_body: '可隨時補充持倉額度，但僅對未來新增業績生效；已燒傷的歷史業績不追溯、不補發。',
+      burn_rule4_title: '時效性', burn_rule4_body: '燒傷即時生效，不累計、不順延、不補發；未匹配部分一經燒傷即永久失效。',
+      burn_flow1: '上級持倉額度', burn_flow2: '下級入金額度', burn_flow3: '可匹配額度', burn_flow4: '燒傷額度（永久失效）',
+      burn_split_left: '下級入金 10,000U 對應的提成分配', burn_split_right: '匹配額度 1,000U / 10,000U',
+      burn_split_legend1_title: '有效提成額度', burn_split_legend1_body: '占比 10%，按規則正常結算。',
+      burn_split_legend2_title: '燒傷部分', burn_split_legend2_body: '占比 90%，後續補倉亦不追溯。',
+      burn_no1_title: '不累計', burn_no1_body: '已燒傷部分不再累計。',
+      burn_no2_title: '不順延', burn_no2_body: '不計入後續結算週期。',
+      burn_no3_title: '不補發', burn_no3_body: '後續補倉也不追溯。',
+      burn_no4_title: '即時生效', burn_no4_body: '超出部分即時燒傷。',
+      burn_notice_title: '重要公告',
+      burn_notice_body: '自 2026年3月15日 至 2026年3月20日 期間，團隊獎勵結算系統處於技術測試與校準階段。期間獎勵計算與發放可能存在延遲，實際到帳時間以系統結算完成為準；測試期結束後將按既定規則恢復正常結算週期。',
+      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。 \u00a9 2026 POSX Network.'
+    },
+
+    'en': {
+      hero_title: 'Redefining the <span class="gold">Value Infrastructure</span> of Consumer Rewards',
+      hero_desc: 'POSX is the first blockchain payment network to tokenize consumer rewards — transforming closed-loop loyalty points into auditable, tradable, and composable on-chain digital assets, unlocking latent value across $40 trillion in annual global consumer spend.',
+      hero_kpi1_val: '$40 Trillion', hero_kpi1_label: 'Global Annual Consumer Spend (TAM)',
+      hero_kpi2_val: '$400 Billion', hero_kpi2_label: '1% Serviceable Market (SOM)',
+      hero_kpi3_val: '100%', hero_kpi3_label: 'Real-Consumption-Backed Minting',
+      s01_title: 'What Is POSX?',
+      s01_sub: 'POSX (Tokenized Rewards) is a next-generation consumer reward token built on a decentralized payment network. It tracks verified real-world spending and issues on-chain rewards, transforming traditional loyalty points into financial-grade digital assets.',
+      s01_c1_h: 'On-Chain Verifiable', s01_c1_p: 'Every reward issuance is recorded on-chain, ensuring data transparency and immutability at institutional audit standards',
+      s01_c2_h: 'Freely Transferable', s01_c2_p: 'Eliminates traditional point lock-ups — users can trade on open markets or transfer peer-to-peer',
+      s01_c3_h: 'Market-Priced', s01_c3_p: 'Valued through open-market supply-demand dynamics with real liquidity depth',
+      s01_c4_h: 'Auditable & Composable', s01_c4_p: 'Fully transparent on-chain data supports third-party audits and DeFi composability',
+      s01_data_header: 'KEY METRICS',
+      s01_d1_label: 'TOTAL ADDRESSABLE MARKET', s01_d1_val: '$40 Trillion <span style="font-size:0.75rem;opacity:0.5">/ year</span>', s01_d1_note: 'Global annual credit card consumer spend',
+      s01_d2_label: 'SERVICEABLE OBTAINABLE MARKET', s01_d2_val: '$400 Billion <span style="font-size:0.75rem;opacity:0.5">/ year</span>', s01_d2_note: 'At 1% penetration rate',
+      s01_d3_label: 'VALUE BACKING', s01_d3_val: '100% Consumption-Driven', s01_d3_note: 'Zero speculative minting · Zero virtual leverage',
+      s02_title: 'Ecosystem Participants', s02_sub: 'Four core stakeholder groups form a self-reinforcing positive flywheel. Each plays an indispensable role in value creation.',
+      s02_e1_h: 'Partner Merchants', s02_e1_p: 'Online and offline merchants integrated with the POSX payment network, driving retention via tokenized rewards',
+      s02_e2_h: 'Consumers', s02_e2_p: 'End users who earn POSX rewards through qualified purchases, accumulating cross-platform digital assets',
+      s02_e3_h: 'Network Validators', s02_e3_p: 'Nodes that record transactions, compute rewards, and commit data to the blockchain',
+      s02_e4_h: 'Network Evangelists', s02_e4_p: 'Participants who promote the POSX ecosystem, serving as a decentralized growth engine',
+      s03_title: 'How Are POSX Rewards Generated?', s03_sub: 'Token minting is strictly anchored to verified real-world spending. Every POSX issued is backed by verifiable economic activity.',
+      s03_s1_name: 'Purchase Trigger', s03_s1_detail: 'Consumer completes payment at a partner merchant; transaction data is captured in real time',
+      s03_s2_name: 'Data Verification', s03_s2_detail: 'Validator nodes perform multi-party consensus verification of transaction authenticity',
+      s03_s3_name: 'Reward Computation', s03_s3_detail: 'Smart contracts automatically calculate the reward amount per predefined rules',
+      s03_s4_name: 'On-Chain Minting', s03_s4_detail: 'POSX tokens are minted and written to the blockchain — immutable and auditable',
+      s03_s5_name: 'Asset Delivery', s03_s5_detail: 'POSX arrives instantly in the consumer\'s wallet — ready to hold, trade, or spend',
+      s04_title: 'POSX Value Flywheel', s04_sub: 'A network-effects flywheel — spending drives minting, minting deepens holdings, holdings amplify demand, and demand fuels network growth.',
+      s04_f1_h: 'Spending Triggers Minting', s04_f1_p: 'Verified consumer spend triggers on-chain POSX minting, ensuring every token is backed by real economic activity',
+      s04_f2_h: 'Holdings Expand the Network', s04_f2_p: 'As users accumulate POSX, more merchants are attracted to the network, creating bilateral positive feedback',
+      s04_f3_h: 'Demand Drives Value', s04_f3_p: 'Network scale growth amplifies market demand; POSX\'s market-based pricing ensures value correlates positively with demand',
+      s04_f4_h: 'Self-Accelerating Flywheel', s04_f4_p: 'Metcalfe\'s Law projected onto a consumer spending context — every additional node creates incremental value for all participants',
+      fw_n1: 'Spending', fw_n2: 'Minting', fw_n3: 'Holding', fw_n4: 'Demand', fw_n5: 'Acquisition', fw_n6: 'Growth',
+      s05_title: 'POSX vs Traditional Credit Card Points', s05_sub: 'Traditional points are accounting entries on a corporate balance sheet. POSX restructures this paradigm into user-owned on-chain assets.',
+      s05_th1: 'Dimension', s05_th3: 'Credit Card Points',
+      s05_r1d: 'Asset Type', s05_r1g: 'On-chain digital asset, fully user-owned', s05_r1b: 'Platform ledger entry, unilaterally modifiable',
+      s05_r2d: 'Tradability', s05_r2g: 'Freely tradable on open markets', s05_r2b: 'Non-tradable, redemption only',
+      s05_r3d: 'Transferability', s05_r3g: 'Peer-to-peer instant transfers', s05_r3b: 'Non-transferable, locked to account',
+      s05_r4d: 'Pricing', s05_r4g: 'Open-market supply-demand pricing', s05_r4b: 'Unilateral platform-set exchange ratios',
+      s05_r5d: 'Transparency', s05_r5g: 'Blockchain-auditable', s05_r5b: 'Centralized database, non-auditable',
+      s05_r6d: 'Interoperability', s05_r6g: 'Universal, DeFi-composable', s05_r6b: 'Single-brand ecosystem only',
+      s05_r7d: 'Depreciation Risk', s05_r7g: 'Market-priced, demand-driven', s05_r7b: 'Platform can devalue at any time',
+      s06_title: 'Global Addressable Market', s06_sub: 'POSX targets the liberation of global consumer reward value from closed-loop point systems via tokenization and on-chain liquidity.',
+      s06_m1_val: '$40T', s06_m1_label: 'Annual global credit card spend',
+      s06_m2_val: '$400B', s06_m2_label: '1% market penetration',
+      s06_m3_val: '100%', s06_m3_label: 'Real-consumption-backed minting',
+      s06_callout: 'Capturing just 1% of global consumer volume presents a $400 billion annual serviceable market. This is not a speculative narrative — it is an infrastructure-grade opportunity driven by verified real-world economic activity.',
+      s07_title: 'Why POSX Will Transform Consumer Rewards', s07_sub: 'Core thesis: redefining consumer rewards from "corporate liabilities" to "user-owned assets" — a paradigm shift at the consumer finance infrastructure layer.',
+      s07_t1_h: 'Consumption-Backed', s07_t1_p: 'Every POSX token is minted upon verified consumer spend. Token value is anchored to the real economy — a fundamental backing rare among crypto assets.',
+      s07_t2_h: 'Asset-Grade Upgrade', s07_t2_p: 'Transforms illiquid accounting entries into on-chain, tradable digital assets with verifiable ownership. Consumers truly own their rewards for the first time.',
+      s07_t3_h: 'Global Network Effects', s07_t3_p: 'A borderless consumer-merchant network where each additional node creates incremental value for all participants.',
+      s07_t4_h: 'DeFi Composability', s07_t4_p: 'As a standard on-chain asset, POSX natively integrates with staking, lending, and liquidity mining protocols — opening unprecedented financial applications for consumer rewards.',
+      s07_t5_h: 'Transparency & Trust', s07_t5_p: 'Blockchain public ledger ensures full-lifecycle auditability of issuance, circulation, and burns — eliminating the trust cost inherent in traditional point systems.',
+      s07_t6_h: 'Trillion-Dollar TAM', s07_t6_p: 'With $40 trillion in annual global consumer spend, a 1% penetration yields a $400 billion annual market. A predictable growth trajectory backed by real economic activity.',
+      hl_title: 'The <span class="hl-gold">First Tokenized Consumer Reward</span> of 2026<br/>Pioneering On-Chain Consumer Incentives',
+      hl_desc: 'POSX is incubated and led by U.S. institutional capital, with regulatory architecture and core technology validation complete. The project is in a strategic pre-mainnet window — current valuation levels present significant risk-adjusted return advantage for early participants.',
+      hl_b1: 'U.S. Institutional Backing', hl_b2: 'Optimal Strategic Entry Window', hl_b3: 'Global Merchant Recruitment Active',
+      hl_s1_val: '$40T', hl_s1_label: 'Annual Global Consumer Spend',
+      hl_s2_val: '$400B', hl_s2_label: '1% Penetration Annual TAM',
+      hl_s3_label: 'Multi-Exchange Simultaneous Listing',
+      hl_s4_val: 'Real-Backed', hl_s4_label: 'Consumption-Driven Token Minting',
+      entry_story_kicker: 'Project Story', entry_story_title: 'Overview',
+      entry_reward_kicker: 'Reward Rules', entry_reward_title: 'Incentives',
+      reward_title: 'Referral Reward Mechanism',
+      reward_sub: 'A mobile-first summary of direct referral rewards, team differential rewards, equal-level bonuses, and burn controls so users can quickly understand reward sources, computation logic, and risk boundaries.',
+      reward_nav_direct: 'Direct Referral', reward_nav_team: 'Team Reward', reward_nav_equal: 'Equal-Level Bonus', reward_nav_burn: 'Burn Control',
+      direct_title: 'Direct Referral Reward',
+      direct_sub: 'When a directly referred user deposits, you receive a one-time reward based on your current tier. Reward payouts are denominated in U.',
+      direct_tier1_label: 'Base Tier', direct_tier1_value: '5%', direct_tier1_desc: 'Deposit ≥ 1,000U and < 10,000U qualifies for the base referral tier.',
+      direct_tier2_label: 'Advanced Tier', direct_tier2_value: '10%', direct_tier2_desc: 'Deposit ≥ 10,000U unlocks the mid-tier referral rate.',
+      direct_tier3_label: 'Elite Tier', direct_tier3_value: '15%', direct_tier3_desc: 'Deposit ≥ 50,000U unlocks the highest referral reward rate.',
+      direct_example_title: 'Worked Example',
+      direct_example_body: 'If you are in the 50,000U tier (15%) and your direct referral deposits 20,000U, the direct reward equals 20,000 × 15% = 3,000U. Any amount above your holding-matched quota is handled under the burn rule.',
+      team_title: 'Team Reward',
+      team_sub: 'Team differential rewards are determined by your tier and cumulative team performance bracket. Once a downline reaches your level, the differential on that line becomes zero.',
+      team_panel1_title: '10,000U Tier Ladder',
+      team_panel1_row1_range: '1 - 100,000U', team_panel1_row2_range: '100,001 - 500,000U', team_panel1_row3_range: '500,001 - 1,000,000U', team_panel1_row4_range: '1,000,001 - 5,000,000U', team_panel1_row5_range: '5,000,000U+',
+      team_panel2_title: '50,000U Tier Ladder',
+      team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,000U+', team_panel2_row5_range: 'Higher Tier',
+      team_diff1_title: 'Line A Example',
+      team_diff1_body: 'If your current team reward level is 10% and Line A is at 5%, the differential on that line is 5%. With 800,000U in team volume, the reward is computed as 800,000U × 5%.',
+      team_diff2_title: 'Line B Example',
+      team_diff2_body: 'If your current team reward level is 10% and Line B is at 3%, the differential on that line is 7%. With 300,000U in team volume, the reward is computed as 300,000U × 7%.',
+      team_cap_body: 'Regardless of team scale or structure, the team reward ratio for a single account is capped at 15%. This ceiling keeps payout obligations controlled and the model sustainable.',
+      equal_title: 'Equal-Level Bonus',
+      equal_sub: 'When a downline on a given line reaches the same team reward level as you, the differential on that line becomes zero and a declining equal-level bonus begins from layer 6 onward.',
+      equal_scope1_label: 'Performance Scope', equal_scope1_value: 'Full Team Volume', equal_scope1_desc: 'Team performance aggregates the total volume of all members under your umbrella, regardless of depth or line.',
+      equal_scope2_label: 'Reward Scope', equal_scope2_value: 'Layers 2 To 7', equal_scope2_desc: 'Team differentials are counted only from layers 2 to 7; equal-level bonuses begin at layer 6 and continue for 6 declining layers.',
+      equal_l1_title: 'Equal Level Layer 1', equal_l1_desc: 'Highest equal-level bonus rate, starting from the 6th layer below the matched downline.',
+      equal_l2_title: 'Equal Level Layer 2', equal_l2_desc: 'The 7th layer rate preserves deep-network incentives with a meaningful reduction.',
+      equal_l3_title: 'Equal Level Layer 3', equal_l3_desc: 'The 8th layer rate retains a smaller but still meaningful deep-structure incentive.',
+      equal_l4_title: 'Equal Level Layer 4', equal_l4_desc: 'The 9th layer rate continues the declining compensation path.',
+      equal_l5_title: 'Equal Level Layer 5', equal_l5_desc: 'The 10th layer rate compensates for long-cycle cultivation value.',
+      equal_l6_title: 'Equal Level Layer 6', equal_l6_desc: 'The 11th layer rate is the final equal-level layer; total equal-level bonus sums to 5%.',
+      equal_trigger_title: 'Trigger Logic',
+      equal_trigger_body: 'When a downline on one of your lines reaches the same team reward level as you, the differential on that line becomes zero and the equal-level bonus starts automatically. From the 6th layer below that matched downline, rewards decline as 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05%, totaling 5%.',
+      burn_title: 'Burn Mechanism',
+      burn_sub: 'Reward eligibility and commission caps are tied to the U-equivalent value of your holdings. Amounts above the matched quota are burned immediately and are not retroactive.',
+      burn_rule1_title: 'Participation Threshold', burn_rule1_body: 'You must hold at least 1,000U equivalent of POSX to qualify for referral participation and commission calculation. Below that threshold, no rewards apply.',
+      burn_rule2_title: 'Commission Cap', burn_rule2_body: 'When your holding value is at or below 10,000U, the direct referral commission cap equals the POSX-equivalent value of your holdings. Any excess is burned immediately.',
+      burn_rule3_title: 'Top-Up Rule', burn_rule3_body: 'You may increase your holding quota at any time, but it only applies to future incremental performance. Burned historical performance is neither restored nor reissued.',
+      burn_rule4_title: 'Time Effect', burn_rule4_body: 'Burning takes effect immediately. It does not accumulate, roll forward, or get reissued. Any unmatched portion becomes permanently invalid once burned.',
+      burn_flow1: 'Upline Holding Quota', burn_flow2: 'Downline Deposit Amount', burn_flow3: 'Matched Quota', burn_flow4: 'Burned Quota (Permanent)',
+      burn_split_left: 'Commission split on a 10,000U downline deposit', burn_split_right: 'Matched quota 1,000U / 10,000U',
+      burn_split_legend1_title: 'Effective Commission Quota', burn_split_legend1_body: '10% of the total remains valid and settles under the standard rule.',
+      burn_split_legend2_title: 'Burned Portion', burn_split_legend2_body: '90% is burned and remains non-retroactive even after future top-ups.',
+      burn_no1_title: 'No Accumulation', burn_no1_body: 'Burned amounts do not accumulate.',
+      burn_no2_title: 'No Carry-Forward', burn_no2_body: 'Burned amounts do not roll into later settlement cycles.',
+      burn_no3_title: 'No Reissue', burn_no3_body: 'Later top-ups do not restore historical burns.',
+      burn_no4_title: 'Immediate Effect', burn_no4_body: 'Any excess is burned instantly.',
+      burn_notice_title: 'Important Notice',
+      burn_notice_body: 'From March 15, 2026 to March 20, 2026, the team reward settlement system is under technical testing and calibration. During this period, reward calculation and payout may be delayed; actual credit timing is subject to system settlement completion. Normal cycles resume after the testing window ends.',
+      disclaimer: 'This document is provided for informational purposes only and does not constitute an offer, solicitation, or recommendation to buy or sell any securities or financial instruments. The information contained herein is based on sources believed to be reliable but is not guaranteed as to its accuracy or completeness. Past performance is not indicative of future results. Investing in digital assets involves significant risks, including the possible loss of principal. \u00a9 2026 POSX Network.'
+    },
+
+    'ko': {
+      hero_title: '<span class="gold">소비 보상</span>의 가치 인프라를 새롭게 정의합니다',
+      hero_desc: 'POSX는 소비 보상을 토큰화한 최초의 블록체인 결제 네트워크입니다. 기존의 폐쇄형 포인트 생태계를 감사 가능하고 거래 가능하며 조합 가능한 온체인 디지털 자산으로 전환함으로써, 연간 40조 달러 규모의 글로벌 소비 시장에 잠재된 가치를 실질적으로 해방합니다.',
+      hero_kpi1_val: '40조 달러', hero_kpi1_label: '글로벌 연간 소비 시장 (TAM)',
+      hero_kpi2_val: '4,000억 달러', hero_kpi2_label: '1% 서비스 가능 시장 (SOM)',
+      hero_kpi3_val: '100%', hero_kpi3_label: '실제 소비 기반 민팅',
+      s01_title: 'POSX란 무엇인가',
+      s01_sub: 'POSX(Tokenized Rewards)는 탈중앙 결제 네트워크 위에서 작동하는 차세대 소비 보상 토큰입니다. 검증 가능한 실물 소비 데이터를 기반으로 보상이 발행되며, 기존 포인트 체계를 금융적 속성을 갖춘 디지털 자산으로 전환합니다.',
+      s01_c1_h: '온체인 검증 가능', s01_c1_p: '모든 보상 발행 내역이 블록체인에 기록되어 투명성과 불변성을 확보하며, 기관 수준의 감사 기준을 충족합니다.',
+      s01_c2_h: '거래 가능 · 이전 가능', s01_c2_p: '기존 포인트의 락업 구조를 해소하여 공개 시장 거래와 P2P 전송이 가능해집니다.',
+      s01_c3_h: '시장 기반 가격 형성', s01_c3_p: '공개 시장의 수급 메커니즘을 통해 가격이 형성되며, 실질적인 시장 가치와 유동성을 확보합니다.',
+      s01_c4_h: '감사 가능 · 조합 가능', s01_c4_p: '완전한 온체인 데이터 투명성을 바탕으로 제3자 감사를 지원하며, DeFi와의 조합 가능성까지 제공합니다.',
+      s01_data_header: '핵심 지표',
+      s01_d1_label: '총주소가능시장(TAM)', s01_d1_val: '40조 달러 <span style="font-size:0.75rem;opacity:0.5">/ 연간</span>', s01_d1_note: '글로벌 연간 신용카드 소비 총액 기준',
+      s01_d2_label: '획득가능시장(SOM)', s01_d2_val: '4,000억 달러 <span style="font-size:0.75rem;opacity:0.5">/ 연간</span>', s01_d2_note: '1% 침투율 가정 기준 시장 규모',
+      s01_d3_label: '가치 기반', s01_d3_val: '100% 실소비 연동', s01_d3_note: '투기성 민팅 없음 · 가상 레버리지 없음',
+      s02_title: 'POSX 생태계 참여자',
+      s02_sub: '네 가지 핵심 참여자군이 POSX 생태계의 자가 강화형 플라이휠을 형성합니다. 각 주체는 가치 창출과 네트워크 성장의 핵심 역할을 담당합니다.',
+      s02_e1_h: '제휴 가맹점', s02_e1_p: 'POSX 결제 네트워크에 연결된 온·오프라인 가맹점으로, 토큰형 보상을 통해 고객 유지율과 재방문율을 높입니다.',
+      s02_e2_h: '소비자', s02_e2_p: '제휴 가맹점에서 소비하고 POSX 보상을 수령하는 최종 사용자로, 플랫폼을 넘는 디지털 자산을 축적합니다.',
+      s02_e3_h: '네트워크 검증자', s02_e3_p: '거래를 기록하고 보상을 산정해 블록체인에 반영하는 노드로, 네트워크 신뢰성과 보안을 유지합니다.',
+      s02_e4_h: '네트워크 전파자', s02_e4_p: 'POSX 생태계를 확산하고 네트워크 성장을 촉진하는 참여자로, 탈중앙 성장 엔진 역할을 수행합니다.',
+      s03_title: 'POSX 보상은 어떻게 생성되는가?',
+      s03_sub: '토큰 민팅은 검증된 실소비 활동에 엄격히 연동됩니다. 모든 POSX 발행 뒤에는 확인 가능한 경제 활동이 존재합니다.',
+      s03_s1_name: '소비 발생', s03_s1_detail: '소비자가 제휴 가맹점에서 결제를 완료하면 거래 데이터가 실시간으로 포착됩니다.',
+      s03_s2_name: '데이터 검증', s03_s2_detail: '검증 노드가 거래의 진정성을 다자 합의 방식으로 검증합니다.',
+      s03_s3_name: '보상 산정', s03_s3_detail: '스마트 컨트랙트가 사전 정의된 규칙에 따라 지급 수량을 자동 산정합니다.',
+      s03_s4_name: '온체인 민팅', s03_s4_detail: 'POSX 토큰이 민팅되어 블록체인에 기록되며 위변조가 불가능합니다.',
+      s03_s5_name: '자산 지급', s03_s5_detail: '소비자의 지갑으로 POSX가 즉시 지급되며, 보유·거래·사용이 가능합니다.',
+      s04_title: 'POSX 가치 플라이휠',
+      s04_sub: '소비가 민팅을 촉발하고, 민팅은 보유를 확대하며, 보유는 수요를 강화하고, 수요는 다시 네트워크 성장을 견인합니다.',
+      s04_f1_h: '소비가 민팅을 촉발', s04_f1_p: '검증된 소비 활동이 온체인 POSX 민팅을 발생시켜, 모든 토큰이 실물 경제 활동에 기반하도록 설계됩니다.',
+      s04_f2_h: '보유가 네트워크를 확장', s04_f2_p: '사용자의 POSX 보유가 확대될수록 더 많은 가맹점이 네트워크에 유입되며 양면 네트워크 효과가 강화됩니다.',
+      s04_f3_h: '수요가 가치를 견인', s04_f3_p: '네트워크 규모가 커질수록 시장 수요가 확대되고, POSX의 시장 기반 가격 메커니즘은 수요와 가치의 정(+) 관계를 형성합니다.',
+      s04_f4_h: '자가 가속형 플라이휠', s04_f4_p: '메트칼프 법칙이 소비 네트워크에 적용된 구조로, 새로운 참여자 한 명이 전체 생태계 가치 확대에 기여합니다.',
+      fw_n1: '소비', fw_n2: '보상 발행', fw_n3: '보유', fw_n4: '수요 증가', fw_n5: '사용자 확대', fw_n6: '네트워크 확장',
+      s05_title: 'POSX vs 전통 신용카드 포인트',
+      s05_sub: '전통 포인트는 기업 대차대조표상의 회계 단위에 가깝습니다. POSX는 이를 사용자가 직접 보유하는 온체인 자산으로 재구성합니다.',
+      s05_th1: '비교 항목', s05_th3: '신용카드 포인트',
+      s05_r1d: '자산 속성', s05_r1g: '온체인 디지털 자산, 사용자 완전 소유', s05_r1b: '플랫폼 장부형 포인트, 플랫폼이 임의 변경 가능',
+      s05_r2d: '거래 가능 여부', s05_r2g: '공개 시장에서 자유롭게 거래 가능', s05_r2b: '거래 불가, 제한적 사용만 가능',
+      s05_r3d: '이전 가능 여부', s05_r3g: 'P2P 즉시 전송 가능', s05_r3b: '이전 불가, 계정에 종속',
+      s05_r4d: '가격 형성', s05_r4g: '시장 수급 기반 가격 형성', s05_r4b: '플랫폼이 교환 비율을 일방 설정',
+      s05_r5d: '투명성', s05_r5g: '블록체인 기반으로 감사 가능', s05_r5b: '중앙화 데이터베이스 기반, 감사 어려움',
+      s05_r6d: '상호운용성', s05_r6g: '범용 활용 가능, DeFi 연동 가능', s05_r6b: '단일 브랜드 생태계에 한정',
+      s05_r7d: '가치 하락 리스크', s05_r7g: '시장 가격과 수요에 따라 결정', s05_r7b: '플랫폼이 언제든 가치 조정 가능',
+      s06_title: '글로벌 소비 시장 규모',
+      s06_sub: 'POSX는 폐쇄형 포인트 체계에 묶여 있던 글로벌 소비 보상 가치를 토큰화와 온체인 유동성을 통해 해방하는 것을 목표로 합니다.',
+      s06_m1_val: '40조<span style="font-size:1rem;color:var(--text-3)"> 달러</span>', s06_m1_label: '글로벌 연간 신용카드 소비액',
+      s06_m2_val: '4,000억<span style="font-size:1rem;color:var(--text-3)"> 달러</span>', s06_m2_label: '1% 시장 침투율',
+      s06_m3_val: '100%', s06_m3_label: '실제 소비 기반 민팅',
+      s06_callout: '글로벌 소비 규모의 단 1%만 확보하더라도 연간 4,000억 달러 규모의 서비스 가능 시장이 열립니다. 이는 단순한 투기 서사가 아니라, 실물 소비가 견인하는 인프라급 기회입니다.',
+      s07_title: '왜 POSX가 소비 보상의 패러다임을 바꾸는가',
+      s07_sub: '핵심 명제는 소비 보상을 "기업의 부채"가 아닌 "사용자가 소유하는 자산"으로 재정의하는 것입니다. 이는 소비 금융 인프라 차원의 구조적 전환을 의미합니다.',
+      s07_t1_h: '실소비 기반 구조', s07_t1_p: '모든 POSX는 검증된 소비 활동을 기반으로 민팅됩니다. 토큰 가치는 실물 경제와 연결되어 드문 수준의 펀더멘털을 제공합니다.',
+      s07_t2_h: '자산화 업그레이드', s07_t2_p: '유동성 없는 회계 단위를 온체인 거래 자산으로 전환함으로써, 소비자가 보상을 실질적으로 소유할 수 있게 합니다.',
+      s07_t3_h: '글로벌 네트워크 효과', s07_t3_p: '국경을 넘는 소비자-가맹점 네트워크에서 새로운 참여자 한 명이 전체 참여자 가치 확대에 기여합니다.',
+      s07_t4_h: 'DeFi 확장성', s07_t4_p: '표준 온체인 자산으로서 스테이킹, 대출, 유동성 공급 등 다양한 DeFi 프로토콜과 자연스럽게 결합될 수 있습니다.',
+      s07_t5_h: '투명성과 신뢰', s07_t5_p: '공개 블록체인 원장은 발행, 유통, 소각 전 과정을 감사 가능하게 하여 기존 포인트 체계의 신뢰 비용을 낮춥니다.',
+      s07_t6_h: '초대형 시장 기회', s07_t6_p: '연간 40조 달러에 달하는 글로벌 소비 시장에서 1% 침투율만으로도 4,000억 달러 규모의 연간 시장이 형성됩니다.',
+      hl_title: '2026년 <span class="hl-gold">최초의 소비형 토큰</span><br/>온체인 소비 보상의 새로운 기준을 제시합니다',
+      hl_desc: 'POSX는 미국 기관 자본의 주도로 인큐베이팅되었으며, 규제 구조와 핵심 기술 검증을 이미 완료했습니다. 현재는 메인넷 출시 전의 전략적 구간으로, 초기 참여자에게는 유의미한 리스크 조정 수익 기회를 제공하는 시점입니다.',
+      hl_b1: '미국 기관 자본 기반', hl_b2: '전략적 진입 최적 시점', hl_b3: '글로벌 가맹점 모집 진행 중',
+      hl_s1_val: '40조', hl_s1_label: '글로벌 연간 소비 지출 (USD)',
+      hl_s2_val: '4,000억', hl_s2_label: '1% 침투율 기준 연간 TAM',
+      hl_s3_label: '복수 거래소 동시 상장', hl_s4_val: '실물 연동', hl_s4_label: '실소비 기반 토큰 민팅',
+      entry_story_kicker: 'Project Story', entry_story_title: '프로젝트 개요',
+      entry_reward_kicker: 'Reward Rules', entry_reward_title: '보상 구조',
+      reward_title: '추천 보상 구조',
+      reward_sub: '직추천 보상, 팀 차등 보상, 동급 보너스, 소각 통제를 모바일 환경에 최적화된 방식으로 정리하여 보상 출처와 계산 구조, 리스크 경계를 빠르게 이해할 수 있도록 구성했습니다.',
+      reward_nav_direct: '직추천 보상', reward_nav_team: '팀 보상', reward_nav_equal: '동급 보너스', reward_nav_burn: '소각 메커니즘',
+      direct_title: '직추천 보상',
+      direct_sub: '직접 추천한 하위 사용자가 입금하면, 현재 보유 등급에 따라 일회성 비율 보상이 지급됩니다. 보상 단위는 U로 통일됩니다.',
+      direct_tier1_label: '기본 구간', direct_tier1_value: '5%', direct_tier1_desc: '입금이 1,000U 이상 10,000U 미만일 경우 기본 직추천 비율이 적용됩니다.',
+      direct_tier2_label: '확장 구간', direct_tier2_value: '10%', direct_tier2_desc: '입금이 10,000U 이상이면 중간 직추천 비율이 적용됩니다.',
+      direct_tier3_label: '최상위 구간', direct_tier3_value: '15%', direct_tier3_desc: '입금이 50,000U 이상이면 최고 직추천 비율이 적용됩니다.',
+      direct_example_title: '산정 예시',
+      direct_example_body: '당신이 50,000U 등급(15%)이고 직추천 하위 사용자가 20,000U를 입금했다면, 직추천 보상은 20,000 × 15% = 3,000U입니다. 다만 보유량 매칭 한도를 초과한 부분에는 소각 규칙이 적용됩니다.',
+      team_title: '팀 보상',
+      team_sub: '팀 차등 보상은 보유 등급과 누적 팀 실적 구간에 따라 산정됩니다. 하위 라인이 당신과 동일한 레벨에 도달하면 해당 라인의 차등은 0이 됩니다.',
+      team_panel1_title: '10,000U 등급 구간',
+      team_panel1_row1_range: '1 - 100,000U', team_panel1_row2_range: '100,001 - 500,000U', team_panel1_row3_range: '500,001 - 1,000,000U', team_panel1_row4_range: '1,000,001 - 5,000,000U', team_panel1_row5_range: '5,000,000U+',
+      team_panel2_title: '50,000U 등급 구간',
+      team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,000U+', team_panel2_row5_range: '상위 구간',
+      team_diff1_title: 'A 라인 사례',
+      team_diff1_body: '당신의 팀 보상 레벨이 10%이고 A 라인의 레벨이 5%라면, 해당 라인의 차등 보상은 5%입니다. A 라인 실적이 800,000U일 경우 보상은 800,000U × 5%로 계산됩니다.',
+      team_diff2_title: 'B 라인 사례',
+      team_diff2_body: '당신의 팀 보상 레벨이 10%이고 B 라인의 레벨이 3%라면, 해당 라인의 차등 보상은 7%입니다. B 라인 실적이 300,000U일 경우 보상은 300,000U × 7%로 계산됩니다.',
+      team_cap_body: '팀 규모와 구조가 어떻게 확대되더라도 단일 계정의 팀 보상 비율은 최대 15%를 초과하지 않습니다. 이 상한선은 지급 부담을 통제하고 제도의 지속 가능성을 유지하기 위한 장치입니다.',
+      equal_title: '동급 보너스',
+      equal_sub: '특정 라인의 하위 사용자가 당신과 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되며, 6단계 아래부터 감소형 동급 보너스가 시작됩니다.',
+      equal_scope1_label: 'Performance Scope', equal_scope1_value: '전체 팀 실적', equal_scope1_desc: '팀 실적은 깊이와 라인 구분 없이 당신 산하 전체 구성원의 누적 실적을 기준으로 합산됩니다.',
+      equal_scope2_label: 'Reward Scope', equal_scope2_value: '2층 - 7층', equal_scope2_desc: '팀 차등 보상은 2층부터 7층까지만 계산되며, 동급 보너스는 6층부터 총 6개 층에 걸쳐 감소 지급됩니다.',
+      equal_l1_title: '동급 1단계', equal_l1_desc: '가장 높은 동급 보너스 구간으로, 매칭된 하위 라인의 6층부터 시작됩니다.',
+      equal_l2_title: '동급 2단계', equal_l2_desc: '7층 구간 비율로, 심층 네트워크 육성 인센티브를 유지하되 비율은 낮아집니다.',
+      equal_l3_title: '동급 3단계', equal_l3_desc: '8층 구간 비율로, 보다 깊은 구조에 대한 장기 인센티브를 유지합니다.',
+      equal_l4_title: '동급 4단계', equal_l4_desc: '9층 구간 비율로, 감소형 보상 경로를 이어갑니다.',
+      equal_l5_title: '동급 5단계', equal_l5_desc: '10층 구간 비율로, 장기 육성의 누적 기여를 보상하는 성격을 가집니다.',
+      equal_l6_title: '동급 6단계', equal_l6_desc: '11층 구간의 마지막 동급 보너스 단계이며 전체 동급 보너스 총합은 5%입니다.',
+      equal_trigger_title: '발동 조건',
+      equal_trigger_body: '당신의 특정 라인 하위 사용자가 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되고, 동급 보너스가 자동으로 시작됩니다. 해당 하위 라인의 6층부터 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 순으로 감소 지급되며 총합은 5%입니다.',
+      burn_title: '소각 메커니즘',
+      burn_sub: '보상 자격과 커미션 상한은 보유량의 U 환산 가치에 연동됩니다. 매칭 한도를 초과하는 부분은 즉시 소각되며, 이후에도 소급 적용되지 않습니다.',
+      burn_rule1_title: '참여 기준', burn_rule1_body: '추천 참여 및 커미션 계산 자격을 얻으려면 최소 1,000U 상당의 POSX를 보유해야 합니다. 이 기준 미만에서는 어떠한 보상도 적용되지 않습니다.',
+      burn_rule2_title: '커미션 상한', burn_rule2_body: '보유 가치가 10,000U 이하일 경우, 직추천 커미션 상한은 보유 중인 POSX의 환산 가치와 동일합니다. 초과분은 즉시 소각됩니다.',
+      burn_rule3_title: '추가 보유 규칙', burn_rule3_body: '보유 한도는 언제든 확대할 수 있지만, 미래에 새롭게 발생하는 실적에만 적용됩니다. 이미 소각된 과거 실적은 복구되거나 재지급되지 않습니다.',
+      burn_rule4_title: '적용 시점', burn_rule4_body: '소각은 즉시 효력이 발생하며 누적, 이월, 재지급이 없습니다. 매칭되지 않은 부분은 소각 즉시 영구 무효 처리됩니다.',
+      burn_flow1: '상위 추천인 보유 한도', burn_flow2: '하위 추천인 입금액', burn_flow3: '매칭 가능 한도', burn_flow4: '소각 금액 (영구 소멸)',
+      burn_split_left: '하위 추천인 10,000U 입금 시 커미션 분배', burn_split_right: '매칭 한도 1,000U / 10,000U',
+      burn_split_legend1_title: '유효 커미션 한도', burn_split_legend1_body: '전체의 10%만 유효하며 기본 규칙에 따라 정상 정산됩니다.',
+      burn_split_legend2_title: '소각 구간', burn_split_legend2_body: '나머지 90%는 소각되며, 이후 보유량을 늘려도 소급 복원되지 않습니다.',
+      burn_no1_title: '누적 없음', burn_no1_body: '소각된 금액은 누적되지 않습니다.',
+      burn_no2_title: '이월 없음', burn_no2_body: '이후 정산 주기로 이월되지 않습니다.',
+      burn_no3_title: '재지급 없음', burn_no3_body: '추가 보유가 있어도 과거 소각분은 복원되지 않습니다.',
+      burn_no4_title: '즉시 적용', burn_no4_body: '초과분은 즉시 소각 처리됩니다.',
+      burn_notice_title: '중요 안내',
+      burn_notice_body: '2026년 3월 15일부터 2026년 3월 20일까지 팀 보상 정산 시스템은 기술 테스트 및 보정 단계에 있습니다. 이 기간 동안 보상 계산 및 지급이 일부 지연될 수 있으며, 실제 반영 시점은 시스템 정산 완료 시점을 기준으로 합니다. 테스트 종료 후에는 기존 규정에 따라 정상 정산 주기로 복귀합니다.',
+      disclaimer: '본 문서는 정보 제공만을 목적으로 하며, 어떠한 증권 또는 금융상품의 매수·매도 제안이나 권유 또는 투자 권고를 의미하지 않습니다. 본 문서에 포함된 정보는 신뢰할 수 있다고 판단되는 자료를 기반으로 작성되었으나, 그 정확성이나 완전성이 보장되지는 않습니다. 과거의 성과는 미래의 결과를 보장하지 않으며, 디지털 자산 투자는 원금 손실을 포함한 중대한 위험을 수반할 수 있습니다. \u00a9 2026 POSX Network.'
+    }
+  };
+
+  /* ════════════════════════════════════════════════
+     LANGUAGE SWITCHING
+     ════════════════════════════════════════════════ */
+  function setLang(lang) {
+    if (!T[lang]) lang = 'zh-CN';
+    var dict = T[lang];
+    document.documentElement.lang = lang;
+
+    // Update HTML data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    // Update SVG text elements
+    document.querySelectorAll('[data-i18n-svg]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-svg');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // Persist preference
+    try { localStorage.setItem('posx_lang', lang); } catch(e) {}
+  }
+
+  // Button click handlers
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setLang(this.getAttribute('data-lang'));
+    });
+  });
+
+  // Auto-detect language from browser
+  function detectLang() {
+    // Check saved preference first
+    try { var saved = localStorage.getItem('posx_lang'); if (saved && T[saved]) return saved; } catch(e) {}
+
+    var nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (nav.indexOf('zh-tw') !== -1 || nav.indexOf('zh-hant') !== -1) return 'zh-TW';
+    if (nav.indexOf('ko') !== -1) return 'ko';
+    if (nav.indexOf('zh') !== -1) return 'zh-CN';
+    if (nav.indexOf('en') !== -1) return 'en';
+    // Default to Simplified Chinese
+    return 'zh-CN';
+  }
+
+  // Initialize language
+  setLang(detectLang());
+
+  /* ════════════════════════════════════════════════
+     SCROLL ANIMATIONS
+     ════════════════════════════════════════════════ */
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('vis');
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.anim').forEach(function(el) { io.observe(el); });
+
+  /* ── Steps timeline animation ── */
+  var stepsIO = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var fill = document.getElementById('stepsConnFill');
+        if (fill) fill.style.width = '100%';
+        var items = e.target.querySelectorAll('.step-item');
+        items.forEach(function(item, i) {
+          setTimeout(function() { item.classList.add('active'); }, 150 + i * 250);
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  var sw = document.getElementById('stepsWrap');
+  if (sw) stepsIO.observe(sw);
+
+})();
+</script>
+
+</body>
+</html>
