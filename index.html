@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>POSX Promotion Reward Mechanism — Light (Responsive)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F6F8;
+    --bg-tertiary: #ECEEF2;
+    --bg-card: #FFFFFF;
+    --navy-900: #0B1A2E;
+    --navy-800: #122744;
+    --navy-700: #1A3558;
+    --navy-600: #2A4A72;
+    --text-primary: #0B1A2E;
+    --text-secondary: #3D5068;
+    --text-tertiary: #6B7D93;
+    --text-muted: #8E9DB0;
+    --gold-500: #9E7C1A;
+    --gold-400: #B8922A;
+    --gold-300: #C9A53F;
+    --gold-200: #D4B55C;
+    --gold-100: #E8D49A;
+    --gold-bg: #FDF8EC;
+    --border-light: #E2E6EC;
+    --border-medium: #CDD4DE;
+    --red-600: #B22D1F;
+    --red-500: #C0392B;
+    --red-400: #D44637;
+    --red-bg: #FDF2F0;
+    --green-600: #1D8348;
+    --green-bg: #F0FAF4;
+    --blue-600: #2471A3;
+    --blue-500: #2E86C1;
+    --blue-bg: #EDF5FC;
+    --shadow-sm: 0 1px 3px rgba(11,26,46,0.05);
+    --shadow-md: 0 4px 14px rgba(11,26,46,0.07);
+    --shadow-lg: 0 8px 28px rgba(11,26,46,0.09);
+    --font-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    --font-en: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    --lh-zh: 1.85;
+    --lh-tight: 1.35;
+    /* Responsive spacing */
+    --section-pad: 56px;
+    --container-pad: 48px;
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    line-height: var(--lh-zh);
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+    padding: 72px 0 60px;
+    border-bottom: 3px solid var(--gold-300);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 36px;
+  }
+  .header-brand {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: var(--gold-200);
+    font-weight: 600;
+  }
+  .header-date {
+    font-family: var(--font-en);
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1.5px;
+  }
+  .header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: var(--lh-tight);
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .header h1 span {
+    color: var(--gold-200);
+  }
+  .header-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 400;
+    max-width: 680px;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── MODULE OVERVIEW ── */
+  .overview {
+    padding: var(--section-pad) 0;
+    background: var(--bg-primary);
+  }
+  .section-label {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-500);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+    line-height: var(--lh-tight);
+  }
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .module-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 32px 26px 28px;
+    position: relative;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    box-shadow: var(--shadow-sm);
+  }
+  .module-card:hover {
+    border-color: var(--gold-300);
+    box-shadow: var(--shadow-md);
+  }
+  .module-num {
+    font-family: var(--font-en);
+    font-size: 52px;
+    font-weight: 900;
+    color: rgba(11,26,46,0.04);
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    line-height: 1;
+  }
+  .module-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    margin-bottom: 18px;
+  }
+  .module-icon.gold { background: var(--gold-bg); }
+  .module-icon.blue { background: var(--blue-bg); }
+  .module-icon.red { background: var(--red-bg); }
+  .module-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+  }
+  .module-card p {
+    font-size: 13.5px;
+    color: var(--text-tertiary);
+    line-height: 1.75;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border-light);
+  }
+
+  /* ── DIRECT REFERRAL ── */
+  .direct-referral {
+    padding: var(--section-pad) 0;
+    background: var(--bg-secondary);
+  }
+  .tier-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+  .tier-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 32px 26px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .tier-card.highlight {
+    border-color: var(--gold-300);
+    box-shadow: var(--shadow-md);
+  }
+  .tier-card.highlight::before {
+    content: '推荐';
+    position: absolute;
+    top: 14px;
+    right: -22px;
+    background: var(--gold-400);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 3px 30px;
+    transform: rotate(45deg);
+  }
+  .tier-label {
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .tier-threshold {
+    font-size: 14px;
+    color: var(--gold-500);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .tier-pct {
+    font-family: var(--font-en);
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .tier-pct span { font-size: 28px; }
+  .tier-card:nth-child(1) .tier-pct { color: var(--text-tertiary); }
+  .tier-card:nth-child(2) .tier-pct { color: var(--gold-400); }
+  .tier-card:nth-child(3) .tier-pct { color: var(--gold-500); }
+  .tier-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* Example Box */
+  .example-box {
+    background: var(--bg-card);
+    border-left: 3px solid var(--gold-400);
+    border-radius: 0 10px 10px 0;
+    padding: 26px 32px;
+    margin-top: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .example-box .ex-title {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-500);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .example-box p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: var(--lh-zh);
+  }
+  .example-box .highlight-num {
+    color: var(--gold-500);
+    font-weight: 700;
+  }
+
+  /* ── TEAM REWARDS ── */
+  .team-rewards {
+    padding: var(--section-pad) 0;
+    background: var(--bg-primary);
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .team-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .team-panel h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: var(--font-en);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .badge-gold { background: var(--gold-bg); color: var(--gold-500); }
+  .badge-blue { background: var(--blue-bg); color: var(--blue-600); }
+
+  .progress-tier {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 14px;
+  }
+  .pt-range {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    width: 125px;
+    flex-shrink: 0;
+    text-align: right;
+    font-weight: 500;
+  }
+  .pt-bar-wrap {
+    flex: 1;
+    height: 28px;
+    background: var(--bg-tertiary);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pt-bar {
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    transition: width 0.6s ease;
+    min-width: 38px;
+  }
+  .pt-bar.g1 { width: 15%; background: linear-gradient(90deg, #5B8DB8, #7BAAD0); }
+  .pt-bar.g2 { width: 30%; background: linear-gradient(90deg, #4A7DA8, #6A9DC5); }
+  .pt-bar.g3 { width: 50%; background: linear-gradient(90deg, #3A6D98, #5A8DB8); }
+  .pt-bar.g4 { width: 75%; background: linear-gradient(90deg, #2A5A85, var(--gold-400)); }
+  .pt-bar.g5 { width: 100%; background: linear-gradient(90deg, #2A5A85, var(--gold-400), var(--gold-300)); }
+  .pt-bar.b1 { width: 20%; background: linear-gradient(90deg, #5B8DB8, #7BAAD0); }
+  .pt-bar.b2 { width: 35%; background: linear-gradient(90deg, #4A7DA8, #6A9DC5); }
+  .pt-bar.b3 { width: 55%; background: linear-gradient(90deg, #3A6D98, #5A8DB8); }
+  .pt-bar.b4 { width: 75%; background: linear-gradient(90deg, #2A5A85, var(--gold-400)); }
+  .pt-bar.b5 { width: 100%; background: linear-gradient(90deg, #2A5A85, var(--gold-400), var(--gold-300)); }
+
+  /* Differential Diagram */
+  .diff-section { margin-top: 14px; }
+  .diff-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+  }
+  .diff-subtitle {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+  .diff-diagram {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+  }
+  .diff-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 110px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--bg-tertiary);
+    min-width: 500px;
+  }
+  .diff-row:last-child { border-bottom: none; }
+  .diff-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .diff-role.you { color: var(--gold-500); }
+  .diff-visual {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .diff-block {
+    height: 34px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 0 8px;
+  }
+  .diff-block.full { background: var(--gold-bg); color: var(--gold-500); border: 1px solid var(--gold-100); }
+  .diff-block.partial { background: var(--blue-bg); color: var(--blue-600); border: 1px solid #C5DCF0; }
+  .diff-block.earn { background: var(--gold-400); color: #fff; }
+  .diff-arrow { color: var(--text-muted); font-size: 18px; }
+  .diff-result {
+    text-align: right;
+    font-size: 13.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .diff-result.positive { color: var(--gold-500); }
+  .diff-result.zero { color: var(--red-500); }
+
+  /* KEY INSIGHT BOX */
+  .insight-box {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-100);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .insight-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(184,146,42,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .insight-box h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold-500);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .insight-box p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: var(--lh-zh);
+  }
+
+  /* ── EQUAL LEVEL BONUS ── */
+  .equal-level {
+    padding: var(--section-pad) 0;
+    background: var(--bg-secondary);
+  }
+  .el-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 34px;
+  }
+  .el-info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .el-info-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--gold-500);
+    letter-spacing: 0.3px;
+  }
+  .el-info-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: var(--lh-zh);
+  }
+  .el-table-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .el-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 520px;
+  }
+  .el-table thead th {
+    background: var(--navy-900);
+    padding: 16px 24px;
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-200);
+    text-align: left;
+    white-space: nowrap;
+  }
+  .el-table tbody td {
+    padding: 16px 24px;
+    font-size: 14.5px;
+    border-bottom: 1px solid var(--bg-tertiary);
+    color: var(--text-secondary);
+  }
+  .el-table tbody tr:last-child td { border-bottom: none; }
+  .el-table tbody tr:hover { background: var(--gold-bg); }
+  .el-table .layer-num {
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--gold-500);
+  }
+  .el-table .layer-name {
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .el-table .layer-pct {
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: 19px;
+  }
+  .el-table .layer-bar-cell { width: 40%; }
+  .el-layer-bar-wrap {
+    height: 24px;
+    background: var(--bg-tertiary);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .el-layer-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold-400), var(--gold-200));
+    transition: width 0.5s ease;
+  }
+
+  /* Team Cap Banner */
+  .team-cap-banner {
+    background: var(--gold-bg);
+    border: 2px solid var(--gold-300);
+    border-radius: 10px;
+    padding: 28px 34px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 34px;
+  }
+  .cap-number {
+    font-family: var(--font-en);
+    font-size: 54px;
+    font-weight: 900;
+    color: var(--gold-500);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .cap-number span { font-size: 26px; }
+  .cap-text h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold-500);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .cap-text p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: var(--lh-zh);
+  }
+
+  /* ── BURN MECHANISM ── */
+  .burn-section {
+    padding: var(--section-pad) 0;
+    background: var(--bg-secondary);
+  }
+  .burn-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .burn-icon-lg {
+    width: 40px;
+    height: 40px;
+    background: var(--red-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+  .burn-rules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-bottom: 34px;
+  }
+  .burn-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 26px;
+    box-shadow: var(--shadow-sm);
+  }
+  .burn-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--red-500);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .burn-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: var(--lh-zh);
+  }
+  .burn-card .val {
+    color: var(--gold-500);
+    font-weight: 600;
+  }
+
+  /* Burn Flow Diagram */
+  .burn-flow {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 34px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .burn-flow-title {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red-500);
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .flow-steps {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .flow-step {
+    flex: 1;
+    max-width: 210px;
+    text-align: center;
+    padding: 22px 16px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+  .flow-step .fs-num {
+    font-family: var(--font-en);
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .flow-step .fs-num.gold { color: var(--gold-500); }
+  .flow-step .fs-num.red { color: var(--red-500); }
+  .flow-step .fs-num.green { color: var(--green-600); }
+  .flow-step .fs-label {
+    font-size: 12.5px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+  .flow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 20px;
+  }
+
+  /* Burn Result Bar */
+  .burn-result {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 28px 32px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+  }
+  .burn-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .burn-bar-label span:first-child { color: var(--text-tertiary); }
+  .burn-bar-label span:last-child { color: var(--gold-500); font-weight: 600; }
+  .burn-bar-track {
+    height: 40px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .burn-bar-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .burn-bar-fill.active {
+    background: linear-gradient(90deg, var(--gold-400), var(--gold-300));
+    color: #fff;
+    width: 10%;
+  }
+  .burn-bar-fill.burned {
+    background: linear-gradient(90deg, var(--red-500), var(--red-600));
+    color: #fff;
+    width: 90%;
+  }
+  .burn-notes {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .burn-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--text-tertiary);
+  }
+  .burn-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .burn-dot.gold { background: var(--gold-400); }
+  .burn-dot.red { background: var(--red-500); }
+
+  /* FOUR NO'S */
+  .four-nos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .no-card {
+    background: var(--red-bg);
+    border: 1px solid rgba(192,57,43,0.12);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .no-card .no-icon { font-size: 22px; margin-bottom: 8px; }
+  .no-card .no-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--red-500);
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+  .no-card .no-desc {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* ── NOTICE BANNER ── */
+  .notice-section {
+    padding: 0 0 48px;
+    background: var(--bg-secondary);
+  }
+  .notice-banner {
+    background: #FFFCF0;
+    border: 1px solid #F0D97A;
+    border-radius: 10px;
+    padding: 24px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .notice-icon {
+    width: 34px;
+    height: 34px;
+    background: rgba(201,165,63,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .notice-banner h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #8B6914;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .notice-banner p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: var(--lh-zh);
+  }
+  .notice-banner .notice-date {
+    color: #8B6914;
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 36px 0;
+    background: var(--navy-900);
+    border-top: 3px solid var(--gold-300);
+    color: #fff;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-family: var(--font-en);
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .footer-right {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.3px;
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE BREAKPOINTS
+     ═══════════════════════════════════════════ */
+
+  /* ── Tablet (≤ 1024px) ── */
+  @media (max-width: 1024px) {
+    :root {
+      --container-pad: 32px;
+      --section-pad: 44px;
+    }
+    .module-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .four-nos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ── Mobile Large (≤ 768px) ── */
+  @media (max-width: 768px) {
+    :root {
+      --container-pad: 20px;
+      --section-pad: 36px;
+    }
+    body { font-size: 14px; }
+
+    .header { padding: 48px 0 40px; }
+    .header-top { margin-bottom: 24px; }
+    .header-brand { font-size: 10px; letter-spacing: 3px; }
+    .header-date { font-size: 10px; }
+    .header h1 { font-size: 30px; }
+    .header-sub { font-size: 13.5px; line-height: 1.75; }
+
+    .section-title { font-size: 22px; margin-bottom: 28px; }
+    .section-label { font-size: 10px; letter-spacing: 3px; }
+
+    .module-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .module-card { padding: 24px 20px 22px; }
+    .module-card h3 { font-size: 15px; }
+    .module-card p { font-size: 12.5px; }
+    .module-num { font-size: 40px; }
+
+    .tier-row { grid-template-columns: 1fr; gap: 14px; }
+    .tier-pct { font-size: 44px; }
+    .tier-pct span { font-size: 22px; }
+    .tier-threshold { font-size: 13px; }
+
+    .example-box { padding: 20px 22px; }
+    .example-box p { font-size: 13.5px; }
+
+    .team-grid { grid-template-columns: 1fr; gap: 16px; }
+    .team-panel { padding: 24px; }
+    .team-panel h4 { font-size: 15px; margin-bottom: 18px; }
+    .pt-range { width: 100px; font-size: 12px; }
+
+    .diff-title { font-size: 18px; }
+    .diff-diagram { padding: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    .insight-box { padding: 22px 24px; gap: 14px; }
+    .insight-box h4 { font-size: 14px; }
+    .insight-box p { font-size: 12.5px; }
+
+    .el-intro { grid-template-columns: 1fr; gap: 14px; }
+    .el-info-card { padding: 22px; }
+    .el-info-card h4 { font-size: 14px; }
+    .el-info-card p { font-size: 13px; }
+
+    .team-cap-banner { padding: 22px 24px; gap: 18px; }
+    .cap-number { font-size: 42px; }
+    .cap-number span { font-size: 20px; }
+    .cap-text h4 { font-size: 14px; }
+    .cap-text p { font-size: 13px; }
+
+    .burn-rules { grid-template-columns: 1fr; gap: 14px; }
+    .burn-card { padding: 22px; }
+    .burn-card h4 { font-size: 13px; }
+    .burn-card p { font-size: 13px; }
+
+    .burn-flow { padding: 24px 20px; }
+    .flow-steps { flex-direction: column; align-items: center; gap: 0; }
+    .flow-step { max-width: 100%; width: 100%; }
+    .flow-step .fs-num { font-size: 22px; }
+    .flow-connector {
+      width: auto;
+      height: 32px;
+      transform: rotate(90deg);
+    }
+
+    .burn-result { padding: 22px; }
+    .burn-bar-label { font-size: 12px; }
+    .burn-bar-fill { font-size: 11px; }
+
+    .four-nos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .no-card { padding: 16px 12px; }
+    .no-card .no-text { font-size: 13px; }
+    .no-card .no-desc { font-size: 11px; }
+
+    .notice-banner { padding: 20px; gap: 12px; }
+    .notice-banner h4 { font-size: 13px; }
+    .notice-banner p { font-size: 12.5px; }
+
+    .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
+    .footer-left { font-size: 9px; letter-spacing: 1.5px; }
+    .footer-right { font-size: 10px; }
+  }
+
+  /* ── Mobile Small (≤ 480px) ── */
+  @media (max-width: 480px) {
+    :root {
+      --container-pad: 16px;
+      --section-pad: 28px;
+    }
+    body { font-size: 13.5px; }
+
+    .header { padding: 36px 0 30px; }
+    .header-top { margin-bottom: 18px; flex-direction: column; gap: 6px; }
+    .header-brand { font-size: 9px; letter-spacing: 2.5px; }
+    .header h1 { font-size: 24px; }
+    .header-sub { font-size: 12.5px; line-height: 1.7; }
+
+    .section-title { font-size: 19px; margin-bottom: 22px; }
+    .section-label { font-size: 9px; letter-spacing: 2.5px; margin-bottom: 8px; }
+
+    .module-grid { grid-template-columns: 1fr; gap: 12px; }
+    .module-card { padding: 20px 18px; }
+    .module-num { font-size: 36px; }
+    .module-icon { width: 36px; height: 36px; font-size: 16px; margin-bottom: 14px; }
+    .module-card h3 { font-size: 14.5px; }
+    .module-card p { font-size: 12px; }
+
+    .tier-card { padding: 24px 20px; }
+    .tier-pct { font-size: 38px; }
+    .tier-pct span { font-size: 18px; }
+    .tier-label { font-size: 10px; letter-spacing: 2px; }
+    .tier-threshold { font-size: 12px; margin-bottom: 14px; }
+    .tier-desc { font-size: 11.5px; }
+
+    .example-box { padding: 18px; }
+    .example-box .ex-title { font-size: 10px; letter-spacing: 2px; }
+    .example-box p { font-size: 13px; }
+
+    .team-panel { padding: 20px 18px; }
+    .team-panel h4 { font-size: 14px; margin-bottom: 16px; }
+    .pt-range { width: 85px; font-size: 11px; }
+    .pt-bar { font-size: 10px; padding-left: 8px; min-width: 30px; }
+    .pt-bar-wrap { height: 24px; }
+
+    .diff-title { font-size: 16px; }
+    .diff-subtitle { font-size: 12.5px; }
+    .diff-diagram { padding: 16px; }
+
+    .insight-box { grid-template-columns: 1fr; padding: 20px; }
+    .insight-icon { display: none; }
+
+    .el-info-card { padding: 18px; }
+    .el-table thead th { padding: 12px 16px; font-size: 10px; }
+    .el-table tbody td { padding: 12px 16px; font-size: 13px; }
+    .el-table .layer-num { font-size: 17px; }
+    .el-table .layer-pct { font-size: 16px; }
+
+    .team-cap-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 12px;
+    }
+    .cap-number { font-size: 36px; }
+    .cap-text h4 { font-size: 13.5px; }
+    .cap-text p { font-size: 12.5px; }
+
+    .burn-header { gap: 10px; }
+    .section-title { font-size: 18px; }
+    .burn-icon-lg { width: 34px; height: 34px; font-size: 16px; }
+
+    .burn-card { padding: 18px; }
+    .burn-card h4 { font-size: 12.5px; }
+    .burn-card p { font-size: 12.5px; }
+
+    .flow-step { padding: 16px 14px; }
+    .flow-step .fs-num { font-size: 20px; }
+    .flow-step .fs-label { font-size: 11.5px; }
+
+    .burn-result { padding: 18px; }
+    .burn-bar-track { height: 34px; }
+
+    .four-nos { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .no-card { padding: 14px 10px; }
+    .no-card .no-icon { font-size: 18px; margin-bottom: 6px; }
+    .no-card .no-text { font-size: 12px; }
+    .no-card .no-desc { font-size: 10.5px; }
+
+    .notice-banner { flex-direction: column; padding: 18px; }
+    .notice-icon { width: 28px; height: 28px; font-size: 14px; }
+    .notice-banner h4 { font-size: 12.5px; }
+    .notice-banner p { font-size: 12px; }
+
+    .footer { padding: 28px 0; }
+  }
+
+  /* ── Safe area for notched phones ── */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .footer {
+      padding-bottom: calc(36px + env(safe-area-inset-bottom));
+    }
+    .header {
+      padding-top: calc(72px + env(safe-area-inset-top));
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="header">
+  <div class="container">
+    <div class="header-top">
+      <div class="header-brand">POSX · Institutional Research</div>
+      <div class="header-date">March 2026 · Confidential</div>
+    </div>
+    <h1>POSX 推广奖励机制<br><span>完整架构解析</span></h1>
+    <div class="header-sub">四层奖励架构 · 极差制团队激励 · 平级递减奖 · 烧伤风控机制 — 以 USDT 等值计价，UTC+8 每24小时结算</div>
+  </div>
+</div>
+
+<!-- ═══════════ MODULE OVERVIEW ═══════════ -->
+<div class="overview">
+  <div class="container">
+    <div class="section-label">Architecture Overview</div>
+    <div class="section-title">四大核心模块</div>
+    <div class="module-grid">
+
+      <div class="module-card">
+        <div class="module-num">01</div>
+        <div class="module-icon gold">💰</div>
+        <h3>直推奖励</h3>
+        <p>一代推荐提成 — 直接推荐人入金时获得一次性比例提成，按自身档位决定比例（5%／10%／15%）</p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">02</div>
+        <div class="module-icon blue">📊</div>
+        <h3>团队奖励</h3>
+        <p>极差制（级差制） — 按个人档位与团队业绩阶梯取差额，下级平级则归零，鼓励横向拓展</p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">03</div>
+        <div class="module-icon" style="background:var(--green-bg);">🤝</div>
+        <h3>平级奖</h3>
+        <p>下级与你平级后，从第6层起按 3% 递减拿奖励，持续激励深度培育</p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">04</div>
+        <div class="module-icon red">🔥</div>
+        <h3>烧伤机制</h3>
+        <p>持仓匹配限制 — 提成上限与自身持仓挂钩，超出部分直接烧毁，防止空手套利</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════ DIRECT REFERRAL ═══════════ -->
+<div class="direct-referral">
+  <div class="container">
+    <div class="section-label">Reward Rules 1</div>
+    <div class="section-title">直推奖励 — 三档提成比例</div>
+
+    <div class="tier-row">
+      <div class="tier-card">
+        <div class="tier-label">基础档</div>
+        <div class="tier-threshold">入金 ≥ 1,000U 且 &lt; 10,000U</div>
+        <div class="tier-pct">5<span>%</span></div>
+        <div class="tier-desc">入门级别，最低1,000U即可参与</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-label">进阶档</div>
+        <div class="tier-threshold">入金 ≥ 10,000U</div>
+        <div class="tier-pct">10<span>%</span></div>
+        <div class="tier-desc">中等投入，提成翻倍</div>
+      </div>
+      <div class="tier-card highlight">
+        <div class="tier-label">精英档</div>
+        <div class="tier-threshold">入金 ≥ 50,000U</div>
+        <div class="tier-pct">15<span>%</span></div>
+        <div class="tier-desc">最高比例，享受顶级直推回报</div>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-title">计算示例</div>
+      <p>你是 <span class="highlight-num">5万U档（15%）</span>，直推的人入金了 <span class="highlight-num">2万U</span><br>
+      直推奖励 = 20,000 × 15% = <span class="highlight-num">3,000U</span> 等值 POSX（受烧伤机制限制）</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════ TEAM REWARDS ═══════════ -->
+<div class="team-rewards">
+  <div class="container">
+    <div class="section-label">Reward Rules 2</div>
+    <div class="section-title">团队奖励 — 极差制阶梯</div>
+
+    <div class="team-grid">
+      <div class="team-panel">
+        <h4>1万U档 阶梯 <span class="badge badge-blue">≥ 10,000U</span></h4>
+        <div class="progress-tier">
+          <div class="pt-range">1 — 10万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar g1">1%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">10.1 — 50万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar g2">3%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">50.1 — 100万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar g3">5%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">100.1 — 500万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar g4">10%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">500万U+</div>
+          <div class="pt-bar-wrap"><div class="pt-bar g5">15%</div></div>
+        </div>
+      </div>
+
+      <div class="team-panel">
+        <h4>5万U档 阶梯 <span class="badge badge-gold">≥ 50,000U</span></h4>
+        <div class="progress-tier">
+          <div class="pt-range">1 — 10万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar b1">2%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">10.1 — 50万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar b2">3%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">50.1 — 100万U</div>
+          <div class="pt-bar-wrap"><div class="pt-bar b3">5%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">100万U+</div>
+          <div class="pt-bar-wrap"><div class="pt-bar b4">10%</div></div>
+        </div>
+        <div class="progress-tier">
+          <div class="pt-range">更高层级</div>
+          <div class="pt-bar-wrap"><div class="pt-bar b5">15%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Differential Diagram -->
+    <div class="diff-section">
+      <div class="diff-title">极差计算实例</div>
+      <div class="diff-subtitle">你是5万U档，团队累计业绩200万U → 你的级别 = 10%</div>
+      <div class="diff-diagram">
+        <div class="diff-row">
+          <div class="diff-role you">▎你（10%）</div>
+          <div class="diff-visual">
+            <div class="diff-block full" style="width:120px;">你的级别 10%</div>
+            <span class="diff-arrow">−</span>
+            <div class="diff-block partial" style="width:70px;">A线 5%</div>
+            <span class="diff-arrow">=</span>
+            <div class="diff-block earn" style="width:70px;">赚 5%</div>
+          </div>
+          <div class="diff-result positive">A线 80万U × 5%</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-role you">▎你（10%）</div>
+          <div class="diff-visual">
+            <div class="diff-block full" style="width:120px;">你的级别 10%</div>
+            <span class="diff-arrow">−</span>
+            <div class="diff-block partial" style="width:70px;">B线 3%</div>
+            <span class="diff-arrow">=</span>
+            <div class="diff-block earn" style="width:70px;">赚 7%</div>
+          </div>
+          <div class="diff-result positive">B线 30万U × 7%</div>
+        </div>
+        <div class="diff-row" style="opacity:0.5;">
+          <div class="diff-role you">▎你（10%）</div>
+          <div class="diff-visual">
+            <div class="diff-block full" style="width:120px;">你的级别 10%</div>
+            <span class="diff-arrow">−</span>
+            <div class="diff-block partial" style="width:70px;">A线 10%</div>
+            <span class="diff-arrow">=</span>
+            <div class="diff-block earn" style="width:70px; background:var(--red-500); color:#fff;">0%</div>
+          </div>
+          <div class="diff-result zero">A线出局 ✕</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-icon">⚡</div>
+      <div>
+        <h4>极差制的战略意义</h4>
+        <p><strong>公平性</strong> — 不是无限吃下级，按能力阶梯拿差额&nbsp;&nbsp;·&nbsp;&nbsp;<strong>去中心化</strong> — 下级成长到平级时自动出局&nbsp;&nbsp;·&nbsp;&nbsp;<strong>拓宽导向</strong> — 推动不断开发新团队线&nbsp;&nbsp;·&nbsp;&nbsp;<strong>可持续</strong> — 差额制天然限制奖金叠加支出</p>
+      </div>
+    </div>
+
+    <!-- Team Cap Banner -->
+    <div class="team-cap-banner">
+      <div class="cap-number">15<span>%</span></div>
+      <div class="cap-text">
+        <h4>团队奖励总上限</h4>
+        <p>无论团队业绩和架构如何增长，单个账户的团队奖励比例最高不超过 15%。此上限确保制度的可持续性与奖金支出的可控性。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════ EQUAL LEVEL BONUS ═══════════ -->
+<div class="equal-level">
+  <div class="container">
+    <div class="section-label">Reward Rules 3</div>
+    <div class="section-title">平级奖 — 递减式深度激励</div>
+
+    <div class="el-intro">
+      <div class="el-info-card">
+        <h4>📐 业绩统计范围</h4>
+        <p>团队业绩统计 <strong style="color:var(--gold-500);">伞下所有人</strong> 的总业绩（全网体），不分层级、不分线别，所有下属入金均计入你的团队总业绩。</p>
+      </div>
+      <div class="el-info-card">
+        <h4>🎯 奖励领取范围</h4>
+        <p>虽然业绩统计涵盖全网体，但团队奖励（极差）仅从 <strong style="color:var(--gold-500);">第2层到第7层</strong> 领取。平级奖从 <strong style="color:var(--gold-500);">第6层</strong> 开始计算，共6层递减。</p>
+      </div>
+    </div>
+
+    <!-- Equal Level Table -->
+    <div class="el-table-wrap">
+      <table class="el-table">
+        <thead>
+          <tr>
+            <th style="width:80px;">层级</th>
+            <th style="width:180px;">层级说明</th>
+            <th style="width:120px;">奖励比例</th>
+            <th>递减可视化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="layer-num">6</span></td>
+            <td class="layer-name">平级第 1 层</td>
+            <td><span class="layer-pct" style="color:var(--gold-500);">3.00%</span></td>
+            <td class="layer-bar-cell">
+              <div class="el-layer-bar-wrap"><div class="el-layer-bar" style="width:100%;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="layer-num">7</span></td>
+            <td class="layer-name">平级第 2 层</td>
+            <td><span class="layer-pct" style="color:var(--gold-400);">1.00%</span></td>
+            <td class="layer-bar-cell">
+              <div class="el-layer-bar-wrap"><div class="el-layer-bar" style="width:33%;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="layer-num">8</span></td>
+            <td class="layer-name">平级第 3 层</td>
+            <td><span class="layer-pct" style="color:var(--gold-300);">0.50%</span></td>
+            <td class="layer-bar-cell">
+              <div class="el-layer-bar-wrap"><div class="el-layer-bar" style="width:17%;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="layer-num">9</span></td>
+            <td class="layer-name">平级第 4 层</td>
+            <td><span class="layer-pct" style="color:var(--gold-200);">0.30%</span></td>
+            <td class="layer-bar-cell">
+              <div class="el-layer-bar-wrap"><div class="el-layer-bar" style="width:10%;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="layer-num">10</span></td>
+            <td class="layer-name">平级第 5 层</td>
+            <td><span class="layer-pct" style="color:var(--text-tertiary);">0.15%</span></td>
+            <td class="layer-bar-cell">
+              <div class="el-layer-bar-wrap"><div class="el-layer-bar" style="width:5%;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="layer-num">11</span></td>
+            <td class="layer-name">平级第 6 层</td>
+            <td><span class="layer-pct" style="color:var(--text-muted);">0.05%</span></td>
+            <td class="layer-bar-cell">
+              <div class="el-layer-bar-wrap"><div class="el-layer-bar" style="width:2%;"></div></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-title">平级奖触发逻辑</div>
+      <p>当你的某条线下属与你达到 <span class="highlight-num">同一团队奖励级别</span> 时（极差归零），平级奖自动启动。<br>
+      从该平级下属的 <span class="highlight-num">第6层</span> 起，你可以按上表比例获取其团队业绩的递减奖励。<br>
+      合计6层：<span class="highlight-num">3% → 1% → 0.5% → 0.3% → 0.15% → 0.05%</span>，总计 <span class="highlight-num">5%</span></p>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-icon">🤝</div>
+      <div>
+        <h4>平级奖的设计目的</h4>
+        <p><strong>补偿机制</strong> — 极差归零后仍有持续收益，奖励早期培育功劳&nbsp;&nbsp;·&nbsp;&nbsp;<strong>深度激励</strong> — 鼓励帮助下级成长到平级，而非压制其发展&nbsp;&nbsp;·&nbsp;&nbsp;<strong>递减平衡</strong> — 从3%快速递减至0.05%，确保不过度叠加</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════ BURN MECHANISM ═══════════ -->
+<div class="burn-section">
+  <div class="container">
+    <div class="section-label">Reward Rules 4</div>
+    <div class="burn-header">
+      <div class="burn-icon-lg">🔥</div>
+      <div class="section-title" style="margin-bottom:0;">烧伤机制 — 持仓匹配风控</div>
+    </div>
+    <p style="font-size:15px; color:var(--text-secondary); margin-bottom:34px; max-width:720px; line-height:1.85;">
+      核心原则：你必须有真实持仓，才能享受推广收益。提成上限 = 自身持仓等值额度。
+    </p>
+
+    <div class="burn-rules">
+      <div class="burn-card">
+        <h4>🚪 参与门槛</h4>
+        <p>最低持有 <span class="val">≥ 1,000U</span> 等值 POSX 才能参与推广和提成计算。低于此额度不参与任何奖励。</p>
+      </div>
+      <div class="burn-card">
+        <h4>📏 提成上限</h4>
+        <p>当持有额度 <span class="val">≤ 1万U</span> 时，直推提成上限 = 自身持有的 POSX 等值额度。超出部分直接烧毁。</p>
+      </div>
+      <div class="burn-card">
+        <h4>🔄 补仓规则</h4>
+        <p>可随时补充持仓额度，但仅对 <span class="val">未来新增业绩</span> 生效。已烧伤的历史业绩不追溯、不补发。</p>
+      </div>
+      <div class="burn-card">
+        <h4>⏱ 时效性</h4>
+        <p>烧伤为 <span class="val">即时生效</span>，不累计、不顺延、不补发。错过的就是错过的。</p>
+      </div>
+    </div>
+
+    <!-- Burn Flow -->
+    <div class="burn-flow">
+      <div class="burn-flow-title">完整案例推演</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="fs-num gold">1,000U</div>
+          <div class="fs-label">上级持有 POSX</div>
+        </div>
+        <div class="flow-connector">→</div>
+        <div class="flow-step">
+          <div class="fs-num" style="color:var(--blue-500)">10,000U</div>
+          <div class="fs-label">下级入金额</div>
+        </div>
+        <div class="flow-connector">→</div>
+        <div class="flow-step">
+          <div class="fs-num green">1,000U</div>
+          <div class="fs-label">可享受的匹配额度</div>
+        </div>
+        <div class="flow-connector">→</div>
+        <div class="flow-step">
+          <div class="fs-num red">9,000U</div>
+          <div class="fs-label">烧伤部分（永久失效）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Bar -->
+    <div class="burn-result">
+      <div class="burn-bar-label">
+        <span>下级入金 10,000U 的提成分配</span>
+        <span>匹配额度 1,000U / 10,000U</span>
+      </div>
+      <div class="burn-bar-track">
+        <div class="burn-bar-fill active">有效</div>
+        <div class="burn-bar-fill burned">🔥 烧伤 — 永不追溯</div>
+      </div>
+      <div class="burn-notes">
+        <div class="burn-note"><div class="burn-dot gold"></div>有效提成额度（10%）</div>
+        <div class="burn-note"><div class="burn-dot red"></div>烧伤部分（90%）— 后续补仓亦不追溯</div>
+      </div>
+    </div>
+
+    <!-- Four No's -->
+    <div class="four-nos">
+      <div class="no-card">
+        <div class="no-icon">🚫</div>
+        <div class="no-text">不累计</div>
+        <div class="no-desc">烧掉就是烧掉</div>
+      </div>
+      <div class="no-card">
+        <div class="no-icon">🚫</div>
+        <div class="no-text">不顺延</div>
+        <div class="no-desc">不会留到以后再算</div>
+      </div>
+      <div class="no-card">
+        <div class="no-icon">🚫</div>
+        <div class="no-text">不补发</div>
+        <div class="no-desc">后续补仓也不追溯</div>
+      </div>
+      <div class="no-card">
+        <div class="no-icon">🚫</div>
+        <div class="no-text">即时生效</div>
+        <div class="no-desc">超出部分立即烧毁</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ NOTICE ═══════════ -->
+<div class="notice-section">
+  <div class="container">
+    <div class="notice-banner">
+      <div class="notice-icon">⚠</div>
+      <div>
+        <h4>重要公告 · OFFICIAL NOTICE</h4>
+        <p>自 <span class="notice-date">2026年3月15日</span> 至 <span class="notice-date">2026年3月20日</span> 期间，团队奖励结算系统处于技术测试与校准阶段（Beta Testing Phase）。在此期间，团队奖励的计算与发放可能存在一定延迟，实际到账时间以系统结算完成为准。测试期结束后，所有奖励将按照既定规则恢复正常结算周期。感谢您的理解与配合。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">POSX Reward Architecture · Institutional Overview</div>
+      <div class="footer-right">以 USDT 等值计价 · UTC+8 每24小时结算 · 本文件仅供内部参考</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
