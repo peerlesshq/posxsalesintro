@@ -718,7 +718,7 @@ html[lang="ko"] body {
             <span class="q-info-val" id="qDynDirect">0 U</span>
           </div>
           <div class="q-info-row">
-            <span class="q-info-label"><span data-i18n="q_team_reward">团队奖励</span> <span id="qDynTeamPct" class="en" style="font-size:.6875rem;color:var(--text-4);"></span> <span id="qVLevel" class="q-v-badge" style="display:none;"></span></span>
+            <span class="q-info-label"><span data-i18n="q_team_reward">团队奖励</span> <span id="qDynTeamPct" class="en" style="font-size:.6875rem;color:var(--text-4);"></span></span>
             <span class="q-info-val" id="qDynTeam">0 U</span>
           </div>
           <div class="q-info-row" style="border-top:2px solid rgba(180,151,90,.2);padding-top:8px;margin-top:2px;">
@@ -833,9 +833,9 @@ html[lang="ko"] body {
                   <label class="calc-label" data-i18n="calc_line_level">该线路最高级别</label>
                   <select class="calc-select calc-line-level-select">
                     <option value="0">&mdash; 0%</option>
-                    <option value="1">V1 (1%)</option><option value="2">V1 (2%)</option>
-                    <option value="3">V2 (3%)</option><option value="5">V3 (5%)</option>
-                    <option value="10">V4 (10%)</option><option value="15">V5 (15%)</option>
+                    <option value="1">1%</option><option value="2">2%</option>
+                    <option value="3">3%</option><option value="5">5%</option>
+                    <option value="10">10%</option><option value="15">15%</option>
                   </select>
                 </div>
               </div>
@@ -1570,15 +1570,6 @@ html[lang="ko"] body {
     document.getElementById('qDynTeamPct').textContent = teamDiff > 0 ? '(' + teamDiff + '%)' : '';
     document.getElementById('qDynTeam').textContent = fmtU(teamReward);
 
-    var vBadge = document.getElementById('qVLevel');
-    var vLabel = getVLevel(myLevel);
-    if (vLabel && teamPerf > 0) {
-      vBadge.textContent = vLabel;
-      vBadge.style.display = 'inline-flex';
-    } else {
-      vBadge.style.display = 'none';
-    }
-
     var commTotal = netDirect + teamReward;
 
     document.getElementById('qDynTotal').textContent = fmtU(commTotal);
@@ -1668,7 +1659,7 @@ html[lang="ko"] body {
       '<div class="calc-row"><label class="calc-label" data-i18n="calc_line_perf">' + txt('calc_line_perf') + '</label>' +
       '<input class="calc-input calc-line-perf-input" type="number" min="0" placeholder="' + txt('calc_line_perf_ph') + '" data-i18n-placeholder="calc_line_perf_ph"></div>' +
       '<div class="calc-row"><label class="calc-label" data-i18n="calc_line_level">' + txt('calc_line_level') + '</label>' +
-      '<select class="calc-select calc-line-level-select"><option value="0">\u2014 0%</option><option value="1">V1 (1%)</option><option value="2">V1 (2%)</option><option value="3">V2 (3%)</option><option value="5">V3 (5%)</option><option value="10">V4 (10%)</option><option value="15">V5 (15%)</option></select></div>';
+      '<select class="calc-select calc-line-level-select"><option value="0">\u2014 0%</option><option value="1">1%</option><option value="2">2%</option><option value="3">3%</option><option value="5">5%</option><option value="10">10%</option><option value="15">15%</option></select></div>';
     wrap.appendChild(div);
     div.querySelector('.calc-line-perf-input').addEventListener('input', runCalc);
     div.querySelector('.calc-line-level-select').addEventListener('change', runCalc);
@@ -1754,8 +1745,7 @@ html[lang="ko"] body {
 
       var row = document.createElement('div');
       row.className = 'adv-result-detail';
-      var downV = getVLevel(downlineLevel);
-      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + (downV || '0%') + ' → ' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span>' + fmtU(reward) + '</span>';
+      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span>' + fmtU(reward) + '</span>';
       teamBreakdown.appendChild(row);
     });
 
@@ -1764,10 +1754,9 @@ html[lang="ko"] body {
 
     document.getElementById('calcTeamTotal').textContent = fmtU(totalTeam);
 
-    var myVLabel = getVLevel(myLevel);
     var myLevelEl = document.getElementById('calcMyLevel');
-    if (myVLabel && teamPerf > 0) {
-      myLevelEl.textContent = myVLabel + ' (' + myLevel + '%)';
+    if (myLevel > 0 && teamPerf > 0) {
+      myLevelEl.textContent = myLevel + '%';
       myLevelEl.style.display = 'inline-flex';
     } else {
       myLevelEl.style.display = 'none';

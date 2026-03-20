@@ -630,12 +630,6 @@ html[lang="ko"] body {
 }
 .tier-stack-row:first-child { border-top: none; padding-top: 0; }
 .tier-stack-row strong { color: var(--navy); font-weight: 700; }
-.tier-v-tag {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 18px; border-radius: 4px; flex-shrink: 0;
-  background: var(--navy); color: #fff;
-  font-family: 'Inter', sans-serif; font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.5px;
-}
 .diff-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -724,12 +718,6 @@ html[lang="ko"] body {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--gold), var(--gold-light));
-}
-.equal-layer p {
-  font-size: 0.75rem;
-  line-height: 1.65;
-  color: var(--text-3);
-  overflow-wrap: anywhere;
 }
 .burn-grid {
   display: grid;
@@ -1492,7 +1480,7 @@ html[lang="en"] .reward-notice p {
         </div>
         <div class="reward-note">
           <h5 data-i18n="direct_example_title">计算示例</h5>
-          <p data-i18n="direct_example_body">你是 5万U 档（15%），直属下级入金 20,000U，则直推奖励 = 20,000 × 15% = 3,000U。若超过持仓匹配额度，超出部分按烧伤规则处理。</p>
+          <p data-i18n="direct_example_body">你是 5万U 档（15%），直属下级入金 20,000U，则直推奖励 = 20,000 × 15% = 3,000U。</p>
         </div>
       </div>
     </details>
@@ -1516,11 +1504,11 @@ html[lang="en"] .reward-notice p {
               <span class="tier-stack-badge">≥ 10,000U</span>
             </div>
             <div class="tier-stack-list">
-              <div class="tier-stack-row"><span class="tier-v-tag">V1</span><span data-i18n="team_panel1_row1_range">1 - 10万U</span><strong>1%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V2</span><span data-i18n="team_panel1_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V3</span><span data-i18n="team_panel1_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V4</span><span data-i18n="team_panel1_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V5</span><span data-i18n="team_panel1_row5_range">500万U+</span><strong>15%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row1_range">1 - 10万U</span><strong>1%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel1_row5_range">500万U+</span><strong>15%</strong></div>
             </div>
           </div>
           <div class="tier-stack-card">
@@ -1529,11 +1517,11 @@ html[lang="en"] .reward-notice p {
               <span class="tier-stack-badge">≥ 50,000U</span>
             </div>
             <div class="tier-stack-list">
-              <div class="tier-stack-row"><span class="tier-v-tag">V1</span><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>2%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V2</span><span data-i18n="team_panel2_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V3</span><span data-i18n="team_panel2_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V4</span><span data-i18n="team_panel2_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
-              <div class="tier-stack-row"><span class="tier-v-tag">V5</span><span data-i18n="team_panel2_row5_range">500万U+</span><strong>15%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>2%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row5_range">500万U+</span><strong>15%</strong></div>
             </div>
           </div>
         </div>
@@ -1542,16 +1530,16 @@ html[lang="en"] .reward-notice p {
           <div class="diff-card">
             <div class="diff-card-head">
               <div class="diff-card-title" data-i18n="team_diff1_title">A 线示例</div>
-              <div class="diff-card-pct">V4 10% - V3 5% = 5%</div>
+              <div class="diff-card-pct">10% - 5% = 5%</div>
             </div>
-            <p data-i18n="team_diff1_body">如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线可获得 5% 极差收益；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。</p>
+            <p data-i18n="team_diff1_body">如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线极差 = 10% - 5% = 5%；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。</p>
           </div>
           <div class="diff-card">
             <div class="diff-card-head">
               <div class="diff-card-title" data-i18n="team_diff2_title">B 线示例</div>
-              <div class="diff-card-pct">V4 10% - V2 3% = 7%</div>
+              <div class="diff-card-pct">10% - 3% = 7%</div>
             </div>
-            <p data-i18n="team_diff2_body">如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线可获得 7% 极差收益；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。</p>
+            <p data-i18n="team_diff2_body">如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线极差 = 10% - 3% = 7%；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。</p>
           </div>
         </div>
 
@@ -1591,34 +1579,29 @@ html[lang="en"] .reward-notice p {
           <div class="equal-layer">
             <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l1_title">平级第 1 层</span><span class="equal-layer-rate">3.00%</span></div>
             <div class="equal-bar"><span style="width:100%"></span></div>
-            <p data-i18n="equal_l1_desc">对应全表最高平级奖励比例，从平级下属的第 6 层开始计算。</p>
           </div>
           <div class="equal-layer">
             <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l2_title">平级第 2 层</span><span class="equal-layer-rate">1.00%</span></div>
             <div class="equal-bar"><span style="width:33%"></span></div>
-            <p data-i18n="equal_l2_desc">第 7 层对应比例，延续深度培育激励，但开始明显递减。</p>
           </div>
           <div class="equal-layer">
             <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l3_title">平级第 3 层</span><span class="equal-layer-rate">0.50%</span></div>
             <div class="equal-bar"><span style="width:17%"></span></div>
-            <p data-i18n="equal_l3_desc">第 8 层对应比例，继续保留深层结构收益。</p>
           </div>
           <div class="equal-layer">
             <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l4_title">平级第 4 层</span><span class="equal-layer-rate">0.30%</span></div>
             <div class="equal-bar"><span style="width:10%"></span></div>
-            <p data-i18n="equal_l4_desc">第 9 层对应比例，递减速度进一步放缓。</p>
           </div>
           <div class="equal-layer">
             <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l5_title">平级第 5 层</span><span class="equal-layer-rate">0.15%</span></div>
             <div class="equal-bar"><span style="width:5%"></span></div>
-            <p data-i18n="equal_l5_desc">第 10 层对应比例，用于补偿长期培育带来的延展价值。</p>
           </div>
           <div class="equal-layer">
             <div class="equal-layer-top"><span class="equal-layer-title" data-i18n="equal_l6_title">平级第 6 层</span><span class="equal-layer-rate">0.05%</span></div>
             <div class="equal-bar"><span style="width:2%"></span></div>
-            <p data-i18n="equal_l6_desc">第 11 层对应比例，平级奖最后一层，总计 5%。</p>
           </div>
         </div>
+        <div class="equal-note" style="margin-top:10px;font-size:0.6875rem;color:var(--text-4);line-height:1.6;" data-i18n="equal_note">各层比例从平级下属向上逐层递减发放。</div>
 
         <div class="reward-note">
           <h5 data-i18n="equal_trigger_title">触发逻辑</h5>
@@ -1832,7 +1815,7 @@ html[lang="en"] .reward-notice p {
       direct_tier2_label: '进阶档', direct_tier2_value: '10%', direct_tier2_desc: '入金 ≥ 10,000U，可获得进阶档直推奖励比例。',
       direct_tier3_label: '精英档', direct_tier3_value: '15%', direct_tier3_desc: '入金 ≥ 50,000U，可获得最高档直推奖励比例。',
       direct_example_title: '计算示例',
-      direct_example_body: '你是 5万U 档（15%），直属下级入金 20,000U，则直推奖励 = 20,000 × 15% = 3,000U。若超过持仓匹配额度，超出部分按烧伤规则处理。',
+      direct_example_body: '你是 5万U 档（15%），直属下级入金 20,000U，则直推奖励 = 20,000 × 15% = 3,000U。',
       team_title: '团队奖励',
       team_sub: '按档位和团队累计业绩阶梯计算极差收益，下级达到平级后，该线极差收益归零。',
       team_panel1_title: '1万U 档阶梯',
@@ -1840,20 +1823,21 @@ html[lang="en"] .reward-notice p {
       team_panel2_title: '5万U 档阶梯',
       team_panel2_row1_range: '1 - 10万U', team_panel2_row2_range: '10.1 - 50万U', team_panel2_row3_range: '50.1 - 100万U', team_panel2_row4_range: '100.1 - 500万U', team_panel2_row5_range: '500万U+',
       team_diff1_title: 'A 线示例',
-      team_diff1_body: '如果你当前为 V4（10%），A 线下级为 V3（5%），则该线极差 = 10% - 5% = 5%；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。',
+      team_diff1_body: '如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线极差 = 10% - 5% = 5%；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。',
       team_diff2_title: 'B 线示例',
-      team_diff2_body: '如果你当前为 V4（10%），B 线下级为 V2（3%），则该线极差 = 10% - 3% = 7%；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。',
+      team_diff2_body: '如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线极差 = 10% - 3% = 7%；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。',
       team_cap_body: '无论团队业绩和架构如何增长，单个账户的团队奖励比例最高不超过 15%。该上限用于控制奖励支出并保持制度可持续性。',
       equal_title: '平级奖',
       equal_sub: '当某条线下属与你达到同一团队奖励级别时，该线极差收益归零，并从第 6 层起启动递减平级奖。',
       equal_scope1_label: 'Performance Scope', equal_scope1_value: '全体业绩', equal_scope1_desc: '团队业绩统计为你伞下全体成员的总业绩，不分层级、不分线别。',
       equal_scope2_label: 'Reward Scope', equal_scope2_value: '第2层至第7层', equal_scope2_desc: '团队奖励极差仅按第2层至第7层计算；平级奖从第6层开始，共 6 层递减。',
-      equal_l1_title: '平级第 1 层', equal_l1_desc: '对应全表最高平级奖励比例，从平级下属的第 6 层开始计算。',
-      equal_l2_title: '平级第 2 层', equal_l2_desc: '第 7 层对应比例，延续深度培育激励，但开始明显递减。',
-      equal_l3_title: '平级第 3 层', equal_l3_desc: '第 8 层对应比例，继续保留深层结构收益。',
-      equal_l4_title: '平级第 4 层', equal_l4_desc: '第 9 层对应比例，递减速度进一步放缓。',
-      equal_l5_title: '平级第 5 层', equal_l5_desc: '第 10 层对应比例，用于补偿长期培育带来的延展价值。',
-      equal_l6_title: '平级第 6 层', equal_l6_desc: '第 11 层对应比例，平级奖最后一层，总计 5%。',
+      equal_l1_title: '平级第 1 层',
+      equal_l2_title: '平级第 2 层',
+      equal_l3_title: '平级第 3 层',
+      equal_l4_title: '平级第 4 层',
+      equal_l5_title: '平级第 5 层',
+      equal_l6_title: '平级第 6 层',
+      equal_note: '各层比例从平级下属向上逐层递减发放。',
       equal_trigger_title: '触发逻辑',
       equal_trigger_body: '当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。从该平级下属的第 6 层起，按 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 递减发放，总计 5%。',
       burn_title: '烧伤机制',
@@ -1999,7 +1983,7 @@ html[lang="en"] .reward-notice p {
       direct_tier2_label: '進階檔', direct_tier2_value: '10%', direct_tier2_desc: '入金 ≥ 10,000U，可獲得進階檔直推獎勵比例。',
       direct_tier3_label: '精英檔', direct_tier3_value: '15%', direct_tier3_desc: '入金 ≥ 50,000U，可獲得最高檔直推獎勵比例。',
       direct_example_title: '計算示例',
-      direct_example_body: '你是 5萬U 檔（15%），直屬下級入金 20,000U，則直推獎勵 = 20,000 × 15% = 3,000U。若超過持倉匹配額度，超出部分按燒傷規則處理。',
+      direct_example_body: '你是 5萬U 檔（15%），直屬下級入金 20,000U，則直推獎勵 = 20,000 × 15% = 3,000U。',
       team_title: '團隊獎勵',
       team_sub: '按檔位和團隊累計業績階梯計算極差收益，下級達到平級後，該線極差收益歸零。',
       team_panel1_title: '1萬U 檔階梯',
@@ -2007,20 +1991,21 @@ html[lang="en"] .reward-notice p {
       team_panel2_title: '5萬U 檔階梯',
       team_panel2_row1_range: '1 - 10萬U', team_panel2_row2_range: '10.1 - 50萬U', team_panel2_row3_range: '50.1 - 100萬U', team_panel2_row4_range: '100.1 - 500萬U', team_panel2_row5_range: '500萬U+',
       team_diff1_title: 'A 線示例',
-      team_diff1_body: '若你目前為 V4（10%），A 線下級為 V3（5%），則該線極差 = 10% - 5% = 5%；若 A 線業績為 80萬U，則對應收益按 80萬U × 5% 計算。',
+      team_diff1_body: '若你目前團隊獎勵級別為 10%，A 線下級級別為 5%，則該線極差 = 10% - 5% = 5%；若 A 線業績為 80萬U，則對應收益按 80萬U × 5% 計算。',
       team_diff2_title: 'B 線示例',
-      team_diff2_body: '若你目前為 V4（10%），B 線下級為 V2（3%），則該線極差 = 10% - 3% = 7%；若 B 線業績為 30萬U，則對應收益按 30萬U × 7% 計算。',
+      team_diff2_body: '若你目前團隊獎勵級別為 10%，B 線下級級別為 3%，則該線極差 = 10% - 3% = 7%；若 B 線業績為 30萬U，則對應收益按 30萬U × 7% 計算。',
       team_cap_body: '無論團隊業績與架構如何成長，單一帳戶的團隊獎勵比例最高不超過 15%。該上限用於控制獎勵支出並維持制度可持續性。',
       equal_title: '平級獎',
       equal_sub: '當某條線下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，並從第 6 層起啟動遞減平級獎。',
       equal_scope1_label: 'Performance Scope', equal_scope1_value: '全體業績', equal_scope1_desc: '團隊業績統計為你傘下全體成員的總業績，不分層級、不分線別。',
       equal_scope2_label: 'Reward Scope', equal_scope2_value: '第2層至第7層', equal_scope2_desc: '團隊獎勵極差僅按第2層至第7層計算；平級獎從第6層開始，共 6 層遞減。',
-      equal_l1_title: '平級第 1 層', equal_l1_desc: '對應全表最高平級獎勵比例，自平級下屬的第 6 層開始計算。',
-      equal_l2_title: '平級第 2 層', equal_l2_desc: '第 7 層對應比例，延續深度培育激勵，但開始明顯遞減。',
-      equal_l3_title: '平級第 3 層', equal_l3_desc: '第 8 層對應比例，持續保留深層結構收益。',
-      equal_l4_title: '平級第 4 層', equal_l4_desc: '第 9 層對應比例，遞減速度進一步放緩。',
-      equal_l5_title: '平級第 5 層', equal_l5_desc: '第 10 層對應比例，用於補償長期培育帶來的延展價值。',
-      equal_l6_title: '平級第 6 層', equal_l6_desc: '第 11 層對應比例，平級獎最後一層，總計 5%。',
+      equal_l1_title: '平級第 1 層',
+      equal_l2_title: '平級第 2 層',
+      equal_l3_title: '平級第 3 層',
+      equal_l4_title: '平級第 4 層',
+      equal_l5_title: '平級第 5 層',
+      equal_l6_title: '平級第 6 層',
+      equal_note: '各層比例從平級下屬向上逐層遞減發放。',
       equal_trigger_title: '觸發邏輯',
       equal_trigger_body: '當你某條線的下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，平級獎自動啟動。自該平級下屬的第 6 層起，按 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 遞減發放，總計 5%。',
       burn_title: '燒傷機制',
@@ -2166,7 +2151,7 @@ html[lang="en"] .reward-notice p {
       direct_tier2_label: 'Advanced Tier', direct_tier2_value: '10%', direct_tier2_desc: 'Deposit ≥ 10,000U unlocks the mid-tier referral rate.',
       direct_tier3_label: 'Elite Tier', direct_tier3_value: '15%', direct_tier3_desc: 'Deposit ≥ 50,000U unlocks the highest referral reward rate.',
       direct_example_title: 'Worked Example',
-      direct_example_body: 'If you are in the 50,000U tier (15%) and your direct referral deposits 20,000U, the direct reward equals 20,000 × 15% = 3,000U. Any amount above your holding-matched quota is handled under the burn rule.',
+      direct_example_body: 'If you are in the 50,000U tier (15%) and your direct referral deposits 20,000U, the direct reward equals 20,000 × 15% = 3,000U.',
       team_title: 'Team Reward',
       team_sub: 'Team differential rewards are determined by your tier and cumulative team performance bracket. Once a downline reaches your level, the differential on that line becomes zero.',
       team_panel1_title: '10,000U Tier Ladder',
@@ -2174,20 +2159,21 @@ html[lang="en"] .reward-notice p {
       team_panel2_title: '50,000U Tier Ladder',
       team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,001 - 5,000,000U', team_panel2_row5_range: '5,000,000U+',
       team_diff1_title: 'Line A Example',
-      team_diff1_body: 'If you are V4 (10%) and Line A is V3 (5%), the differential is 10% - 5% = 5%. With 800,000U in team volume, the reward is 800,000U × 5%.',
+      team_diff1_body: 'If your team reward level is 10% and Line A\'s downline level is 5%, the differential is 10% - 5% = 5%. With 800,000U in team volume, the reward is 800,000U × 5%.',
       team_diff2_title: 'Line B Example',
-      team_diff2_body: 'If you are V4 (10%) and Line B is V2 (3%), the differential is 10% - 3% = 7%. With 300,000U in team volume, the reward is 300,000U × 7%.',
+      team_diff2_body: 'If your team reward level is 10% and Line B\'s downline level is 3%, the differential is 10% - 3% = 7%. With 300,000U in team volume, the reward is 300,000U × 7%.',
       team_cap_body: 'Regardless of team scale or structure, the team reward ratio for a single account is capped at 15%. This ceiling keeps payout obligations controlled and the model sustainable.',
       equal_title: 'Equal-Level Bonus',
       equal_sub: 'When a downline on a given line reaches the same team reward level as you, the differential on that line becomes zero and a declining equal-level bonus begins from layer 6 onward.',
       equal_scope1_label: 'Performance Scope', equal_scope1_value: 'Full Team Volume', equal_scope1_desc: 'Team performance aggregates the total volume of all members under your umbrella, regardless of depth or line.',
       equal_scope2_label: 'Reward Scope', equal_scope2_value: 'Layers 2 To 7', equal_scope2_desc: 'Team differentials are counted only from layers 2 to 7; equal-level bonuses begin at layer 6 and continue for 6 declining layers.',
-      equal_l1_title: 'Equal Level Layer 1', equal_l1_desc: 'Highest equal-level bonus rate, starting from the 6th layer below the matched downline.',
-      equal_l2_title: 'Equal Level Layer 2', equal_l2_desc: 'The 7th layer rate preserves deep-network incentives with a meaningful reduction.',
-      equal_l3_title: 'Equal Level Layer 3', equal_l3_desc: 'The 8th layer rate retains a smaller but still meaningful deep-structure incentive.',
-      equal_l4_title: 'Equal Level Layer 4', equal_l4_desc: 'The 9th layer rate continues the declining compensation path.',
-      equal_l5_title: 'Equal Level Layer 5', equal_l5_desc: 'The 10th layer rate compensates for long-cycle cultivation value.',
-      equal_l6_title: 'Equal Level Layer 6', equal_l6_desc: 'The 11th layer rate is the final equal-level layer; total equal-level bonus sums to 5%.',
+      equal_l1_title: 'Equal Level Layer 1',
+      equal_l2_title: 'Equal Level Layer 2',
+      equal_l3_title: 'Equal Level Layer 3',
+      equal_l4_title: 'Equal Level Layer 4',
+      equal_l5_title: 'Equal Level Layer 5',
+      equal_l6_title: 'Equal Level Layer 6',
+      equal_note: 'Each layer rate decreases progressively upward from the equal-level downline.',
       equal_trigger_title: 'Trigger Logic',
       equal_trigger_body: 'When a downline on one of your lines reaches the same team reward level as you, the differential on that line becomes zero and the equal-level bonus starts automatically. From the 6th layer below that matched downline, rewards decline as 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05%, totaling 5%.',
       burn_title: 'Burn Mechanism',
@@ -2338,7 +2324,7 @@ html[lang="en"] .reward-notice p {
       direct_tier2_label: '확장 구간', direct_tier2_value: '10%', direct_tier2_desc: '입금이 10,000U 이상이면 중간 직추천 비율이 적용됩니다.',
       direct_tier3_label: '최상위 구간', direct_tier3_value: '15%', direct_tier3_desc: '입금이 50,000U 이상이면 최고 직추천 비율이 적용됩니다.',
       direct_example_title: '산정 예시',
-      direct_example_body: '당신이 50,000U 등급(15%)이고 직추천 하위 사용자가 20,000U를 입금했다면, 직추천 보상은 20,000 × 15% = 3,000U입니다. 다만 보유량 매칭 한도를 초과한 부분에는 소각 규칙이 적용됩니다.',
+      direct_example_body: '당신이 50,000U 등급(15%)이고 직추천 하위 사용자가 20,000U를 입금했다면, 직추천 보상은 20,000 × 15% = 3,000U입니다.',
       team_title: '팀 보상',
       team_sub: '팀 차등 보상은 보유 등급과 누적 팀 실적 구간에 따라 산정됩니다. 하위 라인이 당신과 동일한 레벨에 도달하면 해당 라인의 차등은 0이 됩니다.',
       team_panel1_title: '10,000U 등급 구간',
@@ -2346,20 +2332,21 @@ html[lang="en"] .reward-notice p {
       team_panel2_title: '50,000U 등급 구간',
       team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,001 - 5,000,000U', team_panel2_row5_range: '5,000,000U+',
       team_diff1_title: 'A 라인 사례',
-      team_diff1_body: '당신이 V4(10%)이고 A 라인이 V3(5%)이면, 극차 = 10% - 5% = 5%. A 라인 실적이 800,000U일 경우 보상은 800,000U × 5%로 계산됩니다.',
+      team_diff1_body: '당신의 팀 보상 레벨이 10%이고 A 라인 하위 레벨이 5%이면, 극차 = 10% - 5% = 5%. A 라인 실적이 800,000U일 경우 보상은 800,000U × 5%로 계산됩니다.',
       team_diff2_title: 'B 라인 사례',
-      team_diff2_body: '당신이 V4(10%)이고 B 라인이 V2(3%)이면, 극차 = 10% - 3% = 7%. B 라인 실적이 300,000U일 경우 보상은 300,000U × 7%로 계산됩니다.',
+      team_diff2_body: '당신의 팀 보상 레벨이 10%이고 B 라인 하위 레벨이 3%이면, 극차 = 10% - 3% = 7%. B 라인 실적이 300,000U일 경우 보상은 300,000U × 7%로 계산됩니다.',
       team_cap_body: '팀 규모와 구조가 어떻게 확대되더라도 단일 계정의 팀 보상 비율은 최대 15%를 초과하지 않습니다. 이 상한선은 지급 부담을 통제하고 제도의 지속 가능성을 유지하기 위한 장치입니다.',
       equal_title: '동급 보너스',
       equal_sub: '특정 라인의 하위 사용자가 당신과 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되며, 6단계 아래부터 감소형 동급 보너스가 시작됩니다.',
       equal_scope1_label: 'Performance Scope', equal_scope1_value: '전체 팀 실적', equal_scope1_desc: '팀 실적은 깊이와 라인 구분 없이 당신 산하 전체 구성원의 누적 실적을 기준으로 합산됩니다.',
       equal_scope2_label: 'Reward Scope', equal_scope2_value: '2층 - 7층', equal_scope2_desc: '팀 차등 보상은 2층부터 7층까지만 계산되며, 동급 보너스는 6층부터 총 6개 층에 걸쳐 감소 지급됩니다.',
-      equal_l1_title: '동급 1단계', equal_l1_desc: '가장 높은 동급 보너스 구간으로, 매칭된 하위 라인의 6층부터 시작됩니다.',
-      equal_l2_title: '동급 2단계', equal_l2_desc: '7층 구간 비율로, 심층 네트워크 육성 인센티브를 유지하되 비율은 낮아집니다.',
-      equal_l3_title: '동급 3단계', equal_l3_desc: '8층 구간 비율로, 보다 깊은 구조에 대한 장기 인센티브를 유지합니다.',
-      equal_l4_title: '동급 4단계', equal_l4_desc: '9층 구간 비율로, 감소형 보상 경로를 이어갑니다.',
-      equal_l5_title: '동급 5단계', equal_l5_desc: '10층 구간 비율로, 장기 육성의 누적 기여를 보상하는 성격을 가집니다.',
-      equal_l6_title: '동급 6단계', equal_l6_desc: '11층 구간의 마지막 동급 보너스 단계이며 전체 동급 보너스 총합은 5%입니다.',
+      equal_l1_title: '동급 1단계',
+      equal_l2_title: '동급 2단계',
+      equal_l3_title: '동급 3단계',
+      equal_l4_title: '동급 4단계',
+      equal_l5_title: '동급 5단계',
+      equal_l6_title: '동급 6단계',
+      equal_note: '각 단계 비율은 동급 하위 라인에서 위로 갈수록 점차 감소합니다.',
       equal_trigger_title: '발동 조건',
       equal_trigger_body: '당신의 특정 라인 하위 사용자가 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되고, 동급 보너스가 자동으로 시작됩니다. 해당 하위 라인의 6층부터 3% → 1% → 0.5% → 0.3% → 0.15% → 0.05% 순으로 감소 지급되며 총합은 5%입니다.',
       burn_title: '소각 메커니즘',
