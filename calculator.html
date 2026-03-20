@@ -239,10 +239,25 @@ html[lang="ko"] body {
 .q-card-static .q-card-icon { background: var(--green); color: #fff; }
 .q-card-dynamic .q-card-icon { background: var(--gold); color: #fff; }
 .q-card-total .q-card-icon { background: rgba(255,255,255,.15); color: var(--gold-light); }
+.q-v-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 1px 6px; border-radius: 4px; margin-left: 4px;
+  background: var(--navy); color: #fff;
+  font-family: 'Inter', sans-serif; font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.5px;
+}
 .q-card-sub {
   font-size: 0.6875rem; color: var(--text-3); line-height: 1.5;
 }
 .q-card-total .q-card-sub { color: rgba(255,255,255,.45); }
+.q-comm-note {
+  margin-top: 12px; padding: 10px 12px; border-radius: 8px;
+  background: rgba(180,151,90,.08); border: 1px solid rgba(180,151,90,.15);
+  font-size: 0.6875rem; color: var(--gold-dark); line-height: 1.6;
+}
+.q-total-explain {
+  margin-top: 12px; text-align: center;
+  font-size: 0.6875rem; color: rgba(255,255,255,.4); line-height: 1.5;
+}
 
 .q-info-rows { position: relative; z-index: 1; }
 .q-info-row {
@@ -669,42 +684,16 @@ html[lang="ko"] body {
             <span class="q-info-val" id="qDynDirect">0 U</span>
           </div>
           <div class="q-info-row">
-            <span class="q-info-label"><span data-i18n="q_team_reward">团队奖励</span> <span id="qDynTeamPct" class="en" style="font-size:.6875rem;color:var(--text-4);"></span></span>
+            <span class="q-info-label"><span data-i18n="q_team_reward">团队奖励</span> <span id="qDynTeamPct" class="en" style="font-size:.6875rem;color:var(--text-4);"></span> <span id="qVLevel" class="q-v-badge" style="display:none;"></span></span>
             <span class="q-info-val" id="qDynTeam">0 U</span>
           </div>
           <div class="q-info-row" style="border-top:2px solid rgba(180,151,90,.2);padding-top:8px;margin-top:2px;">
             <span class="q-info-label" style="font-weight:700;" data-i18n="q_commission_total">佣金合计</span>
             <span class="q-info-val gold" id="qDynTotal">0 U</span>
           </div>
-          <div class="q-info-row">
-            <span class="q-info-label" data-i18n="q_commission_tokens">佣金折算代币</span>
-            <span class="q-info-val gold" id="qDynTokens">0 POSX</span>
-          </div>
         </div>
         <div id="qBurnNotice" class="q-burn-notice" style="display:none;" data-i18n="q_burn_notice">持仓不足 1,000U，无法获得推广奖励</div>
-        <div class="q-price-grid">
-          <div class="q-price-cell">
-            <div class="q-price-label">$0.15</div>
-            <div class="q-price-val" id="qDV015">$0</div>
-            <div class="q-price-tokens" id="qDT015">0 POSX</div>
-            <div class="q-price-mult" id="qDM015">4.72x</div>
-            <div class="q-price-profit" id="qDP015">+$0</div>
-          </div>
-          <div class="q-price-cell hl">
-            <div class="q-price-label">$0.20</div>
-            <div class="q-price-val" id="qDV020">$0</div>
-            <div class="q-price-tokens" id="qDT020">0 POSX</div>
-            <div class="q-price-mult" id="qDM020">6.29x</div>
-            <div class="q-price-profit" id="qDP020">+$0</div>
-          </div>
-          <div class="q-price-cell">
-            <div class="q-price-label">$0.25</div>
-            <div class="q-price-val" id="qDV025">$0</div>
-            <div class="q-price-tokens" id="qDT025">0 POSX</div>
-            <div class="q-price-mult" id="qDM025">7.86x</div>
-            <div class="q-price-profit" id="qDP025">+$0</div>
-          </div>
-        </div>
+        <div class="q-comm-note" data-i18n="q_comm_note">佣金以 U（USDT 等值）结算，不受代币价格波动影响。</div>
       </div>
 
       <!-- Section C: Total Return -->
@@ -712,37 +701,37 @@ html[lang="ko"] body {
         <div class="q-card-header">
           <div class="q-card-title"><span class="q-card-icon">&Sigma;</span><span data-i18n="q_total_title">综合回报</span></div>
         </div>
-        <div class="q-big-tokens" id="qTotalTokens">0 POSX</div>
-        <div class="q-big-label" data-i18n="q_total_tokens">总持有代币</div>
+        <div class="q-info-rows" style="margin-bottom:14px;">
+          <div class="q-info-row">
+            <span class="q-info-label" data-i18n="q_total_tokens">持仓代币</span>
+            <span class="q-info-val" id="qTotalTokens" style="color:rgba(255,255,255,.8);">0 POSX</span>
+          </div>
+          <div class="q-info-row">
+            <span class="q-info-label" data-i18n="q_total_comm">推广佣金 (U)</span>
+            <span class="q-info-val gold" id="qTotalCommU">0 U</span>
+          </div>
+        </div>
         <div class="q-price-grid">
           <div class="q-price-cell">
             <div class="q-price-label">$0.15</div>
             <div class="q-price-val" id="qTV015">$0</div>
-            <div class="q-price-tokens" id="qTT015">0 POSX</div>
-            <div class="q-price-mult" id="qTM015">4.72x</div>
+            <div class="q-price-mult" id="qTM015">0x</div>
             <div class="q-price-profit" id="qTP015">+$0</div>
           </div>
           <div class="q-price-cell hl">
             <div class="q-price-label">$0.20</div>
             <div class="q-price-val" id="qTV020">$0</div>
-            <div class="q-price-tokens" id="qTT020">0 POSX</div>
-            <div class="q-price-mult" id="qTM020">6.29x</div>
+            <div class="q-price-mult" id="qTM020">0x</div>
             <div class="q-price-profit" id="qTP020">+$0</div>
           </div>
           <div class="q-price-cell">
             <div class="q-price-label">$0.25</div>
             <div class="q-price-val" id="qTV025">$0</div>
-            <div class="q-price-tokens" id="qTT025">0 POSX</div>
-            <div class="q-price-mult" id="qTM025">7.86x</div>
+            <div class="q-price-mult" id="qTM025">0x</div>
             <div class="q-price-profit" id="qTP025">+$0</div>
           </div>
         </div>
-        <div class="q-info-rows" style="margin-top:14px;">
-          <div class="q-info-row">
-            <span class="q-info-label" data-i18n="q_total_profit">总利润</span>
-            <span class="q-info-val gold" id="qTotalProfit020" style="font-size:1.125rem;">+$0</span>
-          </div>
-        </div>
+        <div class="q-total-explain" data-i18n="q_total_explain">综合回报 = 代币上所后价值 + 推广佣金 (U)</div>
       </div>
     </div>
   </div>
@@ -814,9 +803,10 @@ html[lang="ko"] body {
               <div class="calc-row">
                 <label class="calc-label" data-i18n="calc_line_level">该线路最高级别</label>
                 <select class="calc-select calc-line-level-select">
-                  <option value="0">0%</option><option value="1">1%</option><option value="2">2%</option>
-                  <option value="3">3%</option><option value="5">5%</option><option value="10">10%</option>
-                  <option value="15">15%</option>
+                  <option value="0">— 0%</option>
+                  <option value="1">V1 (1%)</option><option value="2">V1 (2%)</option>
+                  <option value="3">V2 (3%)</option><option value="5">V3 (5%)</option>
+                  <option value="10">V4 (10%)</option><option value="15">V5 (15%)</option>
                 </select>
               </div>
             </div>
@@ -970,11 +960,13 @@ html[lang="ko"] body {
       q_direct_reward: '直推奖励',
       q_team_reward: '团队奖励',
       q_commission_total: '佣金合计',
-      q_commission_tokens: '佣金折算代币',
+      q_comm_note: '佣金以 U（USDT 等值）结算，不受代币价格波动影响。',
+      q_total_comm: '推广佣金 (U)',
+      q_total_explain: '综合回报 = 代币上所后价值 + 推广佣金 (U)',
       q_total_title: '综合回报',
-      q_total_tokens: '总持有代币',
+      q_total_tokens: '持仓代币',
       q_total_value: '预期总价值',
-      q_total_profit: '总利润 (按 $0.20)',
+      q_total_profit: '总利润',
       q_tier_badge_5: '5% 档位（\u22651,000U）',
       q_tier_badge_10: '10% 档位（\u226510,000U）',
       q_tier_badge_15: '15% 档位（\u226550,000U）',
@@ -1060,11 +1052,13 @@ html[lang="ko"] body {
       q_direct_reward: '直推獎勵',
       q_team_reward: '團隊獎勵',
       q_commission_total: '佣金合計',
-      q_commission_tokens: '佣金折算代幣',
+      q_comm_note: '佣金以 U（USDT 等值）結算，不受代幣價格波動影響。',
+      q_total_comm: '推廣佣金 (U)',
+      q_total_explain: '綜合回報 = 代幣上所後價值 + 推廣佣金 (U)',
       q_total_title: '綜合回報',
-      q_total_tokens: '總持有代幣',
+      q_total_tokens: '持倉代幣',
       q_total_value: '預期總價值',
-      q_total_profit: '總利潤 (按 $0.20)',
+      q_total_profit: '總利潤',
       q_tier_badge_5: '5% 檔位（\u22651,000U）',
       q_tier_badge_10: '10% 檔位（\u226510,000U）',
       q_tier_badge_15: '15% 檔位（\u226550,000U）',
@@ -1150,11 +1144,13 @@ html[lang="ko"] body {
       q_direct_reward: 'Direct Reward',
       q_team_reward: 'Team Reward',
       q_commission_total: 'Commission Total',
-      q_commission_tokens: 'Commission Tokens',
+      q_comm_note: 'Commission is settled in U (USDT equivalent) and is not affected by token price fluctuations.',
+      q_total_comm: 'Referral Commission (U)',
+      q_total_explain: 'Total Return = Token Value at Listing + Referral Commission (U)',
       q_total_title: 'Total Return',
-      q_total_tokens: 'Total Tokens Held',
+      q_total_tokens: 'Holding Tokens',
       q_total_value: 'Total Projected Value',
-      q_total_profit: 'Total Profit (at $0.20)',
+      q_total_profit: 'Total Profit',
       q_tier_badge_5: '5% Tier (\u22651,000U)',
       q_tier_badge_10: '10% Tier (\u226510,000U)',
       q_tier_badge_15: '15% Tier (\u226550,000U)',
@@ -1240,11 +1236,13 @@ html[lang="ko"] body {
       q_direct_reward: '\uc9c1\ucd94\ucc9c \ubcf4\uc0c1',
       q_team_reward: '\ud300 \ubcf4\uc0c1',
       q_commission_total: '\uc218\uc218\ub8cc \ud569\uacc4',
-      q_commission_tokens: '\uc218\uc218\ub8cc \ud658\uc0b0 \ud1a0\ud070',
+      q_comm_note: '\ucee4\ubbf8\uc158\uc740 U(USDT \ub4f1\uac00)\ub85c \uc815\uc0b0\ub418\uba70 \ud1a0\ud070 \uac00\uaca9 \ubcc0\ub3d9\uc758 \uc601\ud5a5\uc744 \ubc1b\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.',
+      q_total_comm: '\ucd94\ucc9c \ucee4\ubbf8\uc158 (U)',
+      q_total_explain: '\uc885\ud569 \uc218\uc775 = \ud1a0\ud070 \uc0c1\uc7a5 \ud6c4 \uac00\uce58 + \ucd94\ucc9c \ucee4\ubbf8\uc158 (U)',
       q_total_title: '\uc885\ud569 \uc218\uc775',
-      q_total_tokens: '\ucd1d \ubcf4\uc720 \ud1a0\ud070',
+      q_total_tokens: '\ubcf4\uc720 \ud1a0\ud070',
       q_total_value: '\uc608\uc0c1 \ucd1d \uac00\uce58',
-      q_total_profit: '\ucd1d \uc774\uc775 ($0.20 \uae30\uc900)',
+      q_total_profit: '\ucd1d \uc774\uc775',
       q_tier_badge_5: '5% \ub4f1\uae09 (\u22651,000U)',
       q_tier_badge_10: '10% \ub4f1\uae09 (\u226510,000U)',
       q_tier_badge_15: '15% \ub4f1\uae09 (\u226550,000U)',
@@ -1312,6 +1310,15 @@ html[lang="ko"] body {
     if (deposit >= 10000) return 10;
     if (deposit >= 1000) return 5;
     return 0;
+  }
+
+  function getVLevel(pct) {
+    if (pct >= 15) return 'V5';
+    if (pct >= 10) return 'V4';
+    if (pct >= 5) return 'V3';
+    if (pct >= 3) return 'V2';
+    if (pct >= 1) return 'V1';
+    return '';
   }
 
   function getTeamLevel10k(perf) {
@@ -1496,41 +1503,30 @@ html[lang="ko"] body {
     document.getElementById('qDynTeamPct').textContent = teamDiff > 0 ? '(' + teamDiff + '%)' : '';
     document.getElementById('qDynTeam').textContent = fmtU(teamReward);
 
+    var vBadge = document.getElementById('qVLevel');
+    var vLabel = getVLevel(myLevel);
+    if (vLabel && teamPerf > 0) {
+      vBadge.textContent = vLabel;
+      vBadge.style.display = 'inline-flex';
+    } else {
+      vBadge.style.display = 'none';
+    }
+
     var commTotal = netDirect + teamReward;
-    var commTokens = commTotal > 0 ? commTotal / COST : 0;
 
     document.getElementById('qDynTotal').textContent = fmtU(commTotal);
-    document.getElementById('qDynTokens').textContent = fmtTokens(commTokens);
 
-    var dv015 = commTokens * 0.15;
-    var dv020 = commTokens * 0.20;
-    var dv025 = commTokens * 0.25;
+    // Comprehensive return = token value at listing + commission (U)
+    document.getElementById('qTotalTokens').textContent = fmtTokens(depositTokens);
+    document.getElementById('qTotalCommU').textContent = fmtU(commTotal);
 
-    document.getElementById('qDV015').textContent = fmtDollar(dv015);
-    document.getElementById('qDV020').textContent = fmtDollar(dv020);
-    document.getElementById('qDV025').textContent = fmtDollar(dv025);
-    document.getElementById('qDT015').textContent = fmtTokens(commTokens);
-    document.getElementById('qDT020').textContent = fmtTokens(commTokens);
-    document.getElementById('qDT025').textContent = fmtTokens(commTokens);
-    document.getElementById('qDM015').textContent = commTotal > 0 ? MULTS[0] + 'x' : '4.72x';
-    document.getElementById('qDM020').textContent = commTotal > 0 ? MULTS[1] + 'x' : '6.29x';
-    document.getElementById('qDM025').textContent = commTotal > 0 ? MULTS[2] + 'x' : '7.86x';
-    document.getElementById('qDP015').textContent = fmtDollar(dv015);
-    document.getElementById('qDP020').textContent = fmtDollar(dv020);
-    document.getElementById('qDP025').textContent = fmtDollar(dv025);
+    var tv015 = depositTokens * 0.15 + commTotal;
+    var tv020 = depositTokens * 0.20 + commTotal;
+    var tv025 = depositTokens * 0.25 + commTotal;
 
-    var totalTokens = depositTokens + commTokens;
-    var tv015 = totalTokens * 0.15;
-    var tv020 = totalTokens * 0.20;
-    var tv025 = totalTokens * 0.25;
-
-    document.getElementById('qTotalTokens').textContent = fmtTokens(totalTokens);
     document.getElementById('qTV015').textContent = fmtDollar(tv015);
     document.getElementById('qTV020').textContent = fmtDollar(tv020);
     document.getElementById('qTV025').textContent = fmtDollar(tv025);
-    document.getElementById('qTT015').textContent = fmtTokens(totalTokens);
-    document.getElementById('qTT020').textContent = fmtTokens(totalTokens);
-    document.getElementById('qTT025').textContent = fmtTokens(totalTokens);
 
     var totalRoi015 = deposit > 0 ? (tv015 / deposit).toFixed(1) : '0.0';
     var totalRoi020 = deposit > 0 ? (tv020 / deposit).toFixed(1) : '0.0';
@@ -1542,8 +1538,6 @@ html[lang="ko"] body {
     document.getElementById('qTP015').textContent = fmtProfit(tv015 - deposit);
     document.getElementById('qTP020').textContent = fmtProfit(tv020 - deposit);
     document.getElementById('qTP025').textContent = fmtProfit(tv025 - deposit);
-
-    document.getElementById('qTotalProfit020').textContent = fmtProfit(tv020 - deposit);
   }
 
   /* ════════════════════════════════════════════════
@@ -1607,7 +1601,7 @@ html[lang="ko"] body {
       '<div class="calc-row"><label class="calc-label" data-i18n="calc_line_perf">' + txt('calc_line_perf') + '</label>' +
       '<input class="calc-input calc-line-perf-input" type="number" min="0" placeholder="' + txt('calc_line_perf_ph') + '" data-i18n-placeholder="calc_line_perf_ph"></div>' +
       '<div class="calc-row"><label class="calc-label" data-i18n="calc_line_level">' + txt('calc_line_level') + '</label>' +
-      '<select class="calc-select calc-line-level-select"><option value="0">0%</option><option value="1">1%</option><option value="2">2%</option><option value="3">3%</option><option value="5">5%</option><option value="10">10%</option><option value="15">15%</option></select></div>';
+      '<select class="calc-select calc-line-level-select"><option value="0">\u2014 0%</option><option value="1">V1 (1%)</option><option value="2">V1 (2%)</option><option value="3">V2 (3%)</option><option value="5">V3 (5%)</option><option value="10">V4 (10%)</option><option value="15">V5 (15%)</option></select></div>';
     wrap.appendChild(div);
     div.querySelector('.calc-line-perf-input').addEventListener('input', runCalc);
     div.querySelector('.calc-line-level-select').addEventListener('change', runCalc);
@@ -1693,7 +1687,8 @@ html[lang="ko"] body {
 
       var row = document.createElement('div');
       row.className = 'calc-result-row';
-      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span class="calc-result-val">' + fmtU(reward) + '</span>';
+      var downV = getVLevel(downlineLevel);
+      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + (downV || '0%') + ' → ' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span class="calc-result-val">' + fmtU(reward) + '</span>';
       teamBreakdown.appendChild(row);
     });
 
@@ -1729,15 +1724,14 @@ html[lang="ko"] body {
     var price = parseFloat(document.getElementById('calcPriceSlider').value) || 0.20;
     document.getElementById('calcPriceCurrent').textContent = '$' + price.toFixed(2);
 
-    var tokens = totalU > 0 ? totalU / COST : 0;
-    document.getElementById('calcTokenCount').textContent = Math.floor(tokens).toLocaleString('en-US');
+    document.getElementById('calcTokenCount').textContent = fmtU(totalU);
 
-    document.getElementById('calcVal015').textContent = fmtDollar(tokens * 0.15);
-    document.getElementById('calcTok015').textContent = fmtTokens(tokens);
-    document.getElementById('calcVal020').textContent = fmtDollar(tokens * 0.20);
-    document.getElementById('calcTok020').textContent = fmtTokens(tokens);
-    document.getElementById('calcVal025').textContent = fmtDollar(tokens * 0.25);
-    document.getElementById('calcTok025').textContent = fmtTokens(tokens);
+    document.getElementById('calcVal015').textContent = fmtU(totalU);
+    document.getElementById('calcTok015').textContent = fmtU(totalU);
+    document.getElementById('calcVal020').textContent = fmtU(totalU);
+    document.getElementById('calcTok020').textContent = fmtU(totalU);
+    document.getElementById('calcVal025').textContent = fmtU(totalU);
+    document.getElementById('calcTok025').textContent = fmtU(totalU);
   }
 
   ['calcOwnDeposit', 'calcOwnHolding', 'calcTeamPerf', 'calcEqualPerf', 'calcPriceSlider'].forEach(function(id) {

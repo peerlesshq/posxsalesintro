@@ -630,6 +630,12 @@ html[lang="ko"] body {
 }
 .tier-stack-row:first-child { border-top: none; padding-top: 0; }
 .tier-stack-row strong { color: var(--navy); font-weight: 700; }
+.tier-v-tag {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 18px; border-radius: 4px; flex-shrink: 0;
+  background: var(--navy); color: #fff;
+  font-family: 'Inter', sans-serif; font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.5px;
+}
 .diff-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -1510,11 +1516,11 @@ html[lang="en"] .reward-notice p {
               <span class="tier-stack-badge">≥ 10,000U</span>
             </div>
             <div class="tier-stack-list">
-              <div class="tier-stack-row"><span data-i18n="team_panel1_row1_range">1 - 10万U</span><strong>1%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel1_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel1_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel1_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel1_row5_range">500万U+</span><strong>15%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V1</span><span data-i18n="team_panel1_row1_range">1 - 10万U</span><strong>1%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V2</span><span data-i18n="team_panel1_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V3</span><span data-i18n="team_panel1_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V4</span><span data-i18n="team_panel1_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V5</span><span data-i18n="team_panel1_row5_range">500万U+</span><strong>15%</strong></div>
             </div>
           </div>
           <div class="tier-stack-card">
@@ -1523,11 +1529,11 @@ html[lang="en"] .reward-notice p {
               <span class="tier-stack-badge">≥ 50,000U</span>
             </div>
             <div class="tier-stack-list">
-              <div class="tier-stack-row"><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>2%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel2_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel2_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel2_row4_range">100万U+</span><strong>10%</strong></div>
-              <div class="tier-stack-row"><span data-i18n="team_panel2_row5_range">更高层级</span><strong>15%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V1</span><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>2%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V2</span><span data-i18n="team_panel2_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V3</span><span data-i18n="team_panel2_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V4</span><span data-i18n="team_panel2_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
+              <div class="tier-stack-row"><span class="tier-v-tag">V5</span><span data-i18n="team_panel2_row5_range">500万U+</span><strong>15%</strong></div>
             </div>
           </div>
         </div>
@@ -1536,14 +1542,14 @@ html[lang="en"] .reward-notice p {
           <div class="diff-card">
             <div class="diff-card-head">
               <div class="diff-card-title" data-i18n="team_diff1_title">A 线示例</div>
-              <div class="diff-card-pct">10% - 5% = 5%</div>
+              <div class="diff-card-pct">V4 10% - V3 5% = 5%</div>
             </div>
             <p data-i18n="team_diff1_body">如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线可获得 5% 极差收益；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。</p>
           </div>
           <div class="diff-card">
             <div class="diff-card-head">
               <div class="diff-card-title" data-i18n="team_diff2_title">B 线示例</div>
-              <div class="diff-card-pct">10% - 3% = 7%</div>
+              <div class="diff-card-pct">V4 10% - V2 3% = 7%</div>
             </div>
             <p data-i18n="team_diff2_body">如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线可获得 7% 极差收益；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。</p>
           </div>
@@ -1832,11 +1838,11 @@ html[lang="en"] .reward-notice p {
       team_panel1_title: '1万U 档阶梯',
       team_panel1_row1_range: '1 - 10万U', team_panel1_row2_range: '10.1 - 50万U', team_panel1_row3_range: '50.1 - 100万U', team_panel1_row4_range: '100.1 - 500万U', team_panel1_row5_range: '500万U+',
       team_panel2_title: '5万U 档阶梯',
-      team_panel2_row1_range: '1 - 10万U', team_panel2_row2_range: '10.1 - 50万U', team_panel2_row3_range: '50.1 - 100万U', team_panel2_row4_range: '100万U+', team_panel2_row5_range: '更高层级',
+      team_panel2_row1_range: '1 - 10万U', team_panel2_row2_range: '10.1 - 50万U', team_panel2_row3_range: '50.1 - 100万U', team_panel2_row4_range: '100.1 - 500万U', team_panel2_row5_range: '500万U+',
       team_diff1_title: 'A 线示例',
-      team_diff1_body: '如果你当前团队奖励级别为 10%，A 线下级级别为 5%，则该线可获得 5% 极差收益；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。',
+      team_diff1_body: '如果你当前为 V4（10%），A 线下级为 V3（5%），则该线极差 = 10% - 5% = 5%；若 A 线业绩为 80万U，则对应收益按 80万U × 5% 计算。',
       team_diff2_title: 'B 线示例',
-      team_diff2_body: '如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线可获得 7% 极差收益；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。',
+      team_diff2_body: '如果你当前为 V4（10%），B 线下级为 V2（3%），则该线极差 = 10% - 3% = 7%；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。',
       team_cap_body: '无论团队业绩和架构如何增长，单个账户的团队奖励比例最高不超过 15%。该上限用于控制奖励支出并保持制度可持续性。',
       equal_title: '平级奖',
       equal_sub: '当某条线下属与你达到同一团队奖励级别时，该线极差收益归零，并从第 6 层起启动递减平级奖。',
@@ -1999,11 +2005,11 @@ html[lang="en"] .reward-notice p {
       team_panel1_title: '1萬U 檔階梯',
       team_panel1_row1_range: '1 - 10萬U', team_panel1_row2_range: '10.1 - 50萬U', team_panel1_row3_range: '50.1 - 100萬U', team_panel1_row4_range: '100.1 - 500萬U', team_panel1_row5_range: '500萬U+',
       team_panel2_title: '5萬U 檔階梯',
-      team_panel2_row1_range: '1 - 10萬U', team_panel2_row2_range: '10.1 - 50萬U', team_panel2_row3_range: '50.1 - 100萬U', team_panel2_row4_range: '100萬U+', team_panel2_row5_range: '更高層級',
+      team_panel2_row1_range: '1 - 10萬U', team_panel2_row2_range: '10.1 - 50萬U', team_panel2_row3_range: '50.1 - 100萬U', team_panel2_row4_range: '100.1 - 500萬U', team_panel2_row5_range: '500萬U+',
       team_diff1_title: 'A 線示例',
-      team_diff1_body: '若你目前團隊獎勵級別為 10%，A 線下級級別為 5%，則該線可獲得 5% 極差收益；若 A 線業績為 80萬U，則對應收益按 80萬U × 5% 計算。',
+      team_diff1_body: '若你目前為 V4（10%），A 線下級為 V3（5%），則該線極差 = 10% - 5% = 5%；若 A 線業績為 80萬U，則對應收益按 80萬U × 5% 計算。',
       team_diff2_title: 'B 線示例',
-      team_diff2_body: '若你目前團隊獎勵級別為 10%，B 線下級級別為 3%，則該線可獲得 7% 極差收益；若 B 線業績為 30萬U，則對應收益按 30萬U × 7% 計算。',
+      team_diff2_body: '若你目前為 V4（10%），B 線下級為 V2（3%），則該線極差 = 10% - 3% = 7%；若 B 線業績為 30萬U，則對應收益按 30萬U × 7% 計算。',
       team_cap_body: '無論團隊業績與架構如何成長，單一帳戶的團隊獎勵比例最高不超過 15%。該上限用於控制獎勵支出並維持制度可持續性。',
       equal_title: '平級獎',
       equal_sub: '當某條線下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，並從第 6 層起啟動遞減平級獎。',
@@ -2166,11 +2172,11 @@ html[lang="en"] .reward-notice p {
       team_panel1_title: '10,000U Tier Ladder',
       team_panel1_row1_range: '1 - 100,000U', team_panel1_row2_range: '100,001 - 500,000U', team_panel1_row3_range: '500,001 - 1,000,000U', team_panel1_row4_range: '1,000,001 - 5,000,000U', team_panel1_row5_range: '5,000,000U+',
       team_panel2_title: '50,000U Tier Ladder',
-      team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,000U+', team_panel2_row5_range: 'Higher Tier',
+      team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,001 - 5,000,000U', team_panel2_row5_range: '5,000,000U+',
       team_diff1_title: 'Line A Example',
-      team_diff1_body: 'If your current team reward level is 10% and Line A is at 5%, the differential on that line is 5%. With 800,000U in team volume, the reward is computed as 800,000U × 5%.',
+      team_diff1_body: 'If you are V4 (10%) and Line A is V3 (5%), the differential is 10% - 5% = 5%. With 800,000U in team volume, the reward is 800,000U × 5%.',
       team_diff2_title: 'Line B Example',
-      team_diff2_body: 'If your current team reward level is 10% and Line B is at 3%, the differential on that line is 7%. With 300,000U in team volume, the reward is computed as 300,000U × 7%.',
+      team_diff2_body: 'If you are V4 (10%) and Line B is V2 (3%), the differential is 10% - 3% = 7%. With 300,000U in team volume, the reward is 300,000U × 7%.',
       team_cap_body: 'Regardless of team scale or structure, the team reward ratio for a single account is capped at 15%. This ceiling keeps payout obligations controlled and the model sustainable.',
       equal_title: 'Equal-Level Bonus',
       equal_sub: 'When a downline on a given line reaches the same team reward level as you, the differential on that line becomes zero and a declining equal-level bonus begins from layer 6 onward.',
@@ -2338,11 +2344,11 @@ html[lang="en"] .reward-notice p {
       team_panel1_title: '10,000U 등급 구간',
       team_panel1_row1_range: '1 - 100,000U', team_panel1_row2_range: '100,001 - 500,000U', team_panel1_row3_range: '500,001 - 1,000,000U', team_panel1_row4_range: '1,000,001 - 5,000,000U', team_panel1_row5_range: '5,000,000U+',
       team_panel2_title: '50,000U 등급 구간',
-      team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,000U+', team_panel2_row5_range: '상위 구간',
+      team_panel2_row1_range: '1 - 100,000U', team_panel2_row2_range: '100,001 - 500,000U', team_panel2_row3_range: '500,001 - 1,000,000U', team_panel2_row4_range: '1,000,001 - 5,000,000U', team_panel2_row5_range: '5,000,000U+',
       team_diff1_title: 'A 라인 사례',
-      team_diff1_body: '당신의 팀 보상 레벨이 10%이고 A 라인의 레벨이 5%라면, 해당 라인의 차등 보상은 5%입니다. A 라인 실적이 800,000U일 경우 보상은 800,000U × 5%로 계산됩니다.',
+      team_diff1_body: '당신이 V4(10%)이고 A 라인이 V3(5%)이면, 극차 = 10% - 5% = 5%. A 라인 실적이 800,000U일 경우 보상은 800,000U × 5%로 계산됩니다.',
       team_diff2_title: 'B 라인 사례',
-      team_diff2_body: '당신의 팀 보상 레벨이 10%이고 B 라인의 레벨이 3%라면, 해당 라인의 차등 보상은 7%입니다. B 라인 실적이 300,000U일 경우 보상은 300,000U × 7%로 계산됩니다.',
+      team_diff2_body: '당신이 V4(10%)이고 B 라인이 V2(3%)이면, 극차 = 10% - 3% = 7%. B 라인 실적이 300,000U일 경우 보상은 300,000U × 7%로 계산됩니다.',
       team_cap_body: '팀 규모와 구조가 어떻게 확대되더라도 단일 계정의 팀 보상 비율은 최대 15%를 초과하지 않습니다. 이 상한선은 지급 부담을 통제하고 제도의 지속 가능성을 유지하기 위한 장치입니다.',
       equal_title: '동급 보너스',
       equal_sub: '특정 라인의 하위 사용자가 당신과 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되며, 6단계 아래부터 감소형 동급 보너스가 시작됩니다.',
