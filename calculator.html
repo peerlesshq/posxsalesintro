@@ -358,16 +358,50 @@ html[lang="ko"] body {
 
 /* ═══════ COMMISSION CALCULATOR (ADVANCED) ═══════ */
 .calc-shell { scroll-margin-top: 18px; }
-.calc-step { margin-top: 16px; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
-.calc-step summary {
-  list-style: none; cursor: pointer; padding: 14px 16px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: var(--navy-04); font-size: 0.8125rem; font-weight: 700; color: var(--navy);
+.adv-panel { margin-top: 20px; }
+.adv-group {
+  margin-bottom: 20px; padding: 16px; border: 1px solid var(--rule);
+  border-radius: 10px; background: var(--white);
 }
-.calc-step summary::-webkit-details-marker { display: none; }
-.calc-step summary::after { content: '+'; font-size: 1.1rem; font-weight: 700; color: var(--text-4); transition: transform .2s; }
-.calc-step[open] summary::after { content: '\2212'; }
-.calc-step-body { padding: 16px; }
+.adv-group-label {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold-dark); margin-bottom: 14px;
+}
+.adv-my-level {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px;
+  border-radius: 8px; background: var(--navy-04); margin-bottom: 14px;
+  font-size: 0.75rem; font-weight: 700; color: var(--navy);
+}
+.adv-results { margin-top: 20px; }
+.adv-result-card {
+  border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--white); overflow: hidden;
+}
+.adv-result-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule-light);
+}
+.adv-result-section:last-of-type { border-bottom: none; }
+.adv-result-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8125rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;
+}
+.adv-result-val { font-family: 'Inter', sans-serif; }
+.adv-result-val.green { color: var(--green); }
+.adv-result-detail {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 4px 0; font-size: 0.75rem; color: var(--text-3);
+}
+.adv-result-detail .red { color: var(--red); }
+.adv-result-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px; background: var(--navy); color: #fff;
+  font-size: 0.9375rem; font-weight: 700;
+}
+.adv-total-val {
+  font-family: 'Inter', sans-serif; font-size: 1.125rem;
+  font-weight: 900; color: var(--gold-light);
+}
 .calc-label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
 .calc-input {
   width: 100%; height: 44px; border-radius: 8px; border: 1px solid var(--rule);
@@ -751,148 +785,181 @@ html[lang="ko"] body {
       <p class="sec-subtitle" data-i18n="calc_sub">输入您的入金、持仓与团队数据，实时模拟直推奖励、团队奖励与平级奖的预估收益。</p>
       <div class="sec-rule"></div>
 
-      <!-- Step 1 -->
-      <details class="calc-step" id="calcStep1" open>
-        <summary><span data-i18n="calc_step1_title">第一步：个人信息</span></summary>
-        <div class="calc-step-body">
-          <div class="calc-row">
-            <label class="calc-label" data-i18n="calc_own_deposit">您的入金金额 (U)</label>
-            <input class="calc-input" type="number" id="calcOwnDeposit" min="0" placeholder="e.g. 10000" data-i18n-placeholder="calc_own_deposit_ph">
-            <div id="calcTierBadge" class="calc-tier-badge" style="display:none;"></div>
-          </div>
-          <div class="calc-row">
-            <label class="calc-label" data-i18n="calc_own_holding">您的 POSX 持仓价值 (U)</label>
-            <input class="calc-input" type="number" id="calcOwnHolding" min="0" placeholder="e.g. 5000" data-i18n-placeholder="calc_own_holding_ph">
-          </div>
-        </div>
-      </details>
-
-      <!-- Step 2 -->
-      <details class="calc-step" id="calcStep2">
-        <summary><span data-i18n="calc_step2_title">第二步：直推下级</span></summary>
-        <div class="calc-step-body">
-          <div id="calcRefList">
-            <div class="calc-ref-row">
-              <input class="calc-input calc-ref-input" type="number" min="0" placeholder="下级入金金额 (U)" data-i18n-placeholder="calc_ref_ph">
-              <button class="calc-ref-remove" onclick="removeCalcRef(this)" title="Remove">&times;</button>
+      <div class="adv-panel">
+        <div class="adv-inputs">
+          <div class="adv-group">
+            <div class="adv-group-label" data-i18n="calc_step1_title">个人信息</div>
+            <div class="calc-row">
+              <label class="calc-label" data-i18n="calc_own_deposit">您的入金金额 (U)</label>
+              <input class="calc-input" type="number" id="calcOwnDeposit" min="0" placeholder="e.g. 10000" data-i18n-placeholder="calc_own_deposit_ph">
+              <div id="calcTierBadge" class="calc-tier-badge" style="display:none;"></div>
+            </div>
+            <div class="calc-row">
+              <label class="calc-label" data-i18n="calc_own_holding">您的 POSX 持仓价值 (U)</label>
+              <input class="calc-input" type="number" id="calcOwnHolding" min="0" placeholder="e.g. 5000" data-i18n-placeholder="calc_own_holding_ph">
             </div>
           </div>
-          <button class="calc-add-btn" id="calcAddRef" onclick="addCalcRef()">
-            <span>+</span><span data-i18n="calc_add_ref">添加下级</span>
-          </button>
-          <div class="calc-warning" id="calcRefMax" style="display:none;" data-i18n="calc_ref_max">最多添加 5 个直推下级。</div>
-        </div>
-      </details>
 
-      <!-- Step 3 -->
-      <details class="calc-step" id="calcStep3">
-        <summary><span data-i18n="calc_step3_title">第三步：团队与平级</span></summary>
-        <div class="calc-step-body">
-          <div class="calc-row">
-            <label class="calc-label" data-i18n="calc_team_perf">团队累计业绩 (U)</label>
-            <input class="calc-input" type="number" id="calcTeamPerf" min="0" placeholder="e.g. 500000" data-i18n-placeholder="calc_team_perf_ph">
-          </div>
-
-          <div id="calcDownlines">
-            <div class="calc-line-block">
-              <div class="calc-line-title" data-i18n="calc_line1">线路 1</div>
-              <div class="calc-row">
-                <label class="calc-label" data-i18n="calc_line_perf">该线路业绩 (U)</label>
-                <input class="calc-input calc-line-perf-input" type="number" min="0" placeholder="e.g. 200000" data-i18n-placeholder="calc_line_perf_ph">
-              </div>
-              <div class="calc-row">
-                <label class="calc-label" data-i18n="calc_line_level">该线路最高级别</label>
-                <select class="calc-select calc-line-level-select">
-                  <option value="0">— 0%</option>
-                  <option value="1">V1 (1%)</option><option value="2">V1 (2%)</option>
-                  <option value="3">V2 (3%)</option><option value="5">V3 (5%)</option>
-                  <option value="10">V4 (10%)</option><option value="15">V5 (15%)</option>
-                </select>
+          <div class="adv-group">
+            <div class="adv-group-label" data-i18n="calc_step2_title">直推下级</div>
+            <div id="calcRefList">
+              <div class="calc-ref-row">
+                <input class="calc-input calc-ref-input" type="number" min="0" placeholder="下级入金金额 (U)" data-i18n-placeholder="calc_ref_ph">
+                <button class="calc-ref-remove" onclick="removeCalcRef(this)" title="Remove">&times;</button>
               </div>
             </div>
+            <button class="calc-add-btn" id="calcAddRef" onclick="addCalcRef()">
+              <span>+</span><span data-i18n="calc_add_ref">添加下级</span>
+            </button>
+            <div class="calc-warning" id="calcRefMax" style="display:none;" data-i18n="calc_ref_max">最多添加 5 个直推下级。</div>
           </div>
 
-          <button class="calc-add-btn" id="calcAddLine" onclick="addCalcLine()">
-            <span>+</span><span data-i18n="calc_add_line">添加线路</span>
-          </button>
-          <div class="calc-warning" id="calcLineMax" style="display:none;" data-i18n="calc_line_max">最多添加 3 条线路。</div>
-
-          <div style="margin-top:16px;">
-            <div class="calc-toggle-row">
-              <button class="calc-toggle" id="calcEqualToggle" type="button"></button>
-              <span class="calc-toggle-label" data-i18n="calc_equal_toggle">启用平级奖计算</span>
+          <div class="adv-group">
+            <div class="adv-group-label" data-i18n="calc_step3_title">团队与平级</div>
+            <div class="calc-row">
+              <label class="calc-label" data-i18n="calc_team_perf">团队累计业绩 (U)</label>
+              <input class="calc-input" type="number" id="calcTeamPerf" min="0" placeholder="e.g. 500000" data-i18n-placeholder="calc_team_perf_ph">
             </div>
-            <div id="calcEqualWrap" style="display:none;">
-              <div class="calc-row">
-                <label class="calc-label" data-i18n="calc_equal_perf">平级下级的团队业绩 (U)</label>
-                <input class="calc-input" type="number" id="calcEqualPerf" min="0" placeholder="e.g. 100000" data-i18n-placeholder="calc_equal_perf_ph">
+            <div class="adv-my-level" id="calcMyLevel" style="display:none;"></div>
+
+            <div id="calcDownlines">
+              <div class="calc-line-block">
+                <div class="calc-line-title" data-i18n="calc_line1">线路 1</div>
+                <div class="calc-row">
+                  <label class="calc-label" data-i18n="calc_line_perf">该线路业绩 (U)</label>
+                  <input class="calc-input calc-line-perf-input" type="number" min="0" placeholder="e.g. 200000" data-i18n-placeholder="calc_line_perf_ph">
+                </div>
+                <div class="calc-row">
+                  <label class="calc-label" data-i18n="calc_line_level">该线路最高级别</label>
+                  <select class="calc-select calc-line-level-select">
+                    <option value="0">&mdash; 0%</option>
+                    <option value="1">V1 (1%)</option><option value="2">V1 (2%)</option>
+                    <option value="3">V2 (3%)</option><option value="5">V3 (5%)</option>
+                    <option value="10">V4 (10%)</option><option value="15">V5 (15%)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button class="calc-add-btn" id="calcAddLine" onclick="addCalcLine()">
+              <span>+</span><span data-i18n="calc_add_line">添加线路</span>
+            </button>
+            <div class="calc-warning" id="calcLineMax" style="display:none;" data-i18n="calc_line_max">最多添加 3 条线路。</div>
+
+            <div style="margin-top:16px;">
+              <div class="calc-toggle-row">
+                <button class="calc-toggle" id="calcEqualToggle" type="button"></button>
+                <span class="calc-toggle-label" data-i18n="calc_equal_toggle">启用平级奖计算</span>
+              </div>
+              <div id="calcEqualWrap" style="display:none;">
+                <div class="calc-row">
+                  <label class="calc-label" data-i18n="calc_equal_perf">平级下级的团队业绩 (U)</label>
+                  <input class="calc-input" type="number" id="calcEqualPerf" min="0" placeholder="e.g. 100000" data-i18n-placeholder="calc_equal_perf_ph">
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </details>
 
-      <!-- Results -->
-      <div class="calc-results" id="calcResults">
-        <div class="calc-card" id="calcCardDirect">
-          <div class="calc-card-title"><span class="calc-card-icon">1</span><span data-i18n="calc_res_direct_title">直推奖励</span></div>
-          <div class="calc-result-row"><span data-i18n="calc_res_gross">毛奖励</span><span class="calc-result-val" id="calcDirectGross">0 U</span></div>
-          <div class="calc-result-row"><span data-i18n="calc_res_burned">烧伤扣除</span><span class="calc-result-val red" id="calcDirectBurned">0 U</span></div>
-          <div class="calc-result-row"><span data-i18n="calc_res_net">净奖励</span><span class="calc-result-val green" id="calcDirectNet">0 U</span></div>
-          <div class="calc-progress-wrap">
-            <div class="calc-progress-bar"><div class="calc-progress-fill" id="calcDirectBar" style="width:0%"></div></div>
-            <div class="calc-progress-label"><span data-i18n="calc_res_effective">有效比例</span><span id="calcDirectPct">0%</span></div>
-          </div>
-          <div class="calc-warning" id="calcBurnWarn" style="display:none;" data-i18n="calc_burn_warn">持仓不足 1,000U，无法获得任何奖励。</div>
-        </div>
-
-        <div class="calc-card" id="calcCardTeam">
-          <div class="calc-card-title"><span class="calc-card-icon">2</span><span data-i18n="calc_res_team_title">团队奖励</span></div>
-          <div id="calcTeamBreakdown"></div>
-          <div class="calc-result-row" style="border-top:2px solid var(--rule);margin-top:6px;padding-top:8px;">
-            <span data-i18n="calc_res_team_total" style="font-weight:700;">团队奖励合计</span>
-            <span class="calc-result-val green" id="calcTeamTotal">0 U</span>
-          </div>
-        </div>
-
-        <div class="calc-card" id="calcCardEqual">
-          <div class="calc-card-title"><span class="calc-card-icon">3</span><span data-i18n="calc_res_equal_title">平级奖</span></div>
-          <div id="calcEqualBreakdown">
-            <div class="calc-not-triggered" data-i18n="calc_equal_not_triggered">未启用</div>
-          </div>
-        </div>
-
-        <div class="calc-summary" id="calcCardSummary">
-          <div class="calc-summary-inner">
-            <div class="calc-summary-title" data-i18n="calc_res_summary_title">收益总览</div>
-            <div class="calc-summary-big" id="calcTotalU">0 U</div>
-            <div class="calc-summary-sub" data-i18n="calc_res_total_label">预估总奖励 (U)</div>
-
-            <div class="calc-summary-row"><span data-i18n="calc_res_tokens">POSX 代币数量</span><span class="calc-summary-val gold" id="calcTokenCount">0</span></div>
-
-            <div class="calc-price-slider-wrap">
-              <div class="calc-price-slider-label"><span>$0.15</span><span data-i18n="calc_price_label">POSX 价格</span><span>$0.25</span></div>
-              <input type="range" class="calc-price-slider" id="calcPriceSlider" min="0.15" max="0.25" step="0.01" value="0.20">
-              <div class="calc-price-current" id="calcPriceCurrent">$0.20</div>
+        <div class="adv-results">
+          <!-- Card A: Holding Appreciation -->
+          <div class="q-card q-card-static" style="margin-bottom:12px;">
+            <div class="q-card-header">
+              <div class="q-card-title"><span class="q-card-icon">S</span><span data-i18n="q_static_title">持仓增值</span></div>
+              <div class="q-card-sub" data-i18n="q_static_sub">以成本价 $0.0318 计算代币增值空间</div>
             </div>
-
-            <div class="calc-price-grid">
-              <div class="calc-price-cell">
-                <div class="calc-price-cell-label">$0.15</div>
-                <div class="calc-price-cell-val" id="calcVal015">$0</div>
-                <div class="calc-price-cell-tokens" id="calcTok015">0 POSX</div>
+            <div class="q-info-rows">
+              <div class="q-info-row"><span class="q-info-label" data-i18n="q_your_deposit">入金金额</span><span class="q-info-val" id="calcStatDeposit">0 U</span></div>
+              <div class="q-info-row"><span class="q-info-label" data-i18n="q_tokens_acquired">获得代币</span><span class="q-info-val" id="calcStatTokens">0 POSX</span></div>
+            </div>
+            <div class="q-price-grid">
+              <div class="q-price-cell">
+                <div class="q-price-label">$0.15</div>
+                <div class="q-price-val" id="calcSV015">$0</div>
+                <div class="q-price-mult" id="calcSM015">4.72x</div>
+                <div class="q-price-profit" id="calcSP015">+$0</div>
               </div>
-              <div class="calc-price-cell" style="background:rgba(180,151,90,.15);">
-                <div class="calc-price-cell-label">$0.20</div>
-                <div class="calc-price-cell-val" id="calcVal020">$0</div>
-                <div class="calc-price-cell-tokens" id="calcTok020">0 POSX</div>
+              <div class="q-price-cell hl">
+                <div class="q-price-label">$0.20</div>
+                <div class="q-price-val" id="calcSV020">$0</div>
+                <div class="q-price-mult" id="calcSM020">6.29x</div>
+                <div class="q-price-profit" id="calcSP020">+$0</div>
               </div>
-              <div class="calc-price-cell">
-                <div class="calc-price-cell-label">$0.25</div>
-                <div class="calc-price-cell-val" id="calcVal025">$0</div>
-                <div class="calc-price-cell-tokens" id="calcTok025">0 POSX</div>
+              <div class="q-price-cell">
+                <div class="q-price-label">$0.25</div>
+                <div class="q-price-val" id="calcSV025">$0</div>
+                <div class="q-price-mult" id="calcSM025">7.86x</div>
+                <div class="q-price-profit" id="calcSP025">+$0</div>
               </div>
             </div>
+          </div>
+
+          <!-- Card B: Commission Detail -->
+          <div class="adv-result-card" style="margin-bottom:12px;">
+            <div class="adv-result-section">
+              <div class="adv-result-head"><span data-i18n="calc_res_direct_title">直推奖励</span><span id="calcDirectNet" class="adv-result-val green">0 U</span></div>
+              <div class="adv-result-detail">
+                <span data-i18n="calc_res_gross">毛奖励</span><span id="calcDirectGross">0 U</span>
+              </div>
+              <div class="adv-result-detail">
+                <span data-i18n="calc_res_burned">烧伤扣除</span><span id="calcDirectBurned" class="red">0 U</span>
+              </div>
+              <div class="calc-progress-wrap">
+                <div class="calc-progress-bar"><div class="calc-progress-fill" id="calcDirectBar" style="width:0%"></div></div>
+                <div class="calc-progress-label"><span data-i18n="calc_res_effective">有效比例</span><span id="calcDirectPct">0%</span></div>
+              </div>
+              <div class="calc-warning" id="calcBurnWarn" style="display:none;" data-i18n="calc_burn_warn">持仓不足 1,000U，无法获得任何奖励。</div>
+            </div>
+
+            <div class="adv-result-section">
+              <div class="adv-result-head"><span data-i18n="calc_res_team_title">团队奖励</span><span id="calcTeamTotal" class="adv-result-val green">0 U</span></div>
+              <div id="calcTeamBreakdown"></div>
+            </div>
+
+            <div class="adv-result-section">
+              <div class="adv-result-head"><span data-i18n="calc_res_equal_title">平级奖</span></div>
+              <div id="calcEqualBreakdown">
+                <div class="calc-not-triggered" data-i18n="calc_equal_not_triggered">未启用</div>
+              </div>
+            </div>
+
+            <div class="adv-result-total">
+              <span data-i18n="q_dynamic_title">推广佣金</span>
+              <span id="calcTotalU" class="adv-total-val">0 U</span>
+            </div>
+            <div class="q-comm-note" data-i18n="q_comm_note">佣金以 U（USDT 等值）结算，不受代币价格波动影响。</div>
+          </div>
+
+          <!-- Card C: Total Return -->
+          <div class="q-card q-card-total">
+            <div class="q-card-header">
+              <div class="q-card-title"><span class="q-card-icon">&Sigma;</span><span data-i18n="q_total_title">综合回报</span></div>
+            </div>
+            <div class="q-info-rows" style="margin-bottom:14px;">
+              <div class="q-info-row"><span class="q-info-label" data-i18n="q_total_tokens">持仓代币</span><span class="q-info-val" id="calcTotalTokens" style="color:rgba(255,255,255,.8);">0 POSX</span></div>
+              <div class="q-info-row"><span class="q-info-label" data-i18n="q_total_comm">推广佣金 (U)</span><span class="q-info-val gold" id="calcTotalCommU">0 U</span></div>
+            </div>
+            <div class="q-price-grid">
+              <div class="q-price-cell">
+                <div class="q-price-label">$0.15</div>
+                <div class="q-price-val" id="calcTV015">$0</div>
+                <div class="q-price-mult" id="calcTM015">0x</div>
+                <div class="q-price-profit" id="calcTP015">+$0</div>
+              </div>
+              <div class="q-price-cell hl">
+                <div class="q-price-label">$0.20</div>
+                <div class="q-price-val" id="calcTV020">$0</div>
+                <div class="q-price-mult" id="calcTM020">0x</div>
+                <div class="q-price-profit" id="calcTP020">+$0</div>
+              </div>
+              <div class="q-price-cell">
+                <div class="q-price-label">$0.25</div>
+                <div class="q-price-val" id="calcTV025">$0</div>
+                <div class="q-price-mult" id="calcTM025">0x</div>
+                <div class="q-price-profit" id="calcTP025">+$0</div>
+              </div>
+            </div>
+            <div class="q-total-explain" data-i18n="q_total_explain">综合回报 = 代币上所后价值 + 推广佣金 (U)</div>
           </div>
         </div>
       </div>
@@ -1686,9 +1753,9 @@ html[lang="ko"] body {
       totalTeam += reward;
 
       var row = document.createElement('div');
-      row.className = 'calc-result-row';
+      row.className = 'adv-result-detail';
       var downV = getVLevel(downlineLevel);
-      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + (downV || '0%') + ' → ' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span class="calc-result-val">' + fmtU(reward) + '</span>';
+      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + (downV || '0%') + ' → ' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span>' + fmtU(reward) + '</span>';
       teamBreakdown.appendChild(row);
     });
 
@@ -1696,6 +1763,15 @@ html[lang="ko"] body {
     if (totalTeam > teamCap) totalTeam = teamCap;
 
     document.getElementById('calcTeamTotal').textContent = fmtU(totalTeam);
+
+    var myVLabel = getVLevel(myLevel);
+    var myLevelEl = document.getElementById('calcMyLevel');
+    if (myVLabel && teamPerf > 0) {
+      myLevelEl.textContent = myVLabel + ' (' + myLevel + '%)';
+      myLevelEl.style.display = 'inline-flex';
+    } else {
+      myLevelEl.style.display = 'none';
+    }
 
     var equalBreakdown = document.getElementById('calcEqualBreakdown');
     var equalActive = equalToggle && equalToggle.classList.contains('active');
@@ -1712,8 +1788,8 @@ html[lang="ko"] body {
         totalEqual += reward;
         var layerLabel = txt('calc_equal_layer').replace('{n}', idx + 1);
         var row = document.createElement('div');
-        row.className = 'calc-result-row';
-        row.innerHTML = '<span>' + layerLabel + ' (' + pctVal + '%)</span><span class="calc-result-val">' + fmtU(reward) + '</span>';
+        row.className = 'adv-result-detail';
+        row.innerHTML = '<span>' + layerLabel + ' (' + pctVal + '%)</span><span>' + fmtU(reward) + '</span>';
         equalBreakdown.appendChild(row);
       });
     }
@@ -1721,20 +1797,43 @@ html[lang="ko"] body {
     var totalU = netDirect + totalTeam + totalEqual;
     document.getElementById('calcTotalU').textContent = fmtU(totalU);
 
-    var price = parseFloat(document.getElementById('calcPriceSlider').value) || 0.20;
-    document.getElementById('calcPriceCurrent').textContent = '$' + price.toFixed(2);
+    // Static: holding appreciation
+    var calcTokens = deposit > 0 ? deposit / COST : 0;
+    document.getElementById('calcStatDeposit').textContent = fmtU(deposit);
+    document.getElementById('calcStatTokens').textContent = fmtTokens(calcTokens);
 
-    document.getElementById('calcTokenCount').textContent = fmtU(totalU);
+    var csv015 = calcTokens * 0.15;
+    var csv020 = calcTokens * 0.20;
+    var csv025 = calcTokens * 0.25;
+    document.getElementById('calcSV015').textContent = fmtDollar(csv015);
+    document.getElementById('calcSV020').textContent = fmtDollar(csv020);
+    document.getElementById('calcSV025').textContent = fmtDollar(csv025);
+    document.getElementById('calcSM015').textContent = deposit > 0 ? MULTS[0] + 'x' : '4.72x';
+    document.getElementById('calcSM020').textContent = deposit > 0 ? MULTS[1] + 'x' : '6.29x';
+    document.getElementById('calcSM025').textContent = deposit > 0 ? MULTS[2] + 'x' : '7.86x';
+    document.getElementById('calcSP015').textContent = fmtProfit(csv015 - deposit);
+    document.getElementById('calcSP020').textContent = fmtProfit(csv020 - deposit);
+    document.getElementById('calcSP025').textContent = fmtProfit(csv025 - deposit);
 
-    document.getElementById('calcVal015').textContent = fmtU(totalU);
-    document.getElementById('calcTok015').textContent = fmtU(totalU);
-    document.getElementById('calcVal020').textContent = fmtU(totalU);
-    document.getElementById('calcTok020').textContent = fmtU(totalU);
-    document.getElementById('calcVal025').textContent = fmtU(totalU);
-    document.getElementById('calcTok025').textContent = fmtU(totalU);
+    // Total return = token value + commission U
+    document.getElementById('calcTotalTokens').textContent = fmtTokens(calcTokens);
+    document.getElementById('calcTotalCommU').textContent = fmtU(totalU);
+
+    var ctv015 = csv015 + totalU;
+    var ctv020 = csv020 + totalU;
+    var ctv025 = csv025 + totalU;
+    document.getElementById('calcTV015').textContent = fmtDollar(ctv015);
+    document.getElementById('calcTV020').textContent = fmtDollar(ctv020);
+    document.getElementById('calcTV025').textContent = fmtDollar(ctv025);
+    document.getElementById('calcTM015').textContent = deposit > 0 ? (ctv015 / deposit).toFixed(1) + 'x' : '0x';
+    document.getElementById('calcTM020').textContent = deposit > 0 ? (ctv020 / deposit).toFixed(1) + 'x' : '0x';
+    document.getElementById('calcTM025').textContent = deposit > 0 ? (ctv025 / deposit).toFixed(1) + 'x' : '0x';
+    document.getElementById('calcTP015').textContent = fmtProfit(ctv015 - deposit);
+    document.getElementById('calcTP020').textContent = fmtProfit(ctv020 - deposit);
+    document.getElementById('calcTP025').textContent = fmtProfit(ctv025 - deposit);
   }
 
-  ['calcOwnDeposit', 'calcOwnHolding', 'calcTeamPerf', 'calcEqualPerf', 'calcPriceSlider'].forEach(function(id) {
+  ['calcOwnDeposit', 'calcOwnHolding', 'calcTeamPerf', 'calcEqualPerf'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', runCalc);
   });
