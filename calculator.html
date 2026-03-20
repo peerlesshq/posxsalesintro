@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POSX | Commission Calculator</title>
+<meta name="description" content="POSX commission calculator — enter your deposit, holdings, and team data to simulate estimated earnings from direct, team, and equal-level rewards.">
+<meta name="keywords" content="POSX, commission calculator, referral rewards, team rewards, equal-level bonus, tokenized rewards, DeFi, digital assets">
+<meta name="robots" content="index,follow">
+<meta name="author" content="POSX Network">
+<meta name="theme-color" content="#00205B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="POSX">
+<meta property="og:title" content="POSX | Commission Calculator">
+<meta property="og:description" content="POSX commission calculator — enter your deposit, holdings, and team data to simulate estimated earnings from direct, team, and equal-level rewards.">
+<meta property="og:url" content="https://www.posxevents.com/calculator.html">
+<meta property="og:image" content="https://www.posxevents.com/assets/img/og/posx-og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="POSX commission calculator tool">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="POSX | Commission Calculator">
+<meta name="twitter:description" content="POSX commission calculator — enter your deposit, holdings, and team data to simulate estimated earnings from direct, team, and equal-level rewards.">
+<meta name="twitter:image" content="https://www.posxevents.com/assets/img/og/posx-og-share.png">
+<meta name="twitter:image:alt" content="POSX commission calculator tool">
+<link rel="canonical" href="https://www.posxevents.com/calculator.html">
+<link rel="icon" type="image/svg+xml" href="./assets/img/logo/POSX-Logo-Black.svg">
+<link rel="shortcut icon" href="./assets/img/logo/POSX-Logo-Black.svg">
+<link rel="apple-touch-icon" href="./assets/img/logo/POSX-Logo-Black.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #00205B;
+  --navy-90:    #1A3670;
+  --navy-70:    #4D6490;
+  --navy-50:    #8092AD;
+  --navy-30:    #B3BFCE;
+  --navy-15:    #D9DFE7;
+  --navy-08:    #ECF0F5;
+  --navy-04:    #F5F7FA;
+  --gold:       #B4975A;
+  --gold-dark:  #96793E;
+  --gold-light: #C8AB72;
+  --gold-bg:    #F8F4ED;
+  --white:      #FFFFFF;
+  --black:      #0D0D1A;
+  --text-1:     #1A1D2B;
+  --text-2:     #3D4158;
+  --text-3:     #6B7084;
+  --text-4:     #9398AB;
+  --green:      #0A7B46;
+  --green-bg:   #E8F5EE;
+  --red:        #B82E3A;
+  --red-bg:     #FAEAEC;
+  --rule:       #D6DAE3;
+  --rule-light: #ECEEF2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+img, svg, table { max-width: 100%; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #E8EBF0;
+  color: var(--text-1);
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+html[lang="zh-TW"] body {
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+html[lang="en"] body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+html[lang="ko"] body {
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+.canvas {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.en { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; }
+
+.ig-section    { padding: 36px 20px; position: relative; }
+.ig-section-alt{ padding: 36px 20px; background: var(--navy-04); position: relative; }
+
+/* ═══════ HEADER ═══════ */
+.header-bar { height: 4px; background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 70%, var(--gold) 70%, var(--gold) 100%); }
+.header {
+  padding: 20px 20px 16px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  border-bottom: 1px solid var(--rule);
+  gap: 12px; flex-wrap: wrap;
+}
+.header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.header-logo-img { height: 28px; width: auto; display: block; }
+.header-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; min-width: 0; }
+.header-doc-type { display: none; font-family: 'Inter', sans-serif; font-size: 0.5rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+.header-date { font-family: 'Inter', sans-serif; font-size: 0.625rem; color: var(--text-4); }
+
+/* ═══════ LANGUAGE SWITCHER ═══════ */
+.lang-sw {
+  display: inline-flex; align-items: center; gap: 0;
+  background: var(--navy-04); border: 1px solid var(--rule);
+  border-radius: 6px; overflow: hidden; font-family: 'Inter', sans-serif;
+}
+.lang-btn {
+  padding: 5px 10px; font-size: 0.625rem; font-weight: 600;
+  border: none; background: none; cursor: pointer;
+  color: var(--text-3); transition: all 0.15s; white-space: nowrap;
+  letter-spacing: 0.3px;
+  min-width: 44px;
+}
+.lang-btn:not(:last-child) { border-right: 1px solid var(--rule); }
+.lang-btn.active { background: var(--navy); color: #fff; }
+.lang-btn:hover:not(.active) { background: var(--navy-08); }
+
+/* ═══════ SECTION HEADINGS ═══════ */
+.sec-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px; display: block;
+}
+.sec-title { font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 10px; }
+.sec-subtitle { font-size: 0.8125rem; color: var(--text-3); line-height: 1.75; overflow-wrap: anywhere; }
+.sec-rule { width: 40px; height: 2px; background: var(--navy); margin: 16px 0 0; }
+
+/* ═══════ BACK LINK ═══════ */
+.calc-back-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.8125rem; font-weight: 600; color: var(--navy);
+  text-decoration: none; padding: 14px 20px;
+  border-bottom: 1px solid var(--rule-light);
+  transition: color 0.15s;
+}
+.calc-back-link:hover { color: var(--gold); }
+
+/* ═══════ QUICK MODE ═══════ */
+.q-inputs { margin-top: 24px; display: grid; gap: 16px; }
+.q-row { position: relative; }
+.q-label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+.q-input {
+  width: 100%; height: 44px; border-radius: 8px; border: 1px solid var(--rule);
+  padding: 0 12px; font-size: 0.9375rem; color: var(--text-1); background: var(--white);
+  outline: none; transition: border-color .2s; font-family: 'Inter', sans-serif;
+}
+.q-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(180,151,90,0.12); }
+.q-input::placeholder { color: var(--text-4); font-family: inherit; }
+.q-tier-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 0.6875rem; font-weight: 700; background: var(--gold-bg); color: var(--gold-dark);
+  margin-top: 6px;
+}
+
+.q-slider-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.q-slider {
+  -webkit-appearance: none; appearance: none;
+  flex: 1; height: 6px; border-radius: 3px;
+  background: var(--navy-15); outline: none; cursor: pointer;
+}
+.q-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold); cursor: pointer;
+  box-shadow: 0 2px 8px rgba(180,151,90,.35);
+}
+.q-slider::-moz-range-thumb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold); cursor: pointer; border: none;
+  box-shadow: 0 2px 8px rgba(180,151,90,.35);
+}
+.q-slider-val {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; height: 36px; border-radius: 8px;
+  background: var(--navy); color: #fff;
+  font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+  flex-shrink: 0; padding: 0 10px;
+}
+.q-slider-suffix {
+  font-size: 0.75rem; color: var(--text-3); margin-left: 4px; font-weight: 500;
+}
+
+/* ═══════ QUICK RESULTS ═══════ */
+.q-results { margin-top: 28px; display: grid; gap: 16px; }
+
+.q-card {
+  border-radius: 12px; padding: 20px; position: relative; overflow: hidden;
+}
+.q-card-static {
+  background: linear-gradient(135deg, #f2f9f4 0%, #e6f4ec 100%);
+  border: 1px solid rgba(10,123,70,.12);
+}
+.q-card-dynamic {
+  background: linear-gradient(135deg, #faf6ee 0%, #f5edd9 100%);
+  border: 1px solid rgba(180,151,90,.15);
+}
+.q-card-total {
+  background: var(--navy); color: #fff; border: none;
+}
+.q-card-total::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(180,151,90,0.1), transparent);
+  pointer-events: none;
+}
+
+.q-card-header { margin-bottom: 16px; position: relative; z-index: 1; }
+.q-card-title {
+  font-size: 0.9375rem; font-weight: 700; color: var(--navy);
+  display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
+}
+.q-card-total .q-card-title { color: rgba(255,255,255,.8); }
+.q-card-icon {
+  width: 24px; height: 24px; border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+}
+.q-card-static .q-card-icon { background: var(--green); color: #fff; }
+.q-card-dynamic .q-card-icon { background: var(--gold); color: #fff; }
+.q-card-total .q-card-icon { background: rgba(255,255,255,.15); color: var(--gold-light); }
+.q-card-sub {
+  font-size: 0.6875rem; color: var(--text-3); line-height: 1.5;
+}
+.q-card-total .q-card-sub { color: rgba(255,255,255,.45); }
+
+.q-info-rows { position: relative; z-index: 1; }
+.q-info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 0; font-size: 0.8125rem;
+}
+.q-info-row + .q-info-row { border-top: 1px solid rgba(0,0,0,.06); }
+.q-card-total .q-info-row + .q-info-row { border-top-color: rgba(255,255,255,.08); }
+.q-info-label { color: var(--text-2); }
+.q-card-total .q-info-label { color: rgba(255,255,255,.6); }
+.q-info-val {
+  font-family: 'Inter', sans-serif; font-weight: 700; color: var(--text-1);
+}
+.q-card-total .q-info-val { color: #fff; }
+.q-info-val.green { color: var(--green); }
+.q-info-val.gold { color: var(--gold-dark); }
+.q-card-total .q-info-val.gold { color: var(--gold-light); }
+
+.q-price-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  margin-top: 14px; position: relative; z-index: 1;
+}
+.q-price-cell {
+  text-align: center; padding: 12px 6px; border-radius: 10px;
+}
+.q-card-static .q-price-cell { background: rgba(255,255,255,.7); }
+.q-card-static .q-price-cell.hl { background: rgba(10,123,70,.08); border: 1px solid rgba(10,123,70,.15); }
+.q-card-dynamic .q-price-cell { background: rgba(255,255,255,.6); }
+.q-card-dynamic .q-price-cell.hl { background: rgba(180,151,90,.1); border: 1px solid rgba(180,151,90,.2); }
+.q-card-total .q-price-cell { background: rgba(255,255,255,.06); }
+.q-card-total .q-price-cell.hl { background: rgba(180,151,90,.15); }
+
+.q-price-label {
+  font-size: 0.6875rem; font-weight: 600; margin-bottom: 6px;
+}
+.q-card-static .q-price-label { color: var(--text-3); }
+.q-card-dynamic .q-price-label { color: var(--text-3); }
+.q-card-total .q-price-label { color: rgba(255,255,255,.5); }
+
+.q-price-val {
+  font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 700;
+  margin-bottom: 4px;
+}
+.q-card-static .q-price-val { color: var(--text-1); }
+.q-card-dynamic .q-price-val { color: var(--text-1); }
+.q-card-total .q-price-val { color: #fff; }
+
+.q-price-tokens {
+  font-family: 'Inter', sans-serif; font-size: 0.5625rem; margin-bottom: 6px;
+}
+.q-card-static .q-price-tokens,
+.q-card-dynamic .q-price-tokens { color: var(--text-4); }
+.q-card-total .q-price-tokens { color: rgba(255,255,255,.35); }
+
+.q-price-mult {
+  font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 900;
+  color: var(--gold); line-height: 1; margin-bottom: 6px;
+}
+.q-card-total .q-price-mult { color: var(--gold-light); }
+
+.q-price-profit {
+  font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700;
+}
+.q-card-static .q-price-profit { color: var(--green); }
+.q-card-dynamic .q-price-profit { color: var(--gold-dark); }
+.q-card-total .q-price-profit { color: var(--gold-light); }
+
+.q-burn-notice {
+  margin-top: 10px; padding: 10px 12px; border-radius: 8px;
+  background: var(--red-bg); border: 1px solid rgba(184,46,58,.15);
+  font-size: 0.75rem; color: var(--red); font-weight: 600;
+  position: relative; z-index: 1;
+}
+
+.q-card-total .q-big-tokens {
+  font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 900;
+  color: var(--gold-light); line-height: 1.2; margin-bottom: 2px;
+  position: relative; z-index: 1;
+}
+.q-card-total .q-big-label {
+  font-size: 0.6875rem; color: rgba(255,255,255,.4);
+  margin-bottom: 14px; position: relative; z-index: 1;
+}
+
+/* ═══════ ADVANCED TOGGLE ═══════ */
+.q-adv-wrap {
+  padding: 0 20px 0;
+}
+.q-adv-toggle {
+  width: 100%; padding: 16px 0; border: none;
+  background: none; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; gap: 8px;
+  font-size: 0.875rem; font-weight: 700; color: var(--navy);
+  border-top: 1px dashed var(--rule);
+  transition: color .15s;
+}
+.q-adv-toggle:hover { color: var(--gold); }
+
+/* ═══════ COMMISSION CALCULATOR (ADVANCED) ═══════ */
+.calc-shell { scroll-margin-top: 18px; }
+.calc-step { margin-top: 16px; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.calc-step summary {
+  list-style: none; cursor: pointer; padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--navy-04); font-size: 0.8125rem; font-weight: 700; color: var(--navy);
+}
+.calc-step summary::-webkit-details-marker { display: none; }
+.calc-step summary::after { content: '+'; font-size: 1.1rem; font-weight: 700; color: var(--text-4); transition: transform .2s; }
+.calc-step[open] summary::after { content: '\2212'; }
+.calc-step-body { padding: 16px; }
+.calc-label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+.calc-input {
+  width: 100%; height: 44px; border-radius: 8px; border: 1px solid var(--rule);
+  padding: 0 12px; font-size: 0.875rem; color: var(--text-1); background: var(--white);
+  outline: none; transition: border-color .2s;
+}
+.calc-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(180,151,90,0.12); }
+.calc-input::placeholder { color: var(--text-4); }
+.calc-row { margin-bottom: 14px; }
+.calc-row:last-child { margin-bottom: 0; }
+.calc-tier-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 0.6875rem; font-weight: 700; background: var(--gold-bg); color: var(--gold-dark);
+  margin-top: 6px;
+}
+.calc-ref-row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+.calc-ref-row .calc-input { flex: 1; }
+.calc-ref-remove {
+  width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--rule);
+  background: var(--white); color: var(--red); font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.calc-ref-remove:hover { background: var(--red-bg); }
+.calc-add-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; border: 1px dashed var(--gold); background: var(--gold-bg);
+  color: var(--gold-dark); font-size: 0.75rem; font-weight: 600; cursor: pointer;
+}
+.calc-add-btn:hover { background: #f0e8d8; }
+.calc-select {
+  width: 100%; height: 44px; border-radius: 8px; border: 1px solid var(--rule);
+  padding: 0 12px; font-size: 0.875rem; color: var(--text-1); background: var(--white);
+  outline: none; cursor: pointer;
+}
+.calc-select:focus { border-color: var(--gold); }
+.calc-toggle-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.calc-toggle {
+  position: relative; width: 40px; height: 22px; border-radius: 11px;
+  background: var(--rule); cursor: pointer; border: none; padding: 0; transition: background .2s;
+}
+.calc-toggle.active { background: var(--gold); }
+.calc-toggle::after {
+  content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--white); box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  transition: transform .2s;
+}
+.calc-toggle.active::after { transform: translateX(18px); }
+.calc-toggle-label { font-size: 0.8125rem; font-weight: 600; color: var(--text-2); }
+.calc-line-block { padding: 12px; border: 1px solid var(--rule-light); border-radius: 8px; margin-bottom: 10px; background: var(--navy-04); }
+.calc-line-title { font-size: 0.75rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+
+.calc-results { margin-top: 20px; display: grid; gap: 12px; }
+.calc-card {
+  border: 1px solid var(--rule); border-radius: 10px; padding: 16px; background: var(--white);
+}
+.calc-card-title {
+  font-size: 0.8125rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.calc-card-title .calc-card-icon {
+  width: 22px; height: 22px; border-radius: 6px; display: inline-flex;
+  align-items: center; justify-content: center; font-size: 0.7rem; color: var(--white);
+  background: var(--navy); flex-shrink: 0;
+}
+.calc-result-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 0; font-size: 0.8125rem; color: var(--text-2);
+}
+.calc-result-row + .calc-result-row { border-top: 1px solid var(--rule-light); }
+.calc-result-val { font-weight: 700; color: var(--text-1); font-family: 'Inter', sans-serif; }
+.calc-result-val.green { color: var(--green); }
+.calc-result-val.red { color: var(--red); }
+.calc-progress-wrap { margin-top: 8px; }
+.calc-progress-bar {
+  width: 100%; height: 6px; border-radius: 3px; background: var(--navy-08); overflow: hidden;
+}
+.calc-progress-fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width .3s; }
+.calc-progress-label {
+  display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--text-4); margin-top: 4px;
+}
+.calc-not-triggered {
+  text-align: center; padding: 16px; font-size: 0.8125rem; color: var(--text-4); font-style: italic;
+}
+.calc-summary {
+  border-radius: 12px; padding: 20px; background: var(--navy); color: #fff; position: relative; overflow: hidden;
+}
+.calc-summary::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(180,151,90,0.1), transparent);
+  pointer-events: none;
+}
+.calc-summary-inner { position: relative; z-index: 2; }
+.calc-summary-title { font-size: 0.875rem; font-weight: 700; color: rgba(255,255,255,.7); margin-bottom: 14px; }
+.calc-summary-big {
+  font-family: 'Inter', sans-serif; font-size: 1.75rem; font-weight: 900;
+  color: var(--gold-light); line-height: 1.2; margin-bottom: 4px;
+}
+.calc-summary-sub { font-size: 0.75rem; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.calc-summary-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; font-size: 0.8125rem; color: rgba(255,255,255,.7);
+}
+.calc-summary-row + .calc-summary-row { border-top: 1px solid rgba(255,255,255,.1); }
+.calc-summary-val { font-weight: 700; color: #fff; font-family: 'Inter', sans-serif; }
+.calc-summary-val.gold { color: var(--gold-light); }
+.calc-price-slider-wrap { margin-top: 14px; }
+.calc-price-slider-label {
+  display: flex; justify-content: space-between; font-size: 0.6875rem; color: rgba(255,255,255,.5); margin-bottom: 6px;
+}
+.calc-price-slider {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 4px;
+  border-radius: 2px; background: rgba(255,255,255,.15); outline: none;
+}
+.calc-price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--gold-light); cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+.calc-price-slider::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%; background: var(--gold-light);
+  cursor: pointer; border: none; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+.calc-price-current {
+  text-align: center; font-family: 'Inter', sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--gold-light); margin-top: 6px;
+}
+.calc-price-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px;
+}
+.calc-price-cell {
+  text-align: center; padding: 10px 6px; border-radius: 8px; background: rgba(255,255,255,.06);
+}
+.calc-price-cell-label { font-size: 0.6875rem; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+.calc-price-cell-val { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 700; color: #fff; }
+.calc-price-cell-tokens { font-size: 0.625rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+.calc-warning {
+  margin-top: 10px; padding: 10px 12px; border-radius: 8px;
+  background: var(--red-bg); border: 1px solid rgba(184,46,58,.15);
+  font-size: 0.75rem; color: var(--red); font-weight: 600;
+}
+
+/* ═══════ FOOTER / DISCLAIMER ═══════ */
+.disclaimer { padding: 16px 20px; border-top: 1px solid var(--rule-light); background: var(--white); }
+.disclaimer p { font-size: 0.5625rem; color: var(--text-4); line-height: 1.65; }
+.footer-bar {
+  padding: 20px; border-top: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;
+  background: var(--navy-04);
+}
+.footer-left { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
+.footer-left a { font-family: 'Inter', sans-serif; font-size: 0.625rem; color: var(--navy); text-decoration: none; font-weight: 500; }
+.footer-left a:hover { color: var(--gold); }
+.footer-right { font-family: 'Inter', sans-serif; font-size: 0.5625rem; color: var(--text-4); }
+.footer-accent { height: 4px; background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 70%, var(--gold) 70%, var(--gold) 100%); }
+
+/* ═══════ MOBILE RESPONSIVE ═══════ */
+@media (max-width: 599px) {
+  .header { display: block; }
+  .header-left, .header-right { width: 100%; }
+  .header-left { margin-bottom: 12px; }
+  .header-right { align-items: flex-start; text-align: left; }
+  .lang-sw {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+  }
+  .lang-btn { min-width: 0; padding: 6px 4px; text-align: center; }
+  .q-price-mult { font-size: 1.25rem; }
+}
+
+/* ═══════ TABLET ═══════ */
+@media (min-width: 600px) {
+  .ig-section, .ig-section-alt { padding: 44px 40px; }
+  .header { padding: 24px 40px 20px; }
+  .header-doc-type { display: block; }
+  .calc-back-link { padding: 14px 40px; }
+  .q-adv-wrap { padding: 0 40px; }
+  .disclaimer { padding: 18px 40px; }
+  .footer-bar { padding: 24px 40px; flex-direction: row; justify-content: space-between; text-align: left; }
+  .q-ref-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+
+/* ═══════ DESKTOP ═══════ */
+@media (min-width: 1020px) {
+  .canvas { width: 960px; margin: 40px auto; box-shadow: 0 2px 40px rgba(0,32,91,0.08); }
+  .ig-section, .ig-section-alt { padding: 56px 72px; }
+  .header { padding: 32px 72px 28px; }
+  .header-logo-img { height: 34px; }
+  .calc-back-link { padding: 14px 72px; }
+  .q-adv-wrap { padding: 0 72px; }
+  .sec-title { font-size: 1.5rem; }
+  .disclaimer { padding: 20px 72px; }
+  .footer-bar { padding: 28px 72px; }
+  .q-price-mult { font-size: 1.75rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- ═══════ TOP BRAND BAR ═══════ -->
+  <div class="header-bar"></div>
+  <div class="header">
+    <div class="header-left">
+      <img class="header-logo-img" src="./assets/img/logo/POSX-Logo-Black.svg" alt="POSX">
+    </div>
+    <div class="header-right">
+      <span class="header-doc-type" data-i18n="seo_title">POSX | Commission Calculator</span>
+      <div class="lang-sw">
+        <button class="lang-btn" data-lang="zh-CN">简体</button>
+        <button class="lang-btn" data-lang="zh-TW">繁體</button>
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ko">한국어</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ BACK LINK ═══════ -->
+  <a class="calc-back-link" href="./posx-infographic.html" data-i18n="calc_back_link">&larr; Back to Overview</a>
+
+  <!-- ═══════════════════════════════════════════
+       QUICK MODE
+       ═══════════════════════════════════════════ -->
+  <div class="ig-section" id="quickSection">
+    <span class="sec-num en">QUICK CALCULATOR</span>
+    <h2 class="sec-title" data-i18n="q_title">收益计算器</h2>
+    <p class="sec-subtitle" data-i18n="q_sub">快速估算您的持仓增值与推广佣金回报</p>
+    <div class="sec-rule"></div>
+
+    <!-- Quick Inputs -->
+    <div class="q-inputs">
+      <div class="q-row">
+        <label class="q-label" for="qDeposit" data-i18n="q_deposit">我的入金金额 (U)</label>
+        <input class="q-input" type="number" id="qDeposit" min="0" placeholder="e.g. 10000" data-i18n-placeholder="q_deposit_ph">
+        <div id="qTierBadge" class="q-tier-badge" style="display:none;"></div>
+      </div>
+
+      <div class="q-row">
+        <label class="q-label" data-i18n="q_ref_count">直推人数</label>
+        <div class="q-slider-row">
+          <input class="q-slider" type="range" id="qRefCount" min="1" max="10" value="3">
+          <span class="q-slider-val" id="qRefCountVal">3</span>
+          <span class="q-slider-suffix" id="qRefCountSuffix" data-i18n="q_persons">人</span>
+        </div>
+      </div>
+
+      <div class="q-row">
+        <label class="q-label" for="qRefAvg" data-i18n="q_ref_avg">每人平均入金 (U)</label>
+        <input class="q-input" type="number" id="qRefAvg" min="0" placeholder="e.g. 5000" data-i18n-placeholder="q_ref_avg_ph">
+      </div>
+
+      <div class="q-row">
+        <label class="q-label" for="qTeam" data-i18n="q_team">团队总业绩 (U)</label>
+        <input class="q-input" type="number" id="qTeam" min="0" placeholder="Optional, e.g. 200000" data-i18n-placeholder="q_team_ph">
+      </div>
+    </div>
+
+    <!-- Quick Results -->
+    <div class="q-results">
+
+      <!-- Section A: Static Returns -->
+      <div class="q-card q-card-static">
+        <div class="q-card-header">
+          <div class="q-card-title"><span class="q-card-icon">S</span><span data-i18n="q_static_title">持仓增值</span></div>
+          <div class="q-card-sub" data-i18n="q_static_sub">以成本价 $0.0318 计算代币增值空间</div>
+        </div>
+        <div class="q-info-rows">
+          <div class="q-info-row">
+            <span class="q-info-label" data-i18n="q_your_deposit">入金金额</span>
+            <span class="q-info-val" id="qStatDeposit">0 U</span>
+          </div>
+          <div class="q-info-row">
+            <span class="q-info-label" data-i18n="q_tokens_acquired">获得代币</span>
+            <span class="q-info-val gold" id="qStatTokens">0 POSX</span>
+          </div>
+        </div>
+        <div class="q-price-grid">
+          <div class="q-price-cell">
+            <div class="q-price-label">$0.15</div>
+            <div class="q-price-val" id="qSV015">$0</div>
+            <div class="q-price-tokens" id="qST015">0 POSX</div>
+            <div class="q-price-mult" id="qSM015">4.72x</div>
+            <div class="q-price-profit" id="qSP015">+$0</div>
+          </div>
+          <div class="q-price-cell hl">
+            <div class="q-price-label">$0.20</div>
+            <div class="q-price-val" id="qSV020">$0</div>
+            <div class="q-price-tokens" id="qST020">0 POSX</div>
+            <div class="q-price-mult" id="qSM020">6.29x</div>
+            <div class="q-price-profit" id="qSP020">+$0</div>
+          </div>
+          <div class="q-price-cell">
+            <div class="q-price-label">$0.25</div>
+            <div class="q-price-val" id="qSV025">$0</div>
+            <div class="q-price-tokens" id="qST025">0 POSX</div>
+            <div class="q-price-mult" id="qSM025">7.86x</div>
+            <div class="q-price-profit" id="qSP025">+$0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section B: Dynamic Returns -->
+      <div class="q-card q-card-dynamic">
+        <div class="q-card-header">
+          <div class="q-card-title"><span class="q-card-icon">D</span><span data-i18n="q_dynamic_title">推广佣金</span></div>
+          <div class="q-card-sub" data-i18n="q_dynamic_sub">直推奖励与团队级差奖</div>
+        </div>
+        <div class="q-info-rows">
+          <div class="q-info-row">
+            <span class="q-info-label"><span data-i18n="q_direct_reward">直推奖励</span> <span id="qDynDirectPct" class="en" style="font-size:.6875rem;color:var(--text-4);"></span></span>
+            <span class="q-info-val" id="qDynDirect">0 U</span>
+          </div>
+          <div class="q-info-row">
+            <span class="q-info-label"><span data-i18n="q_team_reward">团队奖励</span> <span id="qDynTeamPct" class="en" style="font-size:.6875rem;color:var(--text-4);"></span></span>
+            <span class="q-info-val" id="qDynTeam">0 U</span>
+          </div>
+          <div class="q-info-row" style="border-top:2px solid rgba(180,151,90,.2);padding-top:8px;margin-top:2px;">
+            <span class="q-info-label" style="font-weight:700;" data-i18n="q_commission_total">佣金合计</span>
+            <span class="q-info-val gold" id="qDynTotal">0 U</span>
+          </div>
+          <div class="q-info-row">
+            <span class="q-info-label" data-i18n="q_commission_tokens">佣金折算代币</span>
+            <span class="q-info-val gold" id="qDynTokens">0 POSX</span>
+          </div>
+        </div>
+        <div id="qBurnNotice" class="q-burn-notice" style="display:none;" data-i18n="q_burn_notice">持仓不足 1,000U，无法获得推广奖励</div>
+        <div class="q-price-grid">
+          <div class="q-price-cell">
+            <div class="q-price-label">$0.15</div>
+            <div class="q-price-val" id="qDV015">$0</div>
+            <div class="q-price-tokens" id="qDT015">0 POSX</div>
+            <div class="q-price-mult" id="qDM015">4.72x</div>
+            <div class="q-price-profit" id="qDP015">+$0</div>
+          </div>
+          <div class="q-price-cell hl">
+            <div class="q-price-label">$0.20</div>
+            <div class="q-price-val" id="qDV020">$0</div>
+            <div class="q-price-tokens" id="qDT020">0 POSX</div>
+            <div class="q-price-mult" id="qDM020">6.29x</div>
+            <div class="q-price-profit" id="qDP020">+$0</div>
+          </div>
+          <div class="q-price-cell">
+            <div class="q-price-label">$0.25</div>
+            <div class="q-price-val" id="qDV025">$0</div>
+            <div class="q-price-tokens" id="qDT025">0 POSX</div>
+            <div class="q-price-mult" id="qDM025">7.86x</div>
+            <div class="q-price-profit" id="qDP025">+$0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section C: Total Return -->
+      <div class="q-card q-card-total">
+        <div class="q-card-header">
+          <div class="q-card-title"><span class="q-card-icon">&Sigma;</span><span data-i18n="q_total_title">综合回报</span></div>
+        </div>
+        <div class="q-big-tokens" id="qTotalTokens">0 POSX</div>
+        <div class="q-big-label" data-i18n="q_total_tokens">总持有代币</div>
+        <div class="q-price-grid">
+          <div class="q-price-cell">
+            <div class="q-price-label">$0.15</div>
+            <div class="q-price-val" id="qTV015">$0</div>
+            <div class="q-price-tokens" id="qTT015">0 POSX</div>
+            <div class="q-price-mult" id="qTM015">4.72x</div>
+            <div class="q-price-profit" id="qTP015">+$0</div>
+          </div>
+          <div class="q-price-cell hl">
+            <div class="q-price-label">$0.20</div>
+            <div class="q-price-val" id="qTV020">$0</div>
+            <div class="q-price-tokens" id="qTT020">0 POSX</div>
+            <div class="q-price-mult" id="qTM020">6.29x</div>
+            <div class="q-price-profit" id="qTP020">+$0</div>
+          </div>
+          <div class="q-price-cell">
+            <div class="q-price-label">$0.25</div>
+            <div class="q-price-val" id="qTV025">$0</div>
+            <div class="q-price-tokens" id="qTT025">0 POSX</div>
+            <div class="q-price-mult" id="qTM025">7.86x</div>
+            <div class="q-price-profit" id="qTP025">+$0</div>
+          </div>
+        </div>
+        <div class="q-info-rows" style="margin-top:14px;">
+          <div class="q-info-row">
+            <span class="q-info-label" data-i18n="q_total_profit">总利润</span>
+            <span class="q-info-val gold" id="qTotalProfit020" style="font-size:1.125rem;">+$0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ ADVANCED MODE TOGGLE ═══════ -->
+  <div class="q-adv-wrap">
+    <button class="q-adv-toggle" id="advToggle" data-i18n="q_advanced_toggle">查看详细计算 &#9656;</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       ADVANCED MODE
+       ═══════════════════════════════════════════ -->
+  <div id="advSection" style="display:none;">
+    <div class="ig-section calc-shell" id="calcSection">
+      <span class="sec-num en">ADVANCED CALCULATOR</span>
+      <h2 class="sec-title" data-i18n="q_advanced_title">详细佣金计算器</h2>
+      <p class="sec-subtitle" data-i18n="calc_sub">输入您的入金、持仓与团队数据，实时模拟直推奖励、团队奖励与平级奖的预估收益。</p>
+      <div class="sec-rule"></div>
+
+      <!-- Step 1 -->
+      <details class="calc-step" id="calcStep1" open>
+        <summary><span data-i18n="calc_step1_title">第一步：个人信息</span></summary>
+        <div class="calc-step-body">
+          <div class="calc-row">
+            <label class="calc-label" data-i18n="calc_own_deposit">您的入金金额 (U)</label>
+            <input class="calc-input" type="number" id="calcOwnDeposit" min="0" placeholder="e.g. 10000" data-i18n-placeholder="calc_own_deposit_ph">
+            <div id="calcTierBadge" class="calc-tier-badge" style="display:none;"></div>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" data-i18n="calc_own_holding">您的 POSX 持仓价值 (U)</label>
+            <input class="calc-input" type="number" id="calcOwnHolding" min="0" placeholder="e.g. 5000" data-i18n-placeholder="calc_own_holding_ph">
+          </div>
+        </div>
+      </details>
+
+      <!-- Step 2 -->
+      <details class="calc-step" id="calcStep2">
+        <summary><span data-i18n="calc_step2_title">第二步：直推下级</span></summary>
+        <div class="calc-step-body">
+          <div id="calcRefList">
+            <div class="calc-ref-row">
+              <input class="calc-input calc-ref-input" type="number" min="0" placeholder="下级入金金额 (U)" data-i18n-placeholder="calc_ref_ph">
+              <button class="calc-ref-remove" onclick="removeCalcRef(this)" title="Remove">&times;</button>
+            </div>
+          </div>
+          <button class="calc-add-btn" id="calcAddRef" onclick="addCalcRef()">
+            <span>+</span><span data-i18n="calc_add_ref">添加下级</span>
+          </button>
+          <div class="calc-warning" id="calcRefMax" style="display:none;" data-i18n="calc_ref_max">最多添加 5 个直推下级。</div>
+        </div>
+      </details>
+
+      <!-- Step 3 -->
+      <details class="calc-step" id="calcStep3">
+        <summary><span data-i18n="calc_step3_title">第三步：团队与平级</span></summary>
+        <div class="calc-step-body">
+          <div class="calc-row">
+            <label class="calc-label" data-i18n="calc_team_perf">团队累计业绩 (U)</label>
+            <input class="calc-input" type="number" id="calcTeamPerf" min="0" placeholder="e.g. 500000" data-i18n-placeholder="calc_team_perf_ph">
+          </div>
+
+          <div id="calcDownlines">
+            <div class="calc-line-block">
+              <div class="calc-line-title" data-i18n="calc_line1">线路 1</div>
+              <div class="calc-row">
+                <label class="calc-label" data-i18n="calc_line_perf">该线路业绩 (U)</label>
+                <input class="calc-input calc-line-perf-input" type="number" min="0" placeholder="e.g. 200000" data-i18n-placeholder="calc_line_perf_ph">
+              </div>
+              <div class="calc-row">
+                <label class="calc-label" data-i18n="calc_line_level">该线路最高级别</label>
+                <select class="calc-select calc-line-level-select">
+                  <option value="0">0%</option><option value="1">1%</option><option value="2">2%</option>
+                  <option value="3">3%</option><option value="5">5%</option><option value="10">10%</option>
+                  <option value="15">15%</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button class="calc-add-btn" id="calcAddLine" onclick="addCalcLine()">
+            <span>+</span><span data-i18n="calc_add_line">添加线路</span>
+          </button>
+          <div class="calc-warning" id="calcLineMax" style="display:none;" data-i18n="calc_line_max">最多添加 3 条线路。</div>
+
+          <div style="margin-top:16px;">
+            <div class="calc-toggle-row">
+              <button class="calc-toggle" id="calcEqualToggle" type="button"></button>
+              <span class="calc-toggle-label" data-i18n="calc_equal_toggle">启用平级奖计算</span>
+            </div>
+            <div id="calcEqualWrap" style="display:none;">
+              <div class="calc-row">
+                <label class="calc-label" data-i18n="calc_equal_perf">平级下级的团队业绩 (U)</label>
+                <input class="calc-input" type="number" id="calcEqualPerf" min="0" placeholder="e.g. 100000" data-i18n-placeholder="calc_equal_perf_ph">
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Results -->
+      <div class="calc-results" id="calcResults">
+        <div class="calc-card" id="calcCardDirect">
+          <div class="calc-card-title"><span class="calc-card-icon">1</span><span data-i18n="calc_res_direct_title">直推奖励</span></div>
+          <div class="calc-result-row"><span data-i18n="calc_res_gross">毛奖励</span><span class="calc-result-val" id="calcDirectGross">0 U</span></div>
+          <div class="calc-result-row"><span data-i18n="calc_res_burned">烧伤扣除</span><span class="calc-result-val red" id="calcDirectBurned">0 U</span></div>
+          <div class="calc-result-row"><span data-i18n="calc_res_net">净奖励</span><span class="calc-result-val green" id="calcDirectNet">0 U</span></div>
+          <div class="calc-progress-wrap">
+            <div class="calc-progress-bar"><div class="calc-progress-fill" id="calcDirectBar" style="width:0%"></div></div>
+            <div class="calc-progress-label"><span data-i18n="calc_res_effective">有效比例</span><span id="calcDirectPct">0%</span></div>
+          </div>
+          <div class="calc-warning" id="calcBurnWarn" style="display:none;" data-i18n="calc_burn_warn">持仓不足 1,000U，无法获得任何奖励。</div>
+        </div>
+
+        <div class="calc-card" id="calcCardTeam">
+          <div class="calc-card-title"><span class="calc-card-icon">2</span><span data-i18n="calc_res_team_title">团队奖励</span></div>
+          <div id="calcTeamBreakdown"></div>
+          <div class="calc-result-row" style="border-top:2px solid var(--rule);margin-top:6px;padding-top:8px;">
+            <span data-i18n="calc_res_team_total" style="font-weight:700;">团队奖励合计</span>
+            <span class="calc-result-val green" id="calcTeamTotal">0 U</span>
+          </div>
+        </div>
+
+        <div class="calc-card" id="calcCardEqual">
+          <div class="calc-card-title"><span class="calc-card-icon">3</span><span data-i18n="calc_res_equal_title">平级奖</span></div>
+          <div id="calcEqualBreakdown">
+            <div class="calc-not-triggered" data-i18n="calc_equal_not_triggered">未启用</div>
+          </div>
+        </div>
+
+        <div class="calc-summary" id="calcCardSummary">
+          <div class="calc-summary-inner">
+            <div class="calc-summary-title" data-i18n="calc_res_summary_title">收益总览</div>
+            <div class="calc-summary-big" id="calcTotalU">0 U</div>
+            <div class="calc-summary-sub" data-i18n="calc_res_total_label">预估总奖励 (U)</div>
+
+            <div class="calc-summary-row"><span data-i18n="calc_res_tokens">POSX 代币数量</span><span class="calc-summary-val gold" id="calcTokenCount">0</span></div>
+
+            <div class="calc-price-slider-wrap">
+              <div class="calc-price-slider-label"><span>$0.15</span><span data-i18n="calc_price_label">POSX 价格</span><span>$0.25</span></div>
+              <input type="range" class="calc-price-slider" id="calcPriceSlider" min="0.15" max="0.25" step="0.01" value="0.20">
+              <div class="calc-price-current" id="calcPriceCurrent">$0.20</div>
+            </div>
+
+            <div class="calc-price-grid">
+              <div class="calc-price-cell">
+                <div class="calc-price-cell-label">$0.15</div>
+                <div class="calc-price-cell-val" id="calcVal015">$0</div>
+                <div class="calc-price-cell-tokens" id="calcTok015">0 POSX</div>
+              </div>
+              <div class="calc-price-cell" style="background:rgba(180,151,90,.15);">
+                <div class="calc-price-cell-label">$0.20</div>
+                <div class="calc-price-cell-val" id="calcVal020">$0</div>
+                <div class="calc-price-cell-tokens" id="calcTok020">0 POSX</div>
+              </div>
+              <div class="calc-price-cell">
+                <div class="calc-price-cell-label">$0.25</div>
+                <div class="calc-price-cell-val" id="calcVal025">$0</div>
+                <div class="calc-price-cell-tokens" id="calcTok025">0 POSX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ DISCLAIMER ═══════ -->
+  <div class="disclaimer">
+    <p data-i18n="disclaimer">本文件仅供信息参考，不构成对任何证券、金融工具或数字资产的要约、招揽或投资建议。文中信息基于被认为可靠的来源整理，但不对其准确性或完整性作出任何明示或暗示保证。过往表现不代表未来结果，数字资产投资存在较高风险，可能导致本金部分或全部损失。&copy; 2026 POSX Network.</p>
+  </div>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <div class="footer-bar">
+    <div class="footer-left">
+      <a href="https://www.posx.network" target="_blank" class="en">posx.network</a>
+      <a href="https://posx.io" target="_blank" class="en">posx.io</a>
+      <a href="mailto:partnership@posx.io" class="en">partnership@posx.io</a>
+      <a href="https://x.com/POSX_Official" target="_blank" class="en">@POSX_Official</a>
+      <a href="https://t.me/POSX_Official" target="_blank" class="en">Telegram</a>
+    </div>
+    <div class="footer-right en">&copy; 2026 POSX Network. All Rights Reserved.</div>
+  </div>
+  <div class="footer-accent"></div>
+
+</div>
+
+<!-- ═══════ SCRIPTS ═══════ -->
+<script>
+(function() {
+  'use strict';
+
+  var COST = 0.0318;
+  var PRICES = [0.15, 0.20, 0.25];
+  var MULTS = [
+    (0.15 / COST).toFixed(2),
+    (0.20 / COST).toFixed(2),
+    (0.25 / COST).toFixed(2)
+  ];
+
+  var T = {
+    'zh-CN': {
+      seo_title: 'POSX\uff5c佣金计算器',
+      seo_description: '输入您的入金、持仓与团队数据，实时模拟直推奖励、团队奖励与平级奖的预估收益，并查看 POSX 代币预估价值。',
+      disclaimer: '本文件仅供信息参考，不构成对任何证券、金融工具或数字资产的要约、招揽或投资建议。文中信息基于被认为可靠的来源整理，但不对其准确性或完整性作出任何明示或暗示保证。过往表现不代表未来结果，数字资产投资存在较高风险，可能导致本金部分或全部损失。\u00a9 2026 POSX Network.',
+      calc_back_link: '\u2190 返回项目介绍',
+
+      q_title: '收益计算器',
+      q_sub: '快速估算您的持仓增值与推广佣金回报',
+      q_deposit: '我的入金金额 (U)',
+      q_deposit_ph: '例如 10000',
+      q_ref_count: '直推人数',
+      q_ref_avg: '每人平均入金 (U)',
+      q_ref_avg_ph: '例如 5000',
+      q_team: '团队总业绩 (U)',
+      q_team_ph: '选填，例如 200000',
+      q_static_title: '持仓增值',
+      q_static_sub: '以成本价 $0.0318 计算代币增值空间',
+      q_your_deposit: '入金金额',
+      q_tokens_acquired: '获得代币',
+      q_projected_value: '预期价值',
+      q_net_profit: '净利润',
+      q_multiplier: '倍率',
+      q_dynamic_title: '推广佣金',
+      q_dynamic_sub: '直推奖励与团队级差奖',
+      q_direct_reward: '直推奖励',
+      q_team_reward: '团队奖励',
+      q_commission_total: '佣金合计',
+      q_commission_tokens: '佣金折算代币',
+      q_total_title: '综合回报',
+      q_total_tokens: '总持有代币',
+      q_total_value: '预期总价值',
+      q_total_profit: '总利润 (按 $0.20)',
+      q_tier_badge_5: '5% 档位（\u22651,000U）',
+      q_tier_badge_10: '10% 档位（\u226510,000U）',
+      q_tier_badge_15: '15% 档位（\u226550,000U）',
+      q_tier_badge_0: '未达到最低入金要求',
+      q_burn_notice: '持仓不足 1,000U，无法获得推广奖励',
+      q_advanced_toggle: '查看详细计算 \u25b8',
+      q_advanced_toggle_open: '收起详细计算 \u25be',
+      q_advanced_title: '详细佣金计算器',
+      q_persons: '人',
+
+      calc_title: '佣金计算器',
+      calc_sub: '输入您的入金、持仓与团队数据，实时模拟直推奖励、团队奖励与平级奖的预估收益。',
+      calc_step1_title: '第一步：个人信息',
+      calc_own_deposit: '您的入金金额 (U)',
+      calc_own_deposit_ph: '例如 10000',
+      calc_own_holding: '您的 POSX 持仓价值 (U)',
+      calc_own_holding_ph: '例如 5000',
+      calc_step2_title: '第二步：直推下级',
+      calc_ref_ph: '下级入金金额 (U)',
+      calc_add_ref: '添加下级',
+      calc_ref_max: '最多添加 5 个直推下级。',
+      calc_step3_title: '第三步：团队与平级',
+      calc_team_perf: '团队累计业绩 (U)',
+      calc_team_perf_ph: '例如 500000',
+      calc_line1: '线路 1',
+      calc_line2: '线路 2',
+      calc_line3: '线路 3',
+      calc_line_perf: '该线路业绩 (U)',
+      calc_line_perf_ph: '例如 200000',
+      calc_line_level: '该线路最高级别',
+      calc_add_line: '添加线路',
+      calc_line_max: '最多添加 3 条线路。',
+      calc_equal_toggle: '启用平级奖计算',
+      calc_equal_perf: '平级下级的团队业绩 (U)',
+      calc_equal_perf_ph: '例如 100000',
+      calc_res_direct_title: '直推奖励',
+      calc_res_gross: '毛奖励',
+      calc_res_burned: '烧伤扣除',
+      calc_res_net: '净奖励',
+      calc_res_effective: '有效比例',
+      calc_burn_warn: '持仓不足 1,000U，无法获得任何奖励。',
+      calc_res_team_title: '团队奖励',
+      calc_res_team_total: '团队奖励合计',
+      calc_res_team_line: '线路',
+      calc_res_team_diff: '级差',
+      calc_res_equal_title: '平级奖',
+      calc_equal_not_triggered: '未启用',
+      calc_equal_layer: '第 {n} 层',
+      calc_res_summary_title: '收益总览',
+      calc_res_total_label: '预估总奖励 (U)',
+      calc_res_tokens: 'POSX 代币数量',
+      calc_price_label: 'POSX 价格',
+      calc_tier_label_5: '5% 档位（\u22651,000U）',
+      calc_tier_label_10: '10% 档位（\u226510,000U）',
+      calc_tier_label_15: '15% 档位（\u226550,000U）',
+      calc_tier_label_0: '未达到最低入金要求'
+    },
+
+    'zh-TW': {
+      seo_title: 'POSX\uff5c佣金計算器',
+      seo_description: '輸入您的入金、持倉與團隊數據，即時模擬直推、團隊與平級獎的預估收益，並查看 POSX 代幣預估價值。',
+      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。\u00a9 2026 POSX Network.',
+      calc_back_link: '\u2190 返回專案介紹',
+
+      q_title: '收益計算器',
+      q_sub: '快速估算您的持倉增值與推廣佣金回報',
+      q_deposit: '我的入金金額 (U)',
+      q_deposit_ph: '例如 10000',
+      q_ref_count: '直推人數',
+      q_ref_avg: '每人平均入金 (U)',
+      q_ref_avg_ph: '例如 5000',
+      q_team: '團隊總業績 (U)',
+      q_team_ph: '選填，例如 200000',
+      q_static_title: '持倉增值',
+      q_static_sub: '以成本價 $0.0318 計算代幣增值空間',
+      q_your_deposit: '入金金額',
+      q_tokens_acquired: '獲得代幣',
+      q_projected_value: '預期價值',
+      q_net_profit: '淨利潤',
+      q_multiplier: '倍率',
+      q_dynamic_title: '推廣佣金',
+      q_dynamic_sub: '直推獎勵與團隊級差獎',
+      q_direct_reward: '直推獎勵',
+      q_team_reward: '團隊獎勵',
+      q_commission_total: '佣金合計',
+      q_commission_tokens: '佣金折算代幣',
+      q_total_title: '綜合回報',
+      q_total_tokens: '總持有代幣',
+      q_total_value: '預期總價值',
+      q_total_profit: '總利潤 (按 $0.20)',
+      q_tier_badge_5: '5% 檔位（\u22651,000U）',
+      q_tier_badge_10: '10% 檔位（\u226510,000U）',
+      q_tier_badge_15: '15% 檔位（\u226550,000U）',
+      q_tier_badge_0: '未達到最低入金要求',
+      q_burn_notice: '持倉不足 1,000U，無法獲得推廣獎勵',
+      q_advanced_toggle: '查看詳細計算 \u25b8',
+      q_advanced_toggle_open: '收起詳細計算 \u25be',
+      q_advanced_title: '詳細佣金計算器',
+      q_persons: '人',
+
+      calc_title: '佣金計算器',
+      calc_sub: '輸入您的入金、持倉與團隊數據，即時模擬直推獎勵、團隊獎勵與平級獎的預估收益。',
+      calc_step1_title: '第一步：個人資訊',
+      calc_own_deposit: '您的入金金額 (U)',
+      calc_own_deposit_ph: '例如 10000',
+      calc_own_holding: '您的 POSX 持倉價值 (U)',
+      calc_own_holding_ph: '例如 5000',
+      calc_step2_title: '第二步：直推下級',
+      calc_ref_ph: '下級入金金額 (U)',
+      calc_add_ref: '新增下級',
+      calc_ref_max: '最多新增 5 個直推下級。',
+      calc_step3_title: '第三步：團隊與平級',
+      calc_team_perf: '團隊累計業績 (U)',
+      calc_team_perf_ph: '例如 500000',
+      calc_line1: '線路 1',
+      calc_line2: '線路 2',
+      calc_line3: '線路 3',
+      calc_line_perf: '該線路業績 (U)',
+      calc_line_perf_ph: '例如 200000',
+      calc_line_level: '該線路最高級別',
+      calc_add_line: '新增線路',
+      calc_line_max: '最多新增 3 條線路。',
+      calc_equal_toggle: '啟用平級獎計算',
+      calc_equal_perf: '平級下級的團隊業績 (U)',
+      calc_equal_perf_ph: '例如 100000',
+      calc_res_direct_title: '直推獎勵',
+      calc_res_gross: '毛獎勵',
+      calc_res_burned: '燒傷扣除',
+      calc_res_net: '淨獎勵',
+      calc_res_effective: '有效比例',
+      calc_burn_warn: '持倉不足 1,000U，無法獲得任何獎勵。',
+      calc_res_team_title: '團隊獎勵',
+      calc_res_team_total: '團隊獎勵合計',
+      calc_res_team_line: '線路',
+      calc_res_team_diff: '級差',
+      calc_res_equal_title: '平級獎',
+      calc_equal_not_triggered: '未啟用',
+      calc_equal_layer: '第 {n} 層',
+      calc_res_summary_title: '收益總覽',
+      calc_res_total_label: '預估總獎勵 (U)',
+      calc_res_tokens: 'POSX 代幣數量',
+      calc_price_label: 'POSX 價格',
+      calc_tier_label_5: '5% 檔位（\u22651,000U）',
+      calc_tier_label_10: '10% 檔位（\u226510,000U）',
+      calc_tier_label_15: '15% 檔位（\u226550,000U）',
+      calc_tier_label_0: '未達到最低入金要求'
+    },
+
+    'en': {
+      seo_title: 'POSX | Commission Calculator',
+      seo_description: 'Enter your deposit, holdings, and team data to simulate estimated earnings from direct, team, and equal-level rewards \u2014 plus projected POSX token value.',
+      disclaimer: 'This document is provided for informational purposes only and does not constitute an offer, solicitation, or recommendation to buy or sell any securities or financial instruments. The information contained herein is based on sources believed to be reliable but is not guaranteed as to its accuracy or completeness. Past performance is not indicative of future results. Investing in digital assets involves significant risks, including the possible loss of principal. \u00a9 2026 POSX Network.',
+      calc_back_link: '\u2190 Back to Overview',
+
+      q_title: 'Returns Calculator',
+      q_sub: 'Quickly estimate your holding appreciation and referral commission returns',
+      q_deposit: 'My Deposit Amount (U)',
+      q_deposit_ph: 'e.g. 10000',
+      q_ref_count: 'Number of Referrals',
+      q_ref_avg: 'Avg. Deposit per Person (U)',
+      q_ref_avg_ph: 'e.g. 5000',
+      q_team: 'Team Total Performance (U)',
+      q_team_ph: 'Optional, e.g. 200000',
+      q_static_title: 'Holding Appreciation',
+      q_static_sub: 'Token appreciation at cost price $0.0318',
+      q_your_deposit: 'Deposit Amount',
+      q_tokens_acquired: 'Tokens Acquired',
+      q_projected_value: 'Projected Value',
+      q_net_profit: 'Net Profit',
+      q_multiplier: 'Multiplier',
+      q_dynamic_title: 'Referral Commission',
+      q_dynamic_sub: 'Direct referral rewards and team differential',
+      q_direct_reward: 'Direct Reward',
+      q_team_reward: 'Team Reward',
+      q_commission_total: 'Commission Total',
+      q_commission_tokens: 'Commission Tokens',
+      q_total_title: 'Total Return',
+      q_total_tokens: 'Total Tokens Held',
+      q_total_value: 'Total Projected Value',
+      q_total_profit: 'Total Profit (at $0.20)',
+      q_tier_badge_5: '5% Tier (\u22651,000U)',
+      q_tier_badge_10: '10% Tier (\u226510,000U)',
+      q_tier_badge_15: '15% Tier (\u226550,000U)',
+      q_tier_badge_0: 'Below minimum deposit',
+      q_burn_notice: 'Holding below 1,000U \u2014 no referral rewards available',
+      q_advanced_toggle: 'Show Detailed Calculator \u25b8',
+      q_advanced_toggle_open: 'Hide Detailed Calculator \u25be',
+      q_advanced_title: 'Detailed Commission Calculator',
+      q_persons: '',
+
+      calc_title: 'Commission Calculator',
+      calc_sub: 'Enter your deposit, holdings, and team data to simulate estimated earnings from direct referral rewards, team rewards, and equal-level bonuses in real time.',
+      calc_step1_title: 'Step 1: Personal Info',
+      calc_own_deposit: 'Your Deposit Amount (U)',
+      calc_own_deposit_ph: 'e.g. 10000',
+      calc_own_holding: 'Your POSX Holding Value (U)',
+      calc_own_holding_ph: 'e.g. 5000',
+      calc_step2_title: 'Step 2: Direct Referrals',
+      calc_ref_ph: 'Referral deposit amount (U)',
+      calc_add_ref: 'Add Referral',
+      calc_ref_max: 'Maximum 5 direct referrals.',
+      calc_step3_title: 'Step 3: Team & Equal Level',
+      calc_team_perf: 'Team Cumulative Performance (U)',
+      calc_team_perf_ph: 'e.g. 500000',
+      calc_line1: 'Line 1',
+      calc_line2: 'Line 2',
+      calc_line3: 'Line 3',
+      calc_line_perf: 'Line Performance (U)',
+      calc_line_perf_ph: 'e.g. 200000',
+      calc_line_level: 'Line Highest Level',
+      calc_add_line: 'Add Line',
+      calc_line_max: 'Maximum 3 downline lines.',
+      calc_equal_toggle: 'Enable Equal-Level Bonus',
+      calc_equal_perf: 'Equal Downline Team Performance (U)',
+      calc_equal_perf_ph: 'e.g. 100000',
+      calc_res_direct_title: 'Direct Referral Reward',
+      calc_res_gross: 'Gross Reward',
+      calc_res_burned: 'Burned',
+      calc_res_net: 'Net Reward',
+      calc_res_effective: 'Effective Ratio',
+      calc_burn_warn: 'Holding below 1,000U \u2014 no rewards available.',
+      calc_res_team_title: 'Team Reward',
+      calc_res_team_total: 'Team Reward Total',
+      calc_res_team_line: 'Line',
+      calc_res_team_diff: 'Differential',
+      calc_res_equal_title: 'Equal-Level Bonus',
+      calc_equal_not_triggered: 'Not Enabled',
+      calc_equal_layer: 'Layer {n}',
+      calc_res_summary_title: 'Earnings Overview',
+      calc_res_total_label: 'Estimated Total Reward (U)',
+      calc_res_tokens: 'POSX Token Count',
+      calc_price_label: 'POSX Price',
+      calc_tier_label_5: '5% Tier (\u22651,000U)',
+      calc_tier_label_10: '10% Tier (\u226510,000U)',
+      calc_tier_label_15: '15% Tier (\u226550,000U)',
+      calc_tier_label_0: 'Below minimum deposit'
+    },
+
+    'ko': {
+      seo_title: 'POSX | \ucee4\ubbf8\uc158 \uacc4\uc0b0\uae30',
+      seo_description: '\uc785\uae08\uc561, \ubcf4\uc720\ub7c9, \ud300 \ub370\uc774\ud130\ub97c \uc785\ub825\ud558\uc5ec \uc9c1\ucd94\ucc9c\u00b7\ud300\u00b7\ub3d9\uae09 \ubcf4\uc0c1\uc758 \uc608\uc0c1 \uc218\uc775\uacfc POSX \ud1a0\ud070 \uc608\uc0c1 \uac00\uce58\ub97c \uc2e4\uc2dc\uac04\uc73c\ub85c \ud655\uc778\ud558\uc138\uc694.',
+      disclaimer: '\ubcf8 \ubb38\uc11c\ub294 \uc815\ubcf4 \uc81c\uacf5\ub9cc\uc744 \ubaa9\uc801\uc73c\ub85c \ud558\uba70, \uc5b4\ub5a0\ud55c \uc99d\uad8c \ub610\ub294 \uae08\uc735\uc0c1\ud488\uc758 \ub9e4\uc218\u00b7\ub9e4\ub3c4 \uc81c\uc548\uc774\ub098 \uad8c\uc720 \ub610\ub294 \ud22c\uc790 \uad8c\uace0\ub97c \uc758\ubbf8\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ubcf8 \ubb38\uc11c\uc5d0 \ud3ec\ud568\ub41c \uc815\ubcf4\ub294 \uc2e0\ub8b0\ud560 \uc218 \uc788\ub2e4\uace0 \ud310\ub2e8\ub418\ub294 \uc790\ub8cc\ub97c \uae30\ubc18\uc73c\ub85c \uc791\uc131\ub418\uc5c8\uc73c\ub098, \uadf8 \uc815\ud655\uc131\uc774\ub098 \uc644\uc804\uc131\uc774 \ubcf4\uc7a5\ub418\uc9c0\ub294 \uc54a\uc2b5\ub2c8\ub2e4. \uacfc\uac70\uc758 \uc131\uacfc\ub294 \ubbf8\ub798\uc758 \uacb0\uacfc\ub97c \ubcf4\uc7a5\ud558\uc9c0 \uc54a\uc73c\uba70, \ub514\uc9c0\ud138 \uc790\uc0b0 \ud22c\uc790\ub294 \uc6d0\uae08 \uc190\uc2e4\uc744 \ud3ec\ud568\ud55c \uc911\ub300\ud55c \uc704\ud5d8\uc744 \uc218\ubc18\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \u00a9 2026 POSX Network.',
+      calc_back_link: '\u2190 \ud504\ub85c\uc81d\ud2b8 \uac1c\uc694\ub85c',
+
+      q_title: '\uc218\uc775 \uacc4\uc0b0\uae30',
+      q_sub: '\ubcf4\uc720 \ud1a0\ud070 \uac00\uce58 \uc0c1\uc2b9\uacfc \ucd94\ucc9c \uc218\uc218\ub8cc\ub97c \ube60\ub974\uac8c \uc608\uce21\ud558\uc138\uc694',
+      q_deposit: '\uc785\uae08 \uae08\uc561 (U)',
+      q_deposit_ph: '\uc608: 10000',
+      q_ref_count: '\uc9c1\ucd94\ucc9c \uc778\uc6d0 \uc218',
+      q_ref_avg: '1\uc778\ub2f9 \ud3c9\uade0 \uc785\uae08 (U)',
+      q_ref_avg_ph: '\uc608: 5000',
+      q_team: '\ud300 \ucd1d \uc2e4\uc801 (U)',
+      q_team_ph: '\uc120\ud0dd\uc0ac\ud56d, \uc608: 200000',
+      q_static_title: '\ubcf4\uc720 \uac00\uce58 \uc0c1\uc2b9',
+      q_static_sub: '\uc6d0\uac00 $0.0318 \uae30\uc900 \ud1a0\ud070 \uac00\uce58 \uc0c1\uc2b9',
+      q_your_deposit: '\uc785\uae08 \uae08\uc561',
+      q_tokens_acquired: '\ud68d\ub4dd \ud1a0\ud070',
+      q_projected_value: '\uc608\uc0c1 \uac00\uce58',
+      q_net_profit: '\uc21c\uc774\uc775',
+      q_multiplier: '\ubc30\uc218',
+      q_dynamic_title: '\ucd94\ucc9c \uc218\uc218\ub8cc',
+      q_dynamic_sub: '\uc9c1\ucd94\ucc9c \ubcf4\uc0c1 \ubc0f \ud300 \uae09\ucc28 \ubcf4\uc0c1',
+      q_direct_reward: '\uc9c1\ucd94\ucc9c \ubcf4\uc0c1',
+      q_team_reward: '\ud300 \ubcf4\uc0c1',
+      q_commission_total: '\uc218\uc218\ub8cc \ud569\uacc4',
+      q_commission_tokens: '\uc218\uc218\ub8cc \ud658\uc0b0 \ud1a0\ud070',
+      q_total_title: '\uc885\ud569 \uc218\uc775',
+      q_total_tokens: '\ucd1d \ubcf4\uc720 \ud1a0\ud070',
+      q_total_value: '\uc608\uc0c1 \ucd1d \uac00\uce58',
+      q_total_profit: '\ucd1d \uc774\uc775 ($0.20 \uae30\uc900)',
+      q_tier_badge_5: '5% \ub4f1\uae09 (\u22651,000U)',
+      q_tier_badge_10: '10% \ub4f1\uae09 (\u226510,000U)',
+      q_tier_badge_15: '15% \ub4f1\uae09 (\u226550,000U)',
+      q_tier_badge_0: '\ucd5c\uc18c \uc785\uae08 \uae30\uc900 \ubbf8\ub2ec',
+      q_burn_notice: '\ubcf4\uc720\ub7c9 1,000U \ubbf8\ub9cc \u2014 \ucd94\ucc9c \ubcf4\uc0c1 \ubd88\uac00',
+      q_advanced_toggle: '\uc0c1\uc138 \uacc4\uc0b0\uae30 \ubcf4\uae30 \u25b8',
+      q_advanced_toggle_open: '\uc0c1\uc138 \uacc4\uc0b0\uae30 \uc228\uae30\uae30 \u25be',
+      q_advanced_title: '\uc0c1\uc138 \uc218\uc218\ub8cc \uacc4\uc0b0\uae30',
+      q_persons: '\uba85',
+
+      calc_title: '\ucee4\ubbf8\uc158 \uacc4\uc0b0\uae30',
+      calc_sub: '\uc785\uae08\uc561, \ubcf4\uc720\ub7c9, \ud300 \ub370\uc774\ud130\ub97c \uc785\ub825\ud558\uc5ec \uc9c1\ucd94\ucc9c \ubcf4\uc0c1, \ud300 \ubcf4\uc0c1, \ub3d9\uae09 \ubcf4\ub108\uc2a4\uc758 \uc608\uc0c1 \uc218\uc775\uc744 \uc2e4\uc2dc\uac04\uc73c\ub85c \uc2dc\ubbac\ub808\uc774\uc158\ud558\uc138\uc694.',
+      calc_step1_title: '1\ub2e8\uacc4: \uac1c\uc778 \uc815\ubcf4',
+      calc_own_deposit: '\uc785\uae08 \uae08\uc561 (U)',
+      calc_own_deposit_ph: '\uc608: 10000',
+      calc_own_holding: 'POSX \ubcf4\uc720 \uac00\uce58 (U)',
+      calc_own_holding_ph: '\uc608: 5000',
+      calc_step2_title: '2\ub2e8\uacc4: \uc9c1\ucd94\ucc9c \ud558\uc704',
+      calc_ref_ph: '\ud558\uc704 \uc785\uae08 \uae08\uc561 (U)',
+      calc_add_ref: '\ud558\uc704 \ucd94\uac00',
+      calc_ref_max: '\ucd5c\ub300 5\uba85\uc758 \uc9c1\ucd94\ucc9c \ud558\uc704\ub97c \ucd94\uac00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.',
+      calc_step3_title: '3\ub2e8\uacc4: \ud300 \ubc0f \ub3d9\uae09',
+      calc_team_perf: '\ud300 \ub204\uc801 \uc2e4\uc801 (U)',
+      calc_team_perf_ph: '\uc608: 500000',
+      calc_line1: '\ub77c\uc778 1',
+      calc_line2: '\ub77c\uc778 2',
+      calc_line3: '\ub77c\uc778 3',
+      calc_line_perf: '\ub77c\uc778 \uc2e4\uc801 (U)',
+      calc_line_perf_ph: '\uc608: 200000',
+      calc_line_level: '\ub77c\uc778 \ucd5c\uace0 \ub4f1\uae09',
+      calc_add_line: '\ub77c\uc778 \ucd94\uac00',
+      calc_line_max: '\ucd5c\ub300 3\uac1c \ub77c\uc778\uae4c\uc9c0 \ucd94\uac00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.',
+      calc_equal_toggle: '\ub3d9\uae09 \ubcf4\ub108\uc2a4 \ud65c\uc131\ud654',
+      calc_equal_perf: '\ub3d9\uae09 \ud558\uc704\uc758 \ud300 \uc2e4\uc801 (U)',
+      calc_equal_perf_ph: '\uc608: 100000',
+      calc_res_direct_title: '\uc9c1\ucd94\ucc9c \ubcf4\uc0c1',
+      calc_res_gross: '\ucd1d \ubcf4\uc0c1',
+      calc_res_burned: '\uc18c\uac01 \ucc28\uac10',
+      calc_res_net: '\uc21c \ubcf4\uc0c1',
+      calc_res_effective: '\uc720\ud6a8 \ube44\uc728',
+      calc_burn_warn: '\ubcf4\uc720\ub7c9 1,000U \ubbf8\ub9cc \u2014 \ubcf4\uc0c1\uc744 \ubc1b\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.',
+      calc_res_team_title: '\ud300 \ubcf4\uc0c1',
+      calc_res_team_total: '\ud300 \ubcf4\uc0c1 \ud569\uacc4',
+      calc_res_team_line: '\ub77c\uc778',
+      calc_res_team_diff: '\uae09\ucc28',
+      calc_res_equal_title: '\ub3d9\uae09 \ubcf4\ub108\uc2a4',
+      calc_equal_not_triggered: '\ube44\ud65c\uc131\ud654',
+      calc_equal_layer: '{n}\ubc88\uc9f8 \uce35',
+      calc_res_summary_title: '\uc218\uc775 \uac1c\uc694',
+      calc_res_total_label: '\uc608\uc0c1 \ucd1d \ubcf4\uc0c1 (U)',
+      calc_res_tokens: 'POSX \ud1a0\ud070 \uc218\ub7c9',
+      calc_price_label: 'POSX \uac00\uaca9',
+      calc_tier_label_5: '5% \ub4f1\uae09 (\u22651,000U)',
+      calc_tier_label_10: '10% \ub4f1\uae09 (\u226510,000U)',
+      calc_tier_label_15: '15% \ub4f1\uae09 (\u226550,000U)',
+      calc_tier_label_0: '\ucd5c\uc18c \uc785\uae08 \uae30\uc900 \ubbf8\ub2ec'
+    }
+  };
+
+  /* ════════════════════════════════════════════════
+     SHARED UTILITY FUNCTIONS
+     ════════════════════════════════════════════════ */
+  function getDirectRate(deposit) {
+    if (deposit >= 50000) return 15;
+    if (deposit >= 10000) return 10;
+    if (deposit >= 1000) return 5;
+    return 0;
+  }
+
+  function getTeamLevel10k(perf) {
+    if (perf >= 5000000) return 15;
+    if (perf >= 1000000) return 10;
+    if (perf >= 500000) return 5;
+    if (perf >= 100000) return 3;
+    if (perf >= 1) return 1;
+    return 0;
+  }
+
+  function getTeamLevel50k(perf) {
+    if (perf >= 5000000) return 15;
+    if (perf >= 1000000) return 10;
+    if (perf >= 500000) return 5;
+    if (perf >= 100000) return 3;
+    if (perf >= 1) return 2;
+    return 0;
+  }
+
+  function txt(key) {
+    var lang = document.documentElement.lang || 'zh-CN';
+    return (T[lang] && T[lang][key]) || (T['zh-CN'] && T['zh-CN'][key]) || '';
+  }
+
+  function fmtU(n) {
+    return n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' U';
+  }
+
+  function fmtDollar(n) {
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+
+  function fmtTokens(n) {
+    return Math.floor(n).toLocaleString('en-US') + ' POSX';
+  }
+
+  function fmtProfit(n) {
+    return (n >= 0 ? '+' : '') + fmtDollar(n);
+  }
+
+  /* ════════════════════════════════════════════════
+     LANGUAGE SWITCHING
+     ════════════════════════════════════════════════ */
+  function setLang(lang) {
+    if (!T[lang]) lang = 'zh-CN';
+    var dict = T[lang];
+    document.documentElement.lang = lang;
+
+    if (dict.seo_title) {
+      document.title = dict.seo_title;
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      var twTitle = document.querySelector('meta[name="twitter:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', dict.seo_title);
+      if (twTitle) twTitle.setAttribute('content', dict.seo_title);
+    }
+    if (dict.seo_description) {
+      var metaDesc = document.querySelector('meta[name="description"]');
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      var twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (metaDesc) metaDesc.setAttribute('content', dict.seo_description);
+      if (ogDesc) ogDesc.setAttribute('content', dict.seo_description);
+      if (twDesc) twDesc.setAttribute('content', dict.seo_description);
+    }
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    try { localStorage.setItem('posx_lang', lang); } catch(e) {}
+
+    runQuickCalc();
+    runCalc();
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setLang(this.getAttribute('data-lang'));
+    });
+  });
+
+  function detectLang() {
+    try { var saved = localStorage.getItem('posx_lang'); if (saved && T[saved]) return saved; } catch(e) {}
+    var nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (nav.indexOf('zh-tw') !== -1 || nav.indexOf('zh-hant') !== -1) return 'zh-TW';
+    if (nav.indexOf('ko') !== -1) return 'ko';
+    if (nav.indexOf('zh') !== -1) return 'zh-CN';
+    if (nav.indexOf('en') !== -1) return 'en';
+    return 'en';
+  }
+
+  /* ════════════════════════════════════════════════
+     QUICK MODE CALCULATOR
+     ════════════════════════════════════════════════ */
+  var qRefSlider = document.getElementById('qRefCount');
+  var qRefDisplay = document.getElementById('qRefCountVal');
+
+  qRefSlider.addEventListener('input', function() {
+    qRefDisplay.textContent = this.value;
+    runQuickCalc();
+  });
+
+  ['qDeposit', 'qRefAvg', 'qTeam'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', runQuickCalc);
+  });
+
+  function runQuickCalc() {
+    var deposit = parseFloat(document.getElementById('qDeposit').value) || 0;
+    var refCount = parseInt(document.getElementById('qRefCount').value) || 3;
+    var refAvg = parseFloat(document.getElementById('qRefAvg').value) || 0;
+    var teamPerf = parseFloat(document.getElementById('qTeam').value) || 0;
+    var holding = deposit;
+
+    var directRate = getDirectRate(deposit);
+    var tierBadge = document.getElementById('qTierBadge');
+    if (directRate > 0) {
+      tierBadge.style.display = 'inline-block';
+      tierBadge.textContent = txt('q_tier_badge_' + directRate);
+    } else if (deposit > 0) {
+      tierBadge.style.display = 'inline-block';
+      tierBadge.textContent = txt('q_tier_badge_0');
+    } else {
+      tierBadge.style.display = 'none';
+    }
+
+    var depositTokens = deposit > 0 ? deposit / COST : 0;
+
+    document.getElementById('qStatDeposit').textContent = fmtU(deposit);
+    document.getElementById('qStatTokens').textContent = fmtTokens(depositTokens);
+
+    var sv015 = depositTokens * 0.15;
+    var sv020 = depositTokens * 0.20;
+    var sv025 = depositTokens * 0.25;
+
+    document.getElementById('qSV015').textContent = fmtDollar(sv015);
+    document.getElementById('qSV020').textContent = fmtDollar(sv020);
+    document.getElementById('qSV025').textContent = fmtDollar(sv025);
+    document.getElementById('qST015').textContent = fmtTokens(depositTokens);
+    document.getElementById('qST020').textContent = fmtTokens(depositTokens);
+    document.getElementById('qST025').textContent = fmtTokens(depositTokens);
+    document.getElementById('qSM015').textContent = deposit > 0 ? MULTS[0] + 'x' : '4.72x';
+    document.getElementById('qSM020').textContent = deposit > 0 ? MULTS[1] + 'x' : '6.29x';
+    document.getElementById('qSM025').textContent = deposit > 0 ? MULTS[2] + 'x' : '7.86x';
+    document.getElementById('qSP015').textContent = fmtProfit(sv015 - deposit);
+    document.getElementById('qSP020').textContent = fmtProfit(sv020 - deposit);
+    document.getElementById('qSP025').textContent = fmtProfit(sv025 - deposit);
+
+    var grossDirect = refCount * refAvg * (directRate / 100);
+    var netDirect = grossDirect;
+    var burnNotice = document.getElementById('qBurnNotice');
+    var showBurn = false;
+
+    if (holding < 1000) {
+      netDirect = 0;
+      if (grossDirect > 0) showBurn = true;
+    } else if (holding <= 10000) {
+      netDirect = Math.min(grossDirect, holding);
+    }
+
+    burnNotice.style.display = showBurn ? 'block' : 'none';
+
+    var is50k = deposit >= 50000;
+    var myLevel = is50k ? getTeamLevel50k(teamPerf) : getTeamLevel10k(teamPerf);
+    var teamDiff = Math.min(myLevel, 15);
+    var teamReward = teamPerf * (teamDiff / 100);
+    var teamCap = teamPerf * 0.15;
+    if (teamReward > teamCap) teamReward = teamCap;
+
+    document.getElementById('qDynDirectPct').textContent = directRate > 0 ? '(' + directRate + '%)' : '';
+    document.getElementById('qDynDirect').textContent = fmtU(netDirect);
+    document.getElementById('qDynTeamPct').textContent = teamDiff > 0 ? '(' + teamDiff + '%)' : '';
+    document.getElementById('qDynTeam').textContent = fmtU(teamReward);
+
+    var commTotal = netDirect + teamReward;
+    var commTokens = commTotal > 0 ? commTotal / COST : 0;
+
+    document.getElementById('qDynTotal').textContent = fmtU(commTotal);
+    document.getElementById('qDynTokens').textContent = fmtTokens(commTokens);
+
+    var dv015 = commTokens * 0.15;
+    var dv020 = commTokens * 0.20;
+    var dv025 = commTokens * 0.25;
+
+    document.getElementById('qDV015').textContent = fmtDollar(dv015);
+    document.getElementById('qDV020').textContent = fmtDollar(dv020);
+    document.getElementById('qDV025').textContent = fmtDollar(dv025);
+    document.getElementById('qDT015').textContent = fmtTokens(commTokens);
+    document.getElementById('qDT020').textContent = fmtTokens(commTokens);
+    document.getElementById('qDT025').textContent = fmtTokens(commTokens);
+    document.getElementById('qDM015').textContent = commTotal > 0 ? MULTS[0] + 'x' : '4.72x';
+    document.getElementById('qDM020').textContent = commTotal > 0 ? MULTS[1] + 'x' : '6.29x';
+    document.getElementById('qDM025').textContent = commTotal > 0 ? MULTS[2] + 'x' : '7.86x';
+    document.getElementById('qDP015').textContent = fmtDollar(dv015);
+    document.getElementById('qDP020').textContent = fmtDollar(dv020);
+    document.getElementById('qDP025').textContent = fmtDollar(dv025);
+
+    var totalTokens = depositTokens + commTokens;
+    var tv015 = totalTokens * 0.15;
+    var tv020 = totalTokens * 0.20;
+    var tv025 = totalTokens * 0.25;
+
+    document.getElementById('qTotalTokens').textContent = fmtTokens(totalTokens);
+    document.getElementById('qTV015').textContent = fmtDollar(tv015);
+    document.getElementById('qTV020').textContent = fmtDollar(tv020);
+    document.getElementById('qTV025').textContent = fmtDollar(tv025);
+    document.getElementById('qTT015').textContent = fmtTokens(totalTokens);
+    document.getElementById('qTT020').textContent = fmtTokens(totalTokens);
+    document.getElementById('qTT025').textContent = fmtTokens(totalTokens);
+
+    var totalRoi015 = deposit > 0 ? (tv015 / deposit).toFixed(1) : '0.0';
+    var totalRoi020 = deposit > 0 ? (tv020 / deposit).toFixed(1) : '0.0';
+    var totalRoi025 = deposit > 0 ? (tv025 / deposit).toFixed(1) : '0.0';
+    document.getElementById('qTM015').textContent = totalRoi015 + 'x';
+    document.getElementById('qTM020').textContent = totalRoi020 + 'x';
+    document.getElementById('qTM025').textContent = totalRoi025 + 'x';
+
+    document.getElementById('qTP015').textContent = fmtProfit(tv015 - deposit);
+    document.getElementById('qTP020').textContent = fmtProfit(tv020 - deposit);
+    document.getElementById('qTP025').textContent = fmtProfit(tv025 - deposit);
+
+    document.getElementById('qTotalProfit020').textContent = fmtProfit(tv020 - deposit);
+  }
+
+  /* ════════════════════════════════════════════════
+     ADVANCED MODE TOGGLE
+     ════════════════════════════════════════════════ */
+  var advToggle = document.getElementById('advToggle');
+  var advSection = document.getElementById('advSection');
+  var advOpen = false;
+
+  advToggle.addEventListener('click', function() {
+    advOpen = !advOpen;
+    advSection.style.display = advOpen ? 'block' : 'none';
+    this.setAttribute('data-i18n', advOpen ? 'q_advanced_toggle_open' : 'q_advanced_toggle');
+    this.textContent = txt(advOpen ? 'q_advanced_toggle_open' : 'q_advanced_toggle');
+  });
+
+  /* ════════════════════════════════════════════════
+     ADVANCED COMMISSION CALCULATOR ENGINE
+     ════════════════════════════════════════════════ */
+  var calcLineCount = 1;
+
+  window.addCalcRef = function() {
+    var list = document.getElementById('calcRefList');
+    var rows = list.querySelectorAll('.calc-ref-row');
+    if (rows.length >= 5) {
+      document.getElementById('calcRefMax').style.display = 'block';
+      return;
+    }
+    var div = document.createElement('div');
+    div.className = 'calc-ref-row';
+    div.innerHTML = '<input class="calc-input calc-ref-input" type="number" min="0" placeholder="' + txt('calc_ref_ph') + '" data-i18n-placeholder="calc_ref_ph"><button class="calc-ref-remove" onclick="removeCalcRef(this)" title="Remove">\u00d7</button>';
+    list.appendChild(div);
+    div.querySelector('input').addEventListener('input', runCalc);
+    if (list.querySelectorAll('.calc-ref-row').length >= 5) {
+      document.getElementById('calcRefMax').style.display = 'block';
+    }
+    runCalc();
+  };
+
+  window.removeCalcRef = function(btn) {
+    var row = btn.parentElement;
+    var list = document.getElementById('calcRefList');
+    if (list.querySelectorAll('.calc-ref-row').length <= 1) return;
+    row.remove();
+    document.getElementById('calcRefMax').style.display = 'none';
+    runCalc();
+  };
+
+  window.addCalcLine = function() {
+    var wrap = document.getElementById('calcDownlines');
+    var blocks = wrap.querySelectorAll('.calc-line-block');
+    if (blocks.length >= 3) {
+      document.getElementById('calcLineMax').style.display = 'block';
+      return;
+    }
+    calcLineCount++;
+    var lineKey = 'calc_line' + calcLineCount;
+    var div = document.createElement('div');
+    div.className = 'calc-line-block';
+    div.innerHTML = '<div class="calc-line-title" data-i18n="' + lineKey + '">' + txt(lineKey) + '</div>' +
+      '<div class="calc-row"><label class="calc-label" data-i18n="calc_line_perf">' + txt('calc_line_perf') + '</label>' +
+      '<input class="calc-input calc-line-perf-input" type="number" min="0" placeholder="' + txt('calc_line_perf_ph') + '" data-i18n-placeholder="calc_line_perf_ph"></div>' +
+      '<div class="calc-row"><label class="calc-label" data-i18n="calc_line_level">' + txt('calc_line_level') + '</label>' +
+      '<select class="calc-select calc-line-level-select"><option value="0">0%</option><option value="1">1%</option><option value="2">2%</option><option value="3">3%</option><option value="5">5%</option><option value="10">10%</option><option value="15">15%</option></select></div>';
+    wrap.appendChild(div);
+    div.querySelector('.calc-line-perf-input').addEventListener('input', runCalc);
+    div.querySelector('.calc-line-level-select').addEventListener('change', runCalc);
+    if (wrap.querySelectorAll('.calc-line-block').length >= 3) {
+      document.getElementById('calcLineMax').style.display = 'block';
+    }
+    runCalc();
+  };
+
+  var equalToggle = document.getElementById('calcEqualToggle');
+  if (equalToggle) {
+    equalToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('calcEqualWrap').style.display = this.classList.contains('active') ? 'block' : 'none';
+      runCalc();
+    });
+  }
+
+  function runCalc() {
+    var deposit = parseFloat(document.getElementById('calcOwnDeposit').value) || 0;
+    var holding = parseFloat(document.getElementById('calcOwnHolding').value) || 0;
+
+    var directRate = getDirectRate(deposit);
+    var tierBadge = document.getElementById('calcTierBadge');
+    if (directRate > 0) {
+      tierBadge.style.display = 'inline-block';
+      tierBadge.textContent = txt('calc_tier_label_' + directRate);
+    } else if (deposit > 0) {
+      tierBadge.style.display = 'inline-block';
+      tierBadge.textContent = txt('calc_tier_label_0');
+    } else {
+      tierBadge.style.display = 'none';
+    }
+
+    var refInputs = document.querySelectorAll('.calc-ref-input');
+    var grossDirect = 0;
+    refInputs.forEach(function(inp) {
+      var val = parseFloat(inp.value) || 0;
+      grossDirect += val * (directRate / 100);
+    });
+
+    var burnWarn = document.getElementById('calcBurnWarn');
+    var burned = 0;
+    var netDirect = grossDirect;
+
+    if (holding < 1000) {
+      burned = grossDirect;
+      netDirect = 0;
+      burnWarn.style.display = grossDirect > 0 ? 'block' : 'none';
+    } else if (holding <= 10000) {
+      if (grossDirect > holding) {
+        burned = grossDirect - holding;
+        netDirect = holding;
+      }
+      burnWarn.style.display = 'none';
+    } else {
+      burnWarn.style.display = 'none';
+    }
+
+    document.getElementById('calcDirectGross').textContent = fmtU(grossDirect);
+    document.getElementById('calcDirectBurned').textContent = burned > 0 ? '-' + fmtU(burned) : '0 U';
+    document.getElementById('calcDirectNet').textContent = fmtU(netDirect);
+
+    var pct = grossDirect > 0 ? Math.round((netDirect / grossDirect) * 100) : 0;
+    document.getElementById('calcDirectBar').style.width = pct + '%';
+    document.getElementById('calcDirectPct').textContent = pct + '%';
+
+    var teamPerf = parseFloat(document.getElementById('calcTeamPerf').value) || 0;
+    var is50k = deposit >= 50000;
+    var myLevel = is50k ? getTeamLevel50k(teamPerf) : getTeamLevel10k(teamPerf);
+
+    var lineBlocks = document.querySelectorAll('.calc-line-block');
+    var teamBreakdown = document.getElementById('calcTeamBreakdown');
+    teamBreakdown.innerHTML = '';
+    var totalTeam = 0;
+
+    lineBlocks.forEach(function(block, i) {
+      var linePerf = parseFloat(block.querySelector('.calc-line-perf-input').value) || 0;
+      var downlineLevel = parseInt(block.querySelector('.calc-line-level-select').value) || 0;
+      var diff = Math.max(0, Math.min(myLevel - downlineLevel, 15));
+      var reward = linePerf * (diff / 100);
+      totalTeam += reward;
+
+      var row = document.createElement('div');
+      row.className = 'calc-result-row';
+      row.innerHTML = '<span>' + txt('calc_res_team_line') + ' ' + (i + 1) + ' (' + txt('calc_res_team_diff') + ' ' + diff + '%)</span><span class="calc-result-val">' + fmtU(reward) + '</span>';
+      teamBreakdown.appendChild(row);
+    });
+
+    var teamCap = teamPerf * 0.15;
+    if (totalTeam > teamCap) totalTeam = teamCap;
+
+    document.getElementById('calcTeamTotal').textContent = fmtU(totalTeam);
+
+    var equalBreakdown = document.getElementById('calcEqualBreakdown');
+    var equalActive = equalToggle && equalToggle.classList.contains('active');
+    var totalEqual = 0;
+
+    if (!equalActive) {
+      equalBreakdown.innerHTML = '<div class="calc-not-triggered" data-i18n="calc_equal_not_triggered">' + txt('calc_equal_not_triggered') + '</div>';
+    } else {
+      var equalPerf = parseFloat(document.getElementById('calcEqualPerf').value) || 0;
+      var layers = [3, 1, 0.5, 0.3, 0.15, 0.05];
+      equalBreakdown.innerHTML = '';
+      layers.forEach(function(pctVal, idx) {
+        var reward = equalPerf * (pctVal / 100);
+        totalEqual += reward;
+        var layerLabel = txt('calc_equal_layer').replace('{n}', idx + 1);
+        var row = document.createElement('div');
+        row.className = 'calc-result-row';
+        row.innerHTML = '<span>' + layerLabel + ' (' + pctVal + '%)</span><span class="calc-result-val">' + fmtU(reward) + '</span>';
+        equalBreakdown.appendChild(row);
+      });
+    }
+
+    var totalU = netDirect + totalTeam + totalEqual;
+    document.getElementById('calcTotalU').textContent = fmtU(totalU);
+
+    var price = parseFloat(document.getElementById('calcPriceSlider').value) || 0.20;
+    document.getElementById('calcPriceCurrent').textContent = '$' + price.toFixed(2);
+
+    var tokens = totalU > 0 ? totalU / COST : 0;
+    document.getElementById('calcTokenCount').textContent = Math.floor(tokens).toLocaleString('en-US');
+
+    document.getElementById('calcVal015').textContent = fmtDollar(tokens * 0.15);
+    document.getElementById('calcTok015').textContent = fmtTokens(tokens);
+    document.getElementById('calcVal020').textContent = fmtDollar(tokens * 0.20);
+    document.getElementById('calcTok020').textContent = fmtTokens(tokens);
+    document.getElementById('calcVal025').textContent = fmtDollar(tokens * 0.25);
+    document.getElementById('calcTok025').textContent = fmtTokens(tokens);
+  }
+
+  ['calcOwnDeposit', 'calcOwnHolding', 'calcTeamPerf', 'calcEqualPerf', 'calcPriceSlider'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', runCalc);
+  });
+
+  document.querySelectorAll('.calc-ref-input').forEach(function(el) {
+    el.addEventListener('input', runCalc);
+  });
+  document.querySelectorAll('.calc-line-perf-input').forEach(function(el) {
+    el.addEventListener('input', runCalc);
+  });
+  document.querySelectorAll('.calc-line-level-select').forEach(function(el) {
+    el.addEventListener('change', runCalc);
+  });
+
+  /* ════════════════════════════════════════════════
+     INIT
+     ════════════════════════════════════════════════ */
+  setLang(detectLang());
+
+})();
+</script>
+
+</body>
+</html>

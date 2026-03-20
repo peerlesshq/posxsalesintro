@@ -856,6 +856,30 @@ html[lang="ko"] body {
   overflow-wrap: anywhere;
 }
 
+/* ═══════ 09 CALCULATOR ENTRY CARD ═══════ */
+.calc-entry-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 36px 24px; border-radius: 16px;
+  background: linear-gradient(135deg, var(--navy) 0%, #0F2D63 100%);
+  color: #fff; position: relative; overflow: hidden;
+}
+.calc-entry-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(180,151,90,0.1), transparent);
+  pointer-events: none;
+}
+.calc-entry-icon { font-size: 2.5rem; margin-bottom: 16px; position: relative; z-index: 2; }
+.calc-entry-text { position: relative; z-index: 2; margin-bottom: 20px; }
+.calc-entry-text h3 { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.calc-entry-text p { font-size: 0.8125rem; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 480px; }
+.calc-entry-btn {
+  position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+  padding: 12px 28px; border-radius: 999px;
+  background: var(--gold); color: #fff; font-size: 0.875rem; font-weight: 700;
+  text-decoration: none; transition: background 0.2s;
+}
+.calc-entry-btn:hover { background: var(--gold-dark); }
+
 @media (max-width: 599px) {
   .header {
     display: block;
@@ -1428,6 +1452,7 @@ html[lang="en"] .reward-notice p {
       <a class="reward-chip" href="#rewardTeam"><span class="reward-chip-num en">02</span><span data-i18n="reward_nav_team">团队奖励</span></a>
       <a class="reward-chip" href="#rewardEqual"><span class="reward-chip-num en">03</span><span data-i18n="reward_nav_equal">平级奖</span></a>
       <a class="reward-chip" href="#rewardBurn"><span class="reward-chip-num en">04</span><span data-i18n="reward_nav_burn">烧伤机制</span></a>
+      <a class="reward-chip" href="./calculator.html"><span class="reward-chip-num en">05</span><span data-i18n="calc_nav">佣金计算器</span></a>
     </div>
 
     <details class="reward-accordion anim d3" id="rewardDirect" open>
@@ -1663,6 +1688,20 @@ html[lang="en"] .reward-notice p {
 
   <div class="ig-hr-full"></div>
 
+  <!-- ═══════ 09 CALCULATOR ENTRY ═══════ -->
+  <div class="ig-section-alt" id="calcEntry">
+    <div class="calc-entry-card anim d2">
+      <div class="calc-entry-icon">🧮</div>
+      <div class="calc-entry-text">
+        <h3 data-i18n="calc_entry_title">佣金计算器</h3>
+        <p data-i18n="calc_entry_desc">输入您的入金、持仓与团队数据，实时模拟直推、团队与平级奖的预估收益，并查看 POSX 代币预估价值。</p>
+      </div>
+      <a href="./calculator.html" class="calc-entry-btn" data-i18n="calc_entry_btn">立即计算 →</a>
+    </div>
+  </div>
+
+  <div class="ig-hr-full"></div>
+
   <!-- ═══════ HIGHLIGHT BANNER ═══════ -->
   <div class="highlight-banner anim">
     <div class="hl-inner">
@@ -1827,7 +1866,57 @@ html[lang="en"] .reward-notice p {
       burn_no4_title: '即时生效', burn_no4_body: '超出部分即时烧伤。',
       burn_notice_title: '重要公告',
       burn_notice_body: '自 2026年3月15日 至 2026年3月20日 期间，团队奖励结算系统处于技术测试与校准阶段。期间奖励计算与发放可能存在延迟，实际到账时间以系统结算完成为准；测试期结束后将按既定规则恢复正常结算周期。',
-      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。 \u00a9 2026 POSX Network.'
+      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。 \u00a9 2026 POSX Network.',
+      calc_nav: '佣金计算器',
+      calc_title: '佣金计算器',
+      calc_sub: '输入您的入金、持仓与团队数据，实时模拟直推奖励、团队奖励与平级奖的预估收益。',
+      calc_step1_title: '第一步：个人信息',
+      calc_own_deposit: '您的入金金额 (U)',
+      calc_own_deposit_ph: '例如 10000',
+      calc_own_holding: '您的 POSX 持仓价值 (U)',
+      calc_own_holding_ph: '例如 5000',
+      calc_step2_title: '第二步：直推下级',
+      calc_ref_ph: '下级入金金额 (U)',
+      calc_add_ref: '添加下级',
+      calc_ref_max: '最多添加 5 个直推下级。',
+      calc_step3_title: '第三步：团队与平级',
+      calc_team_perf: '团队累计业绩 (U)',
+      calc_team_perf_ph: '例如 500000',
+      calc_line1: '线路 1',
+      calc_line2: '线路 2',
+      calc_line3: '线路 3',
+      calc_line_perf: '该线路业绩 (U)',
+      calc_line_perf_ph: '例如 200000',
+      calc_line_level: '该线路最高级别',
+      calc_add_line: '添加线路',
+      calc_line_max: '最多添加 3 条线路。',
+      calc_equal_toggle: '启用平级奖计算',
+      calc_equal_perf: '平级下级的团队业绩 (U)',
+      calc_equal_perf_ph: '例如 100000',
+      calc_res_direct_title: '直推奖励',
+      calc_res_gross: '毛奖励',
+      calc_res_burned: '烧伤扣除',
+      calc_res_net: '净奖励',
+      calc_res_effective: '有效比例',
+      calc_burn_warn: '持仓不足 1,000U，无法获得任何奖励。',
+      calc_res_team_title: '团队奖励',
+      calc_res_team_total: '团队奖励合计',
+      calc_res_team_line: '线路',
+      calc_res_team_diff: '级差',
+      calc_res_equal_title: '平级奖',
+      calc_equal_not_triggered: '未启用',
+      calc_equal_layer: '第 {n} 层',
+      calc_res_summary_title: '收益总览',
+      calc_res_total_label: '预估总奖励 (U)',
+      calc_res_tokens: 'POSX 代币数量',
+      calc_price_label: 'POSX 价格',
+      calc_tier_label_5: '5% 档位（≥1,000U）',
+      calc_tier_label_10: '10% 档位（≥10,000U）',
+      calc_tier_label_15: '15% 档位（≥50,000U）',
+      calc_tier_label_0: '未达到最低入金要求',
+      calc_entry_title: '佣金计算器',
+      calc_entry_desc: '输入您的入金、持仓与团队数据，实时模拟直推、团队与平级奖的预估收益，并查看 POSX 代币预估价值。',
+      calc_entry_btn: '立即计算 →'
     },
 
     'zh-TW': {
@@ -1944,7 +2033,57 @@ html[lang="en"] .reward-notice p {
       burn_no4_title: '即時生效', burn_no4_body: '超出部分即時燒傷。',
       burn_notice_title: '重要公告',
       burn_notice_body: '自 2026年3月15日 至 2026年3月20日 期間，團隊獎勵結算系統處於技術測試與校準階段。期間獎勵計算與發放可能存在延遲，實際到帳時間以系統結算完成為準；測試期結束後將按既定規則恢復正常結算週期。',
-      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。 \u00a9 2026 POSX Network.'
+      disclaimer: '本文件僅供資訊參考，不構成對任何證券、金融工具或數位資產之要約、招攬或投資建議。文中資訊係依據被認為可靠之來源整理，但不就其準確性或完整性作出任何明示或暗示保證。過往表現不代表未來結果，數位資產投資具有高度風險，可能導致本金部分或全部損失。 \u00a9 2026 POSX Network.',
+      calc_nav: '佣金計算器',
+      calc_title: '佣金計算器',
+      calc_sub: '輸入您的入金、持倉與團隊數據，即時模擬直推獎勵、團隊獎勵與平級獎的預估收益。',
+      calc_step1_title: '第一步：個人資訊',
+      calc_own_deposit: '您的入金金額 (U)',
+      calc_own_deposit_ph: '例如 10000',
+      calc_own_holding: '您的 POSX 持倉價值 (U)',
+      calc_own_holding_ph: '例如 5000',
+      calc_step2_title: '第二步：直推下級',
+      calc_ref_ph: '下級入金金額 (U)',
+      calc_add_ref: '新增下級',
+      calc_ref_max: '最多新增 5 個直推下級。',
+      calc_step3_title: '第三步：團隊與平級',
+      calc_team_perf: '團隊累計業績 (U)',
+      calc_team_perf_ph: '例如 500000',
+      calc_line1: '線路 1',
+      calc_line2: '線路 2',
+      calc_line3: '線路 3',
+      calc_line_perf: '該線路業績 (U)',
+      calc_line_perf_ph: '例如 200000',
+      calc_line_level: '該線路最高級別',
+      calc_add_line: '新增線路',
+      calc_line_max: '最多新增 3 條線路。',
+      calc_equal_toggle: '啟用平級獎計算',
+      calc_equal_perf: '平級下級的團隊業績 (U)',
+      calc_equal_perf_ph: '例如 100000',
+      calc_res_direct_title: '直推獎勵',
+      calc_res_gross: '毛獎勵',
+      calc_res_burned: '燒傷扣除',
+      calc_res_net: '淨獎勵',
+      calc_res_effective: '有效比例',
+      calc_burn_warn: '持倉不足 1,000U，無法獲得任何獎勵。',
+      calc_res_team_title: '團隊獎勵',
+      calc_res_team_total: '團隊獎勵合計',
+      calc_res_team_line: '線路',
+      calc_res_team_diff: '級差',
+      calc_res_equal_title: '平級獎',
+      calc_equal_not_triggered: '未啟用',
+      calc_equal_layer: '第 {n} 層',
+      calc_res_summary_title: '收益總覽',
+      calc_res_total_label: '預估總獎勵 (U)',
+      calc_res_tokens: 'POSX 代幣數量',
+      calc_price_label: 'POSX 價格',
+      calc_tier_label_5: '5% 檔位（≥1,000U）',
+      calc_tier_label_10: '10% 檔位（≥10,000U）',
+      calc_tier_label_15: '15% 檔位（≥50,000U）',
+      calc_tier_label_0: '未達到最低入金要求',
+      calc_entry_title: '佣金計算器',
+      calc_entry_desc: '輸入您的入金、持倉與團隊數據，即時模擬直推、團隊與平級獎的預估收益，並查看 POSX 代幣預估價值。',
+      calc_entry_btn: '立即計算 →'
     },
 
     'en': {
@@ -2061,7 +2200,57 @@ html[lang="en"] .reward-notice p {
       burn_no4_title: 'Immediate Effect', burn_no4_body: 'Any excess is burned instantly.',
       burn_notice_title: 'Important Notice',
       burn_notice_body: 'From March 15, 2026 to March 20, 2026, the team reward settlement system is under technical testing and calibration. During this period, reward calculation and payout may be delayed; actual credit timing is subject to system settlement completion. Normal cycles resume after the testing window ends.',
-      disclaimer: 'This document is provided for informational purposes only and does not constitute an offer, solicitation, or recommendation to buy or sell any securities or financial instruments. The information contained herein is based on sources believed to be reliable but is not guaranteed as to its accuracy or completeness. Past performance is not indicative of future results. Investing in digital assets involves significant risks, including the possible loss of principal. \u00a9 2026 POSX Network.'
+      disclaimer: 'This document is provided for informational purposes only and does not constitute an offer, solicitation, or recommendation to buy or sell any securities or financial instruments. The information contained herein is based on sources believed to be reliable but is not guaranteed as to its accuracy or completeness. Past performance is not indicative of future results. Investing in digital assets involves significant risks, including the possible loss of principal. \u00a9 2026 POSX Network.',
+      calc_nav: 'Calculator',
+      calc_title: 'Commission Calculator',
+      calc_sub: 'Enter your deposit, holdings, and team data to simulate estimated earnings from direct referral rewards, team rewards, and equal-level bonuses in real time.',
+      calc_step1_title: 'Step 1: Personal Info',
+      calc_own_deposit: 'Your Deposit Amount (U)',
+      calc_own_deposit_ph: 'e.g. 10000',
+      calc_own_holding: 'Your POSX Holding Value (U)',
+      calc_own_holding_ph: 'e.g. 5000',
+      calc_step2_title: 'Step 2: Direct Referrals',
+      calc_ref_ph: 'Referral deposit amount (U)',
+      calc_add_ref: 'Add Referral',
+      calc_ref_max: 'Maximum 5 direct referrals.',
+      calc_step3_title: 'Step 3: Team & Equal Level',
+      calc_team_perf: 'Team Cumulative Performance (U)',
+      calc_team_perf_ph: 'e.g. 500000',
+      calc_line1: 'Line 1',
+      calc_line2: 'Line 2',
+      calc_line3: 'Line 3',
+      calc_line_perf: 'Line Performance (U)',
+      calc_line_perf_ph: 'e.g. 200000',
+      calc_line_level: 'Line Highest Level',
+      calc_add_line: 'Add Line',
+      calc_line_max: 'Maximum 3 downline lines.',
+      calc_equal_toggle: 'Enable Equal-Level Bonus',
+      calc_equal_perf: 'Equal Downline Team Performance (U)',
+      calc_equal_perf_ph: 'e.g. 100000',
+      calc_res_direct_title: 'Direct Referral Reward',
+      calc_res_gross: 'Gross Reward',
+      calc_res_burned: 'Burned',
+      calc_res_net: 'Net Reward',
+      calc_res_effective: 'Effective Ratio',
+      calc_burn_warn: 'Holding below 1,000U — no rewards available.',
+      calc_res_team_title: 'Team Reward',
+      calc_res_team_total: 'Team Reward Total',
+      calc_res_team_line: 'Line',
+      calc_res_team_diff: 'Differential',
+      calc_res_equal_title: 'Equal-Level Bonus',
+      calc_equal_not_triggered: 'Not Enabled',
+      calc_equal_layer: 'Layer {n}',
+      calc_res_summary_title: 'Earnings Overview',
+      calc_res_total_label: 'Estimated Total Reward (U)',
+      calc_res_tokens: 'POSX Token Count',
+      calc_price_label: 'POSX Price',
+      calc_tier_label_5: '5% Tier (≥1,000U)',
+      calc_tier_label_10: '10% Tier (≥10,000U)',
+      calc_tier_label_15: '15% Tier (≥50,000U)',
+      calc_tier_label_0: 'Below minimum deposit',
+      calc_entry_title: 'Commission Calculator',
+      calc_entry_desc: 'Enter your deposit, holdings, and team data to simulate estimated earnings from direct, team, and equal-level rewards — plus projected POSX token value.',
+      calc_entry_btn: 'Calculate Now →'
     },
 
     'ko': {
@@ -2183,7 +2372,57 @@ html[lang="en"] .reward-notice p {
       burn_no4_title: '즉시 적용', burn_no4_body: '초과분은 즉시 소각 처리됩니다.',
       burn_notice_title: '중요 안내',
       burn_notice_body: '2026년 3월 15일부터 2026년 3월 20일까지 팀 보상 정산 시스템은 기술 테스트 및 보정 단계에 있습니다. 이 기간 동안 보상 계산 및 지급이 일부 지연될 수 있으며, 실제 반영 시점은 시스템 정산 완료 시점을 기준으로 합니다. 테스트 종료 후에는 기존 규정에 따라 정상 정산 주기로 복귀합니다.',
-      disclaimer: '본 문서는 정보 제공만을 목적으로 하며, 어떠한 증권 또는 금융상품의 매수·매도 제안이나 권유 또는 투자 권고를 의미하지 않습니다. 본 문서에 포함된 정보는 신뢰할 수 있다고 판단되는 자료를 기반으로 작성되었으나, 그 정확성이나 완전성이 보장되지는 않습니다. 과거의 성과는 미래의 결과를 보장하지 않으며, 디지털 자산 투자는 원금 손실을 포함한 중대한 위험을 수반할 수 있습니다. \u00a9 2026 POSX Network.'
+      disclaimer: '본 문서는 정보 제공만을 목적으로 하며, 어떠한 증권 또는 금융상품의 매수·매도 제안이나 권유 또는 투자 권고를 의미하지 않습니다. 본 문서에 포함된 정보는 신뢰할 수 있다고 판단되는 자료를 기반으로 작성되었으나, 그 정확성이나 완전성이 보장되지는 않습니다. 과거의 성과는 미래의 결과를 보장하지 않으며, 디지털 자산 투자는 원금 손실을 포함한 중대한 위험을 수반할 수 있습니다. \u00a9 2026 POSX Network.',
+      calc_nav: '커미션 계산기',
+      calc_title: '커미션 계산기',
+      calc_sub: '입금액, 보유량, 팀 데이터를 입력하여 직추천 보상, 팀 보상, 동급 보너스의 예상 수익을 실시간으로 시뮬레이션하세요.',
+      calc_step1_title: '1단계: 개인 정보',
+      calc_own_deposit: '입금 금액 (U)',
+      calc_own_deposit_ph: '예: 10000',
+      calc_own_holding: 'POSX 보유 가치 (U)',
+      calc_own_holding_ph: '예: 5000',
+      calc_step2_title: '2단계: 직추천 하위',
+      calc_ref_ph: '하위 입금 금액 (U)',
+      calc_add_ref: '하위 추가',
+      calc_ref_max: '최대 5명의 직추천 하위를 추가할 수 있습니다.',
+      calc_step3_title: '3단계: 팀 및 동급',
+      calc_team_perf: '팀 누적 실적 (U)',
+      calc_team_perf_ph: '예: 500000',
+      calc_line1: '라인 1',
+      calc_line2: '라인 2',
+      calc_line3: '라인 3',
+      calc_line_perf: '라인 실적 (U)',
+      calc_line_perf_ph: '예: 200000',
+      calc_line_level: '라인 최고 등급',
+      calc_add_line: '라인 추가',
+      calc_line_max: '최대 3개 라인까지 추가할 수 있습니다.',
+      calc_equal_toggle: '동급 보너스 활성화',
+      calc_equal_perf: '동급 하위의 팀 실적 (U)',
+      calc_equal_perf_ph: '예: 100000',
+      calc_res_direct_title: '직추천 보상',
+      calc_res_gross: '총 보상',
+      calc_res_burned: '소각 차감',
+      calc_res_net: '순 보상',
+      calc_res_effective: '유효 비율',
+      calc_burn_warn: '보유량 1,000U 미만 — 보상을 받을 수 없습니다.',
+      calc_res_team_title: '팀 보상',
+      calc_res_team_total: '팀 보상 합계',
+      calc_res_team_line: '라인',
+      calc_res_team_diff: '급차',
+      calc_res_equal_title: '동급 보너스',
+      calc_equal_not_triggered: '비활성화',
+      calc_equal_layer: '{n}번째 층',
+      calc_res_summary_title: '수익 개요',
+      calc_res_total_label: '예상 총 보상 (U)',
+      calc_res_tokens: 'POSX 토큰 수량',
+      calc_price_label: 'POSX 가격',
+      calc_tier_label_5: '5% 등급 (≥1,000U)',
+      calc_tier_label_10: '10% 등급 (≥10,000U)',
+      calc_tier_label_15: '15% 등급 (≥50,000U)',
+      calc_tier_label_0: '최소 입금 기준 미달',
+      calc_entry_title: '커미션 계산기',
+      calc_entry_desc: '입금액, 보유량, 팀 데이터를 입력하여 직추천·팀·동급 보상의 예상 수익과 POSX 토큰 예상 가치를 실시간으로 확인하세요.',
+      calc_entry_btn: '지금 계산하기 →'
     }
   };
 
@@ -2221,6 +2460,12 @@ html[lang="en"] .reward-notice p {
     document.querySelectorAll('[data-i18n-svg]').forEach(function(el) {
       var key = el.getAttribute('data-i18n-svg');
       if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    // Update placeholder text
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
     });
 
     // Update active button
