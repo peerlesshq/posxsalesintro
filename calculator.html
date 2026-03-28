@@ -853,8 +853,8 @@ html[lang="ko"] body {
               </div>
               <div id="calcEqualWrap" style="display:none;">
                 <div class="calc-row">
-                  <label class="calc-label" data-i18n="calc_equal_perf">平级下级的团队业绩 (U)</label>
-                  <input class="calc-input" type="number" id="calcEqualPerf" min="0" placeholder="e.g. 100000" data-i18n-placeholder="calc_equal_perf_ph">
+                  <label class="calc-label" data-i18n="calc_equal_perf">平级下级的当日新增业绩 (U)</label>
+                  <input class="calc-input" type="number" id="calcEqualPerf" min="0" placeholder="例如 50000" data-i18n-placeholder="calc_equal_perf_ph">
                 </div>
               </div>
             </div>
@@ -1067,8 +1067,8 @@ html[lang="ko"] body {
       calc_add_line: '添加线路',
       calc_line_max: '最多添加 3 条线路。',
       calc_equal_toggle: '启用平级奖计算',
-      calc_equal_perf: '平级下级的团队业绩 (U)',
-      calc_equal_perf_ph: '例如 100000',
+      calc_equal_perf: '平级下级的当日新增业绩 (U)',
+      calc_equal_perf_ph: '例如 50000',
       calc_res_direct_title: '直推奖励',
       calc_res_gross: '毛奖励',
       calc_res_burned: '烧伤扣除',
@@ -1159,8 +1159,8 @@ html[lang="ko"] body {
       calc_add_line: '新增線路',
       calc_line_max: '最多新增 3 條線路。',
       calc_equal_toggle: '啟用平級獎計算',
-      calc_equal_perf: '平級下級的團隊業績 (U)',
-      calc_equal_perf_ph: '例如 100000',
+      calc_equal_perf: '平級下級的當日新增業績 (U)',
+      calc_equal_perf_ph: '例如 50000',
       calc_res_direct_title: '直推獎勵',
       calc_res_gross: '毛獎勵',
       calc_res_burned: '燒傷扣除',
@@ -1251,8 +1251,8 @@ html[lang="ko"] body {
       calc_add_line: 'Add Line',
       calc_line_max: 'Maximum 3 downline lines.',
       calc_equal_toggle: 'Enable Equal-Level Bonus',
-      calc_equal_perf: 'Equal Downline Team Performance (U)',
-      calc_equal_perf_ph: 'e.g. 100000',
+      calc_equal_perf: 'Equal Downline Daily New Performance (U)',
+      calc_equal_perf_ph: 'e.g. 50000',
       calc_res_direct_title: 'Direct Referral Reward',
       calc_res_gross: 'Gross Reward',
       calc_res_burned: 'Burned',
@@ -1343,8 +1343,8 @@ html[lang="ko"] body {
       calc_add_line: '\ub77c\uc778 \ucd94\uac00',
       calc_line_max: '\ucd5c\ub300 3\uac1c \ub77c\uc778\uae4c\uc9c0 \ucd94\uac00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.',
       calc_equal_toggle: '\ub3d9\uae09 \ubcf4\ub108\uc2a4 \ud65c\uc131\ud654',
-      calc_equal_perf: '\ub3d9\uae09 \ud558\uc704\uc758 \ud300 \uc2e4\uc801 (U)',
-      calc_equal_perf_ph: '\uc608: 100000',
+      calc_equal_perf: '\ub3d9\uae09 \ud558\uc704\uc758 \ub2f9\uc77c \uc2e0\uaddc \uc2e4\uc801 (U)',
+      calc_equal_perf_ph: '\uc608: 50000',
       calc_res_direct_title: '\uc9c1\ucd94\ucc9c \ubcf4\uc0c1',
       calc_res_gross: '\ucd1d \ubcf4\uc0c1',
       calc_res_burned: '\uc18c\uac01 \ucc28\uac10',
@@ -1770,17 +1770,8 @@ html[lang="ko"] body {
       equalBreakdown.innerHTML = '<div class="calc-not-triggered" data-i18n="calc_equal_not_triggered">' + txt('calc_equal_not_triggered') + '</div>';
     } else {
       var equalPerf = parseFloat(document.getElementById('calcEqualPerf').value) || 0;
-      var layers = [3, 1, 0.5, 0.3, 0.15, 0.05];
-      equalBreakdown.innerHTML = '';
-      layers.forEach(function(pctVal, idx) {
-        var reward = equalPerf * (pctVal / 100);
-        totalEqual += reward;
-        var layerLabel = txt('calc_equal_layer').replace('{n}', idx + 1);
-        var row = document.createElement('div');
-        row.className = 'adv-result-detail';
-        row.innerHTML = '<span>' + layerLabel + ' (' + pctVal + '%)</span><span>' + fmtU(reward) + '</span>';
-        equalBreakdown.appendChild(row);
-      });
+      totalEqual = equalPerf * 0.03;
+      equalBreakdown.innerHTML = '<div class="adv-result-detail"><span>3% × ' + fmtU(equalPerf) + '</span><span>' + fmtU(totalEqual) + '</span></div>';
     }
 
     var totalU = netDirect + totalTeam + totalEqual;
