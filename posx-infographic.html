@@ -1517,7 +1517,7 @@ html[lang="en"] .reward-notice p {
               <span class="tier-stack-badge">≥ 50,000U</span>
             </div>
             <div class="tier-stack-list">
-              <div class="tier-stack-row"><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>2%</strong></div>
+              <div class="tier-stack-row"><span data-i18n="team_panel2_row1_range">1 - 10万U</span><strong>1%</strong></div>
               <div class="tier-stack-row"><span data-i18n="team_panel2_row2_range">10.1 - 50万U</span><strong>3%</strong></div>
               <div class="tier-stack-row"><span data-i18n="team_panel2_row3_range">50.1 - 100万U</span><strong>5%</strong></div>
               <div class="tier-stack-row"><span data-i18n="team_panel2_row4_range">100.1 - 500万U</span><strong>10%</strong></div>
@@ -1556,7 +1556,7 @@ html[lang="en"] .reward-notice p {
           <div class="reward-summary-copy">
             <div class="reward-summary-kicker en">03 — Equal Level Bonus</div>
             <div class="reward-summary-title" data-i18n="equal_title">平级奖</div>
-            <div class="reward-summary-sub" data-i18n="equal_sub">当某条线下属与你达到同一团队奖励级别时，该线极差收益归零，并按其当日新增业绩的 3% 发放平级奖。</div>
+            <div class="reward-summary-sub" data-i18n="equal_sub">当某条线下属与你达到同一团队奖励级别时，该线极差收益归零。平级奖按团队业绩阶梯发放：10万-50万U 为 1%，50万-100万U 为 2%，100万U 以上为 3%。</div>
           </div>
           <span class="reward-summary-toggle">+</span>
         </div>
@@ -1565,8 +1565,8 @@ html[lang="en"] .reward-notice p {
         <div class="reward-card-grid">
           <div class="reward-mini-card">
             <div class="reward-mini-label en" data-i18n="equal_rate_label">Bonus Rate</div>
-            <div class="reward-mini-value">3%</div>
-            <div class="reward-mini-desc" data-i18n="equal_rate_desc">平级下属当日新增业绩的 3%，按日结算。</div>
+            <div class="reward-mini-value">1%-3%</div>
+            <div class="reward-mini-desc" data-i18n="equal_rate_desc">按团队业绩阶梯计算（非个人业绩）：10万-50万U 1%，50万-100万U 2%，100万U以上 3%，每 24 小时结算。</div>
           </div>
           <div class="reward-mini-card">
             <div class="reward-mini-label en" data-i18n="equal_threshold_label">Performance Threshold</div>
@@ -1577,12 +1577,12 @@ html[lang="en"] .reward-notice p {
 
         <div class="reward-note">
           <h5 data-i18n="equal_trigger_title">触发逻辑</h5>
-          <p data-i18n="equal_trigger_body">当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。平级奖按该下属当日新增业绩的 3% 发放，每 24 小时结算一次。</p>
+          <p data-i18n="equal_trigger_body">当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。平级奖按团队业绩阶梯计算（非个人业绩）：10万-50万U 1%，50万-100万U 2%，100万U以上 3%，每 24 小时结算一次。</p>
         </div>
 
         <div class="reward-notice">
           <h5 data-i18n="equal_notice_title">平级奖发放公告</h5>
-          <p data-i18n="equal_notice_body">首次平级奖发放时间为 2026年4月3日至4月8日。自 2026年4月9日起，平级奖按 24 小时结算周期正常发放。</p>
+          <p data-i18n="equal_notice_body">平级奖仅针对你直推的一级平级下属发放，不包含二级及更深层级。首次平级奖发放时间为 2026年4月3日至4月8日。自 2026年4月9日起，平级奖按 24 小时结算周期正常发放。</p>
         </div>
       </div>
     </details>
@@ -1805,13 +1805,13 @@ html[lang="en"] .reward-notice p {
       team_diff2_body: '如果你当前团队奖励级别为 10%，B 线下级级别为 3%，则该线极差 = 10% - 3% = 7%；若 B 线业绩为 30万U，则对应收益按 30万U × 7% 计算。',
       team_cap_body: '无论团队业绩和架构如何增长，单个账户的团队奖励比例最高不超过 15%。该上限用于控制奖励支出并保持制度可持续性。',
       equal_title: '平级奖',
-      equal_sub: '当某条线下属与你达到同一团队奖励级别时，该线极差收益归零，并按其当日新增业绩的 3% 发放平级奖。',
-      equal_rate_label: 'Bonus Rate', equal_rate_desc: '平级下属当日新增业绩的 3%，按日结算。',
+      equal_sub: '当某条线下属与你达到同一团队奖励级别时，该线极差收益归零。平级奖按团队业绩阶梯发放：10万-50万U 为 1%，50万-100万U 为 2%，100万U 以上为 3%。',
+      equal_rate_label: 'Bonus Rate', equal_rate_desc: '按团队业绩阶梯计算（非个人业绩）：10万-50万U 1%，50万-100万U 2%，100万U以上 3%，每 24 小时结算。',
       equal_threshold_label: 'Performance Threshold', equal_threshold_desc: '平级下属的团队累计业绩需达到 10万U 以上方可触发平级奖。',
       equal_trigger_title: '触发逻辑',
-      equal_trigger_body: '当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。平级奖按该下属当日新增业绩的 3% 发放，每 24 小时结算一次。',
+      equal_trigger_body: '当你某条线的下属与你达到同一团队奖励级别时，该线极差收益归零，平级奖自动启动。平级奖按团队业绩阶梯计算（非个人业绩）：10万-50万U 1%，50万-100万U 2%，100万U以上 3%，每 24 小时结算一次。',
       equal_notice_title: '平级奖发放公告',
-      equal_notice_body: '首次平级奖发放时间为 2026年4月3日至4月8日。自 2026年4月9日起，平级奖按 24 小时结算周期正常发放。',
+      equal_notice_body: '平级奖仅针对你直推的一级平级下属发放，不包含二级及更深层级。首次平级奖发放时间为 2026年4月3日至4月8日。自 2026年4月9日起，平级奖按 24 小时结算周期正常发放。',
       burn_title: '烧伤机制',
       burn_sub: '奖励资格和提成上限与持仓等值额度挂钩，超过匹配额度的部分即时烧伤且不追溯。',
       burn_rule1_title: '参与门槛', burn_rule1_body: '最低持有 ≥ 1,000U 等值 POSX，方可参与推广及提成计算；低于此额度不享受任何奖励。',
@@ -1968,13 +1968,13 @@ html[lang="en"] .reward-notice p {
       team_diff2_body: '若你目前團隊獎勵級別為 10%，B 線下級級別為 3%，則該線極差 = 10% - 3% = 7%；若 B 線業績為 30萬U，則對應收益按 30萬U × 7% 計算。',
       team_cap_body: '無論團隊業績與架構如何成長，單一帳戶的團隊獎勵比例最高不超過 15%。該上限用於控制獎勵支出並維持制度可持續性。',
       equal_title: '平級獎',
-      equal_sub: '當某條線下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，並按其當日新增業績的 3% 發放平級獎。',
-      equal_rate_label: 'Bonus Rate', equal_rate_desc: '平級下屬當日新增業績的 3%，按日結算。',
+      equal_sub: '當某條線下屬與你達到同一團隊獎勵級別時，該線極差收益歸零。平級獎按團隊業績階梯發放：10萬-50萬U 為 1%，50萬-100萬U 為 2%，100萬U 以上為 3%。',
+      equal_rate_label: 'Bonus Rate', equal_rate_desc: '按團隊業績階梯計算（非個人業績）：10萬-50萬U 1%，50萬-100萬U 2%，100萬U以上 3%，每 24 小時結算。',
       equal_threshold_label: 'Performance Threshold', equal_threshold_desc: '平級下屬的團隊累計業績需達到 10萬U 以上方可觸發平級獎。',
       equal_trigger_title: '觸發邏輯',
-      equal_trigger_body: '當你某條線的下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，平級獎自動啟動。平級獎按該下屬當日新增業績的 3% 發放，每 24 小時結算一次。',
+      equal_trigger_body: '當你某條線的下屬與你達到同一團隊獎勵級別時，該線極差收益歸零，平級獎自動啟動。平級獎按團隊業績階梯計算（非個人業績）：10萬-50萬U 1%，50萬-100萬U 2%，100萬U以上 3%，每 24 小時結算一次。',
       equal_notice_title: '平級獎發放公告',
-      equal_notice_body: '首次平級獎發放時間為 2026年4月3日至4月8日。自 2026年4月9日起，平級獎按 24 小時結算週期正常發放。',
+      equal_notice_body: '平級獎僅針對你直推的一級平級下屬發放，不包含二級及更深層級。首次平級獎發放時間為 2026年4月3日至4月8日。自 2026年4月9日起，平級獎按 24 小時結算週期正常發放。',
       burn_title: '燒傷機制',
       burn_sub: '獎勵資格與提成上限與持倉等值額度掛鉤，超過匹配額度的部分即時燒傷且不追溯。',
       burn_rule1_title: '參與門檻', burn_rule1_body: '最低持有 ≥ 1,000U 等值 POSX，方可參與推廣及提成計算；低於此額度不享受任何獎勵。',
@@ -2131,13 +2131,13 @@ html[lang="en"] .reward-notice p {
       team_diff2_body: 'If your team reward level is 10% and Line B\'s downline level is 3%, the differential is 10% - 3% = 7%. With 300,000U in team volume, the reward is 300,000U × 7%.',
       team_cap_body: 'Regardless of team scale or structure, the team reward ratio for a single account is capped at 15%. This ceiling keeps payout obligations controlled and the model sustainable.',
       equal_title: 'Equal-Level Bonus',
-      equal_sub: 'When a downline on a given line reaches your team reward level, the differential becomes zero and a 3% equal-level bonus is paid on their daily new performance.',
-      equal_rate_label: 'Bonus Rate', equal_rate_desc: '3% of the equal-level downline\'s daily new performance, settled every 24 hours.',
+      equal_sub: 'When a downline on a given line reaches your team reward level, the differential on that line becomes zero. The equal-level bonus follows team-performance tiers: 1% for 100,000-500,000U, 2% for 500,000-1,000,000U, and 3% above 1,000,000U.',
+      equal_rate_label: 'Bonus Rate', equal_rate_desc: 'Calculated by team performance tiers (not personal performance): 1% for 100,000-500,000U, 2% for 500,000-1,000,000U, and 3% above 1,000,000U, settled every 24 hours.',
       equal_threshold_label: 'Performance Threshold', equal_threshold_desc: 'The equal-level downline\'s cumulative team performance must reach 100,000U or above to trigger the bonus.',
       equal_trigger_title: 'Trigger Logic',
-      equal_trigger_body: 'When a downline on one of your lines reaches the same team reward level as you, the differential on that line becomes zero and the equal-level bonus starts automatically. The bonus is 3% of that downline\'s daily new performance, settled every 24 hours.',
+      equal_trigger_body: 'When a downline on one of your lines reaches the same team reward level as you, the differential on that line becomes zero and the equal-level bonus starts automatically. The bonus is calculated by team-performance tiers (not personal performance): 1% for 100,000-500,000U, 2% for 500,000-1,000,000U, and 3% above 1,000,000U, settled every 24 hours.',
       equal_notice_title: 'Equal-Level Bonus Launch Notice',
-      equal_notice_body: 'The first equal-level bonus payout period is April 3 to April 8, 2026. Starting April 9, 2026, the equal-level bonus will settle on a regular 24-hour cycle.',
+      equal_notice_body: 'The equal-level bonus applies only to your first-level direct equal-level downline and does not extend to second-level or deeper layers. The first equal-level bonus payout period is April 3 to April 8, 2026. Starting April 9, 2026, the equal-level bonus will settle on a regular 24-hour cycle.',
       burn_title: 'Burn Mechanism',
       burn_sub: 'Reward eligibility and commission caps are tied to the U-equivalent value of your holdings. Amounts above the matched quota are burned immediately and are not retroactive.',
       burn_rule1_title: 'Participation Threshold', burn_rule1_body: 'You must hold at least 1,000U equivalent of POSX to qualify for referral participation and commission calculation. Below that threshold, no rewards apply.',
@@ -2299,13 +2299,13 @@ html[lang="en"] .reward-notice p {
       team_diff2_body: '당신의 팀 보상 레벨이 10%이고 B 라인 하위 레벨이 3%이면, 극차 = 10% - 3% = 7%. B 라인 실적이 300,000U일 경우 보상은 300,000U × 7%로 계산됩니다.',
       team_cap_body: '팀 규모와 구조가 어떻게 확대되더라도 단일 계정의 팀 보상 비율은 최대 15%를 초과하지 않습니다. 이 상한선은 지급 부담을 통제하고 제도의 지속 가능성을 유지하기 위한 장치입니다.',
       equal_title: '동급 보너스',
-      equal_sub: '특정 라인의 하위 사용자가 당신과 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되며, 당일 신규 실적의 3%가 동급 보너스로 지급됩니다.',
-      equal_rate_label: 'Bonus Rate', equal_rate_desc: '동급 하위의 당일 신규 실적의 3%, 24시간 단위로 정산.',
+      equal_sub: '특정 라인의 하위 사용자가 당신과 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 됩니다. 동급 보너스는 팀 실적 구간에 따라 지급됩니다: 100,000-500,000U 1%, 500,000-1,000,000U 2%, 1,000,000U 초과 3%.',
+      equal_rate_label: 'Bonus Rate', equal_rate_desc: '팀 실적 구간 기준(개인 실적 아님): 100,000-500,000U 1%, 500,000-1,000,000U 2%, 1,000,000U 초과 3%, 24시간마다 정산.',
       equal_threshold_label: 'Performance Threshold', equal_threshold_desc: '동급 하위의 팀 누적 실적이 100,000U 이상이어야 동급 보너스가 발동됩니다.',
       equal_trigger_title: '발동 조건',
-      equal_trigger_body: '당신의 특정 라인 하위 사용자가 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되고, 동급 보너스가 자동으로 시작됩니다. 보너스는 해당 하위의 당일 신규 실적의 3%이며 24시간마다 정산됩니다.',
+      equal_trigger_body: '당신의 특정 라인 하위 사용자가 동일한 팀 보상 레벨에 도달하면 해당 라인의 차등은 0이 되고, 동급 보너스가 자동으로 시작됩니다. 보너스는 팀 실적 구간 기준(개인 실적 아님)으로 계산됩니다: 100,000-500,000U 1%, 500,000-1,000,000U 2%, 1,000,000U 초과 3%, 24시간마다 정산됩니다.',
       equal_notice_title: '동급 보너스 시행 공지',
-      equal_notice_body: '첫 동급 보너스 지급 기간은 2026년 4월 3일부터 4월 8일까지입니다. 2026년 4월 9일부터는 24시간 정산 주기로 정상 지급됩니다.',
+      equal_notice_body: '동급 보너스는 직추천 1단계의 동급 하위에게만 적용되며, 2단계 이하에는 적용되지 않습니다. 첫 동급 보너스 지급 기간은 2026년 4월 3일부터 4월 8일까지입니다. 2026년 4월 9일부터는 24시간 정산 주기로 정상 지급됩니다.',
       burn_title: '소각 메커니즘',
       burn_sub: '보상 자격과 커미션 상한은 보유량의 U 환산 가치에 연동됩니다. 매칭 한도를 초과하는 부분은 즉시 소각되며, 이후에도 소급 적용되지 않습니다.',
       burn_rule1_title: '참여 기준', burn_rule1_body: '추천 참여 및 커미션 계산 자격을 얻으려면 최소 1,000U 상당의 POSX를 보유해야 합니다. 이 기준 미만에서는 어떠한 보상도 적용되지 않습니다.',
