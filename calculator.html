@@ -454,6 +454,11 @@ html[lang="ko"] body {
 .calc-toggle-label { font-size: 0.8125rem; font-weight: 600; color: var(--text-2); }
 .calc-line-block { padding: 12px; border: 1px solid var(--rule-light); border-radius: 8px; margin-bottom: 10px; background: var(--navy-04); }
 .calc-line-title { font-size: 0.75rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.calc-equal-note {
+  margin-bottom: 12px; padding: 10px 12px; border-radius: 8px;
+  background: rgba(180,151,90,.08); border: 1px solid rgba(180,151,90,.2);
+  font-size: 0.6875rem; color: var(--gold-dark); line-height: 1.6;
+}
 
 .calc-results { margin-top: 20px; display: grid; gap: 12px; }
 .calc-card {
@@ -852,8 +857,14 @@ html[lang="ko"] body {
                 <span class="calc-toggle-label" data-i18n="calc_equal_toggle">启用平级奖计算</span>
               </div>
               <div id="calcEqualWrap" style="display:none;">
+                <div class="calc-equal-note" data-i18n="calc_equal_scope_note">平级奖仅针对你直推的一级平级下属发放，不含二级及更深层级。比例按团队业绩阶梯：10万-50万U 为 1%，50万-100万U 为 2%，100万U 以上为 3%。</div>
                 <div class="calc-row">
-                  <label class="calc-label" data-i18n="calc_equal_perf">平级下级的当日新增业绩 (U)</label>
+                  <label class="calc-label" data-i18n="calc_equal_team_perf">平级下属团队累计业绩 (U)</label>
+                  <input class="calc-input" type="number" id="calcEqualTeamPerf" min="0" placeholder="例如 200000" data-i18n-placeholder="calc_equal_team_perf_ph">
+                  <div id="calcEqualRateBadge" class="calc-tier-badge" style="display:none;"></div>
+                </div>
+                <div class="calc-row">
+                  <label class="calc-label" data-i18n="calc_equal_perf">平级下属当日新增业绩 (U)</label>
                   <input class="calc-input" type="number" id="calcEqualPerf" min="0" placeholder="例如 50000" data-i18n-placeholder="calc_equal_perf_ph">
                 </div>
               </div>
@@ -1067,7 +1078,14 @@ html[lang="ko"] body {
       calc_add_line: '添加线路',
       calc_line_max: '最多添加 3 条线路。',
       calc_equal_toggle: '启用平级奖计算',
-      calc_equal_perf: '平级下级的当日新增业绩 (U)',
+      calc_equal_scope_note: '平级奖仅针对你直推的一级平级下属发放，不含二级及更深层级。比例按团队业绩阶梯：10万-50万U 为 1%，50万-100万U 为 2%，100万U 以上为 3%。',
+      calc_equal_team_perf: '平级下属团队累计业绩 (U)',
+      calc_equal_team_perf_ph: '例如 200000',
+      calc_equal_rate_label: '当前档位 {rate}%',
+      calc_equal_below_threshold: '团队业绩不足 10万U，平级奖未触发',
+      calc_equal_team_tier: '团队业绩档位',
+      calc_equal_rate: '适用比例',
+      calc_equal_perf: '平级下属当日新增业绩 (U)',
       calc_equal_perf_ph: '例如 50000',
       calc_res_direct_title: '直推奖励',
       calc_res_gross: '毛奖励',
@@ -1159,7 +1177,14 @@ html[lang="ko"] body {
       calc_add_line: '新增線路',
       calc_line_max: '最多新增 3 條線路。',
       calc_equal_toggle: '啟用平級獎計算',
-      calc_equal_perf: '平級下級的當日新增業績 (U)',
+      calc_equal_scope_note: '平級獎僅針對你直推的一級平級下屬發放，不含二級及更深層級。比例依團隊業績階梯：10萬-50萬U 為 1%，50萬-100萬U 為 2%，100萬U 以上為 3%。',
+      calc_equal_team_perf: '平級下屬團隊累計業績 (U)',
+      calc_equal_team_perf_ph: '例如 200000',
+      calc_equal_rate_label: '目前檔位 {rate}%',
+      calc_equal_below_threshold: '團隊業績不足 10萬U，平級獎未觸發',
+      calc_equal_team_tier: '團隊業績檔位',
+      calc_equal_rate: '適用比例',
+      calc_equal_perf: '平級下屬當日新增業績 (U)',
       calc_equal_perf_ph: '例如 50000',
       calc_res_direct_title: '直推獎勵',
       calc_res_gross: '毛獎勵',
@@ -1251,6 +1276,13 @@ html[lang="ko"] body {
       calc_add_line: 'Add Line',
       calc_line_max: 'Maximum 3 downline lines.',
       calc_equal_toggle: 'Enable Equal-Level Bonus',
+      calc_equal_scope_note: 'The equal-level bonus applies only to your first-level direct equal-level downline (not deeper layers). The rate follows team-performance tiers: 1% for 100,000-500,000U, 2% for 500,001-1,000,000U, and 3% above 1,000,000U.',
+      calc_equal_team_perf: 'Equal Downline Cumulative Team Performance (U)',
+      calc_equal_team_perf_ph: 'e.g. 200000',
+      calc_equal_rate_label: 'Current Tier {rate}%',
+      calc_equal_below_threshold: 'Team performance below 100,000U — equal-level bonus not triggered',
+      calc_equal_team_tier: 'Team Performance Tier',
+      calc_equal_rate: 'Applicable Rate',
       calc_equal_perf: 'Equal Downline Daily New Performance (U)',
       calc_equal_perf_ph: 'e.g. 50000',
       calc_res_direct_title: 'Direct Referral Reward',
@@ -1343,6 +1375,13 @@ html[lang="ko"] body {
       calc_add_line: '\ub77c\uc778 \ucd94\uac00',
       calc_line_max: '\ucd5c\ub300 3\uac1c \ub77c\uc778\uae4c\uc9c0 \ucd94\uac00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.',
       calc_equal_toggle: '\ub3d9\uae09 \ubcf4\ub108\uc2a4 \ud65c\uc131\ud654',
+      calc_equal_scope_note: '\ub3d9\uae09 \ubcf4\ub108\uc2a4\ub294 \uc9c1\ucd94\ucc9c 1\ub2e8\uacc4\uc758 \ub3d9\uae09 \ud558\uc704\uc5d0\uac8c\ub9cc \uc801\uc6a9\ub418\uba70, 2\ub2e8\uacc4 \uc774\ud558\uc5d0\ub294 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ube44\uc728\uc740 \ud300 \uc2e4\uc801 \uad6c\uac04 \uae30\uc900\uc785\ub2c8\ub2e4: 100,000-500,000U 1%, 500,001-1,000,000U 2%, 1,000,000U \ucd08\uacfc 3%.',
+      calc_equal_team_perf: '\ub3d9\uae09 \ud558\uc704 \ud300 \ub204\uc801 \uc2e4\uc801 (U)',
+      calc_equal_team_perf_ph: '\uc608: 200000',
+      calc_equal_rate_label: '\ud604\uc7ac \uad6c\uac04 {rate}%',
+      calc_equal_below_threshold: '\ud300 \uc2e4\uc801\uc774 100,000U \ubbf8\ub9cc \u2014 \ub3d9\uae09 \ubcf4\ub108\uc2a4 \ubc1c\ub3d9 \uc548\ub428',
+      calc_equal_team_tier: '\ud300 \uc2e4\uc801 \uad6c\uac04',
+      calc_equal_rate: '\uc801\uc6a9 \ube44\uc728',
       calc_equal_perf: '\ub3d9\uae09 \ud558\uc704\uc758 \ub2f9\uc77c \uc2e0\uaddc \uc2e4\uc801 (U)',
       calc_equal_perf_ph: '\uc608: 50000',
       calc_res_direct_title: '\uc9c1\ucd94\ucc9c \ubcf4\uc0c1',
@@ -1402,7 +1441,14 @@ html[lang="ko"] body {
     if (perf >= 1000000) return 10;
     if (perf >= 500000) return 5;
     if (perf >= 100000) return 3;
-    if (perf >= 1) return 2;
+    if (perf >= 1) return 1;
+    return 0;
+  }
+
+  function getEqualRate(teamPerf) {
+    if (teamPerf > 1000000) return 3;
+    if (teamPerf > 500000) return 2;
+    if (teamPerf >= 100000) return 1;
     return 0;
   }
 
@@ -1765,13 +1811,35 @@ html[lang="ko"] body {
     var equalBreakdown = document.getElementById('calcEqualBreakdown');
     var equalActive = equalToggle && equalToggle.classList.contains('active');
     var totalEqual = 0;
+    var equalRateBadge = document.getElementById('calcEqualRateBadge');
 
     if (!equalActive) {
       equalBreakdown.innerHTML = '<div class="calc-not-triggered" data-i18n="calc_equal_not_triggered">' + txt('calc_equal_not_triggered') + '</div>';
+      if (equalRateBadge) equalRateBadge.style.display = 'none';
     } else {
+      var equalTeamPerf = parseFloat(document.getElementById('calcEqualTeamPerf').value) || 0;
       var equalPerf = parseFloat(document.getElementById('calcEqualPerf').value) || 0;
-      totalEqual = equalPerf * 0.03;
-      equalBreakdown.innerHTML = '<div class="adv-result-detail"><span>3% × ' + fmtU(equalPerf) + '</span><span>' + fmtU(totalEqual) + '</span></div>';
+      var equalRate = getEqualRate(equalTeamPerf);
+      totalEqual = equalPerf * (equalRate / 100);
+
+      if (equalRateBadge) {
+        if (equalTeamPerf > 0) {
+          equalRateBadge.style.display = 'inline-block';
+          equalRateBadge.textContent = equalRate > 0
+            ? txt('calc_equal_rate_label').replace('{rate}', equalRate)
+            : txt('calc_equal_below_threshold');
+        } else {
+          equalRateBadge.style.display = 'none';
+        }
+      }
+
+      var html = '<div class="adv-result-detail"><span>' + txt('calc_equal_team_tier') + '</span><span>' + fmtU(equalTeamPerf) + '</span></div>'
+        + '<div class="adv-result-detail"><span>' + txt('calc_equal_rate') + '</span><span>' + equalRate + '%</span></div>'
+        + '<div class="adv-result-detail"><span>' + equalRate + '% × ' + fmtU(equalPerf) + '</span><span>' + fmtU(totalEqual) + '</span></div>';
+      if (equalRate === 0 && equalTeamPerf > 0) {
+        html += '<div class="calc-warning" style="margin-top:8px;">' + txt('calc_equal_below_threshold') + '</div>';
+      }
+      equalBreakdown.innerHTML = html;
     }
 
     var totalU = netDirect + totalTeam + totalEqual;
@@ -1813,7 +1881,7 @@ html[lang="ko"] body {
     document.getElementById('calcTP025').textContent = fmtProfit(ctv025 - deposit);
   }
 
-  ['calcOwnDeposit', 'calcOwnHolding', 'calcTeamPerf', 'calcEqualPerf'].forEach(function(id) {
+  ['calcOwnDeposit', 'calcOwnHolding', 'calcTeamPerf', 'calcEqualPerf', 'calcEqualTeamPerf'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', runCalc);
   });

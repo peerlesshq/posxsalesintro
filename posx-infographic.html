@@ -198,7 +198,7 @@ html[lang="ko"] body {
 .entry-shortcuts {
   padding: 14px 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   background: var(--white);
   border-bottom: 1px solid var(--rule);
@@ -942,6 +942,325 @@ html[lang="en"] .reward-notice p {
   font-size: 0.71875rem;
 }
 
+/* ═══════ NEW: VALUE PROPOSITION HUB (一图看懂) ═══════ */
+.value-hub-wrap { margin-top: 24px; }
+.value-hub-card {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 18px 14px;
+  position: relative;
+  overflow: hidden;
+}
+.value-hub-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%);
+}
+.value-hub-header {
+  text-align: center;
+  margin-bottom: 18px;
+  padding: 0 4px;
+}
+.value-hub-kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.value-hub-headline {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.value-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.value-hub-side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.value-hub-side-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 4px;
+  align-self: center;
+}
+.value-hub-side.demand .value-hub-side-label {
+  background: var(--green-bg);
+  color: var(--green);
+}
+.value-hub-side.supply .value-hub-side-label {
+  background: var(--gold-bg);
+  color: var(--gold-dark);
+}
+.value-hub-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  background: var(--navy-04);
+  border-radius: 10px;
+  min-width: 0;
+}
+.value-hub-item-icon {
+  width: 32px; height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  color: var(--navy);
+}
+.value-hub-side.supply .value-hub-item-icon { color: var(--gold-dark); }
+.value-hub-item-icon svg { width: 16px; height: 16px; display: block; }
+.value-hub-item-text { min-width: 0; flex: 1; }
+.value-hub-item-text strong {
+  display: block;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 1px;
+}
+.value-hub-item-text span {
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.value-hub-center {
+  text-align: center;
+  padding: 4px 0;
+}
+.value-hub-center svg {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+.value-hub-arrow-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.value-hub-arrow-row .arrow-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  max-width: 80px;
+}
+.value-pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+.value-pillar {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  min-width: 0;
+}
+.ig-section-alt .value-pillar { background: var(--white); }
+.value-pillar-icon {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--navy-08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--navy);
+}
+.value-pillar-icon.gold { background: var(--gold-bg); color: var(--gold-dark); }
+.value-pillar-icon svg { width: 20px; height: 20px; display: block; }
+.value-pillar-text { min-width: 0; }
+.value-pillar-text h5 {
+  font-size: 0.8125rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 3px;
+}
+.value-pillar-text p {
+  font-size: 0.6875rem; color: var(--text-3); line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.value-equation {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, var(--navy) 0%, #0F2D63 100%);
+  color: #fff;
+  border-radius: 12px;
+  text-align: center;
+}
+.value-equation-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 6px;
+}
+.value-equation-text {
+  font-size: 0.875rem; font-weight: 700; line-height: 1.5;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+.value-equation-text .eq-gold { color: var(--gold-light); }
+
+/* ═══════ NEW: ECOSYSTEM RING ═══════ */
+.eco-ring-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 24px;
+  align-items: center;
+}
+.eco-ring-wrap {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.eco-ring-wrap svg { width: 100%; height: auto; display: block; }
+.eco-ring-list { display: flex; flex-direction: column; gap: 10px; }
+.eco-ring-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 14px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  min-width: 0;
+}
+.eco-ring-num {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--navy-08);
+  color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 800;
+}
+.eco-ring-text { min-width: 0; }
+.eco-ring-text h5 { font-size: 0.8125rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.eco-ring-text p { font-size: 0.6875rem; color: var(--text-3); line-height: 1.6; overflow-wrap: anywhere; }
+
+/* ═══════ NEW: MARKET TAM/SAM/SOM RING ═══════ */
+.market-ring-wrap {
+  width: 100%;
+  max-width: 480px;
+  margin: 24px auto 0;
+}
+.market-ring-wrap svg { width: 100%; height: auto; display: block; }
+
+/* ═══════ NEW: THESIS CARD ICONS ═══════ */
+.thesis-icon-wrap {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.thesis-icon {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--navy-08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--navy);
+}
+.thesis-icon.gold { background: var(--gold-bg); color: var(--gold-dark); }
+.thesis-icon svg { width: 20px; height: 20px; display: block; }
+.thesis-card .thesis-ord { font-size: 1.125rem; margin-bottom: 0; line-height: 1; opacity: 0.8; }
+
+/* ═══════ NEW: VALUE ANCHOR COMPARE BAR ═══════ */
+.wd-compare {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.wd-compare-row {
+  display: grid;
+  grid-template-columns: 96px 1fr 36px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.wd-compare-row:last-child { margin-bottom: 0; }
+.wd-compare-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.wd-compare-bar {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.wd-compare-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--gold-light);
+}
+.wd-compare-bar-fill.empty { background: rgba(184,46,58,0.45); }
+.wd-compare-pct {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  text-align: right;
+}
+
+/* ═══════ NEW: ROADMAP TIMELINE ═══════ */
+.roadmap-wrap {
+  margin-top: 28px;
+  padding: 18px 14px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+.roadmap-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.roadmap-wrap svg { width: 100%; height: auto; display: block; }
+
 /* ═══════ FOOTER / DISCLAIMER ═══════ */
 .disclaimer { padding: 16px 20px; border-top: 1px solid var(--rule-light); background: var(--white); }
 .disclaimer p { font-size: 0.5625rem; color: var(--text-4); line-height: 1.65; }
@@ -991,6 +1310,16 @@ html[lang="en"] .reward-notice p {
   .burn-grid { grid-template-columns: 1fr 1fr; }
   .tier-stack,
   .diff-cards { grid-template-columns: 1fr 1fr; }
+  .value-pillars { grid-template-columns: repeat(3, 1fr); }
+  .eco-ring-layout { grid-template-columns: 320px 1fr; gap: 32px; }
+  .value-hub-card { padding: 24px 22px; }
+  .value-hub-grid {
+    grid-template-columns: 1fr 220px 1fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .value-hub-headline { font-size: 1.0625rem; }
+  .value-hub-center { display: flex; flex-direction: column; justify-content: center; }
   .disclaimer { padding: 18px 40px; }
   .footer-bar { padding: 24px 40px; flex-direction: row; justify-content: space-between; text-align: left; }
 }
@@ -1040,6 +1369,12 @@ html[lang="en"] .reward-notice p {
   .equal-layers { grid-template-columns: 1fr 1fr; }
   .hl-main h2 { font-size: 1.75rem; }
   .hl-stat-val { font-size: 1.25rem; }
+  .value-hub-card { padding: 32px 28px; }
+  .value-hub-headline { font-size: 1.25rem; }
+  .value-hub-grid { grid-template-columns: 1fr 240px 1fr; gap: 22px; }
+  .value-pillars { gap: 14px; margin-top: 22px; }
+  .eco-ring-wrap { max-width: 380px; }
+  .market-ring-wrap { max-width: 540px; }
   .disclaimer { padding: 20px 72px; }
   .footer-bar { padding: 28px 72px; }
 }
@@ -1103,7 +1438,14 @@ html[lang="en"] .reward-notice p {
       </span>
       <span class="entry-shortcut-arrow en">→</span>
     </a>
-    <a class="entry-shortcut anim d2" href="#rewardHub">
+    <a class="entry-shortcut anim d2" href="#sValue">
+      <span class="entry-shortcut-label">
+        <span class="entry-shortcut-kicker en" data-i18n="entry_value_kicker">Value Snapshot</span>
+        <span class="entry-shortcut-title" data-i18n="entry_value_title">一图看懂价值</span>
+      </span>
+      <span class="entry-shortcut-arrow en">→</span>
+    </a>
+    <a class="entry-shortcut anim d3" href="#rewardHub">
       <span class="entry-shortcut-label">
         <span class="entry-shortcut-kicker en" data-i18n="entry_reward_kicker">Reward Rules</span>
         <span class="entry-shortcut-title" data-i18n="entry_reward_title">直达奖励机制</span>
@@ -1168,6 +1510,18 @@ html[lang="en"] .reward-notice p {
           <div class="wd-value" data-i18n="s01_d3_val">100% 真实消费驱动</div>
           <div class="wd-bar"><div class="wd-bar-fill" style="width:80%"></div></div>
           <div class="wd-note" data-i18n="s01_d3_note">零投机性铸造 · 零虚拟杠杆</div>
+          <div class="wd-compare">
+            <div class="wd-compare-row">
+              <span class="wd-compare-label" data-i18n="s01_compare_posx">POSX 实物锚定</span>
+              <span class="wd-compare-bar"><span class="wd-compare-bar-fill" style="width:100%"></span></span>
+              <span class="wd-compare-pct en">100%</span>
+            </div>
+            <div class="wd-compare-row">
+              <span class="wd-compare-label" data-i18n="s01_compare_spec">投机型代币</span>
+              <span class="wd-compare-bar"><span class="wd-compare-bar-fill empty" style="width:6%"></span></span>
+              <span class="wd-compare-pct en">~ 0%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1181,26 +1535,79 @@ html[lang="en"] .reward-notice p {
     <h2 class="sec-title anim d1" data-i18n="s02_title">POSX 生态参与者</h2>
     <p class="sec-subtitle anim d2" data-i18n="s02_sub">四类核心参与者构成自我强化的正向飞轮。每一方在价值创造中扮演不可或缺的角色。</p>
     <div class="sec-rule anim d2"></div>
-    <div class="eco-row">
-      <div class="eco-card anim d2">
-        <div class="eco-badge">🏪</div>
-        <h4 data-i18n="s02_e1_h">合作商户</h4>
-        <p data-i18n="s02_e1_p">接入 POSX 支付网络的线上线下商户，通过代币化奖励提升客户粘性与复购率</p>
+    <div class="eco-ring-layout">
+      <div class="eco-ring-wrap anim d3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" style="display:block;">
+          <defs>
+            <marker id="ah-eco" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L10,4 L0,8 L1.5,4 Z" fill="#B4975A"/>
+            </marker>
+            <style>
+              .eco-zh { font-family: 'Noto Sans SC','PingFang SC',sans-serif; font-size: 11px; font-weight: 700; fill: #1A1D2B; }
+              .eco-en { font-family: 'Inter',sans-serif; font-size: 8px; fill: #9398AB; letter-spacing: 0.5px; }
+            </style>
+          </defs>
+
+          <circle cx="180" cy="180" r="138" fill="none" stroke="#D6DAE3" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="180" cy="180" r="92" fill="none" stroke="#ECEEF2" stroke-width="1"/>
+
+          <path d="M 180,108 A 92,92 0 0,1 252,180" stroke="#B4975A" stroke-width="2" fill="none" marker-end="url(#ah-eco)" opacity="0.8"/>
+          <path d="M 252,180 A 92,92 0 0,1 180,252" stroke="#B4975A" stroke-width="2" fill="none" marker-end="url(#ah-eco)" opacity="0.8"/>
+          <path d="M 180,252 A 92,92 0 0,1 108,180" stroke="#B4975A" stroke-width="2" fill="none" marker-end="url(#ah-eco)" opacity="0.8"/>
+          <path d="M 108,180 A 92,92 0 0,1 180,108" stroke="#B4975A" stroke-width="2" fill="none" marker-end="url(#ah-eco)" opacity="0.8"/>
+
+          <image href="./assets/img/logo/POSX-Logo-Black.svg" x="118" y="167" width="124" height="26" preserveAspectRatio="xMidYMid meet"/>
+
+          <circle cx="180" cy="60" r="26" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="180" y="66" text-anchor="middle" font-size="18">👤</text>
+          <text x="180" y="22" text-anchor="middle" class="eco-zh" data-i18n-svg="s02_ring_consumer">消费者</text>
+          <text x="180" y="34" text-anchor="middle" class="eco-en">CONSUMER</text>
+
+          <circle cx="300" cy="180" r="26" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="300" y="186" text-anchor="middle" font-size="18">🏪</text>
+          <text x="338" y="178" text-anchor="middle" class="eco-zh" data-i18n-svg="s02_ring_merchant">商户</text>
+          <text x="338" y="190" text-anchor="middle" class="eco-en">MERCHANT</text>
+
+          <circle cx="180" cy="300" r="26" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="180" y="306" text-anchor="middle" font-size="18">⚖</text>
+          <text x="180" y="338" text-anchor="middle" class="eco-zh" data-i18n-svg="s02_ring_validator">验证者</text>
+          <text x="180" y="350" text-anchor="middle" class="eco-en">VALIDATOR</text>
+
+          <circle cx="60" cy="180" r="26" fill="#fff" stroke="#00205B" stroke-width="2"/>
+          <text x="60" y="186" text-anchor="middle" font-size="18">📡</text>
+          <text x="22" y="178" text-anchor="middle" class="eco-zh" data-i18n-svg="s02_ring_evangelist">传播者</text>
+          <text x="22" y="190" text-anchor="middle" class="eco-en">EVANGELIST</text>
+        </svg>
       </div>
-      <div class="eco-card anim d3">
-        <div class="eco-badge">👤</div>
-        <h4 data-i18n="s02_e2_h">消费者</h4>
-        <p data-i18n="s02_e2_p">在合作商户消费并获取 POSX 奖励的终端用户，积累跨平台数字资产</p>
-      </div>
-      <div class="eco-card anim d4">
-        <div class="eco-badge">⚖</div>
-        <h4 data-i18n="s02_e3_h">网络验证者</h4>
-        <p data-i18n="s02_e3_p">记录消费交易、计算奖励并上链的网络节点，维护网络安全</p>
-      </div>
-      <div class="eco-card anim d5">
-        <div class="eco-badge">📡</div>
-        <h4 data-i18n="s02_e4_h">网络传播者</h4>
-        <p data-i18n="s02_e4_p">分享与推广 POSX 生态的参与者，形成去中心化增长引擎</p>
+      <div class="eco-ring-list anim d4">
+        <div class="eco-ring-item">
+          <div class="eco-ring-num">01</div>
+          <div class="eco-ring-text">
+            <h5 data-i18n="s02_e2_h">消费者</h5>
+            <p data-i18n="s02_e2_p_short">在合作商户消费并获取 POSX 奖励，积累可交易的链上数字资产</p>
+          </div>
+        </div>
+        <div class="eco-ring-item">
+          <div class="eco-ring-num">02</div>
+          <div class="eco-ring-text">
+            <h5 data-i18n="s02_e1_h">合作商户</h5>
+            <p data-i18n="s02_e1_p_short">接入 POSX 支付网络，通过代币化奖励提升客户粘性</p>
+          </div>
+        </div>
+        <div class="eco-ring-item">
+          <div class="eco-ring-num">03</div>
+          <div class="eco-ring-text">
+            <h5 data-i18n="s02_e3_h">网络验证者</h5>
+            <p data-i18n="s02_e3_p_short">多方共识校验交易、计算奖励并写入区块链</p>
+          </div>
+        </div>
+        <div class="eco-ring-item">
+          <div class="eco-ring-num">04</div>
+          <div class="eco-ring-text">
+            <h5 data-i18n="s02_e4_h">网络传播者</h5>
+            <p data-i18n="s02_e4_p_short">分享并推广 POSX 生态，形成去中心化增长引擎</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1273,8 +1680,6 @@ html[lang="en"] .reward-notice p {
             <style>
               .fw-label-zh { font-family: 'Noto Sans SC','PingFang SC',sans-serif; font-size: 11px; font-weight: 600; fill: #1A1D2B; }
               .fw-label-en { font-family: 'Inter',sans-serif; font-size: 8px; fill: #9398AB; letter-spacing: 0.5px; }
-              .fw-center-t { font-family: 'Inter',sans-serif; font-size: 16px; font-weight: 800; fill: #fff; letter-spacing: 2px; }
-              .fw-center-s { font-family: 'Inter',sans-serif; font-size: 7px; fill: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
             </style>
           </defs>
           <circle cx="240" cy="240" r="200" stroke="#E8EAF0" stroke-width="1" fill="none"/>
@@ -1286,9 +1691,7 @@ html[lang="en"] .reward-notice p {
           <path d="M 209,385 A 148,148 0 0,1 127,335" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
           <path d="M 99,286 A 148,148 0 0,1 101,189" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
           <path d="M 130,141 A 148,148 0 0,1 214,94" stroke="#B4975A" stroke-width="2.5" fill="none" marker-end="url(#ah)" opacity="0.85"/>
-          <circle cx="240" cy="240" r="52" fill="#00205B"/>
-          <text x="240" y="237" text-anchor="middle" class="fw-center-t">POSX</text>
-          <text x="240" y="252" text-anchor="middle" class="fw-center-s">VALUE LOOP</text>
+          <image href="./assets/img/logo/POSX-Logo-Black.svg" x="160" y="224" width="160" height="33" preserveAspectRatio="xMidYMid meet"/>
           <!-- N1 top -->
           <circle cx="240" cy="80" r="22" fill="#fff" stroke="#00205B" stroke-width="2"/>
           <text x="240" y="85" text-anchor="middle" font-size="16">💳</text>
@@ -1392,22 +1795,49 @@ html[lang="en"] .reward-notice p {
     <h2 class="sec-title anim d1" data-i18n="s06_title">全球消费市场规模</h2>
     <p class="sec-subtitle anim d2" data-i18n="s06_sub">POSX 瞄准将全球消费奖励价值从封闭积分体系中解放，通过代币化实现链上流动。</p>
     <div class="sec-rule anim d2"></div>
-    <div class="market-layout">
-      <div class="market-block anim d2">
-        <div class="market-block-tag en">TAM</div>
-        <div class="market-block-num" data-i18n="s06_m1_val">40 万亿<span style="font-size:1rem;color:var(--text-3)"> 美元</span></div>
-        <div class="market-block-label" data-i18n="s06_m1_label">全球年信用卡消费额</div>
-      </div>
-      <div class="market-block anim d3">
-        <div class="market-block-tag en">SOM</div>
-        <div class="market-block-num gold-num" data-i18n="s06_m2_val">4,000 亿<span style="font-size:1rem;color:var(--text-3)"> 美元</span></div>
-        <div class="market-block-label" data-i18n="s06_m2_label">1% 市场渗透率</div>
-      </div>
-      <div class="market-block anim d4">
-        <div class="market-block-tag en">BACKING</div>
-        <div class="market-block-num en" data-i18n="s06_m3_val">100%</div>
-        <div class="market-block-label" data-i18n="s06_m3_label">真实消费驱动铸造</div>
-      </div>
+    <div class="market-ring-wrap anim d3">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" style="display:block;">
+        <defs>
+          <style>
+            .mr-tag { font-family: 'Inter',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; fill: #6B7084; }
+            .mr-val { font-family: 'Inter','Noto Sans SC',sans-serif; font-size: 13px; font-weight: 800; fill: #1A1D2B; }
+            .mr-val-on { font-family: 'Inter','Noto Sans SC',sans-serif; font-size: 14px; font-weight: 800; fill: #fff; }
+            .mr-cap-on { font-family: 'Inter',sans-serif; font-size: 7.5px; font-weight: 600; fill: rgba(255,255,255,0.7); letter-spacing: 0.5px; text-transform: uppercase; }
+            .mr-note { font-family: 'Noto Sans SC',sans-serif; font-size: 9.5px; fill: #6B7084; }
+            .mr-funnel { font-family: 'Inter',sans-serif; font-size: 9px; font-weight: 700; fill: #B4975A; }
+          </style>
+        </defs>
+
+        <circle cx="180" cy="170" r="150" fill="#F5F7FA" stroke="#B3BFCE" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="180" cy="170" r="92" fill="#ECF0F5" stroke="#8092AD" stroke-width="1"/>
+        <circle cx="180" cy="170" r="42" fill="#B4975A"/>
+
+        <text x="180" y="166" text-anchor="middle" class="mr-cap-on">SOM · 1%</text>
+        <text x="180" y="180" text-anchor="middle" class="mr-val-on" data-i18n-svg="s06_ring_som_val">$400B</text>
+
+        <text x="180" y="98" text-anchor="middle" class="mr-tag">SAM · 2.5%</text>
+        <text x="180" y="112" text-anchor="middle" class="mr-val" data-i18n-svg="s06_ring_sam_val">$1T</text>
+
+        <text x="180" y="38" text-anchor="middle" class="mr-tag">TAM</text>
+        <text x="180" y="54" text-anchor="middle" class="mr-val" data-i18n-svg="s06_ring_tam_val">$40T</text>
+
+        <line x1="335" y1="48" x2="370" y2="48" stroke="#B3BFCE" stroke-width="1"/>
+        <text x="378" y="46" class="mr-tag">TAM</text>
+        <text x="378" y="58" class="mr-note" data-i18n-svg="s06_ring_tam_note">全球年消费</text>
+
+        <line x1="275" y1="138" x2="370" y2="138" stroke="#8092AD" stroke-width="1"/>
+        <text x="378" y="136" class="mr-tag">SAM</text>
+        <text x="378" y="148" class="mr-note" data-i18n-svg="s06_ring_sam_note">数字支付市场</text>
+
+        <line x1="225" y1="200" x2="370" y2="200" stroke="#B4975A" stroke-width="1.5"/>
+        <text x="378" y="198" class="mr-tag" style="fill:#96793E">SOM</text>
+        <text x="378" y="210" class="mr-note" data-i18n-svg="s06_ring_som_note">POSX 目标市场</text>
+
+        <text x="378" y="265" class="mr-funnel">↓ 2.5%</text>
+        <text x="378" y="280" class="mr-note" data-i18n-svg="s06_ring_funnel1">数字化渗透</text>
+        <text x="378" y="305" class="mr-funnel">↓ 40%</text>
+        <text x="378" y="320" class="mr-note" data-i18n-svg="s06_ring_funnel2">POSX 可服务</text>
+      </svg>
     </div>
     <div class="market-callout anim d5">
       <p data-i18n="s06_callout">即便仅覆盖全球消费体量的 1%，POSX 面对的也是一个年均 4,000 亿美元的可服务市场。这不是投机性叙事，而是由真实消费行为驱动的基础设施级机会。</p>
@@ -1423,20 +1853,260 @@ html[lang="en"] .reward-notice p {
     <p class="sec-subtitle anim d2" data-i18n="s07_sub">核心命题：将消费奖励从"企业负债"重新定义为"用户资产"——消费金融基础设施层面的范式迁移。</p>
     <div class="sec-rule anim d2"></div>
     <div class="thesis-grid">
-      <div class="thesis-card anim d2"><div class="thesis-ord en">01</div><h4 data-i18n="s07_t1_h">真实消费驱动</h4><p data-i18n="s07_t1_p">每一枚 POSX 的铸造由可验证的消费行为触发。代币价值锚定于实体经济，具备传统加密资产罕见的基本面支撑。</p></div>
-      <div class="thesis-card anim d3"><div class="thesis-ord en">02</div><h4 data-i18n="s07_t2_h">资产化升级</h4><p data-i18n="s07_t2_p">将消费奖励从不可流动的记账单位转化为链上可确权、可交易的数字资产。消费者首次真正"拥有"自己的奖励。</p></div>
-      <div class="thesis-card anim d4"><div class="thesis-ord en">03</div><h4 data-i18n="s07_t3_h">全球网络效应</h4><p data-i18n="s07_t3_p">不受地域限制的消费者-商户网络。每新增一个节点，都为全体参与者创造增量价值。</p></div>
-      <div class="thesis-card anim d5"><div class="thesis-ord en">04</div><h4 data-i18n="s07_t4_h">DeFi 可组合性</h4><p data-i18n="s07_t4_p">标准链上资产，天然可接入质押、借贷、流动性挖矿等 DeFi 协议，为消费奖励打开前所未有的金融应用空间。</p></div>
-      <div class="thesis-card anim d5"><div class="thesis-ord en">05</div><h4 data-i18n="s07_t5_h">透明度与信任</h4><p data-i18n="s07_t5_p">区块链公开账本使发行、流通与销毁全过程可审计，从而降低传统积分体系中的信任成本。</p></div>
-      <div class="thesis-card anim d6"><div class="thesis-ord en">06</div><h4 data-i18n="s07_t6_h">万亿级 TAM</h4><p data-i18n="s07_t6_p">全球年消费支出 40 万亿美元，1% 渗透率即 4,000 亿美元年化市场。由真实经济活动支撑的超大规模赛道。</p></div>
+      <div class="thesis-card anim d2">
+        <div class="thesis-icon-wrap">
+          <div class="thesis-icon gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><line x1="12" y1="7.5" x2="12" y2="21"/><line x1="8" y1="11" x2="16" y2="11"/><path d="M4 14c0 4 3.5 7 8 7"/><path d="M20 14c0 4-3.5 7-8 7"/></svg>
+          </div>
+          <div class="thesis-ord en">01</div>
+        </div>
+        <h4 data-i18n="s07_t1_h">真实消费驱动</h4>
+        <p data-i18n="s07_t1_p">每一枚 POSX 的铸造由可验证的消费行为触发。代币价值锚定于实体经济，具备传统加密资产罕见的基本面支撑。</p>
+      </div>
+      <div class="thesis-card anim d3">
+        <div class="thesis-icon-wrap">
+          <div class="thesis-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="13" width="16" height="8" rx="1.5"/><path d="M12 10 V3 M8 7l4-4 4 4"/></svg>
+          </div>
+          <div class="thesis-ord en">02</div>
+        </div>
+        <h4 data-i18n="s07_t2_h">资产化升级</h4>
+        <p data-i18n="s07_t2_p">将消费奖励从不可流动的记账单位转化为链上可确权、可交易的数字资产。消费者首次真正"拥有"自己的奖励。</p>
+      </div>
+      <div class="thesis-card anim d4">
+        <div class="thesis-icon-wrap">
+          <div class="thesis-icon gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="12" x2="7.4" y2="7.4"/><line x1="12" y1="12" x2="16.6" y2="7.4"/><line x1="12" y1="12" x2="7.4" y2="16.6"/><line x1="12" y1="12" x2="16.6" y2="16.6"/></svg>
+          </div>
+          <div class="thesis-ord en">03</div>
+        </div>
+        <h4 data-i18n="s07_t3_h">全球网络效应</h4>
+        <p data-i18n="s07_t3_p">不受地域限制的消费者-商户网络。每新增一个节点，都为全体参与者创造增量价值。</p>
+      </div>
+      <div class="thesis-card anim d5">
+        <div class="thesis-icon-wrap">
+          <div class="thesis-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h4V6a2 2 0 0 1 4 0v2h4v4h2a2 2 0 0 1 0 4h-2v4H4v-4h2a2 2 0 0 0 0-4H4Z"/></svg>
+          </div>
+          <div class="thesis-ord en">04</div>
+        </div>
+        <h4 data-i18n="s07_t4_h">DeFi 可组合性</h4>
+        <p data-i18n="s07_t4_p">标准链上资产，天然可接入质押、借贷、流动性挖矿等 DeFi 协议，为消费奖励打开前所未有的金融应用空间。</p>
+      </div>
+      <div class="thesis-card anim d5">
+        <div class="thesis-icon-wrap">
+          <div class="thesis-icon gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="16" rx="1.5"/><line x1="6.5" y1="8" x2="12.5" y2="8"/><line x1="6.5" y1="12" x2="12.5" y2="12"/><line x1="6.5" y1="16" x2="10" y2="16"/><circle cx="17" cy="17" r="3.5"/><line x1="19.5" y1="19.5" x2="22" y2="22"/></svg>
+          </div>
+          <div class="thesis-ord en">05</div>
+        </div>
+        <h4 data-i18n="s07_t5_h">透明度与信任</h4>
+        <p data-i18n="s07_t5_p">区块链公开账本使发行、流通与销毁全过程可审计，从而降低传统积分体系中的信任成本。</p>
+      </div>
+      <div class="thesis-card anim d6">
+        <div class="thesis-icon-wrap">
+          <div class="thesis-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="20.5" x2="21" y2="20.5"/><rect x="5" y="14" width="3" height="6"/><rect x="11" y="9" width="3" height="11"/><rect x="17" y="4" width="3" height="16"/></svg>
+          </div>
+          <div class="thesis-ord en">06</div>
+        </div>
+        <h4 data-i18n="s07_t6_h">万亿级 TAM</h4>
+        <p data-i18n="s07_t6_p">全球年消费支出 40 万亿美元，1% 渗透率即 4,000 亿美元年化市场。由真实经济活动支撑的超大规模赛道。</p>
+      </div>
     </div>
   </div>
 
   <div class="ig-hr-full"></div>
 
-  <!-- ═══════ 08 REWARD MECHANISM ═══════ -->
+  <!-- ═══════ 08 VALUE PROPOSITION (一图看懂) ═══════ -->
+  <div class="ig-section-alt" id="sValue">
+    <span class="sec-num en anim">08 — Value Proposition</span>
+    <h2 class="sec-title anim d1" data-i18n="value_title">一图看懂 POSX 代币为什么有价值</h2>
+    <p class="sec-subtitle anim d2" data-i18n="value_sub">把 POSX 的价值来源拆成「需求侧推力 × 供给侧约束」两组力量，与 6 大底层支柱共同构成代币基本面。</p>
+    <div class="sec-rule anim d2"></div>
+
+    <div class="value-hub-wrap anim d3">
+      <div class="value-hub-card">
+        <div class="value-hub-header">
+          <div class="value-hub-kicker en" data-i18n="value_eq_kicker">VALUE EQUATION</div>
+          <div class="value-hub-headline" data-i18n="value_headline">真实消费需求 × 链上稀缺性 = POSX 长期价值</div>
+        </div>
+
+        <div class="value-hub-grid">
+
+          <div class="value-hub-side demand">
+            <div class="value-hub-side-label en" data-i18n="value_demand_label">DEMAND ↑</div>
+            <div class="value-hub-item">
+              <div class="value-hub-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3-8h12l3 8"/><path d="M3 12v8h18v-8"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+              </div>
+              <div class="value-hub-item-text">
+                <strong data-i18n="value_d1_h">$40T 消费市场</strong>
+                <span data-i18n="value_d1_p">全球年信用卡消费基数</span>
+              </div>
+            </div>
+            <div class="value-hub-item">
+              <div class="value-hub-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="12" x2="7.4" y2="7.4"/><line x1="12" y1="12" x2="16.6" y2="7.4"/><line x1="12" y1="12" x2="7.4" y2="16.6"/><line x1="12" y1="12" x2="16.6" y2="16.6"/></svg>
+              </div>
+              <div class="value-hub-item-text">
+                <strong data-i18n="value_d2_h">网络效应</strong>
+                <span data-i18n="value_d2_p">商户/用户增长正反馈</span>
+              </div>
+            </div>
+            <div class="value-hub-item">
+              <div class="value-hub-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h4V6a2 2 0 0 1 4 0v2h4v4h2a2 2 0 0 1 0 4h-2v4H4v-4h2a2 2 0 0 0 0-4H4Z"/></svg>
+              </div>
+              <div class="value-hub-item-text">
+                <strong data-i18n="value_d3_h">DeFi 应用</strong>
+                <span data-i18n="value_d3_p">质押·借贷·LP 多场景</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="value-hub-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="POSX Value: real backed, scarce liquid">
+              <defs>
+                <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
+                  <stop offset="60%" stop-color="#C8AB72" stop-opacity="0"/>
+                  <stop offset="100%" stop-color="#B4975A" stop-opacity="0.18"/>
+                </radialGradient>
+                <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1A3670"/>
+                  <stop offset="100%" stop-color="#00205B"/>
+                </linearGradient>
+                <style>
+                  .vc-s { font-family: 'Inter', sans-serif; font-size: 8px; fill: rgba(255,255,255,0.58); letter-spacing: 2.5px; text-transform: uppercase; }
+                  .vc-c { font-family: 'Inter', sans-serif; font-size: 9px; fill: #B4975A; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+                </style>
+              </defs>
+
+              <circle cx="100" cy="100" r="92" fill="url(#goldRing)"/>
+              <circle cx="100" cy="100" r="80" fill="none" stroke="#B4975A" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+              <circle cx="100" cy="100" r="68" fill="none" stroke="#B4975A" stroke-width="2.5"/>
+              <circle cx="100" cy="100" r="60" fill="none" stroke="#C8AB72" stroke-width="1" opacity="0.6"/>
+
+              <polygon points="100,46 152,74 152,126 100,154 48,126 48,74" fill="url(#hexGrad)"/>
+              <polygon points="100,46 152,74 152,126 100,154 48,126 48,74" fill="none" stroke="#B4975A" stroke-width="1" opacity="0.5"/>
+
+              <rect x="51" y="84" width="98" height="30" rx="8" fill="#FFFFFF"/>
+              <image href="./assets/img/logo/POSX-Logo-Black.svg" x="59" y="91" width="82" height="17" preserveAspectRatio="xMidYMid meet"/>
+              <text x="100" y="128" text-anchor="middle" class="vc-s">VALUE</text>
+
+              <text x="100" y="32" text-anchor="middle" class="vc-c">REAL - BACKED</text>
+              <text x="100" y="180" text-anchor="middle" class="vc-c">SCARCE - LIQUID</text>
+
+              <circle cx="32" cy="100" r="3" fill="#B4975A"/>
+              <circle cx="168" cy="100" r="3" fill="#B4975A"/>
+              <circle cx="100" cy="32" r="3" fill="#B4975A"/>
+              <circle cx="100" cy="168" r="3" fill="#B4975A"/>
+            </svg>
+          </div>
+
+          <div class="value-hub-side supply">
+            <div class="value-hub-side-label en" data-i18n="value_supply_label">SUPPLY ↓</div>
+            <div class="value-hub-item">
+              <div class="value-hub-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><line x1="12" y1="7.5" x2="12" y2="21"/><line x1="8" y1="11" x2="16" y2="11"/><path d="M4 14c0 4 3.5 7 8 7"/><path d="M20 14c0 4-3.5 7-8 7"/></svg>
+              </div>
+              <div class="value-hub-item-text">
+                <strong data-i18n="value_s1_h">100% 实物锚定</strong>
+                <span data-i18n="value_s1_p">真实消费才能触发铸造</span>
+              </div>
+            </div>
+            <div class="value-hub-item">
+              <div class="value-hub-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 5-5 6-5 11a5 5 0 0 0 10 0c0-5-5-6-5-11Z"/></svg>
+              </div>
+              <div class="value-hub-item-text">
+                <strong data-i18n="value_s2_h">烧伤通缩</strong>
+                <span data-i18n="value_s2_p">超匹配额度即时销毁</span>
+              </div>
+            </div>
+            <div class="value-hub-item">
+              <div class="value-hub-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 4.5-3.5 8-8 8s-8-3.5-8-8V7l8-4Z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div class="value-hub-item-text">
+                <strong data-i18n="value_s3_h">15% 提成上限</strong>
+                <span data-i18n="value_s3_p">奖励硬上限·制度可持续</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="value-equation">
+          <div class="value-equation-label en" data-i18n="value_eq_label">VALUE EQUATION</div>
+          <div class="value-equation-text" data-i18n="value_eq_text">真实消费需求 <span class="eq-gold">↑</span> × 网络规模 <span class="eq-gold">↑</span> ÷ 流通供给 <span class="eq-gold">↓</span> = POSX 价值 <span class="eq-gold">↑↑</span></div>
+        </div>
+      </div>
+
+      <div class="value-pillars anim d4">
+        <div class="value-pillar">
+          <div class="value-pillar-icon gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><line x1="12" y1="7.5" x2="12" y2="21"/><line x1="8" y1="11" x2="16" y2="11"/><path d="M4 14c0 4 3.5 7 8 7"/><path d="M20 14c0 4-3.5 7-8 7"/></svg>
+          </div>
+          <div class="value-pillar-text">
+            <h5 data-i18n="value_pillar1_h">实物消费锚定</h5>
+            <p data-i18n="value_pillar1_p">每一枚 POSX 都对应一笔可验证的链下消费交易，区别于零基本面投机币。</p>
+          </div>
+        </div>
+        <div class="value-pillar">
+          <div class="value-pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="12" x2="7.4" y2="7.4"/><line x1="12" y1="12" x2="16.6" y2="7.4"/><line x1="12" y1="12" x2="7.4" y2="16.6"/><line x1="12" y1="12" x2="16.6" y2="16.6"/></svg>
+          </div>
+          <div class="value-pillar-text">
+            <h5 data-i18n="value_pillar2_h">网络效应飞轮</h5>
+            <p data-i18n="value_pillar2_p">梅特卡夫定律：商户与用户每多一个节点，全网价值非线性增长。</p>
+          </div>
+        </div>
+        <div class="value-pillar">
+          <div class="value-pillar-icon gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 5-5 6-5 11a5 5 0 0 0 10 0c0-5-5-6-5-11Z"/></svg>
+          </div>
+          <div class="value-pillar-text">
+            <h5 data-i18n="value_pillar3_h">通缩供给约束</h5>
+            <p data-i18n="value_pillar3_p">烧伤机制 + 提成硬上限，对冲奖励通胀风险，保持长期稀缺性。</p>
+          </div>
+        </div>
+        <div class="value-pillar">
+          <div class="value-pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12l6-6M3 12l6 6M21 12l-6-6M21 12l-6 6"/></svg>
+          </div>
+          <div class="value-pillar-text">
+            <h5 data-i18n="value_pillar4_h">链上自由流通</h5>
+            <p data-i18n="value_pillar4_p">公开市场可交易、可转让、P2P 转账，价格由真实供需形成。</p>
+          </div>
+        </div>
+        <div class="value-pillar">
+          <div class="value-pillar-icon gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h4V6a2 2 0 0 1 4 0v2h4v4h2a2 2 0 0 1 0 4h-2v4H4v-4h2a2 2 0 0 0 0-4H4Z"/></svg>
+          </div>
+          <div class="value-pillar-text">
+            <h5 data-i18n="value_pillar5_h">DeFi 可组合</h5>
+            <p data-i18n="value_pillar5_p">标准 ERC 资产可接入质押、借贷、LP，叠加金融性溢价。</p>
+          </div>
+        </div>
+        <div class="value-pillar">
+          <div class="value-pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 4.5-3.5 8-8 8s-8-3.5-8-8V7l8-4Z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="value-pillar-text">
+            <h5 data-i18n="value_pillar6_h">合规护城河</h5>
+            <p data-i18n="value_pillar6_p">美国机构资本背书 + 合规架构验证，建立同赛道罕见信任溢价。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ig-hr-full"></div>
+
+  <!-- ═══════ 09 REWARD MECHANISM ═══════ -->
   <div class="ig-section reward-shell" id="rewardHub">
-    <span class="sec-num en anim">08 — Reward Mechanism</span>
+    <span class="sec-num en anim">09 — Reward Mechanism</span>
     <h2 class="sec-title anim d1" data-i18n="reward_title">推广奖励机制</h2>
     <p class="sec-subtitle anim d2" data-i18n="reward_sub">以手机端优先方式整理直推奖励、团队奖励、平级奖与烧伤机制，帮助用户快速理解奖励来源、计算逻辑与风控边界。</p>
     <div class="sec-rule anim d2"></div>
@@ -1687,6 +2357,41 @@ html[lang="en"] .reward-notice p {
         <div class="hl-stat"><div class="hl-stat-val" data-i18n="hl_s4_val">实体锚定</div><div class="hl-stat-label" data-i18n="hl_s4_label">真实消费行为驱动铸造</div></div>
       </div>
     </div>
+    <div class="roadmap-wrap">
+      <div class="roadmap-title en" data-i18n="hl_road_title">PROJECT ROADMAP</div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 130" preserveAspectRatio="xMidYMid meet" style="display:block;">
+        <defs>
+          <style>
+            .rm-q  { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 800; fill: #C8AB72; letter-spacing: 1px; }
+            .rm-l  { font-family: 'Noto Sans SC','PingFang SC',sans-serif; font-size: 11px; font-weight: 600; fill: rgba(255,255,255,0.85); }
+            .rm-l-fade { font-family: 'Noto Sans SC','PingFang SC',sans-serif; font-size: 11px; font-weight: 500; fill: rgba(255,255,255,0.5); }
+          </style>
+        </defs>
+
+        <line x1="80" y1="65" x2="280" y2="65" stroke="#C8AB72" stroke-width="2"/>
+        <line x1="280" y1="65" x2="640" y2="65" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-dasharray="5 5"/>
+
+        <circle cx="80" cy="65" r="11" fill="#B4975A"/>
+        <path d="M75 65 l3.5 3.5 L85 61" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="80" y="35" text-anchor="middle" class="rm-q">2025 Q4</text>
+        <text x="80" y="98" text-anchor="middle" class="rm-l" data-i18n-svg="hl_road_m1">合规架构完成</text>
+
+        <circle cx="280" cy="65" r="11" fill="#B4975A"/>
+        <path d="M275 65 l3.5 3.5 L285 61" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="280" y="35" text-anchor="middle" class="rm-q">2026 Q1</text>
+        <text x="280" y="98" text-anchor="middle" class="rm-l" data-i18n-svg="hl_road_m2">主网上线</text>
+
+        <circle cx="480" cy="65" r="11" fill="rgba(0,32,91,0.6)" stroke="#C8AB72" stroke-width="2"/>
+        <text x="480" y="35" text-anchor="middle" class="rm-q">2026 H1</text>
+        <text x="480" y="98" text-anchor="middle" class="rm-l-fade" data-i18n-svg="hl_road_m3">多交易所上线</text>
+
+        <circle cx="640" cy="65" r="11" fill="rgba(0,32,91,0.6)" stroke="#C8AB72" stroke-width="2" stroke-dasharray="3 2"/>
+        <text x="640" y="35" text-anchor="middle" class="rm-q">2026 H2</text>
+        <text x="640" y="98" text-anchor="middle" class="rm-l-fade" data-i18n-svg="hl_road_m4">全球商户扩张</text>
+
+        <text x="640" y="118" text-anchor="middle" class="rm-l-fade" style="font-size:9px;letter-spacing:1.5px" data-i18n-svg="hl_road_legend">↑ 当前战略窗口</text>
+      </svg>
+    </div>
   </div>
 
   <!-- ═══════ DISCLAIMER ═══════ -->
@@ -1782,7 +2487,40 @@ html[lang="en"] .reward-notice p {
       hl_s3_label: '多交易所同步上线',
       hl_s4_val: '实体锚定', hl_s4_label: '真实消费行为驱动铸造',
       entry_story_kicker: 'Project Story', entry_story_title: '先看项目介绍',
+      entry_value_kicker: 'Value Snapshot', entry_value_title: '一图看懂价值',
       entry_reward_kicker: 'Reward Rules', entry_reward_title: '直达奖励机制',
+      s01_compare_posx: 'POSX 实物锚定', s01_compare_spec: '投机型代币',
+      s02_e1_p_short: '接入 POSX 支付网络，通过代币化奖励提升客户粘性',
+      s02_e2_p_short: '在合作商户消费并获取 POSX 奖励，积累可交易的链上数字资产',
+      s02_e3_p_short: '多方共识校验交易、计算奖励并写入区块链',
+      s02_e4_p_short: '分享并推广 POSX 生态，形成去中心化增长引擎',
+      s02_ring_consumer: '消费者', s02_ring_merchant: '商户', s02_ring_validator: '验证者', s02_ring_evangelist: '传播者',
+      s06_ring_tam_val: '$40 万亿', s06_ring_sam_val: '$1 万亿', s06_ring_som_val: '$4,000 亿',
+      s06_ring_tam_note: '全球年消费', s06_ring_sam_note: '数字支付市场', s06_ring_som_note: 'POSX 目标市场',
+      s06_ring_funnel1: '数字化渗透', s06_ring_funnel2: 'POSX 可服务',
+      value_title: '一图看懂 POSX 代币为什么有价值',
+      value_sub: '把 POSX 的价值来源拆成「需求侧推力 × 供给侧约束」两组力量，与 6 大底层支柱共同构成代币基本面。',
+      value_eq_kicker: 'VALUE EQUATION',
+      value_headline: '真实消费需求 × 链上稀缺性 = POSX 长期价值',
+      value_demand_label: 'DEMAND ↑', value_supply_label: 'SUPPLY ↓',
+      value_d1_h: '$40 万亿消费市场', value_d1_p: '全球年信用卡消费基数',
+      value_d2_h: '网络效应', value_d2_p: '商户/用户增长正反馈',
+      value_d3_h: 'DeFi 应用', value_d3_p: '质押·借贷·LP 多场景',
+      value_s1_h: '100% 实物锚定', value_s1_p: '真实消费才能触发铸造',
+      value_s2_h: '烧伤通缩', value_s2_p: '超匹配额度即时销毁',
+      value_s3_h: '15% 提成上限', value_s3_p: '奖励硬上限·制度可持续',
+      value_hex_top: 'REAL · BACKED', value_hex_bot: 'SCARCE · LIQUID',
+      value_eq_label: 'VALUE EQUATION',
+      value_eq_text: '真实消费需求 <span class="eq-gold">↑</span> × 网络规模 <span class="eq-gold">↑</span> ÷ 流通供给 <span class="eq-gold">↓</span> = POSX 价值 <span class="eq-gold">↑↑</span>',
+      value_pillar1_h: '实物消费锚定', value_pillar1_p: '每一枚 POSX 都对应一笔可验证的链下消费交易，区别于零基本面投机币。',
+      value_pillar2_h: '网络效应飞轮', value_pillar2_p: '梅特卡夫定律：商户与用户每多一个节点，全网价值非线性增长。',
+      value_pillar3_h: '通缩供给约束', value_pillar3_p: '烧伤机制 + 提成硬上限，对冲奖励通胀风险，保持长期稀缺性。',
+      value_pillar4_h: '链上自由流通', value_pillar4_p: '公开市场可交易、可转让、P2P 转账，价格由真实供需形成。',
+      value_pillar5_h: 'DeFi 可组合', value_pillar5_p: '标准 ERC 资产可接入质押、借贷、LP，叠加金融性溢价。',
+      value_pillar6_h: '合规护城河', value_pillar6_p: '美国机构资本背书 + 合规架构验证，建立同赛道罕见信任溢价。',
+      hl_road_title: 'PROJECT ROADMAP',
+      hl_road_m1: '合规架构完成', hl_road_m2: '主网上线', hl_road_m3: '多交易所上线', hl_road_m4: '全球商户扩张',
+      hl_road_legend: '↑ 当前战略窗口',
       reward_title: '推广奖励机制',
       reward_sub: '以手机端优先方式整理直推奖励、团队奖励、平级奖与烧伤机制，帮助用户快速理解奖励来源、计算逻辑与风控边界。',
       reward_nav_direct: '直推奖励', reward_nav_team: '团队奖励', reward_nav_equal: '平级奖', reward_nav_burn: '烧伤机制',
@@ -1945,7 +2683,40 @@ html[lang="en"] .reward-notice p {
       hl_s3_label: '多交易所同步上線',
       hl_s4_val: '實體錨定', hl_s4_label: '真實消費行為驅動鑄造',
       entry_story_kicker: 'Project Story', entry_story_title: '先看專案介紹',
+      entry_value_kicker: 'Value Snapshot', entry_value_title: '一圖看懂價值',
       entry_reward_kicker: 'Reward Rules', entry_reward_title: '直達獎勵機制',
+      s01_compare_posx: 'POSX 實物錨定', s01_compare_spec: '投機型代幣',
+      s02_e1_p_short: '接入 POSX 支付網路，透過代幣化獎勵提升顧客黏著度',
+      s02_e2_p_short: '在合作商戶消費並取得 POSX 獎勵，累積可交易的鏈上數位資產',
+      s02_e3_p_short: '多方共識校驗交易、計算獎勵並寫入區塊鏈',
+      s02_e4_p_short: '分享並推廣 POSX 生態，形成去中心化成長引擎',
+      s02_ring_consumer: '消費者', s02_ring_merchant: '商戶', s02_ring_validator: '驗證者', s02_ring_evangelist: '傳播者',
+      s06_ring_tam_val: '$40 兆', s06_ring_sam_val: '$1 兆', s06_ring_som_val: '$4,000 億',
+      s06_ring_tam_note: '全球年消費', s06_ring_sam_note: '數位支付市場', s06_ring_som_note: 'POSX 目標市場',
+      s06_ring_funnel1: '數位化滲透', s06_ring_funnel2: 'POSX 可服務',
+      value_title: '一圖看懂 POSX 代幣為什麼有價值',
+      value_sub: '把 POSX 的價值來源拆解為「需求側推力 × 供給側約束」兩組力量，與 6 大底層支柱共同構成代幣基本面。',
+      value_eq_kicker: 'VALUE EQUATION',
+      value_headline: '真實消費需求 × 鏈上稀缺性 = POSX 長期價值',
+      value_demand_label: 'DEMAND ↑', value_supply_label: 'SUPPLY ↓',
+      value_d1_h: '$40 兆消費市場', value_d1_p: '全球年信用卡消費基數',
+      value_d2_h: '網路效應', value_d2_p: '商戶/使用者成長正回饋',
+      value_d3_h: 'DeFi 應用', value_d3_p: '質押·借貸·LP 多場景',
+      value_s1_h: '100% 實物錨定', value_s1_p: '真實消費才能觸發鑄造',
+      value_s2_h: '燒傷通縮', value_s2_p: '超出匹配額度即時銷毀',
+      value_s3_h: '15% 佣金上限', value_s3_p: '獎勵硬上限·制度可持續',
+      value_hex_top: 'REAL · BACKED', value_hex_bot: 'SCARCE · LIQUID',
+      value_eq_label: 'VALUE EQUATION',
+      value_eq_text: '真實消費需求 <span class="eq-gold">↑</span> × 網路規模 <span class="eq-gold">↑</span> ÷ 流通供給 <span class="eq-gold">↓</span> = POSX 價值 <span class="eq-gold">↑↑</span>',
+      value_pillar1_h: '實物消費錨定', value_pillar1_p: '每一枚 POSX 都對應一筆可驗證的鏈下消費交易，與零基本面投機幣明確區隔。',
+      value_pillar2_h: '網路效應飛輪', value_pillar2_p: '梅特卡夫定律：商戶與使用者每多一個節點，全網價值非線性成長。',
+      value_pillar3_h: '通縮供給約束', value_pillar3_p: '燒傷機制 + 佣金硬上限，對沖獎勵通膨風險，維持長期稀缺性。',
+      value_pillar4_h: '鏈上自由流通', value_pillar4_p: '公開市場可交易、可轉讓、P2P 轉帳，價格由真實供需形成。',
+      value_pillar5_h: 'DeFi 可組合', value_pillar5_p: '標準 ERC 資產可接入質押、借貸、LP，疊加金融性溢價。',
+      value_pillar6_h: '合規護城河', value_pillar6_p: '美國機構資本背書 + 合規架構驗證，建立同賽道罕見的信任溢價。',
+      hl_road_title: 'PROJECT ROADMAP',
+      hl_road_m1: '合規架構完成', hl_road_m2: '主網上線', hl_road_m3: '多交易所上線', hl_road_m4: '全球商戶擴張',
+      hl_road_legend: '↑ 當前策略窗口',
       reward_title: '推廣獎勵機制',
       reward_sub: '以手機端優先方式整理直推獎勵、團隊獎勵、平級獎與燒傷機制，協助使用者快速理解獎勵來源、計算邏輯與風控邊界。',
       reward_nav_direct: '直推獎勵', reward_nav_team: '團隊獎勵', reward_nav_equal: '平級獎', reward_nav_burn: '燒傷機制',
@@ -2108,7 +2879,40 @@ html[lang="en"] .reward-notice p {
       hl_s3_label: 'Multi-Exchange Simultaneous Listing',
       hl_s4_val: 'Real-Backed', hl_s4_label: 'Consumption-Driven Token Minting',
       entry_story_kicker: 'Project Story', entry_story_title: 'Overview',
+      entry_value_kicker: 'Value Snapshot', entry_value_title: 'Value Snapshot',
       entry_reward_kicker: 'Reward Rules', entry_reward_title: 'Incentives',
+      s01_compare_posx: 'POSX (Real-Backed)', s01_compare_spec: 'Speculative Token',
+      s02_e1_p_short: 'Online & offline merchants on POSX, driving retention via tokenized rewards',
+      s02_e2_p_short: 'End users earning POSX from purchases — tradable cross-platform digital assets',
+      s02_e3_p_short: 'Multi-party consensus validation, computing rewards and committing on-chain',
+      s02_e4_p_short: 'Promoters who scale the POSX ecosystem as a decentralized growth engine',
+      s02_ring_consumer: 'Consumer', s02_ring_merchant: 'Merchant', s02_ring_validator: 'Validator', s02_ring_evangelist: 'Evangelist',
+      s06_ring_tam_val: '$40T', s06_ring_sam_val: '$1T', s06_ring_som_val: '$400B',
+      s06_ring_tam_note: 'Global Annual Spend', s06_ring_sam_note: 'Digital Payments', s06_ring_som_note: 'POSX Target',
+      s06_ring_funnel1: 'Digital Penetration', s06_ring_funnel2: 'POSX Serviceable',
+      value_title: 'Why POSX Has Real Value — At a Glance',
+      value_sub: 'POSX value is engineered from two opposing forces — demand-side drivers and supply-side constraints — supported by six fundamental pillars.',
+      value_eq_kicker: 'VALUE EQUATION',
+      value_headline: 'Real Consumer Demand × On-Chain Scarcity = Long-Term POSX Value',
+      value_demand_label: 'DEMAND ↑', value_supply_label: 'SUPPLY ↓',
+      value_d1_h: '$40T Spend Market', value_d1_p: 'Global annual card spend base',
+      value_d2_h: 'Network Effects', value_d2_p: 'Merchant/user growth flywheel',
+      value_d3_h: 'DeFi Applications', value_d3_p: 'Staking · lending · LP demand',
+      value_s1_h: '100% Real-Backed', value_s1_p: 'Only real spending mints tokens',
+      value_s2_h: 'Burn-Driven Deflation', value_s2_p: 'Excess above match is destroyed',
+      value_s3_h: '15% Commission Cap', value_s3_p: 'Hard ceiling, sustainable model',
+      value_hex_top: 'REAL · BACKED', value_hex_bot: 'SCARCE · LIQUID',
+      value_eq_label: 'VALUE EQUATION',
+      value_eq_text: 'Real Demand <span class="eq-gold">↑</span> × Network Scale <span class="eq-gold">↑</span> ÷ Circulating Supply <span class="eq-gold">↓</span> = POSX Value <span class="eq-gold">↑↑</span>',
+      value_pillar1_h: 'Real Consumption Anchor', value_pillar1_p: 'Every POSX maps to a verifiable off-chain purchase — unlike zero-fundamental speculative tokens.',
+      value_pillar2_h: 'Network Effect Flywheel', value_pillar2_p: 'Metcalfe\'s Law: each new merchant or user adds non-linear value to the entire network.',
+      value_pillar3_h: 'Deflationary Supply', value_pillar3_p: 'Burn mechanics + hard commission cap counteract reward inflation, preserving long-term scarcity.',
+      value_pillar4_h: 'Free On-Chain Liquidity', value_pillar4_p: 'Tradable, transferable, P2P-settled on open markets — pricing reflects true supply & demand.',
+      value_pillar5_h: 'DeFi Composability', value_pillar5_p: 'Standard ERC-style asset plugs into staking, lending, and LP — layering on financial premium.',
+      value_pillar6_h: 'Compliance Moat', value_pillar6_p: 'U.S. institutional backing + validated compliance architecture — a rare trust premium in this category.',
+      hl_road_title: 'PROJECT ROADMAP',
+      hl_road_m1: 'Compliance Done', hl_road_m2: 'Mainnet Live', hl_road_m3: 'Multi-CEX Listing', hl_road_m4: 'Global Merchant Expansion',
+      hl_road_legend: '↑ Strategic Entry Window',
       reward_title: 'Referral Reward Mechanism',
       reward_sub: 'A mobile-first summary of direct referral rewards, team differential rewards, equal-level bonuses, and burn controls so users can quickly understand reward sources, computation logic, and risk boundaries.',
       reward_nav_direct: 'Direct Referral', reward_nav_team: 'Team Reward', reward_nav_equal: 'Equal-Level Bonus', reward_nav_burn: 'Burn Control',
@@ -2276,7 +3080,40 @@ html[lang="en"] .reward-notice p {
       hl_s2_val: '4,000억', hl_s2_label: '1% 침투율 기준 연간 TAM',
       hl_s3_label: '복수 거래소 동시 상장', hl_s4_val: '실물 연동', hl_s4_label: '실소비 기반 토큰 민팅',
       entry_story_kicker: 'Project Story', entry_story_title: '프로젝트 개요',
+      entry_value_kicker: 'Value Snapshot', entry_value_title: '가치 한눈에 보기',
       entry_reward_kicker: 'Reward Rules', entry_reward_title: '보상 구조',
+      s01_compare_posx: 'POSX 실물 연동', s01_compare_spec: '투기형 토큰',
+      s02_e1_p_short: 'POSX 결제 네트워크에 연결되어 토큰 보상으로 고객 유지율 향상',
+      s02_e2_p_short: '제휴 가맹점 소비를 통해 POSX 보상을 적립하는 최종 사용자',
+      s02_e3_p_short: '거래를 다자 합의로 검증하고 블록체인에 기록하는 노드',
+      s02_e4_p_short: 'POSX 생태계를 확산하는 탈중앙 성장 엔진',
+      s02_ring_consumer: '소비자', s02_ring_merchant: '가맹점', s02_ring_validator: '검증자', s02_ring_evangelist: '전파자',
+      s06_ring_tam_val: '$40조', s06_ring_sam_val: '$1조', s06_ring_som_val: '$4,000억',
+      s06_ring_tam_note: '글로벌 연간 소비', s06_ring_sam_note: '디지털 결제 시장', s06_ring_som_note: 'POSX 목표 시장',
+      s06_ring_funnel1: '디지털 침투', s06_ring_funnel2: 'POSX 서비스 가능',
+      value_title: 'POSX 토큰의 가치 — 한 장으로 이해하기',
+      value_sub: 'POSX의 가치는 수요 측 동인과 공급 측 제약이라는 두 힘의 균형, 그리고 6대 펀더멘털 기둥에서 형성됩니다.',
+      value_eq_kicker: 'VALUE EQUATION',
+      value_headline: '실수요 × 온체인 희소성 = POSX 장기 가치',
+      value_demand_label: 'DEMAND ↑', value_supply_label: 'SUPPLY ↓',
+      value_d1_h: '$40조 소비 시장', value_d1_p: '글로벌 연간 카드 소비 기반',
+      value_d2_h: '네트워크 효과', value_d2_p: '가맹점/사용자 증가의 양면 피드백',
+      value_d3_h: 'DeFi 활용', value_d3_p: '스테이킹·대출·LP 다양한 수요',
+      value_s1_h: '100% 실물 연동', value_s1_p: '실제 소비만이 민팅을 발생',
+      value_s2_h: '소각 기반 디플레이션', value_s2_p: '매칭 한도 초과분은 즉시 소각',
+      value_s3_h: '15% 커미션 상한', value_s3_p: '하드 캡 적용, 지속 가능한 구조',
+      value_hex_top: 'REAL · BACKED', value_hex_bot: 'SCARCE · LIQUID',
+      value_eq_label: 'VALUE EQUATION',
+      value_eq_text: '실수요 <span class="eq-gold">↑</span> × 네트워크 규모 <span class="eq-gold">↑</span> ÷ 유통 공급 <span class="eq-gold">↓</span> = POSX 가치 <span class="eq-gold">↑↑</span>',
+      value_pillar1_h: '실물 소비 연동', value_pillar1_p: '모든 POSX는 검증 가능한 오프체인 소비 거래에 대응되어 펀더멘털이 명확합니다.',
+      value_pillar2_h: '네트워크 효과 플라이휠', value_pillar2_p: '메트칼프 법칙: 가맹점 또는 사용자가 늘어날수록 전체 가치가 비선형으로 확대됩니다.',
+      value_pillar3_h: '디플레이션형 공급', value_pillar3_p: '소각 메커니즘과 커미션 하드 캡으로 인플레이션을 제어해 장기 희소성을 유지합니다.',
+      value_pillar4_h: '온체인 자유 유동성', value_pillar4_p: '공개 시장에서 거래·전송·P2P 결제 가능하며, 가격은 실수요로 결정됩니다.',
+      value_pillar5_h: 'DeFi 조합성', value_pillar5_p: '표준 ERC형 자산으로 스테이킹·대출·LP에 자연스럽게 통합되어 금융 프리미엄을 형성합니다.',
+      value_pillar6_h: '규제 해자', value_pillar6_p: '미국 기관 자본 기반 + 컴플라이언스 검증으로 같은 카테고리에서 드문 신뢰 프리미엄을 확보합니다.',
+      hl_road_title: 'PROJECT ROADMAP',
+      hl_road_m1: '컴플라이언스 완료', hl_road_m2: '메인넷 출시', hl_road_m3: '다중 거래소 상장', hl_road_m4: '글로벌 가맹점 확장',
+      hl_road_legend: '↑ 현 전략적 진입 시점',
       reward_title: '추천 보상 구조',
       reward_sub: '직추천 보상, 팀 차등 보상, 동급 보너스, 소각 통제를 모바일 환경에 최적화된 방식으로 정리하여 보상 출처와 계산 구조, 리스크 경계를 빠르게 이해할 수 있도록 구성했습니다.',
       reward_nav_direct: '직추천 보상', reward_nav_team: '팀 보상', reward_nav_equal: '동급 보너스', reward_nav_burn: '소각 메커니즘',
